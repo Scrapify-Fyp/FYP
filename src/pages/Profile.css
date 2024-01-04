@@ -1,0 +1,282 @@
+/* edit profile css */
+main{
+  padding-top: 58px;
+}
+.heading{
+font-size: 45px;
+font-weight: 600;
+padding-bottom: 30px;
+left: 0;
+}
+.profile-input{
+  border-radius: 5px;
+  border: 2px solid #858585;
+  text-align: left;
+}
+label{
+font-size: 16px;
+font-weight: 600;
+text-align: left;
+}
+.input-passeye {
+  display: flex;
+  border-radius: 5px;
+  border: 2px solid #858585;
+  text-align: left;
+  box-shadow: none;
+}
+.input-passeye input{
+  border: none;
+}
+.save-bttn{
+  display: flex;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  gap: 30px;
+}
+.save-bttn button{
+  width: 100px;
+}
+.form-control:focus{
+  box-shadow: none;
+  box-sizing: none;
+  border-color: #858585;
+}
+
+/* profile css */
+.profile-header{
+  border: 2px solid;
+  padding: 30px;
+  color: white;
+  background-color: #534892;
+  border-radius: 20px;
+}
+.adres, .email{
+  display: flex;
+  gap: 7px;
+}
+.phonenumber{
+  display: flex;
+  gap: 7px;
+}
+.profile-header{
+  display: flex;
+  gap: 20px;
+  
+}
+.header{
+  display: flex;
+  gap: 25px;
+}
+.current-order{
+  width: 700px;
+  border-radius: 20px;
+  background-color: #ea618c;
+}
+
+.current-order-img{
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #feaec7;
+  margin: 10px;
+}
+.name-section{
+  display: flex;
+  gap:15px;
+}
+.current-order-heading{
+  color: white;
+  font-weight: 500;
+  font-size: larger;
+  padding-top: 25px;
+}
+.name-section{
+  background-color: #fe85ab;
+  border-radius: 20px;
+}
+.curent-odr-text{
+  padding: 60px 0px 0px 38px;
+}
+.curent-odr-text p{
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  font-weight: 200;
+}
+.curent-odr-text h6{
+  font-weight: 500;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  font-size: xx-large;
+}
+.current-order-body{
+  display: flex;
+}
+.current-oeder-svg{
+  padding: 98px 0px 0px 98px;
+}
+.profile-section{
+  margin-top: 90px;
+  margin-bottom: 50px;
+  display: flex;
+  gap: 45px;
+  width: 100%;
+}
+.box{
+  /* display: flex; */
+  background-color:#f1eff3;
+  width: 50%;
+  height: 340px;
+  border-radius: 30px;
+ 
+}
+.box-div{
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  font-weight: 500;
+  color: #7062ba;
+  margin-top: 10px;
+  font-size: 26px;
+}
+.box-header-svg{
+  width: 100px;
+  height: 100px;
+  padding: 17px 10px 10px 10px;
+  border-radius: 20px;
+  background-color: #7062ba; 
+  margin-top: -50px; 
+}
+.star-rating-with-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.star-rating {
+  font-size: 30px;
+}
+
+.star-filled {
+  color: gold;
+}
+
+.star-empty {
+  color: #ccc;
+}
+
+.progress-bars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 10px; */
+}
+
+
+.progress-bar-label {
+  margin-right: 8px;
+}
+
+.progress-bar {
+  width: 330px;
+  height: 6px;
+  background-color: #bab7b7;
+  position: relative;
+  border-radius: 5px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #4caf50;
+}
+.product-slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px; 
+  margin: 20px auto;
+}
+
+.product-box {
+  padding: 20px;
+  width: 70%;
+  text-align: center;
+}
+
+.arrow-button {
+  font-size: 50px;
+  cursor: pointer;
+  color: #534892;
+  border: none;
+  font-weight: 700;
+}
+.viewprobtn{
+  font-size: 20px;
+  color: #534892;
+  text-decoration-line: none;
+  text-align: center;
+  display: block;
+  font-weight: 700;
+}
+.estaric{
+  padding: 0;
+  margin: none;
+}
+/* --------------------Analytics css----------------- */
+.analytic-heading{
+ padding-bottom: 10px;
+}
+.box-div-productselecter{
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  font-weight: 500;
+  color: #ffffff;
+  margin-top: 20px;
+  font-size: 26px;
+}
+.live-date-section p{
+    border: none;
+    background: #f3c9ce;
+    padding: 10px 15px 10px 15px;
+    background-color: #FFE0CC;
+    border-radius: 50px 50px 50px 50px;
+    color: #C51A31;
+    font-weight: 500;
+    width: 350px;
+}
+.product-select-section{
+   align-items: center;
+    flex-flow: column;
+    display: flex;
+}
+.live-date-section{
+  display: flex;
+  text-align: center;
+  font-weight: 540;
+  justify-content: flex-end;
+}
+.select-product-box{
+  background-color:#534892;
+  width: 70%;
+  height: 340px;
+  border-radius: 30px;
+}
+.product-select-slider{
+  color: white;
+  display: flex;
+  padding-top: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.viewprobtn-productselecter{
+  font-size: 20px;
+  background-color: white;
+  color: #534892;
+  text-decoration-line: none;
+  text-align: center;
+  display: block;
+ transition: 0.5s;
+  font-weight: 700; 
+}

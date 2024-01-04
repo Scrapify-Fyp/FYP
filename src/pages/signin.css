@@ -1,0 +1,137 @@
+/* SIGNIN PAGE CSS */
+.signinpage{
+    margin-left: -100px;
+   display: flex;
+   margin-top: 70px;
+   margin-bottom: 70px;
+   border-radius: 20px;
+   gap: 30px;
+  }
+  .form{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+ 
+  #signin-imge{
+    margin-left: -93px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 850px;
+  }
+  .welcometag{
+    opacity: 90%;
+    font-size:small;
+  }
+  .webname{
+    font-size: xx-large;
+    color: rgb(210, 14, 14);
+  }
+  .formtext1{
+    opacity: 70%;
+    font-size: small;
+  }
+  .form-control,.btn-danger{
+    border-radius: 20px;
+    text-align: center;
+  }
+  .btn-danger{
+    box-shadow: 2px 2px 2px rgb(183, 182, 182);
+  }
+  .input-with-svg {
+    background-image: url('../img/icons_401900.svg');
+    background-repeat: no-repeat;
+    background-position: 5% 50%;
+    background-size:20px;
+  }
+  .input-with-svg1 {
+    background-image: url('../img/cake-svgrepo-com.svg');
+    background-repeat: no-repeat;
+    background-position: 5% 50%;
+    background-size:20px;
+  }
+  .input-with-svg2 {
+    background-image: url('../img/icons_413802.svg');
+    background-repeat: no-repeat;
+    background-position: 5% 50%;
+    background-size:20px;
+  }
+  .input-with-svg3 {
+    background-image: url('../img/phone-rounded-svgrepo-com.svg');
+    background-repeat: no-repeat;
+    background-position: 5% 50%;
+    background-size:20px;
+  }
+  .input-passEye{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #5555;
+    border-radius: 50px;
+  }
+  .input-passEye input{ 
+    border: none;
+  }
+  .input-passEye input:focus{
+    box-shadow: none;
+  }
+  .input-passEye svg{
+    margin: 0px 20px;
+  }
+  .text-for-signup{
+    padding-top: 10px;
+    text-align: center;
+  }
+  NavLink{
+    color: rgb(183, 25, 25);
+    font-weight:500;
+    text-decoration: none;
+  }
+  .or-div{
+    opacity: 70%;
+    text-align: center;
+    padding-top: 4px;
+  }
+  .logo{
+    display: flex;
+    padding-top: 8px;
+    gap: 15px;
+    justify-content: center;
+  }
+  .input-with-png1 {
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    padding: 4px;
+    box-shadow: 2px 2px 2px 2px rgb(220, 217, 217);
+  }
+
+  /* SIGNUP PAGE CSS */
+  .singup-formdiv{
+    display: flex;
+    gap: 10px;
+  }
+  #birthday{
+    width: 132%;
+  }
+  @media screen and (max-width: 786px) {
+    .singup-formdiv{
+      display: block;
+      gap: 0px;
+    }
+    #birthday{
+      width: 100%;
+    }
+    #signin-imge{
+      display: none;
+      width: 0px;
+    }
+    .signinpage{
+      margin-left: 0px;
+     justify-content: center;
+    }
+  }
+ .forgetpass-link{
+  text-decoration: none;
+  padding-bottom: 20px;
+ }
