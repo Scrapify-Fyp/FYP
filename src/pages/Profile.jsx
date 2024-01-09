@@ -1,10 +1,9 @@
 import React from "react";
-import "./Profile.css";
+import profileCSS from "./Profile.module.css"
 import Sidebar from "../Components/sidebar";
 import { NavLink } from "react-router-dom";
 import { useState } from 'react';
 export default function Profile() {
-  const estaric = < >&#9733;</>;
   const starCounts = {
     1: 50,
     2: 30,
@@ -16,7 +15,6 @@ export default function Profile() {
   let  totalrispose= (starCounts[1]+starCounts[2]+starCounts[3]+starCounts[4]+starCounts[5]);
  let rating =totalscore/totalrispose;
   // console.log(rating);
-  let i=0;
   let email = "abc@gmail.com";
   let phonenumber = "032134567890";
   let address = "address";
@@ -40,13 +38,13 @@ export default function Profile() {
       <>
         <div className="container">
           <Sidebar />
-          <main>
-            <div className="profile-page">
-              <div className="header">
-                <div className="profile-header">
-                  <div className="info-section">
+          <main style={{ marginTop: '50px' }}>
+            <div className={profileCSS.profilepage}>
+              <div className={profileCSS.header}>
+                <div className={profileCSS.profileheader}>
+                  <div className={profileCSS.infosection}>
                     <h2>John Smith</h2>
-                    <div className="email">
+                    <div className={profileCSS.email}>
                       <div>
                         <svg
                           width="24px"
@@ -100,8 +98,8 @@ export default function Profile() {
                       </div>
                       {email}
                     </div>
-                    <div className="adres">
-                      <div className="add-logo">
+                    <div className={profileCSS.adres}>
+                      <div className={profileCSS.addlogo}>
                         <svg
                           fill="#ffffff"
                           width="24px"
@@ -124,7 +122,7 @@ export default function Profile() {
                       </div>
                       {address}
                     </div>
-                    <div className="phonenumber">
+                    <div className={profileCSS.phonenumber}>
                       <div>
                         <svg
                           width="24px"
@@ -156,7 +154,7 @@ export default function Profile() {
                     </div>
                     <div className="discription">{discription}</div>
                   </div>
-                  <div className="butten-section">
+                  <div className={profileCSS.buttensection}>
                     <NavLink to="/edit_profile">
                       <button
                         style={{
@@ -172,9 +170,9 @@ export default function Profile() {
                     </NavLink>
                   </div>
                 </div>
-                <div className="current-order">
-                  <div className="name-section">
-                    <div className="current-order-img">
+                <div className={profileCSS.currentorder}>
+                  <div className={profileCSS.namesection}>
+                    <div className={profileCSS.currentorderimg}>
                       <svg
                         fill="#ffffff"
                         width="64px"
@@ -194,15 +192,15 @@ export default function Profile() {
                         </g>
                       </svg>
                     </div>
-                    <div className="current-order-heading">Running Orders</div>
+                    <div className={profileCSS.currentorderheading}>Running Orders</div>
                   </div>
-                  <div className="current-order-body">
-                    <div className="curent-odr-text">
+                  <div className={profileCSS.currentorderbody}>
+                    <div className={profileCSS.curentodrtext}>
                       <p>You have</p>
                       <h6>8</h6>
                       <p>Orders</p>
                     </div>
-                    <div className="current-oeder-svg">
+                    <div className={profileCSS.currentoedersvg}>
                       <svg
                         type="butten"
                         fill="#ffffff"
@@ -228,75 +226,74 @@ export default function Profile() {
                     </div>
                   </div>
 
-                  <div className="current-order-section"></div>
                 </div>
               </div>
-              <div className="profile-section">
-                <div className="box">
-                  <div className="box-div">
-                  <div className="box-header-svg" >
+              <div className={profileCSS.profilesection}>
+                <div className={profileCSS.box}>
+                  <div className={profileCSS.boxdiv}>
+                  <div className= {profileCSS.boxheadersvg} >
                   <svg width="64px" height="64px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm6 10.5l-2.939 1.545.561-3.272-2.377-2.318 3.286-.478L18 14l1.47 2.977 3.285.478-2.377 2.318.56 3.272L18 21.5z"></path> </g> </g></svg>       
                  
                      </div>
                      <h3>Ratings & Stars</h3>
                   </div>
-                  <div className="star-rating-with-progress">
-                      <div className="star-rating">
+                  <div className= {profileCSS.starratingwithprogress}>
+                      <div className={profileCSS.starrating}>
                         {[1, 2, 3, 4, 5].map((star) => (
                           <span
                             key={star}
-                            className={star <= rating ? 'star-filled' : 'star-empty'}
+                            className={star <= rating ? profileCSS.starfilled : profileCSS.starempty}
                           >
                             &#9733; 
                           </span>
                         ))}
                       </div>
 
-                      <div className="progress-bars">
+                      <div className={profileCSS.progressbars}>
                         {[1, 2, 3, 4, 5].map((star,index) => (
-                          <div key={star} className="progress-bar-container">
+                          <div key={star} className={profileCSS.progressbarcontainer}>
                          { 
-                         star==1?(
+                         star===1?(
                              <span
                              key={star}
-                             className= 'star-filled'
+                             className= {profileCSS.starfilled}
                            >
                              &#9733; 
                            </span> 
-                          ):star==2?(
+                          ):star===2?(
                             <span
                              key={star}
-                             className= 'star-filled'
+                             className= {profileCSS.starfilled}
                            >
                              &#9733;&#9733;
                            </span> 
-                          ):star==3?(
+                          ):star===3?(
                             <span
                              key={star}
-                             className= 'star-filled'
+                             className= {profileCSS.starfilled}
                            >
                              &#9733;&#9733;&#9733;
                            </span> 
-                          ):star==4?(
+                          ):star===4?(
                             <span
                              key={star}
-                             className= 'star-filled'
+                             className= {profileCSS.starfilled}
                            >
                              &#9733;&#9733;&#9733;&#9733;
                            </span> 
                           ):(
                           <span
                              key={star}
-                             className= 'star-filled'
+                             className= {profileCSS.starfilled}
                            >
                              &#9733;&#9733;&#9733;&#9733;&#9733; 
                            </span>
                             
                           )
                           }
-                            <div className="progress-bar">
+                            <div className={profileCSS.progressbar}>
                               <div
-                                className="progress-bar-fill"
+                                className={profileCSS.progressbarfill}
                                 style={{ width: `${(starCounts && starCounts[star]) || 0}%` }}
                               ></div>
                             </div>
@@ -305,26 +302,26 @@ export default function Profile() {
                       </div>
                     </div>
                 </div>
-                <div className="box">
-                  <div className="box-div">
-                  <div className="box-header-svg" >
+                <div className={profileCSS.box}>
+                  <div className={profileCSS.boxdiv}>
+                  <div className={profileCSS.boxheadersvg}>
                   <svg fill="#ffffff" height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.37 512.37"  stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M475.524,72.933c-33.872-36.293-72.122-56.78-115.583-56.78c-42.308,0-79.083,19.333-103.742,52.277 c-24.591-32.968-61.208-52.277-103.49-52.277c-43.164,0-80.774,20.275-115.429,56.616 c-51.87,54.357-52.062,155.013,14.925,221.999c13.003,13.003,45.393,46.322,91.094,93.615 c21.934,22.7,44.674,46.277,67.387,69.854c7.95,8.252,15.328,15.915,21.947,22.792c6.806,7.073,6.806,7.073,8.317,8.643 c8.393,8.726,22.357,8.726,30.751,0c1.51-1.57,1.51-1.57,8.316-8.643c6.619-6.877,13.997-14.539,21.947-22.792 c22.713-23.577,45.453-47.154,66.715-69.158c46.373-47.99,78.763-81.308,91.766-94.312 C527.176,228.038,526.702,127.752,475.524,72.933z M430.275,264.599c-13.253,13.253-45.689,46.619-91.606,94.137 c-21.952,22.718-44.706,46.31-67.433,69.902c-5.236,5.435-10.224,10.615-14.91,15.482c-4.687-4.868-9.675-10.047-14.911-15.482 c-22.727-23.592-45.482-47.184-66.76-69.205c-46.591-48.215-79.026-81.58-92.279-94.833C31.961,214.185,32.102,140,68.154,102.22 c27.31-28.64,54.69-43.4,84.555-43.4c37.759,0,68.431,22.518,83.608,61.191c7.085,18.053,32.633,18.053,39.718,0 c15.143-38.586,46.063-61.191,83.907-61.191c30.166,0,57.925,14.868,84.393,43.228 C480.097,140.355,480.447,214.426,430.275,264.599z"></path> </g> </g> </g></svg>        
                      </div>            
                      <h3>Favourite Products</h3>
                   </div>
-                  <div className="product-slider">
-                    <button onClick={handlePrevClick} className="arrow-button">
+                  <div className={profileCSS.productslider}>
+                    <button onClick={handlePrevClick} className={profileCSS.arrowbutton}>
                       {'<'}
                     </button>
-                    <div className="product-box">
+                    <div className={profileCSS.productbox}>
                       <h2>{productsData[currentIndex].name}</h2>
                       <p>{productsData[currentIndex].description}</p>
                     </div>
-                    <button onClick={handleNextClick} className="arrow-button">
+                    <button onClick={handleNextClick} className={profileCSS.arrowbutton}>
                       {'>'}
                     </button>
                   </div>
-                  <NavLink className="viewprobtn">View all</NavLink>
+                  <NavLink className={profileCSS.viewprobtn}>View all</NavLink>
 
                 </div>
       
