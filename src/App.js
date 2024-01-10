@@ -9,6 +9,8 @@ import Myshope from "./pages/Myshope"
 import Order_history from "./pages/Order_history"
 import Settings from "./pages/Settings"
 import Wallet from "./pages/Wallet"
+import Contact_us from "./pages/Contact_us"
+import Cart from './pages/Cart';
 function App() {
   return (
     <>
@@ -24,6 +26,11 @@ function App() {
         <Route path="/Settings" element={<Settings/>}/>
         <Route path="/Wallet" element={<Wallet/>}/>
         <Route path="/Myshope" element={<Myshope/>}/>
+        <Route path="/Contact_us" element={<Contact_us/>}/>
+        <Route path="/Cart" element={<Cart/>}/>
+
+
+        
       </Routes>
     </BrowserRouter>
 

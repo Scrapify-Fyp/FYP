@@ -64,7 +64,7 @@ export default function Analytics() {
                     </div>
                   </div>
                   {/* <NavLink className="">View all</NavLink> */}
-                  <div className={AnalyticsCSS.btndiv}>
+            <div className={AnalyticsCSS.btndiv}>
                   <button type="button" className={`btn btn-outline-danger ${AnalyticsCSS.viewprobtnproductselector}`} onClick={handleViewAllClick}>
               View all
             </button>

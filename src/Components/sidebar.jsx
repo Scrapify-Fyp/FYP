@@ -71,7 +71,7 @@ export default function Sidebar(props) {
         <NavLink to="/Profile"  className={` ${props.activeprofile} text-center list-group-item list-group-item-action py-2 ripple`}>
         <span>Profile</span></NavLink>
         <NavLink to="/Analytics" className="text-center list-group-item list-group-item-action py-2 ripple">
-        <span>Analytics/Recomandations</span></NavLink>
+        <span>Analytics</span></NavLink>
         <NavLink to="/Myshope" className="text-center list-group-item list-group-item-action py-2 ripple">
         <span>My Shop</span></NavLink>
         <NavLink to="/Order_history" className="text-center list-group-item list-group-item-action py-2 ripple">
