@@ -18,7 +18,7 @@ body {
   /* Sidebar */
   .sidebar {
     position: fixed;
-    top: 0;
+    top: 70px;
     bottom: 0;
     left: 0;
     padding: 38px 0 0; 
@@ -34,6 +34,7 @@ body {
     .sidebar {
       width: 50%; 
     }
+    
   }
   @media (max-width: 333px) {
     .sidebar {
@@ -83,4 +84,3 @@ body {
   cursor: pointer;                /* Cursor style */
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
  } 
- 

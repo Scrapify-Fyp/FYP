@@ -1,0 +1,10 @@
+#hero-section{
+    background-color: rgb(237, 237, 237);
+    border: 1px solid white;
+    border-radius:  20px;
+    padding: 10px;
+}
+.carousel-inner img {
+border-radius: 20px;
+margin-top: 30px;
+}

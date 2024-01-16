@@ -5,6 +5,7 @@ import img4 from '../img/products/D5.jpg';
 import img2 from '../img/products/D2.jpg';
 import img1 from '../img/products/D1.jpg';
 import removeIcon from '../img/delete-svgrepo-com.svg';
+import Navbar from '../Components/Navbar';
 
 const productsData = [
   { id: 1, name: 'Advanced White AirPods', price: 2399, image: img1, removeIcon },
@@ -57,6 +58,9 @@ export default function Cart() {
 
   return (
     <>
+    <div className="container">
+    <Navbar/>
+       <div className="cartpage">
       <section id={CartCSS.pageheader}>
         <h2>#Treat yo' self</h2>
         <p>It's an "ADD TO CART" kinda DAY!!</p>
@@ -163,6 +167,8 @@ export default function Cart() {
           <button className={CartCSS.normal}>Proceed to Checkout</button>
         </div>
       </section>
+      </div>
+      </div>
     </>
   );
 }

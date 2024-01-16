@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import imge1 from "../img/edit.png"; 
+import Navbar from './Navbar';
 
 export default function Sidebar(props) {
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -27,8 +28,8 @@ export default function Sidebar(props) {
   };
   const isDescriptionEmpty = description.trim() === '';
   return (
-    <div>
-      <>   
+      <>
+      <Navbar/>   
   <div className="container">
  
   <header>
@@ -85,7 +86,7 @@ export default function Sidebar(props) {
     </div>
   </nav>
 
-  <nav id="" className="navbar navbar-expand-lg navbar-light bg-white fixed-top toglr">
+  <nav id="" className="navbar navbar-expand-lg navbar-light toglr">
           <div className="container-fluid">
             <button
               className="navbar-toggler"
@@ -104,6 +105,5 @@ export default function Sidebar(props) {
       </div>
       
       </>
-    </div>
   )
 }

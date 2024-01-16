@@ -13,9 +13,9 @@ export default function Login() {
 
   };
   return (
-    <div>
       <>
-        <form className="form-group  signin-form ">
+    
+    <form className="form-group  signin-form ">
           <p className="text-center ">
             <welcometag className="welcometag fw-medium">WELCOME TO</welcometag>
             <br />
@@ -93,6 +93,5 @@ export default function Login() {
           </div>
         </form>
       </>
-    </div>
   );
 }

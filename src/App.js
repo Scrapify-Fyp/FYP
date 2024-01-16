@@ -11,6 +11,8 @@ import Settings from "./pages/Settings"
 import Wallet from "./pages/Wallet"
 import Contact_us from "./pages/Contact_us"
 import Cart from './pages/Cart';
+import HeroSection from "./Components/HeroSection"
+import Home from "./pages/Home"
 function App() {
   return (
     <>
@@ -28,8 +30,9 @@ function App() {
         <Route path="/Myshope" element={<Myshope/>}/>
         <Route path="/Contact_us" element={<Contact_us/>}/>
         <Route path="/Cart" element={<Cart/>}/>
-
-
+        <Route path="/HeroSection" element={<HeroSection/>}/>
+        <Route path="/Home" element={<Home/>}/>
+        
         
       </Routes>
     </BrowserRouter>

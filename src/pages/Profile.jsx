@@ -38,7 +38,7 @@ export default function Profile() {
       <>
         <div className="container">
           <Sidebar />
-          <main style={{ marginTop: '50px' }}>
+          <main style={{ marginTop: '' }}>
             <div className={profileCSS.profilepage}>
               <div className={profileCSS.header}>
                 <div className={profileCSS.profileheader}>
