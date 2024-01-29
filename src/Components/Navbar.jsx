@@ -23,7 +23,7 @@ export default function Navbar() {
       {screensize >= comparison ? (
         <div className={NavbarCSS.navbar}>
         <nav className={`navbar-expand-lg navbar-light`}>
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/Home">
             <h4>
               <strong>Scrapify</strong>
             </h4>
@@ -59,10 +59,10 @@ export default function Navbar() {
             <div className={NavbarCSS.routes}>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <NavLink to="/HeroSection">
-                  <a className="nav-link" href="#">
+                  <NavLink className="nav-link" to="/Home">
+                
                     Home
-                  </a>
+                 
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -71,13 +71,13 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    About Us
-                  </a>
+                <a className="nav-link" href="#">
+                      About Us
+                    </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Login
+                 <a className="nav-link" href="/Contact_us">
+                    Contact Us
                   </a>
                 </li>
               </ul>
@@ -178,9 +178,9 @@ export default function Navbar() {
               <div className="routes">
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      Home
-                    </a>
+                  <NavLink className="nav-link" to="/Home">          
+                     Home
+                 </NavLink>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#">
@@ -193,9 +193,9 @@ export default function Navbar() {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      Login
-                    </a>
+                  <a className="nav-link" href="/Contact_us">
+                    Contact Us
+                  </a>
                   </li>
                 </ul>
               </div>

@@ -1,0 +1,127 @@
+
+.container{
+    width: 1262px !important;
+    margin-left: -74px;
+}
+.footer {
+    margin-top: 50px;
+    padding: 70px;
+    background-color: #110d1e; 
+    color: white;  
+}
+
+.footerSection {
+    flex-direction: row;
+    display: flex;
+}
+.footerheading{
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 20px;
+     font-weight: bold;
+ }
+.daitelSection {
+    padding: 30px 40px 50px 30px;
+    background-color: #19142c;
+    width: 300px;
+    align-items: center;
+    font-size: 15px;
+}
+
+.daitelSection img {
+    width: 170px;
+    padding-bottom: 30px;
+}
+
+.daitelSectionLine {
+    border: 1px solid white;
+    opacity: 20%;
+}
+
+.otherPages {
+    padding-left: 80px;
+    padding-top: 15px;
+}
+
+.otherPages h5 {
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.footerLi {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    transition: 0.3s;
+}
+
+.footerLi:hover {
+    color: #fe6401;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter h5 {
+    font-weight: bold;
+    padding: 15px 15px 15px 0px;
+}
+
+.newsletter{
+    padding-left: 75px;
+}
+
+.newletterinput{
+    margin:  15px 0px 15px 0px;
+    border-radius: 25px;
+    height: 50px;
+    text-align: left;
+}
+
+.footerSubscribeBtn {
+    text-align: center;
+    padding-top: 8px;
+    margin: -61px 6px 0px 179px;
+    border: none;
+    border-radius: 21px;
+    background-color:#28204d;
+    color: white;
+    width: 130px;
+    font-size: 16px;
+    transition: 0.3s;
+    height: 42px;
+}
+
+.footerSubscribeBtn:hover {
+    background-color: #fe6401;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter p {
+    padding-top: 30px;
+    font-size: 14px;
+    opacity: 50%;
+}
+
+.footerIcons svg {
+    transition: 0.3s;
+    color: white;
+}
+
+.footerIcons svg:hover {
+    cursor: pointer;
+    fill: white;
+    padding: 3px;
+    transition: 0.3s;
+}
+
+.footerIcons {
+    display: flex;
+    gap: 18px;
+}
+
+.footerLine {
+    border: 1px solid white;
+    margin-top: 100px;
+    opacity: 60%;
+}

@@ -24,7 +24,6 @@ export default function Sidebar(props) {
 
   const handleSaveClick = () => {
     setEditing(false);
-    // Add logic to save the description (e.g., send it to the server)
   };
   const isDescriptionEmpty = description.trim() === '';
   return (
@@ -100,6 +99,7 @@ export default function Sidebar(props) {
             </button>
           </div>
         </nav>
+        
  
 </header>
       </div>

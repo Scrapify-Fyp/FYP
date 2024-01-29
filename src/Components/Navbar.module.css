@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     padding:20px 20px 0px 20px;
     width: 1140px;
-    position: fixed;
+    /* position: fixed; */
     background-color: white;
   }
   

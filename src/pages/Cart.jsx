@@ -6,6 +6,8 @@ import img2 from '../img/products/D2.jpg';
 import img1 from '../img/products/D1.jpg';
 import removeIcon from '../img/delete-svgrepo-com.svg';
 import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer'
+
 
 const productsData = [
   { id: 1, name: 'Advanced White AirPods', price: 2399, image: img1, removeIcon },
@@ -50,11 +52,11 @@ export default function Cart() {
     });
   };
 
-//   useEffect(() => {
-//     if (removeAction !== null) {
-//       window.location.reload();
-//     }
-//   }, [removeAction]);
+  // useEffect(() => {
+  //   if (removeAction !== null) {
+  //     window.location.reload();
+  //   }
+  // }, [removeAction]);
 
   return (
     <>
@@ -168,6 +170,7 @@ export default function Cart() {
         </div>
       </section>
       </div>
+      <Footer/>
       </div>
     </>
   );

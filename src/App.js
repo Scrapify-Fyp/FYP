@@ -13,6 +13,7 @@ import Contact_us from "./pages/Contact_us"
 import Cart from './pages/Cart';
 import HeroSection from "./Components/HeroSection"
 import Home from "./pages/Home"
+import Footer from './Components/Footer';
 function App() {
   return (
     <>
@@ -32,7 +33,7 @@ function App() {
         <Route path="/Cart" element={<Cart/>}/>
         <Route path="/HeroSection" element={<HeroSection/>}/>
         <Route path="/Home" element={<Home/>}/>
-        
+        <Route path="/Footer" element={<Footer/>}/>     
         
       </Routes>
     </BrowserRouter>

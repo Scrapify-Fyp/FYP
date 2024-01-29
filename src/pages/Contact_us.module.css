@@ -9,6 +9,7 @@
 
 .section
 {
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +21,7 @@
 {
   content: '';
   position: absolute;
-  top: 0;
+  top: 120;
   left: 0;
   width: 50%;
   height: 100%;

@@ -8,11 +8,14 @@ import img5 from "../img/2.png"
 import img6 from "../img/3.png"
 import img7 from "../img/4.png"
 import img8 from "../img/5.png"
-
+import Navbar  from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 const ContactUs = () => {
   return (
     <>
+    <div className="container">
+      <Navbar/>
     <div className={ContactUsCSS.section}>
       <div className={ContactUsCSS.container}>
         <div className={ContactUsCSS.contactInfo}>
@@ -70,6 +73,8 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
     </>
   );

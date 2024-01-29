@@ -2,9 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:wght@200,300,400,500,600,700,800,900&display=swap');
 *
 {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  
+  /* box-sizing: border-box; */
   font-family: 'Poppins', sans-serif;
 }
 h1 {
@@ -45,7 +44,7 @@ h1 {
     background-image: url(../img/banner/b5.jpg);
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/banner/b5.jpg') center/cover no-repeat;
     width: 100%;
-    height: 60vh;
+    height: 40vh;
     background-size: cover;
     display: flex;
     justify-content: flex-end;
