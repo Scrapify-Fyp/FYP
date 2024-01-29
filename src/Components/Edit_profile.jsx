@@ -5,10 +5,6 @@ import Sidebar from "../Components/sidebar";
 // import { NavLink } from "react-router-dom";
 
 export default function Edit_profile() {
-  // const [showpassword, setShowPassword] = useState(false);
-  // const handleCheckbox = () => {
-  //   setShowPassword((prevShowPassword) => !prevShowPassword);
-  // };
 
   return (
     <>
