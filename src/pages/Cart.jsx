@@ -44,7 +44,7 @@ export default function Cart() {
 
       if (removedProduct) {
         delete updatedQuantities[productId];
-        setRemoveAction(productId); // Trigger the removal action
+        setRemoveAction(productId); 
         return updatedQuantities;
       }
 
