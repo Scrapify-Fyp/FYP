@@ -1,7 +1,8 @@
 
 .container{
-    width: 1262px !important;
-    margin-left: -74px;
+    width: 1300px;
+    align-items: center;
+    
 }
 .footer {
     margin-top: 50px;
