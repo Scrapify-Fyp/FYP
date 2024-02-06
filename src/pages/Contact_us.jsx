@@ -14,7 +14,7 @@ import Footer from '../Components/Footer';
 const ContactUs = () => {
   return (
     <>
-    <div className="container">
+    <div className="container" style={{width: "100%",margin:"0",padding:"0px",maxWidth:"100%"}}>
       <Navbar/>
     <div className={ContactUsCSS.section}>
       <div className={ContactUsCSS.container}>

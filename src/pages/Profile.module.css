@@ -23,6 +23,9 @@
 
 
 /*---------------------------------- profile css------------------------ */
+.profilepage{
+  padding: 20px;
+}
 .profileheader{
   border: 2px solid;
   padding: 30px;
