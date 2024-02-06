@@ -4,7 +4,7 @@
     align-items: baseline;
     flex-wrap: wrap;
     padding:20px 20px 0px 20px;
-    width: 1140px;
+    /* width: 1140px; */
     /* position: fixed; */
     background-color: white;
   }

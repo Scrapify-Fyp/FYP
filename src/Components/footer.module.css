@@ -1,13 +1,25 @@
 
 .container{
-    width: 1300px;
+    /* width: 1300px; */
     align-items: center;
-    
-}
+    background-color: #110d1e; 
+}   
+/* .container::after{
+    content: "";
+    position:relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #110d1e;
+    z-index: -1; 
+    pointer-events: none; 
+} */
 .footer {
     margin-top: 50px;
     padding: 70px;
-    background-color: #110d1e; 
+    /* background-color: #110d1e; 
+    width: 100vw; */
     color: white;  
 }
 

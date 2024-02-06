@@ -70,7 +70,6 @@ export default function Analytics() {
             </button>
                               <button type="button" className={`btn btn-outline-danger ${AnalyticsCSS.viewprobtnproductselector}`}>Search</button>
                   </div>
-                  
                 </div>
                         </div>
                 </main>
