@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="Fontawesome Icons/css/all.min.css">
+    <link rel="stylesheet" href="shop.css">
+    <title>Single Product Detail Page</title>
+</head>
+<body>
+    <section id="pro-details" class="section-p1">
+        <div id="pro-details">
+            <div class="single-pro-img">
+                <div class="small-img-grp">
+                    <div class="small-img-col">
+                        <img src="Images/prod-01-full.jpg" width="100%" class="small-img" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="Images/prod-01-full (02).jpg" width="100%" class="small-img" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="Images/prod-01-full (03).jpg" width="100%" class="small-img" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="Images/prod-01-full (04).jpg" width="100%" class="small-img" alt="">
+                    </div>
+                </div>
+                <div id="mainImgContainer">
+                    <img src="Images/prod-01-full.jpg" width="100%" height="auto" id="mainImg" alt="Main Image">
+                </div>
+                <div id="magnifier"></div>
+            </div>
+        </div>
+
+        <div class="single-pro-details">
+            <h6>Brand / KHAADI </h6>
+            <h4>ELLEGANCE FLORA - GREEN</h4>
+            <h2>PKR 9,845.00</h2>
+            <div class="siz-options">
+                <div class="size-item">
+                    <input type="radio" id="S" name="options" class="option-select" value="" />
+                    <label for="S" class="edit-size-checked">S</label>
+                </div>
+                <div class="size-item">
+                    <input type="radio" id="M" name="options" class="option-select" value="" />
+                    <label for="M" class="edit-size-checked">M</label>
+                </div>
+                <div class="size-item">
+                    <input type="radio" id="L" name="options" class="option-select" value="" />
+                    <label for="L" class="edit-size-checked">L</label>
+                </div>
+                <div class="size-item">
+                    <input type="radio" id="XL" name="options" class="option-select" value="" />
+                    <label for="XL" class="edit-size-checked">XL</label>
+                </div>
+            </div>
+            <input class="quantity" type="number" value="1">
+            <button class="normal">Add to Cart</button>
+            <h4>Product Details</h4>
+            <span>Ellegance Flora <br>
+                <strong>Shirt: </strong> Embroidered Cotton Karandi Sp 2.50 Meter <br>
+                <strong>Dupatta: </strong> Embroidered Chiffon Self 2.50 Meter <br>
+                <strong>Shalwar: </strong> Plain Cotton Karandi Sp 2.50 Meter
+            </span>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>You May Also Like</h2>
+        <div class="pro-container">
+            <!-- PRODUCT 01 -->
+            <div class="pro">
+                <img src="Images/prod-10.jpg" alt="">
+                <div class="des">
+                    <span>Khaadi</span>
+                    <h5>Basic Winter Clothes</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>$50</h4>
+                </div>
+                <div class="cart"><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div>
+            </div>
+            <!-- PRODUCT 02 -->
+            <div class="pro">
+                <img src="Images/prod-13.jpg" alt="">
+                <div class="des">
+                    <span>Handicrafts</span>
+                    <h5>Pure Craft Hand Bag</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>$20</h4>
+                </div>
+                <div class="cart"><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div>
+            </div>
+            <!-- PRODUCT 03 -->
+            <div class="pro">
+                <img src="Images/prod-6.jpg" alt="">
+                <div class="des">
+                    <span>Wall Hangings</span>
+                    <h5>Eye Mandala Set</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>$60</h4>
+                </div>
+                <div class="cart"><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div>
+            </div>
+            <!-- PRODUCT 04 -->
+            <div class="pro">
+                <img src="Images/prod-12.jpg" alt="">
+                <div class="des">
+                    <span>ROLEX</span>
+                    <h5>Luxury Men Watch</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>$435</h4>
+                </div>
+                <div class="cart"><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="sproduct.js"></script>
+</body>
+</html>
