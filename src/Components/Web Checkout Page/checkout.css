@@ -1,0 +1,165 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 20px;
+    overflow: hidden;
+}
+
+/* Left Section */
+.left-section {
+    float: left;
+    width: 51%;
+    overflow: hidden;
+}
+
+/* Right Section */
+.right-section {
+    min-height: 905px;
+    float: right;
+    width: 48%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 5px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:hover {
+    color: #A83131;
+}
+
+nav ul li a:active {
+    color: seagreen;
+}
+
+i {
+    margin-left: 5px;
+    margin-right: 0px;
+    font-size: 14px;
+}
+
+h1 {
+    color: #A83131;
+}
+
+h2 {
+    margin-top: 20px;
+    color: #411806;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="checkbox"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form input[type="checkbox"] {
+    width: auto;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.product-info {
+    display: inline-flex;
+    margin-top: 40px;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.product-image-container {
+    position: relative;
+}
+
+.product-image {
+    max-height: 100px;
+}
+
+.quantity-circle {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #A83131;
+    color: white;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.product-description {
+    margin: 0px 30px 10px 20px; 
+}
+
+.product-price {
+    margin-left: 150px;
+}
+
+.underline {
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.subtotal,
+.shipping,
+.total {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.subtotal-span {
+    margin-left: 500px;
+}
+
+.shipping-span {
+    margin-left: 300px;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #411806;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6F6263;
+}

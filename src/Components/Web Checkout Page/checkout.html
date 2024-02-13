@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="checkout.css">
+    <title>Scrapify Checkout</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1>Scrapify</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Cart<i class="fa-solid fa-greater-than"></i></a></li>
+                    <li><a href="#">Information<i class="fa-solid fa-greater-than"></i></a></li>
+                    <li><a href="#">Shipping<i class="fa-solid fa-greater-than"></i></a></li>
+                    <li><a href="#">Payment</a></li>
+                </ul>
+            </nav>
+            <h2>Contact Information</h2>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <h2>Shipping Address</h2>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+                <label for="apt">Apt / Floor / Suite:</label>
+                <input type="text" id="apt" name="apt">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+                <label for="province">Province:</label>
+                <input type="text" id="province" name="province" required>
+                <label for="postalCode">Postal Code:</label>
+                <input type="text" id="postalCode" name="postalCode" required>
+                <label for="country">Country / Region:</label>
+                <input type="text" id="country" name="country" required>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="saveInfo">
+                    <input type="checkbox" id="saveInfo" name="saveInfo">
+                    Save this information for next time
+                </label>
+                <button onclick="returnToCart()">Return to Cart</button>
+                <button onclick="continueToShipping()">Continue to Shipping</button>
+            </form>
+        </div>
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="product-info">
+                <div class="product-image-container">
+                    <img src="product.jpg" alt="Product Image" class="product-image">
+                    <div class="quantity-circle">3</div>
+                </div>
+                <div class="product-description">
+                    <p>Handi Crafts DIY Ideas</p>
+                </div>
+                <div class="product-price">
+                    <p>Price: $25</p>
+                </div>
+            </div>
+            <div class="underline"></div>
+            <div class="subtotal">
+                Subtotal: <span class="subtotal-span"> $75 </span>
+            </div>
+            <div class="shipping">
+                Shipping: <span class="shipping-span">will be calculated on the next step</span>
+            </div>
+            <div class="underline"></div>
+            <div class="total">
+                Total: <span class="subtotal-span"> $75 </span>
+            </div>
+        </div>
+    </div>
+    <script src="checkout.js"></script>
+</body>
+</html>
