@@ -14,6 +14,7 @@ import Cart from './pages/Cart';
 import HeroSection from "./Components/HeroSection"
 import Home from "./pages/Home"
 import Footer from './Components/Footer';
+import Shops from "./pages/Shops"
 function App() {
   return (
     <>
@@ -34,6 +35,7 @@ function App() {
         <Route path="/HeroSection" element={<HeroSection/>}/>
         <Route path="/Home" element={<Home/>}/>
         <Route path="/Footer" element={<Footer/>}/>     
+        <Route path="/Shops" element={<Shops/>}/>     
         
       </Routes>
     </BrowserRouter>

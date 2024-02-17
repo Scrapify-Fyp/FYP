@@ -1,0 +1,70 @@
+.contactpageinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+
+.contactpageinfo h1{
+ font-weight: bold;
+ padding-top: 20px;
+}
+.contactpageinfo p{
+    opacity: 50%;
+    padding-top: 10px;
+    text-align: center;
+}
+.contactpageform form{
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #efedff;
+}
+.contactdiatel{
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+}
+.contactdiatelsvg{
+    background-color: #e7e5fe;
+    border-radius: 10px;
+    width: 80PX;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contactdiatelsvg2{
+    background-color: #fee1cc;
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contactdiateltext{
+    padding-top: 8px;
+}
+.contactdiateltext p{
+    padding-top: 0px;
+}
+.contactdiatelline{
+    border: 1px solid #e4e5ea;
+    margin-top: 40px;
+}
+.medialinks{
+    display: flex;
+    gap: 40px;
+    margin-top: 60px;
+}
+.footericons{
+    display: flex;
+    gap:22px;
+    transition: 0.5s;
+
+}
+.footericons1:hover{
+    fill:black;
+    cursor: pointer;
+    padding: 1px;
+    transition: 0.5s;
+}

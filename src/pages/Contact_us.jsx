@@ -10,12 +10,13 @@ import img7 from "../img/4.png"
 import img8 from "../img/5.png"
 import Navbar  from '../Components/Navbar';
 import Footer from '../Components/Footer';
-
+import Contactinfo from "../Components/Contactinfo"
 const ContactUs = () => {
   return (
     <>
     <div className="container" style={{width: "100%",margin:"0",padding:"0px",maxWidth:"100%"}}>
       <Navbar/>
+      <Contactinfo/>
     <div className={ContactUsCSS.section}>
       <div className={ContactUsCSS.container}>
         <div className={ContactUsCSS.contactInfo}>

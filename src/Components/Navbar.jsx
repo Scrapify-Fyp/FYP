@@ -66,15 +66,15 @@ export default function Navbar() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/Shops">
                     Shops
                   </a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                 <a className="nav-link" href="#">
                       About Us
                     </a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                  <a className="nav-link" href="/Contact_us">
                     Contact Us
