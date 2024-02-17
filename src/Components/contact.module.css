@@ -1,4 +1,5 @@
 .contactpageinfo{
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +49,8 @@
     padding-top: 0px;
 }
 .contactdiatelline{
-    border: 1px solid #e4e5ea;
+    width: 1000px;
+    border: 1px solid #095a55;
     margin-top: 40px;
 }
 .medialinks{
