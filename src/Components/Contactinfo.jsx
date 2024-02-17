@@ -53,7 +53,7 @@ export default function Contactinfo() {
                           </div>
                           <div className={Contactcss.contactdiateltext}>
                             <h3>Email Address</h3>
-                            <p>info@Scrapify.net</p>
+                            <p style={{textAlign:"left"}}>info@Scrapify.com</p>
                           </div>
                      </div>
                      <div className={Contactcss.contactdiatel}>

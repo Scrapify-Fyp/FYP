@@ -573,7 +573,7 @@ const ShopPage = () => {
 
                 <section id="pagination" className="section-p1">
                         {currentPage > 1 && (
-                            <a href="#" onClick={() => paginate(currentPage - 1)}>
+                            <a href="" onClick={() => paginate(currentPage - 1)}>
                                 <FontAwesomeIcon icon={faArrowLeft} />
                             </a>
                         )}
@@ -584,7 +584,7 @@ const ShopPage = () => {
                                 return (
                                     <a 
                                         key={index} 
-                                        href="#" 
+                                        href="" 
                                         onClick={() => paginate(index + 1)} 
                                         className={currentPage === index + 1 ? 'active' : ''}
                                     >
@@ -595,7 +595,7 @@ const ShopPage = () => {
                             return null;
                         })}
                         {currentPage < totalPages && (
-                            <a href="#" onClick={() => paginate(currentPage + 1)}>
+                            <a href="" onClick={() => paginate(currentPage + 1)}>
                                 <FontAwesomeIcon icon={faArrowRight} />
                             </a>
                         )}
