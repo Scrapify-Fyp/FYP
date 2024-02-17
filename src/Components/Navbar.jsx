@@ -70,11 +70,16 @@ export default function Navbar() {
                     Shops
                   </a>
                 </li>
-                {/* <li className="nav-item">
+                <li className="nav-item">
                 <a className="nav-link" href="#">
-                      About Us
+                      Scrapyard
                     </a>
-                </li> */}
+                </li> 
+                <li className="nav-item">
+                <a className="nav-link" href="#">
+                      Digital assets
+                    </a>
+                </li> 
                 <li className="nav-item">
                  <a className="nav-link" href="/Contact_us">
                     Contact Us
