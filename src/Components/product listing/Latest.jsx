@@ -77,6 +77,9 @@ const latestproducts = [
   },
 ];
 export default function Latest() {
+    const redirectToProductDetail = () => {
+        window.location.href = '/ProductDetail';
+    };
   return (
     <>
                 <section id="product1" className="section-p1">
@@ -85,8 +88,8 @@ export default function Latest() {
                         {/* Map over products and render each product */}
                         {latestproducts.map(product => (
                             <div className="pro" key={product.id}>
-                                <img src={product.imgSrc} alt="" />
-                                <div className="des">
+                                <img onClick={redirectToProductDetail} src={product.imgSrc} alt="" />
+                                <div onClick={redirectToProductDetail} className="des">
                                     <span>{product.brand}</span>
                                     <h5>{product.name}</h5>
                                     <div className="star">

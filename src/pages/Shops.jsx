@@ -2051,9 +2051,12 @@ const ShopPage = () => {
         setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 12); // Increase visible products by 12
     };
     const redirectToProductDetail = () => {
-        window.location.href = '/home';
+        window.location.href = '/ProductDetail';
     };
-
+    const redirectTocart = () => {
+        window.location.href = '';
+    };
+    
     return (
         <>
             <div style={{width: "100%", margin: "0", padding: "0px", maxWidth: "100%"}}>
@@ -2067,9 +2070,9 @@ const ShopPage = () => {
                 <div className="pro-container">
                     {/* Map over products and render each product */}
                     {Shops.slice(0, visibleProducts).map(product => (
-                        <div className="pro" key={product.id}>
-                            <img src={product.imgSrc} alt={`Product ${product.id}`} />
-                            <div className="des">
+                        <div  className="pro" key={product.id}>
+                            <img onClick={redirectToProductDetail} src={product.imgSrc} alt={`Product ${product.id}`} />
+                            <div onClick={redirectToProductDetail} className="des">
                                 <span>{product.brand}</span>
                                 <h5>{product.name}</h5>
                                 <div className="star">
@@ -2080,7 +2083,7 @@ const ShopPage = () => {
                                 </div>
                                 <h4>${product.price}</h4>
                             </div>
-                            <div className="cart"><a href="#"><FontAwesomeIcon icon={faCartPlus} /></a></div>
+                            <button className="cart" onClick={redirectTocart}><a href="#"><FontAwesomeIcon icon={faCartPlus} /></a></button>
                         </div>
                     ))}
                 </div>

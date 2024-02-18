@@ -10,7 +10,7 @@ import img5 from "../../img/prod-9.jpg";
 import img6 from "../../img/prod-8.jpg";
 import img7 from "../../img/prod-1.jpg";
 import img8 from "../../img/prod-5.jpg";
-const Foryouproducts = [
+const Youmaylikeproducts = [
     {
         id: 1,
         imgSrc: img1, 
@@ -2037,8 +2037,8 @@ const Foryouproducts = [
         price: 1330
     },
 ];
-export default function Trending() {
-    const [visibleProducts, setVisibleProducts] = useState(12); // Initial number of visible products
+export default function Youmaylike() {
+    const [visibleProducts, setVisibleProducts] = useState(8); // Initial number of visible products
 
     const loadMoreProducts = () => {
         setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 12); // Increase visible products by 12
@@ -2049,10 +2049,10 @@ export default function Trending() {
   return (
     <>
                   <section id="product1" className="section-p1">
-                <h1>For you</h1>
+                <h1>You May Like</h1>
                 <div className="pro-container">
                     {/* Map over products and render each product */}
-                    {Foryouproducts.slice(0, visibleProducts).map(product => (
+                    {Youmaylikeproducts.slice(0, visibleProducts).map(product => (
                         <div className="pro" key={product.id}>
                             <img onClick={redirectToProductDetail} src={product.imgSrc} alt={`Product ${product.id}`} />
                             <div onClick={redirectToProductDetail} className="des">
@@ -2070,7 +2070,7 @@ export default function Trending() {
                         </div>
                     ))}
                 </div>
-                {Foryouproducts.length > visibleProducts && (
+                {Youmaylikeproducts.length > visibleProducts && (
                     <div >
                         <button className="load-more" onClick={loadMoreProducts}>Load More</button>
                     </div>

@@ -15,6 +15,7 @@ import HeroSection from "./Components/HeroSection"
 import Home from "./pages/Home"
 import Footer from './Components/Footer';
 import Shops from "./pages/Shops"
+import SingleProductDetailPage from './pages/SingleProductDetailPage';
 function App() {
   return (
     <>
@@ -36,6 +37,7 @@ function App() {
         <Route path="/Home" element={<Home/>}/>
         <Route path="/Footer" element={<Footer/>}/>     
         <Route path="/Shops" element={<Shops/>}/>     
+        <Route path="/ProductDetail" element={<SingleProductDetailPage/>}/>     
         
       </Routes>
     </BrowserRouter>

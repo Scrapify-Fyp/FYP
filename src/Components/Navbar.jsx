@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import NavbarCSS from"./Navbar.module.css"
 
 export default function Navbar() {
+  const [cartCount, setCartCount] = useState(4);
   const [screensize, setScreensize] = useState(window.innerWidth);
   const comparison = 900;
 
@@ -107,6 +108,7 @@ export default function Navbar() {
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
             </NavLink>
+            {cartCount > 0 && <div className={NavbarCSS.cartCount}>{cartCount}</div>}
             <NavLink to="/Profile"
               className="btn btn-outline-secondary my-2 my-sm-0 ml-2"
               type="button"

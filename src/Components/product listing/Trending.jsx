@@ -77,6 +77,9 @@ const trendingproducts = [
   },
 ];
 export default function Trending() {
+    const redirectToProductDetail = () => {
+        window.location.href = '/ProductDetail';
+    };
   return (
     <>
                 <section id="product1" className="section-p1">
@@ -85,8 +88,8 @@ export default function Trending() {
                         {/* Map over products and render each product */}
                         {trendingproducts.map(product => (
                             <div className="pro" key={product.id}>
-                                <img src={product.imgSrc} alt="" />
-                                <div className="des">
+                                <img onClick={redirectToProductDetail} src={product.imgSrc} alt="" />
+                                <div onClick={redirectToProductDetail} className="des">
                                     <span>{product.brand}</span>
                                     <h5>{product.name}</h5>
                                     <div className="star">

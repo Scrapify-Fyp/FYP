@@ -368,13 +368,20 @@ input[type="radio"]:checked + label {
 #pro-details .single-pro-details .quantity {
     width: 60px;
     height: 47px;
-    padding-left: 10px;
+    text-align: center;
     margin-top: 30px;
     font-size: 16px;
     font-weight: 500;
-    margin-right: 10px;
 }
-
+.quantity-button{
+    height: 47px;
+    width: 20px;
+    background-color: white;
+    border: 1px solid;
+}
+.normal{
+    margin-left: 20px;
+}
 #pro-details .single-pro-details .quantity:focus {
     outline: none;
 }
