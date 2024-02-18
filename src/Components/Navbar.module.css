@@ -10,7 +10,7 @@
   .navbar span {
     margin-left: 10px;
     font-size: 40px;
-    color: #800000;
+    color: #980f0f;
     font-weight: bold;
   }
 
@@ -55,6 +55,16 @@
   .routes ul{
     gap: 50px;
   }
+
+  .navbar li {
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .navbar li:hover {
+    color: #980f0f;
+  }
+
   .cartCount{
     color: white;
     text-align: center;
