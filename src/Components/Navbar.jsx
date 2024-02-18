@@ -6,7 +6,7 @@ export default function Navbar() {
   const [cartCount, setCartCount] = useState(4);
   const [screensize, setScreensize] = useState(window.innerWidth);
   const comparison = 900;
-
+ 
   useEffect(() => {
     const handleResize = () => {
       setScreensize(window.innerWidth);
@@ -19,6 +19,9 @@ export default function Navbar() {
       window.removeEventListener("resize", handleResize);
     };
   }, []); // Empty dependency array ensures the effect runs only once during component mount
+  const redirectToSearchpage = () => {
+    window.location.href = '/Search';
+};
   return (
     <>
       {screensize >= comparison ? (
@@ -32,14 +35,17 @@ export default function Navbar() {
           <div className={NavbarCSS.searchroutes}>
             <div className={NavbarCSS.navbarsearch}>
               <form className="form-inline">
-                <input
+                <input 
+                  
                   className="form-control mr-sm-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button type="submit">
+                <NavLink to="/Search">
+                <button  type="submit" >
                   <svg
+                  
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
                     height="30"
@@ -55,6 +61,7 @@ export default function Navbar() {
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
                 </button>
+                </NavLink>
               </form>
             </div>
             <div className={NavbarCSS.routes}>
