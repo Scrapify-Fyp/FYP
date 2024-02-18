@@ -29,7 +29,7 @@ export default function Navbar() {
         <nav className={`navbar-expand-lg navbar-light`}>
           <a className="navbar-brand" href="/Home">
             <h4>
-              <strong>Scrapify</strong>
+              <span className="home-h4">Scrapify</span>
             </h4>
           </a>
           <div className={NavbarCSS.searchroutes}>

@@ -19,7 +19,7 @@
 }
 .footerheading{
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
     padding-bottom: 20px;
     font-weight: bold;
  }
@@ -59,14 +59,14 @@
 }
 
 .footerLi:hover {
-    color: #fe6401;
+    color: #52011A;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .newsletter h5 {
     font-weight: bold;
-    padding: 15px 15px 15px 0px;
+    padding: 15px 15px 15px 10px;
 }
 
 .newsletter{
@@ -76,6 +76,7 @@
 .newletterinput{
     margin:  15px 0px 15px 0px;
     border-radius: 25px;
+    width: 330px;
     height: 50px;
     text-align: left;
 }
@@ -83,19 +84,19 @@
 .footerSubscribeBtn {
     text-align: center;
     padding-top: 8px;
-    margin: -61px 6px 0px 179px;
+    margin: -61px 6px 0px 180px;
     border: none;
     border-radius: 21px;
     background-color:#0b4945;
     color: white;
-    width: 130px;
+    width: 140px;
     font-size: 16px;
     transition: 0.3s;
     height: 42px;
 }
 
 .footerSubscribeBtn:hover {
-    background-color: #fe6401;
+    background-color: #52011A;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -113,7 +114,7 @@
 
 .footerIcons svg:hover {
     cursor: pointer;
-    fill: white;
+    fill: #6d0b1a;
     padding: 3px;
     transition: 0.3s;
 }

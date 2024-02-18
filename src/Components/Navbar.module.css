@@ -4,11 +4,16 @@
     align-items: baseline;
     flex-wrap: wrap;
     padding:20px 20px 0px 20px;
-    /* width: 1140px; */
-    /* position: fixed; */
     background-color: white;
   }
   
+  .navbar span {
+    margin-left: 10px;
+    font-size: 40px;
+    color: #980f0f;
+    font-weight: bold;
+  }
+
   .navbarsearch{
     border: 1px solid #5656;
     border-radius: 20px;
@@ -50,6 +55,16 @@
   .routes ul{
     gap: 50px;
   }
+
+  .navbar li {
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .navbar li:hover {
+    color: #980f0f;
+  }
+
   .cartCount{
     color: white;
     text-align: center;
@@ -64,20 +79,11 @@
   }
   @media screen and (max-width:991px)
   {
-    /* .routes{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    } */
     .routes ul{
       display: flex;
       flex-direction: row;
       gap: 20px;
     }
-    /* .search-routes{
-      flex-direction: row;
-    } */
     .mobile-route-buttons{
       display: flex;
       flex-direction: row;
