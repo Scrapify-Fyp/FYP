@@ -17,6 +17,8 @@ import Footer from './Components/Footer';
 import Shops from "./pages/Shops"
 import SingleProductDetailPage from './pages/SingleProductDetailPage';
 import Search from './pages/Search';
+import Scrapyard from './pages/Scrapyard';
+import Digitalassets from './pages/Digitalassets';
 function App() {
   return (
     <>
@@ -40,6 +42,10 @@ function App() {
         <Route path="/Shops" element={<Shops/>}/>     
         <Route path="/ProductDetail" element={<SingleProductDetailPage/>}/> 
         <Route path="/Search" element={<Search/>}/>     
+        <Route path="/Digitalassets" element={<Digitalassets/>}/>     
+        <Route path="/Scrapyard" element={<Scrapyard/>}/>     
+        
+        
       </Routes>
     </BrowserRouter>
 
