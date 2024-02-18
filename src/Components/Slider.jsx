@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Categories from "./Categories";
+// import image1 from "../Assets/Images/CategoryImages/Glass.jpeg";
 import './HeroSection.css'
-const HeroSection = () => {
+const Slider = () => {
   const [screensize, setScreensize] = useState(window.innerWidth);
   const comparison = 900;
 
@@ -49,105 +50,7 @@ const HeroSection = () => {
   return (
     <div className="container-fluid ">
       <div className="row" id="hero-section">
-        <div className="col-md-3">
-          <div className="categories-sidebar">
-            {screensize >= comparison ? (
-              <Categories />
-            ) : (
-              <>
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#staticBackdrop"
-                  aria-controls="staticBackdrop"
-                >
-                  Categories
-                </button>
-
-                <div
-                  class="offcanvas offcanvas-start"
-                  data-bs-backdrop="static"
-                  tabindex="-1"
-                  id="staticBackdrop"
-                  aria-labelledby="staticBackdropLabel"
-                >
-                  <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="staticBackdropLabel">
-                      {/* Offcanvas */}
-                    </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="offcanvas"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="offcanvas-body">
-                    <div>
-                      {/* I will not close if you click outside of me. */}
-                      <Categories />
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Carousel */}
-        {/* <div className="col-md-9">
-          <div
-            id="carouselExample"
-            className="carousel slide"
-            data-bs-ride="carousel"
-            data-bs-interval="5000"
-          >
-            <div className="carousel-inner">
-              {sliderItems.map((item, index) => (
-                <div
-                  key={index}
-                  className={`carousel-item ${index === 0 ? "active" : ""}`}
-                >
-                  <img
-                    className="d-block w-100"
-                    src={item.image}
-                    alt={`Slide ${index + 1}`}
-                  />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>{item.title}</h5>
-                    <p>{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExample"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExample"
-              data-bs-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div> */}
-        <div className="col-md-9">
+        <div className="">
           <div
             id="carouselExample"
             className="carousel slide"
@@ -204,4 +107,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Slider;
