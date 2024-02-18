@@ -16,6 +16,7 @@ import Home from "./pages/Home"
 import Footer from './Components/Footer';
 import Shops from "./pages/Shops"
 import SingleProductDetailPage from './pages/SingleProductDetailPage';
+import Search from './pages/Search';
 function App() {
   return (
     <>
@@ -37,8 +38,8 @@ function App() {
         <Route path="/Home" element={<Home/>}/>
         <Route path="/Footer" element={<Footer/>}/>     
         <Route path="/Shops" element={<Shops/>}/>     
-        <Route path="/ProductDetail" element={<SingleProductDetailPage/>}/>     
-        
+        <Route path="/ProductDetail" element={<SingleProductDetailPage/>}/> 
+        <Route path="/Search" element={<Search/>}/>     
       </Routes>
     </BrowserRouter>
 
