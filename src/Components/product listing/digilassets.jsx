@@ -1,4 +1,4 @@
-import React ,{useState}from 'react';
+import React , {useState}from 'react';
 import './productlisting.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faStar, faStarHalf } from '@fortawesome/free-regular-svg-icons';
@@ -96,7 +96,1565 @@ const digitalassets = [
         stars: 5,
         price: 'From $100'
     },  
-    
+    {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  {
+        image:img1,
+        deliveryTime: '2 Day Delivery',
+        title: 'Expert Crafted Logo Design',
+        stars: 5,
+        price: 'From $30'
+      },
+      {
+        image: img2,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+      },  
+    {
+        image: img3,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img4,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img5,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img6,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img7,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img8,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },{
+        image: img9,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
+    {
+        image: img10,
+        deliveryTime: '4 Day Delivery',
+        title: 'AI Based 2D Drawing with UI-Design',
+        stars: 5,
+        price: 'From $100'
+    },  
 ];
 export default function Digilassets() {
     const [visibleProducts, setVisibleProducts] = useState(12); // Initial number of visible products
@@ -110,10 +1668,10 @@ export default function Digilassets() {
   return (
     <>
                  <section id="product1" className="section-p1">
-      <div className="pro-container">
-        {digitalassets.map((product, index) => (
+      <div onClick={redirectToProductDetail} className="pro-container">
+        {digitalassets.slice(0, visibleProducts).map((product,index) => (
           <div key={index} className="pro-scrap">
-            <img src={product.image} alt={`Product ${index + 1}`} />
+            <img src={product.image} />
             <div className="des">
               <span>
                 <FontAwesomeIcon icon={faClock} /> {product.deliveryTime}
@@ -130,6 +1688,11 @@ export default function Digilassets() {
           </div>
         ))}
       </div>
+      {digitalassets.length > visibleProducts && (
+                    <div >
+                        <button className="load-more" onClick={loadMoreProducts}>Load More</button>
+                    </div>
+                )}
     </section>
     </>
   )
