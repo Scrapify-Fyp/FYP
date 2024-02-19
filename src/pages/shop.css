@@ -183,7 +183,7 @@ body {
 /* -------------- DIGITAL ASSETS PRODUCTS STYLING -------------- */
 #product1 .pro-scrap {
     min-height: 420px;
-    min-width: 100px;
+    min-width: 440px;
     padding: 10px 12px;
     border: 1px solid #cce7d0;
     border-radius: 25px;
@@ -199,7 +199,7 @@ body {
 }
 
 #product1 .pro-scrap img {
-    width: 80%;
+    width: 100%;
     height: 300px;
     object-fit: cover;
     border-radius: 20px;
