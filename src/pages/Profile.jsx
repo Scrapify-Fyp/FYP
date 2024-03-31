@@ -15,10 +15,10 @@ export default function Profile() {
   let  totalrispose= (starCounts[1]+starCounts[2]+starCounts[3]+starCounts[4]+starCounts[5]);
  let rating =totalscore/totalrispose;
   // console.log(rating);
-  let email = "abc@gmail.com";
+  let email = "SMDA@gmail.com";
   let phonenumber = "032134567890";
-  let address = "address";
-  let discription ="jwendf jdhsbav qveivjweqdhwebcd hebchdja vjwenv winjevk vajneijnfje avjnveujvn jv nveiuj dvuiewj vdeuv uivjnwewfj ewuvine wj neuivnejnuwievnweunw nefnwej";
+  let address = "UMT Johar Town";
+  let discription ="Scrapify Market is a modern online platform merging physical and digital goods, promoting sustainability and creativity. It connects buyers with sellers, offering unique products while prioritizing user safety and community engagement.";
   const productsData = [
     { id: 1, name: 'product 1', description: 'i am Product 1' },
     { id: 2, name: 'product 2', description: 'i am Product 2' },
@@ -53,7 +53,7 @@ export default function Profile() {
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                           <g
                             id="SVGRepo_tracerCarrier"
                             stroke-linecap="round"
@@ -107,9 +107,9 @@ export default function Profile() {
                           viewBox="0 0 100.00 100.00"
                           xmlns="http://www.w3.org/2000/svg"
                           stroke="#000000"
-                          stroke-width="0.001"
+                          strokeWidth="0.001"
                         >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                           <g
                             id="SVGRepo_tracerCarrier"
                             stroke-linecap="round"
@@ -132,7 +132,7 @@ export default function Profile() {
                           fill="none"
                           stroke="#ffffff"
                         >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                           <g
                             id="SVGRepo_tracerCarrier"
                             stroke-linecap="round"
@@ -144,7 +144,7 @@ export default function Profile() {
                               stroke="#ffffff"
                               stroke-linecap="round"
                               stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeWidth="2"
                               d="M6.515 4.621 9 4l2 3.5L9.5 9c1 2 3.5 4.5 5.5 5.5l1.5-1.5 3.5 2-.621 2.485c-.223.89-1.029 1.534-1.928 1.351-5.213-1.06-11.228-7.074-12.287-12.287-.183-.9.46-1.705 1.35-1.928Z"
                             ></path>{" "}
                           </g>
@@ -181,7 +181,7 @@ export default function Profile() {
                         xmlns="http://www.w3.org/2000/svg"
                         stroke="#ffffff"
                       >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g
                           id="SVGRepo_tracerCarrier"
                           stroke-linecap="round"
@@ -212,7 +212,7 @@ export default function Profile() {
                         xmlns="http://www.w3.org/2000/svg"
                         stroke="#ffffff"
                       >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g
                           id="SVGRepo_tracerCarrier"
                           stroke-linecap="round"
@@ -232,7 +232,7 @@ export default function Profile() {
                 <div className={profileCSS.box}>
                   <div className={profileCSS.boxdiv}>
                   <div className= {profileCSS.boxheadersvg} >
-                  <svg width="64px" height="64px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm6 10.5l-2.939 1.545.561-3.272-2.377-2.318 3.286-.478L18 14l1.47 2.977 3.285.478-2.377 2.318.56 3.272L18 21.5z"></path> </g> </g></svg>       
+                  <svg width="64px" height="64px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff" strokeWidth="0.00024000000000000003"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm6 10.5l-2.939 1.545.561-3.272-2.377-2.318 3.286-.478L18 14l1.47 2.977 3.285.478-2.377 2.318.56 3.272L18 21.5z"></path> </g> </g></svg>       
                  
                      </div>
                      <h3>Ratings & Stars</h3>
@@ -305,7 +305,7 @@ export default function Profile() {
                 <div className={profileCSS.box}>
                   <div className={profileCSS.boxdiv}>
                   <div className={profileCSS.boxheadersvg}>
-                  <svg fill="#ffffff" height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.37 512.37"  stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M475.524,72.933c-33.872-36.293-72.122-56.78-115.583-56.78c-42.308,0-79.083,19.333-103.742,52.277 c-24.591-32.968-61.208-52.277-103.49-52.277c-43.164,0-80.774,20.275-115.429,56.616 c-51.87,54.357-52.062,155.013,14.925,221.999c13.003,13.003,45.393,46.322,91.094,93.615 c21.934,22.7,44.674,46.277,67.387,69.854c7.95,8.252,15.328,15.915,21.947,22.792c6.806,7.073,6.806,7.073,8.317,8.643 c8.393,8.726,22.357,8.726,30.751,0c1.51-1.57,1.51-1.57,8.316-8.643c6.619-6.877,13.997-14.539,21.947-22.792 c22.713-23.577,45.453-47.154,66.715-69.158c46.373-47.99,78.763-81.308,91.766-94.312 C527.176,228.038,526.702,127.752,475.524,72.933z M430.275,264.599c-13.253,13.253-45.689,46.619-91.606,94.137 c-21.952,22.718-44.706,46.31-67.433,69.902c-5.236,5.435-10.224,10.615-14.91,15.482c-4.687-4.868-9.675-10.047-14.911-15.482 c-22.727-23.592-45.482-47.184-66.76-69.205c-46.591-48.215-79.026-81.58-92.279-94.833C31.961,214.185,32.102,140,68.154,102.22 c27.31-28.64,54.69-43.4,84.555-43.4c37.759,0,68.431,22.518,83.608,61.191c7.085,18.053,32.633,18.053,39.718,0 c15.143-38.586,46.063-61.191,83.907-61.191c30.166,0,57.925,14.868,84.393,43.228 C480.097,140.355,480.447,214.426,430.275,264.599z"></path> </g> </g> </g></svg>        
+                  <svg fill="#ffffff" height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.37 512.37"  stroke="#ffffff"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M475.524,72.933c-33.872-36.293-72.122-56.78-115.583-56.78c-42.308,0-79.083,19.333-103.742,52.277 c-24.591-32.968-61.208-52.277-103.49-52.277c-43.164,0-80.774,20.275-115.429,56.616 c-51.87,54.357-52.062,155.013,14.925,221.999c13.003,13.003,45.393,46.322,91.094,93.615 c21.934,22.7,44.674,46.277,67.387,69.854c7.95,8.252,15.328,15.915,21.947,22.792c6.806,7.073,6.806,7.073,8.317,8.643 c8.393,8.726,22.357,8.726,30.751,0c1.51-1.57,1.51-1.57,8.316-8.643c6.619-6.877,13.997-14.539,21.947-22.792 c22.713-23.577,45.453-47.154,66.715-69.158c46.373-47.99,78.763-81.308,91.766-94.312 C527.176,228.038,526.702,127.752,475.524,72.933z M430.275,264.599c-13.253,13.253-45.689,46.619-91.606,94.137 c-21.952,22.718-44.706,46.31-67.433,69.902c-5.236,5.435-10.224,10.615-14.91,15.482c-4.687-4.868-9.675-10.047-14.911-15.482 c-22.727-23.592-45.482-47.184-66.76-69.205c-46.591-48.215-79.026-81.58-92.279-94.833C31.961,214.185,32.102,140,68.154,102.22 c27.31-28.64,54.69-43.4,84.555-43.4c37.759,0,68.431,22.518,83.608,61.191c7.085,18.053,32.633,18.053,39.718,0 c15.143-38.586,46.063-61.191,83.907-61.191c30.166,0,57.925,14.868,84.393,43.228 C480.097,140.355,480.447,214.426,430.275,264.599z"></path> </g> </g> </g></svg>        
                      </div>            
                      <h3>Favourite Products</h3>
                   </div>

@@ -8,8 +8,9 @@
 }
 .analyticheading{
     padding-bottom: 10px;
-   }
-   .boxdivproductselecter{
+}
+
+.boxdivproductselecter{
      display: grid;
      justify-items: center;
      text-align: center;
@@ -17,60 +18,77 @@
      color: #ffffff;
      margin-top: 20px;
      font-size: 26px;
-   }
-   .livedatesection p{
+}
+.livedatesection p{
        border: none;
        background: #f3c9ce;
-       padding: 10px 15px 10px 15px;
-       background-color: #FFE0CC;
-       border-radius: 50px 50px 50px 50px;
+       padding: 10px 15px;
+       /* background-color: #FFE0CC; */
+       border-radius: 50px;
        color: #C51A31;
        font-weight: 500;
        width: 350px;
-   }
-   .productselectsection{
+}
+.productselectsection{
       align-items: center;
        flex-flow: column;
        display: flex;
-   }
-   .livedatesection{
+}
+.livedatesection{
      display: flex;
      text-align: center;
      font-weight: 540;
      justify-content: flex-end;
-   }
-   .selectproductbox{
+}
+.selectproductbox{
      background-color:#534892;
-     width: 70%;
-     height: 340px;
+     width: 100%;
+     height: 580px;
+     align-items: center;
+     justify-content: center;
      border-radius: 30px;
-   }
-   .productselectslider{
+     padding: 20px;
+}
+.productselectslider{
      color: white;
      display: flex;
-     padding-top: 30px;
+     padding-top: 10px;
      align-items: center;
      justify-content: space-between;
-   }
-   .viewprobtnproductselecter{
+}
+.productselectslider h2 {
+  padding: 0px;
+  color: white;
+  text-align: center;
+}
+.productselectslider p {
+  color: white;
+  text-align: center;
+}
+.viewprobtnproductselecter{
      font-size: 20px;
      background-color: white;
      color: #534892;
      text-decoration-line: none;
      text-align: center;
      display: block;
-    transition: 0.5s;
+     transition: 0.5s;
      font-weight: 700; 
-   }
-   .btndiv{
+}
+.btndiv{
      display: flex;
      gap: 20px;
      justify-content: center;
-   }
-   .arrowbutton {
+}
+.btndiv button {
+  color: white;
+  border-color: white;
+}
+.arrowbutton {
     font-size: 50px;
     cursor: pointer;
-    color: #534892;
+    background-color: #534892;
+    color: white;
     border: none;
     font-weight: 700;
-  }
+}

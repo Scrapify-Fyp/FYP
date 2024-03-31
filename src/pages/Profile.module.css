@@ -23,6 +23,15 @@
 
 
 /*---------------------------------- profile css------------------------ */
+.infosection h2 {
+  color: white;
+}
+
+.infosection {
+  color: white;
+  line-height: 1.6em;
+}
+
 .profilepage{
   padding: 20px;
 }
