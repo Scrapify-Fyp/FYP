@@ -8,7 +8,7 @@ export default function Edit_profile() {
 
   return (
     <>
-      <div classNameName="container" style={{width: "1140px"}}>
+      <div classNameName="container" style={{}}>
         <Sidebar activeprofile={"active"} />
         <main style={{ marginTop: "" }}>
           <div className={`${profileCSS.editprofilepage}`}>

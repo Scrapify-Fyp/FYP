@@ -170,7 +170,7 @@ export default function Analytics() {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{width: "100%", margin: "0", padding: "0px", maxWidth: "100%"}}>
       <Sidebar />
       <main style={{ marginTop: '50px' }}>
         <h4 className={AnalyticsCSS.analyticheading}>Analytics and Recommendations</h4>
