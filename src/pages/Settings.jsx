@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from "../Components/sidebar"
 export default function Settings() {
   return (
-    <>  
+  
     <div className="" style={{width: "100%", margin: "0", padding: "0px", maxWidth: "100%"}}>
             <Sidebar/>
             <main style={{margintop: '58px'}}>
@@ -11,6 +11,5 @@ export default function Settings() {
                 </div>
             </main>
     </div>            
-   </>
   )
 }
