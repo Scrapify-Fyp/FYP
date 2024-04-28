@@ -154,7 +154,7 @@ export default function Profile() {
                     </div>
                     <div className="discription">{discription}</div>
                   </div>
-                  <div className={profileCSS.buttensection}>
+                  {/* <div className={profileCSS.buttensection}>
                     <NavLink to="/edit_profile">
                       <button
                         style={{
@@ -168,7 +168,7 @@ export default function Profile() {
                         Edit
                       </button>{" "}
                     </NavLink>
-                  </div>
+                  </div> */}
                 </div>
                 <div className={profileCSS.currentorder}>
                   <div className={profileCSS.namesection}>

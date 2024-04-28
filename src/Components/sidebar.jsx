@@ -68,7 +68,7 @@ export default function Sidebar(props) {
     </div>
     <div className="">
       <div className="list-group list-group-flush mx-3 mt-4">
-        <NavLink to="/Profile"  className={` ${props.activeprofile} text-center list-group-item list-group-item-action py-2 ripple`}>
+        <NavLink to="/Profile"  className={` text-center list-group-item list-group-item-action py-2 ripple`}>
         <span>Profile</span></NavLink>
         <NavLink to="/Analytics" className="text-center list-group-item list-group-item-action py-2 ripple">
         <span>Analytics</span></NavLink>
@@ -78,7 +78,7 @@ export default function Sidebar(props) {
         <span>Order History</span></NavLink>
         <NavLink to="/Wallet" className="text-center list-group-item list-group-item-action py-2 ripple">
         <span>Payments</span></NavLink>
-        <NavLink to="/Settings" className="text-center list-group-item list-group-item-action py-2 ripple">
+        <NavLink to="/Settings" className={` ${props.activeprofile} text-center list-group-item list-group-item-action py-2 ripple`}>
         <span>Settings</span></NavLink>
         
       </div>

@@ -456,3 +456,47 @@ input[type="radio"]:checked + label {
 }
 
 /*----x------------- SINGLE PRODUCT DETAILS ------------x----*/
+
+
+
+/* -------------------------------Setting page---------------------------------- */
+.settings{
+    color: #ffff;
+    background-color: #534892;
+    border: 1px solid black;
+    padding: 50px 0px 50px 60px;
+    margin: 50px 167px 30px 76px;
+    border-radius: 30px;
+    transition: 0.7s;
+}
+.settings li{
+list-style-type:none;
+cursor: pointer;
+margin: 10px;
+transition: 0.7s;
+text-decoration: none;
+}
+.liii{
+   text-decoration: none;
+   color: #ffff;
+   transition: 0.7s;
+
+    }
+.settings li:hover{
+    color: #cafffb;
+    font-size: 17px;
+    transition: 0.7s;
+}
+.polics{
+    color: #ffff;
+    background-color: #534892;
+    border: 1px solid black;
+    padding: 30px 40px 30px 40px;
+    margin: 10px 30px 64px 27px;
+    border-radius: 30px;
+    transition: 0.7s;
+
+}
+.polics p{
+    color: #ffff;
+}
