@@ -215,3 +215,39 @@
   padding: 0;
   margin: none;
 }
+
+
+
+/* -----------------------------shop page------------------- */
+/* Profile.module.css */
+
+.myshopheader{
+  padding: 10px 20px 10px 10px;
+  margin: 10px 20px 10px 10px;
+}
+.backgroundpic{
+  width: 100%;
+  height: 300px;
+  opacity: 70%;
+  background-image: url(../img/myshop.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.dp{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid black;
+    margin-top: -120px;
+    margin-left: 20px;
+    opacity: 100%;
+    opacity: 100%;
+    position: relative;
+    z-index: 1;
+}

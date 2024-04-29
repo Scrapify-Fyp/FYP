@@ -2051,7 +2051,7 @@ const ShopPage = () => {
         setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 12); // Increase visible products by 12
     };
     const redirectToProductDetail = () => {
-        window.location.href = '/ProductDetail';
+        window.location.href = '/Singleshope';
     };
     const redirectTocart = () => {
         window.location.href = '';

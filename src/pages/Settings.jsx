@@ -12,9 +12,8 @@ export default function Settings() {
                   <div className="settings">
                     <NavLink className="liii" to={"/Edit_profile"}><li>Account Information</li></NavLink>                 
                     <NavLink className="liii" to={"/Privacysecurity"}><li>Privacy and Security</li></NavLink>
-                    <NavLink className="liii" to={"/Edit_profile"}><li>Notifications</li></NavLink>
-                    <NavLink className="liii" to={"/Helpnsupport"}><li>Help and Support</li></NavLink>
-                    
+                    <NavLink className="liii" to={""}><li>Notifications</li></NavLink>
+                    <NavLink className="liii" to={"/Helpnsupport"}><li>Help and Support</li></NavLink>   
                   </div>    
                 </div>
             </main>

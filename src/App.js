@@ -23,6 +23,7 @@ import Privacysecurity from './Components/Privacysecurity';
 import Privacynpolices from './Components/Privacynpolices';
 import Changepassword from './Components/Changepassword';
 import Helpnsupport from './Components/Helpnsupport';
+import Singleshope from './pages/Singleshope';
 function App() {
   return (
     <>
@@ -52,8 +53,8 @@ function App() {
         <Route path="/Privacynpolices" element={<Privacynpolices/>}/>     
         <Route path="/Changepassword" element={<Changepassword/>}/>     
         <Route path="/Helpnsupport" element={ <Helpnsupport/>}/>     
+        <Route path="/Singleshope" element={ <Singleshope/>}/>     
        
-        
       </Routes>
     </BrowserRouter>
 
