@@ -1,0 +1,85 @@
+.main-container {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    max-width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+  
+  .main-content {
+    margin-top: 58px;
+}
+  
+.inner-container {
+    padding-top: 20px;
+}
+
+.inner-container h1 {
+    font-size: 30px;
+    line-height: 64px;
+    color: #222;
+    margin-left: 120px;
+}
+  
+  .payment-options {
+    display: inline-block;
+    justify-content: space-between;
+    margin-left: 120px;
+    width: 650px;
+}
+  
+  .payment-option {
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 730px;
+  }
+  
+  .payment-option h2 {
+    display: inline;
+    font-size: 20px;
+  }
+  
+  .action-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: space-between;
+    margin-left: 250px;
+  }
+  
+  .action-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .wallet-options {
+    display: inline-block;
+    margin-top: 10px;
+    align-content: end;
+    margin-left: 15em;
+  }
+  
+  .wallet-option {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .wallet-option h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .wallet-option p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
