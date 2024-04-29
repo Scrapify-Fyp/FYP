@@ -481,9 +481,10 @@ text-decoration: none;
    color: #ffff;
    transition: 0.7s;
 
-    }
+}
+
 .settings li:hover{
-    color: #cafffb;
+    color: #FFC208;
     font-size: 17px;
     transition: 0.7s;
 }
@@ -499,4 +500,18 @@ text-decoration: none;
 }
 .polics p{
     color: #ffff;
+}
+
+.btn-chnge-pass-sett {
+    background-color: #0b4945;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-chnge-pass-sett:hover {
+    background-color: #b38809 !important;
 }

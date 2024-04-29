@@ -11,9 +11,9 @@ export default function Privacynpolices() {
                 <div className="container pt-4">
                   <div className="polics">
                  
-            <h1>Privacy Policy</h1>
+            <h1 style={{color: 'white'}}>Privacy Policy</h1>
 
-            <h2>Effective Date: 29/4/2024</h2>
+            <h2 style={{color: 'white'}}>Effective Date: 29/4/2024</h2>
 
             <p>Thank you for using Scrapify, a multi-vendor marketplace platform that connects buyers and sellers in a creative and sustainable environment. At Scrapify, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you use our website and services.</p>
 
