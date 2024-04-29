@@ -41,8 +41,8 @@
      justify-content: flex-end;
 }
 .selectproductbox{
-     background-color:#534892;
-     width: 100%;
+     background-color:#ea618c;
+     width: 80%;
      height: 580px;
      align-items: center;
      justify-content: center;
@@ -76,6 +76,7 @@
      font-weight: 700; 
 }
 .btndiv{
+     margin-top: 30px;
      display: flex;
      gap: 20px;
      justify-content: center;
@@ -92,3 +93,9 @@
     border: none;
     font-weight: 700;
 }
+
+ .graph{
+     height: 344px;
+    width: 700px;
+ }
+ 
