@@ -59,7 +59,7 @@
 }
 
 .footerLi:hover {
-    color: #52011A;
+    color: #FFC208;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -96,7 +96,8 @@
 }
 
 .footerSubscribeBtn:hover {
-    background-color: #52011A;
+    background-color: #FFC208;
+    color: black;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -114,7 +115,7 @@
 
 .footerIcons svg:hover {
     cursor: pointer;
-    fill: #6d0b1a;
+    fill: #FFC208;
     padding: 3px;
     transition: 0.3s;
 }

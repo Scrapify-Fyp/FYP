@@ -3,58 +3,66 @@ import React, { useState, useEffect } from "react";
 const Categories = () => {
   const categories = [
     {
-      name: "Category 1",
+      name: "Technologies",
       subcategories: ["Subcategory 1.1", "Subcategory 1.2", "Subcategory 1.3"],
     },
     {
-      name: "Category 2",
+      name: "Scrapyard",
       subcategories: ["Subcategory 2.1", "Subcategory 2.2", "Subcategory 2.3"],
     },
     {
-      name: "Category 3",
+      name: "Find Projects / Ideas",
       subcategories: ["Subcategory 3.1", "Subcategory 3.2", "Subcategory 3.3"],
     },
     {
-      name: "Category 4",
+      name: "Home and Gardern",
       subcategories: ["Subcategory 4.1", "Subcategory 4.2", "Subcategory 4.3"],
     },
     {
-      name: "Category 5",
+      name: "Books / Gifts / Crafts",
       subcategories: ["Subcategory 5.1", "Subcategory 5.2", "Subcategory 5.3"],
     },
     {
-      name: "Category 6",
+      name: "Music and Photography",
       subcategories: ["Subcategory 6.1", "Subcategory 6.2", "Subcategory 6.3"],
+    },
+    {
+      name: "Tech Gadgets",
+      subcategories: ["Subcategory 7.1", "Subcategory 7.2", "Subcategory 7.3"],
+    },
+    {
+      name: "Design",
+      subcategories: ["Subcategory 8.1", "Subcategory 8.2", "Subcategory 8.3"],
     },
   ];
 
-  const sliderItems = [
-    {
-      //   image: "https://placehold.it/1200x400",
-      image:
-        "https://images.unsplash.com/photo-1554517222-e8b264ce5a35?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "First Slide Title",
-      text: "Some text related to the first slide.",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1530736563750-5705fa77c26c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fDEyMDAlMjB4JTIwNDAwfGVufDB8MHwwfHx8Mg%3D%3D",
-      title: "Second Slide Title",
-      text: "Some text related to the second slide.",
-    },
-    {
-      image:
-        "https://images.pexels.com/photos/2611690/pexels-photo-2611690.jpeg?auto=compress&cs=tinysrgb&w=600",
-      title: "Third Slide Title",
-      text: "Some text related to the second slide.",
-    },
-    {
-      image:
-        "https://images.pexels.com/photos/8355599/pexels-photo-8355599.jpeg?auto=compress&cs=tinysrgb&w=600",
-      title: "Fourth Slide Title",
-      text: "Some text related to the second slide.",
-    },
-  ];
+  // const sliderItems = [
+  //   {
+  //     //   image: "https://placehold.it/1200x400",
+  //     image:
+  //       "https://images.unsplash.com/photo-1554517222-e8b264ce5a35?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     title: "First Slide Title",
+  //     text: "Some text related to the first slide.",
+  //   },
+  //   {
+  //     image:
+  //       "https://images.unsplash.com/photo-1530736563750-5705fa77c26c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fDEyMDAlMjB4JTIwNDAwfGVufDB8MHwwfHx8Mg%3D%3D",
+  //     title: "Second Slide Title",
+  //     text: "Some text related to the second slide.",
+  //   },
+  //   {
+  //     image:
+  //       "https://images.pexels.com/photos/2611690/pexels-photo-2611690.jpeg?auto=compress&cs=tinysrgb&w=600",
+  //     title: "Third Slide Title",
+  //     text: "Some text related to the second slide.",
+  //   },
+  //   {
+  //     image:
+  //       "https://images.pexels.com/photos/8355599/pexels-photo-8355599.jpeg?auto=compress&cs=tinysrgb&w=600",
+  //     title: "Fourth Slide Title",
+  //     text: "Some text related to the second slide.",
+  //   },
+  // ];
   const [openCategory, setOpenCategory] = useState(null);
 
   const handleOnClickCategory = (index) => {
@@ -78,10 +86,12 @@ const Categories = () => {
   return (
     <div>
       <>
-        <h4>Classification</h4>
+      <h4 style={{ paddingTop: "20px" }}>
+    Classification
+    </h4>
         <ul className="list-group">
           {categories.map((category, index) => (
-            <li key={index} className="list-group-item">
+            <li key={index} className="list-group-item" style={{ paddingTop: "10px" }}>
               <div className="d-flex justify-content-between">
                 <a href="#" style={{ textDecoration: "none", color: "black", paddingTop:"8px" }}>
                   {category.name}
