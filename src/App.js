@@ -29,7 +29,7 @@ function App() {
     <>
        <BrowserRouter>
     <Routes>
-        <Route path="/" element={<Signin/>} />
+        <Route path="/" element={<Home/>} />
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/Signin" element={<Signin/>} />
         <Route path="/Profile" element={<Profile/>} />
@@ -42,7 +42,7 @@ function App() {
         <Route path="/Contact_us" element={<Contact_us/>}/>
         <Route path="/Cart" element={<Cart/>}/>
         <Route path="/HeroSection" element={<HeroSection/>}/>
-        <Route path="/Home" element={<Home/>}/>
+        {/* <Route path="/Home" element={<Home/>}/> */}
         <Route path="/Footer" element={<Footer/>}/>     
         <Route path="/Shops" element={<Shops/>}/>     
         <Route path="/ProductDetail" element={<SingleProductDetailPage/>}/> 
