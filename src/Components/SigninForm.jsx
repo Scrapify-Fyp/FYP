@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Spinner } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/user/userSlice";
 
 export default function Login() {
+  const dispath = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -37,6 +40,7 @@ export default function Login() {
 
         if (response.status === 200) {
           console.log("User logged in successfully:", response.data);
+          dispath(setUser(response.data.user));
           navigate("/");
         } else {
           console.log("Error logging in:", response.data);
