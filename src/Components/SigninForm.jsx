@@ -120,7 +120,6 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData); // Use the form data for further processing like API call
-    // Example: make API call to login endpoint with formData
     try {
       const response = await fetch("http://localhost:3002/login", {
         method: "POST",

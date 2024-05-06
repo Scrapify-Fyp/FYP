@@ -24,6 +24,7 @@ import Privacynpolices from './Components/Privacynpolices';
 import Changepassword from './Components/Changepassword';
 import Helpnsupport from './Components/Helpnsupport';
 import Singleshope from './pages/Singleshope';
+import Checkout from './pages/Checkout';
 function App() {
   return (
     <>
@@ -54,6 +55,7 @@ function App() {
         <Route path="/Changepassword" element={<Changepassword/>}/>     
         <Route path="/Helpnsupport" element={ <Helpnsupport/>}/>     
         <Route path="/Singleshope" element={ <Singleshope/>}/>     
+        <Route path="/Checkout" element={ <Checkout/>}/>     
        
       </Routes>
     </BrowserRouter>

@@ -7,7 +7,7 @@ import img1 from '../img/products/D1.jpg';
 import removeIcon from '../img/delete-svgrepo-com.svg';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer'
-
+import { NavLink } from 'react-router-dom';
 const productsData = [
   { id: 1, name: 'Advanced White AirPods', price: 2399, image: img1, removeIcon },
   { id: 2, name: 'Chic Puffer Jacket', price: 8999, image: img2, removeIcon },
@@ -163,7 +163,7 @@ export default function Cart() {
                   </td>
                 </tr>
               </table>
-              <button className={CartCSS.normal}>Proceed to Checkout</button>
+              <NavLink to={"/Checkout"}><button className={CartCSS.normal}>Proceed to Checkout</button></NavLink>
             </div>
           </section>
         </div>
