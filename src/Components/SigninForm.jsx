@@ -25,7 +25,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
+
     console.log(formData); // Use the form data for further processing like API call
     try {
       const response = await fetch("http://localhost:3002/login", {
@@ -35,9 +35,8 @@ export default function Login() {
         },
         body: JSON.stringify(formData),
       });
-=======
+     
     setIsLoading(true); // Set loading state to true during login request
->>>>>>> ae641434d4327a258b94477712b85c3db0bbcd04
 
     setTimeout(async () => {
       try {
@@ -60,8 +59,10 @@ export default function Login() {
         setIsLoading(false);
       }
     }, 500);
+  }catch (error) {
+    console.error("Error:", error.message);
   };
-
+  }
   return (
     <>
       <p className="text-center ">
