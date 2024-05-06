@@ -249,9 +249,9 @@
 
 @media (max-width : 991px)
 {
-  section {
+  /* section {
     background: #D6B780;
-  }
+  } */
   section::before {
     display: none;
   }
