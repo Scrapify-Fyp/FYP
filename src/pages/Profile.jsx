@@ -54,14 +54,7 @@ export default function Profile() {
       prevIndex === productsData.length - 1 ? 0 : prevIndex + 1
     );
   };
-  useEffect(() => {
-    // let cookie = document.cookie;
-    // console.log("🚀 ~ useEffect ~ cookie:", cookie);
-
-    if (!user) {
-      navigate("/Signin");
-    }
-  }, []);
+  // 
   return (
     <>
       <div

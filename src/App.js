@@ -117,9 +117,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchUser =  () => {
       try {
-        const user = await auth();
+        const user =  auth();
         dispatch(setUser(user));
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -138,11 +138,6 @@ const App = () => {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Signin" element={<Signin />} />
         {/* Use PrivateRoute to protect Profile route */}
-        
-
-
-
-
 
         <Route
           path="/Profile"
