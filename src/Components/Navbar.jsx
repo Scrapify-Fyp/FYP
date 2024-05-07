@@ -307,6 +307,7 @@ import { useSelector } from "react-redux";
 import { clearUser, selectUser } from "../redux/user/userSlice";
 import NavbarCSS from "./Navbar.module.css";
 import { useDispatch } from "react-redux";
+import Cookies from 'js-cookie'
 
 const Navbar = () => {
   const user = useSelector(selectUser);
@@ -340,6 +341,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(clearUser());
+    Cookies.remove('token');  
     navigate("/");
   };
   const ProfileDropdown = () => (

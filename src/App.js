@@ -79,7 +79,7 @@
 
 // export default App;
 
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Signin from "./pages/Signin";
@@ -107,16 +107,29 @@ import Changepassword from "./Components/Changepassword";
 import Helpnsupport from "./Components/Helpnsupport";
 import Singleshope from "./pages/Singleshope";
 import { useSelector } from "react-redux";
-import { selectUser } from "./redux/user/userSlice";
+import { selectUser, setUser } from "./redux/user/userSlice";
+import { auth } from "./hooks/auth";
+import { useDispatch } from "react-redux";
+import ProtectedRoute from "./Components/authMiddlware/ProtectedRoute";
 
 const App = () => {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
-  // Custom PrivateRoute component to handle private routes
-  const PrivateRoute = ({ element, ...rest }) => {
-    const isAuthenticated = !!user;
-    return isAuthenticated ? element : <Navigate to="/" replace />;
-  };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const user = await auth();
+        dispatch(setUser(user));
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    };
+
+    fetchUser();
+
+    return () => {};
+  }, []);
 
   return (
     <BrowserRouter>
@@ -125,7 +138,20 @@ const App = () => {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Signin" element={<Signin />} />
         {/* Use PrivateRoute to protect Profile route */}
-        <Route path="/Profile" element={<Profile />} />
+        
+
+
+
+
+
+        <Route
+          path="/Profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/Analytics" element={<Analytics />} />
         <Route path="/Edit_profile" element={<Edit_profile />} />
         <Route path="/Order_history" element={<Order_history />} />
