@@ -19,7 +19,6 @@ import Shops from "./pages/Shops";
 import SingleProductDetailPage from "./pages/SingleProductDetailPage";
 import Search from "./pages/Search";
 import Scrapyard from "./pages/Scrapyard";
-import ShopCards from "./pages/ShopCards"
 import Digitalassets from "./pages/Digitalassets";
 import Privacysecurity from "./Components/Privacysecurity";
 import Privacynpolices from "./Components/Privacynpolices";
@@ -93,7 +92,6 @@ const App = () => {
         <Route path="/Changepassword" element={<Changepassword />} />
         <Route path="/Helpnsupport" element={<Helpnsupport />} />
         <Route path="/Singleshope" element={<Singleshope />} />
-        <Route path="/ShopCards" element={<ShopCards />} />
       </Routes>
     </BrowserRouter>
   );

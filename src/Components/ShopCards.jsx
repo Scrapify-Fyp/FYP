@@ -1,7 +1,7 @@
 import React from 'react';
-import './shop.css';
-import { useState } from 'react';
-import Navbar from '../Components/Navbar';
+import '../pages/shop.css';
+import { useState , useEffect} from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import img1 from "../img/mug_art.png";
 import img2 from "../img/ora_prints.avif";
 import img3 from "../img/sweet_escape.png";
@@ -19,8 +19,10 @@ import img14 from "../img/Digital_Design.jpeg";
 import img15 from "../img/pixel_print.jpeg";
 import img16 from "../img/pdf_pantry.gif";
 const ShopPage = () => {
-  
-    
+    const navigate = useNavigate();
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, []);
     // Dummy data for products
     const Shops = [
         {
@@ -126,13 +128,13 @@ const ShopPage = () => {
         setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 12); // Increase visible products by 12
     };
     const redirectToProductDetail = () => {
-        window.location.href = '/Singleshope';
+        // window.location.href = '/Singleshope';
+        navigate("/Singleshope");
     };
     
     return (
         <>
             <div style={{width: "100%", margin: "0", padding: "0px", maxWidth: "100%"}}>
-                <Navbar/>
                 {/* SHOP PAGE */}
 
                 <section id="product1" className="section-p1">
