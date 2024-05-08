@@ -1,8 +1,14 @@
 import React from 'react';
+import { useState } from 'react';
 import profilecss from "../pages/Profile.module.css";
 import img from "../img/mandp.jpg";
 import Myproduct from './product listing/Myproduct';
+import { Modal, Button } from 'react-bootstrap';
+import AddNewProduct from './AddNewProduct';
 export default function Shopepage() {
+  const [showModal, setShowModal] = useState(false);
+  const handleModalClose = () => setShowModal(false);
+  const handleViewAllClick = () => setShowModal(true);
   return (
     <>       
           <div className={`${profilecss.container}`}>
@@ -23,8 +29,24 @@ export default function Shopepage() {
               </div>
             </header>
             <div className={`${profilecss.myproduct}`}>
+              <button style={{marginLeft:"30px"}} onClick={handleViewAllClick} class="btn btn-success">Add New Product</button>
                <Myproduct/>
             </div>
+
+
+            <Modal show={showModal} onHide={handleModalClose} size="xl">
+          <Modal.Header closeButton>
+            <Modal.Title>Add new Product</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <AddNewProduct/>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleModalClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>            
     </>
   );

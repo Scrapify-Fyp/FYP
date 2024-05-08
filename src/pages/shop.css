@@ -515,3 +515,15 @@ text-decoration: none;
 .btn-chnge-pass-sett:hover {
     background-color: #b38809 !important;
 }
+/* ----------------------add new product css-------------- */
+.ANP-label{
+    font-size: 16px;
+    font-weight: bold;
+}
+.ANP-input{
+text-align: left;
+}
+.ANP-input:focus{
+    box-shadow: none;
+}
+    
