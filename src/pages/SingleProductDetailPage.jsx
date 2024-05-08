@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import prod01Full from '../img/prod-01-full.jpg';
 import prod01Full02 from '../img/prod-01-full (02).jpg';
 import prod01Full03 from '../img/prod-01-full (03).jpg';
@@ -9,6 +9,9 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 
 const SingleProductDetailPage = () => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, []);
     const [quantity, setQuantity] = useState(1);
 
     const handleIncreaseQuantity = () => {
