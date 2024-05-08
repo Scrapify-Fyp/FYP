@@ -98,7 +98,6 @@ const buttonStyle = {
     };
   }, []);
   
-
   const handleModalClose = () => setShowModal(false);
   const handleViewAllClick = () => setShowModal(true);
 

@@ -38,7 +38,6 @@ export default function Profile() {
     { id: 1, name: "product 1", description: "i am Product 1" },
     { id: 2, name: "product 2", description: "i am Product 2" },
     { id: 3, name: "product 3", description: "i am Product 3" },
-    // Add more products as needed
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
