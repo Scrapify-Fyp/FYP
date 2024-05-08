@@ -10,6 +10,7 @@ import img5 from "../../img/prod-9.jpg";
 import img6 from "../../img/prod-8.jpg";
 import img7 from "../../img/prod-1.jpg";
 import img8 from "../../img/prod-5.jpg";
+import { useNavigate } from 'react-router-dom';
 const Foryouproducts = [
     {
         id: 1,
@@ -2038,13 +2039,15 @@ const Foryouproducts = [
     },
 ];
 export default function Trending() {
+    const navigate = useNavigate();
     const [visibleProducts, setVisibleProducts] = useState(12); // Initial number of visible products
 
     const loadMoreProducts = () => {
         setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 12); // Increase visible products by 12
     };
     const redirectToProductDetail = () => {
-        window.location.href = '/ProductDetail';
+        // window.location.href = '/ProductDetail';
+        navigate('/ProductDetail');
     };
   return (
     <>

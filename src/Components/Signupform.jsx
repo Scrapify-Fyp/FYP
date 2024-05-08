@@ -310,10 +310,6 @@
 //   );
 // }
 
-
-
-
-
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -352,11 +348,14 @@ export default function Signupform() {
     // Simulate a loading delay (500ms delay)
     setTimeout(async () => {
       try {
-        const response = await axios.post("http://localhost:3002/signup", formData);
+        const response = await axios.post(
+          "http://localhost:3002/signup",
+          formData
+        );
 
         if (response.status === 200) {
           console.log("User registered successfully:", response.data);
-          navigate("/Signin");
+
           // Clear form fields (optional)
           setFormData({
             firstName: "",
@@ -366,11 +365,13 @@ export default function Signupform() {
             email: "",
             password: "",
           });
+          navigate("/Signin");
         } else {
-          console.log("Error registering user:", response.data);
+          console.log("Error registering user:", response.status);
         }
       } catch (error) {
-        console.error("Error:", error.message);
+        alert(error.message);
+        console.error("Err:", error.message);
       } finally {
         setIsLoading(false); // Set loading state back to false after API call
       }
@@ -486,7 +487,11 @@ export default function Signupform() {
           {/* Conditional rendering based on isLoading state */}
           <button className="btn btn-danger" type="submit" disabled={isLoading}>
             {isLoading ? (
-              <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              <span
+                className="spinner-border spinner-border-sm me-2"
+                role="status"
+                aria-hidden="true"
+              ></span>
             ) : (
               "Sign up"
             )}
