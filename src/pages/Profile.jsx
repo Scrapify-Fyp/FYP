@@ -6,8 +6,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
 import { useEffect } from "react";
+import axios from "axios";
 export default function Profile() {
-  const user = useSelector(selectUser);
+  const Reduxuser = useSelector(selectUser);
+  const [user, setUser] = useState(Reduxuser);
   const navigate = useNavigate();
   const starCounts = {
     1: 50,
@@ -29,10 +31,7 @@ export default function Profile() {
     starCounts[4] +
     starCounts[5];
   let rating = totalscore / totalrispose;
-  // console.log(rating);
-  let email = "SMDA@gmail.com";
-  let phonenumber = "032134567890";
-  let address = "UMT Johar Town";
+
   let discription =
     "Scrapify Market is a modern online platform merging physical and digital goods, promoting sustainability and creativity. It connects buyers with sellers, offering unique products while prioritizing user safety and community engagement.";
   const productsData = [
@@ -54,7 +53,21 @@ export default function Profile() {
       prevIndex === productsData.length - 1 ? 0 : prevIndex + 1
     );
   };
-  // 
+  const fun = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3002/users/${Reduxuser?.id}`
+      );
+      setUser(response.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      }
+  };
+
+  useEffect(() => {
+    fun();
+  }, [Reduxuser]);
+
   return (
     <>
       <div
@@ -67,7 +80,7 @@ export default function Profile() {
             <div className={profileCSS.header}>
               <div className={profileCSS.profileheader}>
                 <div className={profileCSS.infosection}>
-                  <h2>{user?.firstName + " " + user?.lastName}</h2>
+                  <h2>{user?.firstName.toUpperCase()}</h2>
                   <div className={profileCSS.email}>
                     <div>
                       <svg
@@ -120,7 +133,7 @@ export default function Profile() {
                         </g>
                       </svg>
                     </div>
-                    {user?.email}
+                    {user?.email || <>Email will be provided soon!</>}
                   </div>
                   <div className={profileCSS.adres}>
                     <div className={profileCSS.addlogo}>
@@ -144,7 +157,7 @@ export default function Profile() {
                         </g>
                       </svg>{" "}
                     </div>
-                    {user?.address}
+                    {user?.address || <span>No address found</span>}
                   </div>
                   <div className={profileCSS.phonenumber}>
                     <div>
@@ -179,20 +192,20 @@ export default function Profile() {
                   <div className="discription">{discription}</div>
                 </div>
                 {/* <div className={profileCSS.buttensection}>
-                    <NavLink to="/edit_profile">
-                      <button
-                        style={{
-                          background: "#7466b9",
-                          borderRadius: "20px",
-                          width: "80px",
-                        }}
-                        type="button"
-                        class="btn btn-primary"
-                      >
-                        Edit
-                      </button>{" "}
-                    </NavLink>
-                  </div> */}
+                      <NavLink to="/edit_profile">
+                        <button
+                          style={{
+                            background: "#7466b9",
+                            borderRadius: "20px",
+                            width: "80px",
+                          }}
+                          type="button"
+                          class="btn btn-primary"
+                        >
+                          Edit
+                        </button>{" "}
+                      </NavLink>
+                    </div> */}
               </div>
               <div className={profileCSS.currentorder}>
                 <div className={profileCSS.namesection}>

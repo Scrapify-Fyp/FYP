@@ -117,9 +117,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchUser =  () => {
+    const fetchUser = () => {
       try {
-        const user =  auth();
+        const user = auth();
         dispatch(setUser(user));
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -150,7 +150,14 @@ const App = () => {
         <Route path="/Analytics" element={<Analytics />} />
         <Route path="/Edit_profile" element={<Edit_profile />} />
         <Route path="/Order_history" element={<Order_history />} />
-        <Route path="/Settings" element={<Settings />} />
+        <Route
+          path="/Settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/Wallet" element={<Wallet />} />
         <Route path="/Myshope" element={<Myshope />} />
         <Route path="/Contact_us" element={<Contact_us />} />

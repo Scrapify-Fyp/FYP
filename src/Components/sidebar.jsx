@@ -49,7 +49,7 @@ export default function Sidebar(props) {
                     class="rounded-circle img-fluid"
                     style={{ width: "110px" }}
                   />
-                  <h6 class="my-3">{user?.firstName}</h6>
+                  <h6 style={{fontSize:"18px"}}class="my-3">{user?.firstName.toUpperCase()}</h6>
                   {isEditing ? (
                     <div>
                       <textarea

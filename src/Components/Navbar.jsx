@@ -307,7 +307,7 @@ import { useSelector } from "react-redux";
 import { clearUser, selectUser } from "../redux/user/userSlice";
 import NavbarCSS from "./Navbar.module.css";
 import { useDispatch } from "react-redux";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 
 const Navbar = () => {
   const user = useSelector(selectUser);
@@ -341,17 +341,15 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(clearUser());
-    Cookies.remove('token');  
+    Cookies.remove("token");
     navigate("/");
   };
   const ProfileDropdown = () => (
     <NavDropdown id="profile-dropdown">
-      {user ? (
-        <NavDropdown.Item>{user.firstName}</NavDropdown.Item>
-      ) : (
-        <NavDropdown.Item as={NavLink} to="/Signin">
-          Login
-        </NavDropdown.Item>
+      {user && (
+        <h6
+          style={{ fontSize: "18px", textAlign: "center" }}
+        >{`Welcome! ${user.firstName}`}</h6>
       )}
       <NavDropdown.Item as={NavLink} to={user ? "/Profile" : "/Signin"}>
         Profile
@@ -360,8 +358,12 @@ const Navbar = () => {
         Settings
       </NavDropdown.Item>
       <NavDropdown.Divider />
-      {user && (
+      {user ? (
         <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+      ) : (
+        <NavDropdown.Item as={NavLink} to="/Signin">
+          Login
+        </NavDropdown.Item>
       )}
     </NavDropdown>
   );
