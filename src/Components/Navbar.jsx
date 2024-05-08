@@ -67,7 +67,7 @@ export default function Navbar() {
             <div className={NavbarCSS.routes}>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/Home">
+                  <NavLink className="nav-link" to="/">
                 
                     Home
                  
@@ -192,7 +192,7 @@ export default function Navbar() {
               <div className="routes">
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
-                  <NavLink className="nav-link" to="/Home">          
+                  <NavLink className="nav-link" to="/">          
                      Home
                  </NavLink>
                   </li>
