@@ -56,7 +56,6 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Signin" element={<Signin />} />
-        {/* Use PrivateRoute to protect Profile route */}
 
         <Route
           path="/Profile"
@@ -93,7 +92,6 @@ const App = () => {
         <Route path="/Changepassword" element={<Changepassword />} />
         <Route path="/Helpnsupport" element={<Helpnsupport />} />
         <Route path="/Singleshope" element={<Singleshope />} />
-
       </Routes>
     </BrowserRouter>
   );
