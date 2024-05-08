@@ -1,91 +1,107 @@
-.navbar nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    padding:20px 20px 0px 20px;
-    background-color: white;
-  }
-  
-  .navbar span {
-    margin-left: 10px;
-    font-size: 40px;
-    color: #980f0f;
-    font-weight: bold;
-  }
+.navbar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  padding: 20px 20px 0px 20px;
+  background-color: white;
+}
 
-  .navbarsearch{
-    border: 1px solid #5656;
-    border-radius: 20px;
-  }
-  .navbarsearch form{
+.navbar span {
+  margin-left: 10px;
+  font-size: 40px;
+  color: #980f0f;
+  font-weight: bold;
+}
+
+.navbarsearch {
+  border: 1px solid #5656;
+  border-radius: 20px;
+}
+.navbarsearch form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+.navbarsearch form input {
+  box-shadow: none;
+  box-sizing: none;
+  border: none;
+  background-color: transparent;
+}
+.navbarsearch form input:focus {
+  box-shadow: none;
+  background-color: transparent;
+}
+.navbarsearch form button {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  padding-right: 7px;
+}
+.searchroutes {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.routes {
+  display: flex;
+  justify-content: space-around;
+}
+.routes ul {
+  gap: 50px;
+}
+
+.navbar li {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.navbar li:hover {
+  color: #980f0f;
+}
+
+.cartCount {
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  margin-left: 50px;
+  margin-top: -59px;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: red;
+  font-size: 12px;
+}
+
+/* .nav-link-container {
+  position: relative;
+}
+
+.nav-link-container:hover .dropdown-container {
+  display: block;
+}
+
+.dropdown-container {
+  display: none;
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  z-index: 1000; 
+} */
+
+/* Additional styling as needed */
+
+@media screen and (max-width: 991px) {
+  .routes ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-  
-  }
-  .navbarsearch form input{
-    box-shadow: none;
-    box-sizing: none;
-    border: none;
-    background-color: transparent;
-  }
-  .navbarsearch form input:focus{
-    box-shadow: none;
-    background-color: transparent;
-  
-  }
-  .navbarsearch form button{
-    background-color: transparent;
-    color: inherit;
-    border: none;
-    padding-right: 7px;
-  }
-  .searchroutes{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: row;
     gap: 20px;
   }
-  .routes{
+  .mobile-route-buttons {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
   }
-  .routes ul{
-    gap: 50px;
-  }
-
-  .navbar li {
-    font-size: 17px;
-    font-weight: 500;
-  }
-
-  .navbar li:hover {
-    color: #980f0f;
-  }
-
-  .cartCount{
-    color: white;
-    text-align: center;
-    border-radius: 50%;
-    margin-left: 50px;
-    margin-top: -59px;
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: red;
-    font-size: 12px;
-  }
-  @media screen and (max-width:991px)
-  {
-    .routes ul{
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-    }
-    .mobile-route-buttons{
-      display: flex;
-      flex-direction: row;
-    }
-  }
+}
