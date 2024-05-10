@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import axios from "axios"; // Assuming you're using axios for HTTP requests
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./sidebar.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
-export default function AddNewProduct() {
+import { useNavigate } from "react-router-dom";
+export default function AddNewProduct({close}) {
   const user = useSelector(selectUser);
   // console.log("🚀 ~ AddNewProduct ~ user:", user)
 
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     price: 0,
-    categories: "",
+    category: "",
     stockQuantity: 0,
     imageURL: [],
     brand: "",
@@ -24,7 +27,6 @@ export default function AddNewProduct() {
     material: "",
     keywords: [],
     rating: 0,
-    // relatedProducts: [],
     discounts: "",
     availabilityStatus: "available",
     vendorId: user.id,
@@ -33,7 +35,7 @@ export default function AddNewProduct() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData); // Use the form data for further processing like API call
+    console.log(formData);
   };
 
   const handleSubmit = async (e) => {
@@ -41,21 +43,23 @@ export default function AddNewProduct() {
     try {
       const res = await axios.post("http://localhost:3002/products/", formData);
       console.log("🚀 ~ handleSubmit ~ res:", res);
+      // navigate("/MyShope");
+      close();
     } catch (error) {
       console.error(error);
     }
   };
-  const [categories, setCategories] = useState([""]);
 
-  const handleCategoryChange = (index, value) => {
-    const newCategories = [...categories];
-    newCategories[index] = value;
-    setCategories(newCategories);
+  // const handleCategoryChange = (index, value) => {
+  //   const newCategories = [...categories];
+  //   newCategories[index] = value;
+  //   setCategories(newCategories);
+  // };
+
+  const handleCategory = (event) => {
+    setSelectedCategory(event.target.value);
   };
 
-  const handleAddCategory = () => {
-    setCategories([...categories, ""]);
-  };
   return (
     <>
       <div className="container mt-5">
@@ -112,7 +116,7 @@ export default function AddNewProduct() {
           </div>
 
           <div className="mb-3">
-            <div>
+            {/* <div>
               {categories.map((category, index) => (
                 <div key={index} className="mb-3">
                   <label htmlFor={"category"} className="form-label ANP-label">
@@ -133,14 +137,31 @@ export default function AddNewProduct() {
                     <option value="home">Home</option>
                   </select>
                 </div>
-              ))}
-              {/* <button
+              ))} */}
+            <div className="mb-3">
+              <label htmlFor="category" className="form-label ANP-label">
+                Category:
+              </label>
+              <select
+                id="category"
+                className="form-select ANP-input"
+                name="category"
+                value={selectedCategory}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Category</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="home">Home</option>
+              </select>
+            </div>
+            {/* <button
                 type="button"
                 className="btn btn-outline-success"
                 onClick={handleAddCategory}
               >
               </button> */}
-            </div>
           </div>
           <div className="mb-3">
             <label htmlFor="stockQuantity" className="form-label ANP-label">
@@ -157,7 +178,7 @@ export default function AddNewProduct() {
               required
             />
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label htmlFor="imageURL" className="form-label ANP-label">
               Image URL:
             </label>
@@ -169,6 +190,39 @@ export default function AddNewProduct() {
               onChange={handleChange}
               className="form-control ANP-input"
             />
+          </div> */}
+          <div className="mb-3">
+            <label htmlFor="imageInput" className="form-label ANP-label">
+              Image URL or File:
+            </label>
+            <div className="input-group">
+              {/* Input for manual image URL */}
+              <input
+                type="text"
+                id="imageInput"
+                name="imageURL"
+                value={formData.imageURL}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                placeholder="Enter image URL"
+              />
+              {/* OR input for file selection */}
+              <input
+                type="file"
+                id="imageFile"
+                name="imageFile"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    // Handle file upload (e.g., upload to server, store in state, etc.)
+                    // Here, you can handle file upload logic if needed
+                    console.log("File selected:", file);
+                  }
+                }}
+                className="form-control ANP-input"
+              />
+            </div>
           </div>
           <div className="mb-3">
             <label htmlFor="brand" className="form-label ANP-label">
