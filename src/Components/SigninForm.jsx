@@ -38,35 +38,35 @@ export default function Login() {
         },
         body: JSON.stringify(formData),
       });
-     
-    setIsLoading(true); // Set loading state to true during login request
 
-    setTimeout(async () => {
-      try {
-        const response = await axios.post(
-          "http://localhost:3002/login",
-          formData,
-          { withCredentials: true }
-        );
+      setIsLoading(true); // Set loading state to true during login request
 
-        if (response.status === 200) {
-          console.log("User logged in successfully:", response.data);
-          dispath(setUser(response.data.user));
-          navigate("/");
-        } else {
-          console.log("Error logging in:", response.data);
-          // Handle login error
+      setTimeout(async () => {
+        try {
+          const response = await axios.post(
+            "http://localhost:3002/login",
+            formData,
+            { withCredentials: true }
+          );
+
+          if (response.status === 200) {
+            console.log("User logged in successfully:", response.data);
+            dispath(setUser(response.data.user));
+            navigate("/");
+          } else {
+            console.log("Error logging in:", response.data);
+            // Handle login error
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+        } finally {
+          setIsLoading(false);
         }
-      } catch (error) {
-        console.error("Error:", error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }, 500);
-  }catch (error) {
-    console.error("Error:", error.message);
+      }, 500);
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
   };
-  }
   return (
     <>
       <p className="text-center ">

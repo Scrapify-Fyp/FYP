@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import "./sidebar.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
-export default function AddNewProduct() {
+import { WithContext as ReactTags } from 'react-tag-input';
+ export default function AddNewProduct() {
   const user = useSelector(selectUser);
   // console.log("🚀 ~ AddNewProduct ~ user:", user)
 
@@ -30,6 +31,10 @@ export default function AddNewProduct() {
     vendorId: user.id,
   });
 
+
+  const handleKeywordChange = (keywords) => {
+    setFormData({ ...formData, keywords: keywords.map((keyword) => keyword.text) });
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -265,13 +270,10 @@ export default function AddNewProduct() {
             <label htmlFor="keywords" className="form-label ANP-label">
               Keywords:
             </label>
-            <input
-              type="text"
-              id="keywords"
-              name="keywords"
-              value={formData.keywords}
-              onChange={handleChange}
-              className="form-control ANP-input"
+            <ReactTags
+              tags={formData.keywords.map((keyword, index) => ({ id: index, text: keyword }))}
+              onChange={handleKeywordChange}
+              placeholder="Add keywords"
             />
           </div>
           <div className="mb-3">
@@ -289,19 +291,7 @@ export default function AddNewProduct() {
               max="5"
             />
           </div>
-          {/* <div className="mb-3">
-            <label htmlFor="relatedProducts" className="form-label ANP-label">
-              Related Products:
-            </label>
-            <input
-              type="text"
-              id="relatedProducts"
-              name="relatedProducts"
-              value={formData.relatedProducts}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
-          </div> */}
+         
           <div className="mb-3">
             <label htmlFor="discounts" className="form-label ANP-label">
               Discounts:
@@ -334,19 +324,7 @@ export default function AddNewProduct() {
               <option value="discontinued">Discontinued</option>
             </select>
           </div>
-          {/* <div className="mb-3">
-            <label htmlFor="vendorId" className="form-label ANP-label">
-              Vendor ID:
-            </label>
-            <input
-              type="text"
-              id="vendorId"
-              name="vendorId"
-              value={formData.vendorId}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
-          </div> */}
+      
           <button
             type="submit"
             className="btn btn-primary"
