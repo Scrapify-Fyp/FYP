@@ -52,7 +52,8 @@ export default function Shopepage() {
           >
             Add New Product
           </button>
-          <Myproduct />
+          <Myproduct refresh={handleModalClose}/>
+
         </div>
 
         <Modal show={showModal} onHide={handleModalClose} size="xl">
@@ -60,7 +61,10 @@ export default function Shopepage() {
             <Modal.Title>Add new Product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <AddNewProduct />
+
+
+            <AddNewProduct close={handleModalClose}/>
+
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleModalClose}>
