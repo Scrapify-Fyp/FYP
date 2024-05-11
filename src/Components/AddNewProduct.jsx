@@ -5,7 +5,6 @@ import "./sidebar.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
 import { WithContext as ReactTags } from 'react-tag-input';
- export default function AddNewProduct() {
 import { useNavigate } from "react-router-dom";
 export default function AddNewProduct({close}) {
   const user = useSelector(selectUser);
