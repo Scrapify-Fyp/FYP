@@ -84,3 +84,53 @@ body {
   cursor: pointer;                /* Cursor style */
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
  } 
+
+
+
+ .ReactTags {
+  border: none;
+  padding: 5px;
+  display: inline-block;
+  width: 100%;
+}
+/* Styles for the input field of the React Tags component */
+.ReactTags__tagInputField {
+  display: inline-block;
+  width: 220px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #61c162;
+  transition: 0.5s;
+
+}
+
+.ReactTags__tagInputField:focus {
+  border: 1px solid #054407;
+  transition: 0.5s;
+}
+
+
+.ReactTags__tag {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 3px 6px;
+  background-color: #bfc6cb;
+  color: #000000;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.ReactTags__tag:hover {
+  background-color: #979fa8;
+}
+
+.ReactTags__remove {
+  margin-left: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
