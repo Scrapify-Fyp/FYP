@@ -82,7 +82,7 @@ import axios from "axios";
 
 const Latest = () => {
   const [latestProducts, setLatestProducts] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(4); // Number of products to display initially
+  const [visibleProducts, setVisibleProducts] = useState(8); // Number of products to display initially
   const navigate = useNavigate();
 
   const redirectToProductDetail = () => {
