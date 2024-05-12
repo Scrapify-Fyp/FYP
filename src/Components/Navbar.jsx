@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const [screensize, setScreensize] = useState(window.innerWidth);
   const comparison = 900;
- 
+
   useEffect(() => {
     const handleResize = () => {
       setScreensize(window.innerWidth);
@@ -24,22 +24,18 @@ const Navbar = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  // Simulated function to fetch cart count (replace with actual logic)
+
   const fetchCartCount = () => {
-    // Assume this function fetches the cart count from backend
-    // For demonstration, setting a static count
-    setCartCount(4); // Replace with actual cart count
+    setCartCount(4);
   };
 
   useEffect(() => {
-    // Fetch cart count on component mount
     fetchCartCount();
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []);
 
   const handleLogout = () => {
     dispatch(clearUser());
@@ -55,6 +51,9 @@ const Navbar = () => {
       )}
       <NavDropdown.Item as={NavLink} to={user ? "/Profile" : "/Signin"}>
         Profile
+      </NavDropdown.Item>
+      <NavDropdown.Item as={NavLink} to={user ? "/Myshope" : "/Signin"}>
+        MyShop
       </NavDropdown.Item>
       <NavDropdown.Item as={NavLink} to={user ? "/Settings" : "/Signin"}>
         Settings

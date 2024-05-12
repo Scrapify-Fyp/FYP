@@ -1,149 +1,261 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
 import profileCSS from "../pages/Profile.module.css";
-import Sidebar from "../Components/sidebar";
-// import { useState } from "react";
-// import { NavLink } from "react-router-dom";
+import Sidebar from "./sidebar";
+import { selectUser } from "../redux/user/userSlice";
 
-export default function Edit_profile() {
+export default function EditProfile() {
+  const currentUser = useSelector(selectUser); // Retrieve user data (contains at least name and ID) from Redux store
+  const [loading, setLoading] = useState(true);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    bio: "",
+    imageUrl: "",
+    imageFile: null,
+  });
+
+  useEffect(() => {
+    if (currentUser) {
+      // Fetch full user data from backend using user ID
+      axios
+        .get(`http://localhost:3002/users/${currentUser.id}`)
+        .then((response) => {
+          const userData = response.data; // Assuming response.data contains user's full information
+          const { firstName, lastName, email, phone, address, bio, imageUrl } =
+            userData;
+          setFormData({
+            firstName,
+            lastName,
+            email,
+            phone,
+            address,
+            bio,
+            imageUrl,
+            imageFile: null,
+          });
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+          setLoading(false);
+        });
+    }
+  }, [currentUser]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(formData);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, imageFile: file, imageUrl: "" });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      bio,
+      imageUrl,
+      imageFile,
+    } = formData;
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("firstName", firstName);
+    formDataToSend.append("lastName", lastName);
+    formDataToSend.append("email", email);
+    formDataToSend.append("phone", phone);
+    formDataToSend.append("address", address);
+    formDataToSend.append("bio", bio);
+
+    if (imageUrl) {
+      formDataToSend.append("imageUrl", imageUrl);
+    } else if (imageFile) {
+      formDataToSend.append("imageFile", imageFile);
+    }
+
+    axios
+      .patch(`http://localhost:3002/users/${currentUser.id}`, formData)
+      .then((response) => {
+        console.log("Profile updated successfully:", response.data);
+        // setFormData({
+        //   firstName: "",
+        //   lastName: "",
+        //   email: "",
+        //   phone: "",
+        //   address: "",
+        //   bio: "",
+        //   imageUrl: "",
+        //   imageFile: null,
+        // });
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
+  };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
-    <>
-      <div classNameName="container" style={{}}>
-        <Sidebar activeprofile={"active"} />
-        <main style={{ marginTop: "" }}>
-          <div className={`${profileCSS.editprofilepage}`}>
-            <div className="col mb-3">
-              <div className="e-profile">
-                <div className="row">
-                  <div className="col-12 col-sm-auto mb-3">
-                    <div className="mx-auto" style={{ width: "140px" }}>
-                      <div
-                        className="d-flex justify-content-center align-items-center rounded"
-                        style={{
-                          height: "140px",
-                          backgroundColor: "rgb(233, 236, 239)",
-                        }}
-                      >
-                        <span
-                          style={{
-                            color: "rgb(166, 168, 170)",
-                            font: "bold 8pt Arial",
-                          }}
-                        >
-                          140x140
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                    <div className="mt-2">
-                      <button
-                        style={{ marginTop: "90px" }}
-                        className="btn btn-primary"
-                        type="button"
-                      >
-                        <span>Change Photo</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="tab-content pt-3">
-                  <div className="tab-pane active">
-                    <form className="form" novalidate="">
-                      <div className="row">
-                        <div className="col">
-                          <div className="row">
-                            <div className="col">
-                              <div className="form-group">
-                                <label>First Name</label>
-                                <input
-                                  className={`form-control ${profileCSS.inputtags}`}
-                                  type="text"
-                                  name="name"
-                                  placeholder="John"
-                                />
-                              </div>
-                            </div>
-                            <div className="col">
-                              <div className="form-group">
-                                <label>Last name</label>
-                                <input
-                                  className={`form-control ${profileCSS.inputtags}`}
-                                  type="text"
-                                  name="name"
-                                  placeholder="Smith"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col">
-                              <div className="form-group">
-                                <label>Email</label>
-                                <input
-                                  className={`form-control ${profileCSS.inputtags}`}
-                                  type="text"
-                                  placeholder="user@example.com"
-                                />
-                              </div>
-                            </div>
-                            <div className="col">
-                              <div className="form-group">
-                                <label>Phone Number</label>
-                                <input
-                                  type="tel"
-                                  className={`form-control ${profileCSS.inputtags}`}
-                                  id="phone"
-                                  pattern="[0-9]{4}[0-9]{7}"
-                                  placeholder="03124567890"
-                                  required
-                                />{" "}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col">
-                              <div className="form-group">
-                                <label>Address</label>
-                                <input
-                                  type="text"
-                                  className={`form-control ${profileCSS.inputtags}`}
-                                  id="inputAddress"
-                                  placeholder="Apartment, studio, or floor"
-                                />{" "}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col mb-3">
-                              <div className="form-group">
-                                <label>About</label>
-                                <textarea
-                                  className={`form-control ${profileCSS.inputtags}`}
-                                  rows="5"
-                                  placeholder="My Bio"
-                                ></textarea>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="row">
-                        <div className="col d-flex justify-content-end">
-                          <button className="btn btn-primary" type="submit">
-                            Save Changes
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+    <div className="container">
+      <Sidebar activeprofile={"active"} />
+      <main className="mt-4">
+        <div className={`p-4 ${profileCSS.editProfilePage}`}>
+          <h2 className="mb-4">Edit Profile</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="row mb-3">
+              <div className="col-sm-6">
+                <label htmlFor="firstName" className="form-label">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="col-sm-6">
+                <label htmlFor="lastName" className="form-label">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
             </div>
-          </div>
-        </main>
-      </div>
-    </>
+            <div className="row mb-3">
+              <div className="col-sm-6">
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="col-sm-6">
+                <label htmlFor="phone" className="form-label">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  className="form-control"
+                  id="phone"
+                  name="phone"
+                  pattern="[0-9]{4}[0-9]{7}"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="address" className="form-label">
+                Address
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="bio" className="form-label">
+                About
+              </label>
+              <textarea
+                className="form-control"
+                id="bio"
+                name="bio"
+                rows="5"
+                value={formData.bio}
+                onChange={handleInputChange}
+              ></textarea>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="image" className="form-label">
+                Profile Image
+              </label>
+              <div className="input-group">
+                <input
+                  type="file"
+                  className="form-control"
+                  id="imageFile"
+                  name="imageFile"
+                  onChange={handleImageChange}
+                />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Image URL"
+                  value={formData.imageUrl}
+                  onChange={handleInputChange}
+                  name="imageUrl"
+                />
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  onClick={() => setFormData({ ...formData, imageUrl: "" })}
+                >
+                  Clear
+                </button>
+              </div>
+              {formData.imageUrl && (
+                <div className="mt-3">
+                  <h5 className="mb-2">Uploaded Image Preview:</h5>
+                  <img
+                    src={formData.imageUrl}
+                    alt="Uploaded"
+                    className="img-thumbnail"
+                    style={{
+                      maxWidth: "200px",
+                      maxHeight: "200px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Save Changes
+            </button>
+          </form>
+        </div>
+      </main>
+    </div>
   );
 }

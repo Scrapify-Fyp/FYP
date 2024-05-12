@@ -37,18 +37,27 @@ export default function Myproduct({refresh}) {
   };
 
   const handleRemoveItem = async (id) => {
+    // Display confirmation dialog to the user
+    const confirmed = window.confirm("Are you sure you want to delete this item?");
+    
+    if (!confirmed) {
+      // User clicked "Cancel" in the confirmation dialog
+      return;
+    }
+  
     console.log("🚀 ~ handleRemoveItem ~ id:", id);
     try {
       const response = await axios.delete(
         `http://localhost:3002/products/${id}`
       );
-
+  
       console.log("Item deleted successfully:", response.data);
-      fetchData();
+      fetchData(); // Assuming fetchData is defined elsewhere to refresh data after deletion
     } catch (error) {
       console.error("Error deleting item:", error);
     }
   };
+  
   const fetchData = async () => {
     try {
       const res = await axios.get(
