@@ -4,8 +4,10 @@ import axios from "axios";
 import profileCSS from "../pages/Profile.module.css";
 import Sidebar from "./sidebar";
 import { selectUser } from "../redux/user/userSlice";
+import { useNavigate } from "react-router-dom/dist";
 
 export default function EditProfile() {
+  const navigate = useNavigate();
   const currentUser = useSelector(selectUser); // Retrieve user data (contains at least name and ID) from Redux store
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
@@ -92,6 +94,7 @@ export default function EditProfile() {
       .patch(`http://localhost:3002/users/${currentUser.id}`, formData)
       .then((response) => {
         console.log("Profile updated successfully:", response.data);
+        navigate('/profile')
         // setFormData({
         //   firstName: "",
         //   lastName: "",

@@ -60,11 +60,12 @@ export default function Profile() {
       setUser(response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
-      }
+    }
   };
 
   useEffect(() => {
     fun();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [Reduxuser]);
 
   return (
