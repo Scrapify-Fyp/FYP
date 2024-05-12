@@ -4,9 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./sidebar.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
-import { WithContext as ReactTags } from 'react-tag-input';
+import { WithContext as ReactTags } from "react-tag-input";
 import { useNavigate } from "react-router-dom";
-export default function AddNewProduct({close}) {
+export default function AddNewProduct({ close }) {
   const user = useSelector(selectUser);
   // console.log("🚀 ~ AddNewProduct ~ user:", user)
 
@@ -33,9 +33,11 @@ export default function AddNewProduct({close}) {
     vendorId: user.id,
   });
 
-
   const handleKeywordChange = (keywords) => {
-    setFormData({ ...formData, keywords: keywords.map((keyword) => keyword.text) });
+    setFormData({
+      ...formData,
+      keywords: keywords.map((keyword) => keyword.text),
+    });
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -325,7 +327,10 @@ export default function AddNewProduct({close}) {
               Keywords:
             </label>
             <ReactTags
-              tags={formData.keywords.map((keyword, index) => ({ id: index, text: keyword }))}
+              tags={formData.keywords.map((keyword, index) => ({
+                id: index,
+                text: keyword,
+              }))}
               onChange={handleKeywordChange}
               placeholder="Add keywords"
             />
@@ -345,7 +350,7 @@ export default function AddNewProduct({close}) {
               max="5"
             />
           </div>
-         
+
           <div className="mb-3">
             <label htmlFor="discounts" className="form-label ANP-label">
               Discounts:
@@ -378,7 +383,7 @@ export default function AddNewProduct({close}) {
               <option value="discontinued">Discontinued</option>
             </select>
           </div>
-      
+
           <button
             type="submit"
             className="btn btn-primary"
