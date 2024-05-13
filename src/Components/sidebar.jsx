@@ -242,13 +242,13 @@ export default function Sidebar(props) {
               <div className="mb-4">
                 <div className="text-center">
                   <img
+                  style={{width:"150px",height:"150px"}}
                     src={
                       userData?.imageUrl ||
                       "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                     }
                     alt="avatar"
                     className="rounded-circle img-fluid"
-                    style={{ width: "110px" }}
                   />
                   <h6 style={{ fontSize: "18px" }} className="my-3">
                     {user?.firstName.toUpperCase()}

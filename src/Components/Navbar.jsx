@@ -6,6 +6,7 @@ import { clearUser, selectUser } from "../redux/user/userSlice";
 import NavbarCSS from "./Navbar.module.css";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const user = useSelector(selectUser);
@@ -41,6 +42,9 @@ const Navbar = () => {
     dispatch(clearUser());
     Cookies.remove("token");
     navigate("/");
+    toast.success("Loggedout successfully!",{
+      autoClose:1000,
+    })
   };
   const ProfileDropdown = () => (
     <NavDropdown id="profile-dropdown">

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Button, Spinner } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/user/userSlice";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const dispath = useDispatch();
@@ -29,15 +30,15 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formData); // Use the form data for further processing like API call
-    try {
-      const response = await fetch("http://localhost:3002/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    // console.log(formData); // Use the form data for further processing like API call
+    // try {
+    //   const response = await fetch("http://localhost:3002/login", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(formData),
+    //   });
 
       setIsLoading(true); // Set loading state to true during login request
 
@@ -51,8 +52,15 @@ export default function Login() {
 
           if (response.status === 200) {
             console.log("User logged in successfully:", response.data);
+           
             dispath(setUser(response.data.user));
-            navigate("/");
+            
+            navigate("/Profile");
+            toast.success("User Login successfully",{
+              autoClose: 1000,
+              closeOnClick: true,
+              pauseOnHover: false,
+            })
           } else {
             console.log("Error logging in:", response.data);
             // Handle login error
@@ -63,9 +71,9 @@ export default function Login() {
           setIsLoading(false);
         }
       }, 500);
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
+    // } catch (error) {
+    //   console.error("Error:", error.message);
+    // }
   };
   return (
     <>

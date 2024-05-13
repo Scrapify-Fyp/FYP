@@ -30,7 +30,7 @@ import { selectUser, setUser } from "./redux/user/userSlice";
 import { auth } from "./hooks/auth";
 import { useDispatch } from "react-redux";
 import ProtectedRoute from "./Components/authMiddlware/ProtectedRoute";
-
+import Checkout from"./pages/Checkout"
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -92,6 +92,10 @@ const App = () => {
         <Route path="/Changepassword" element={<Changepassword />} />
         <Route path="/Helpnsupport" element={<Helpnsupport />} />
         <Route path="/Singleshope" element={<Singleshope />} />
+        <Route path="/Checkout" element={
+<Checkout/>
+
+        } />
       </Routes>
     </BrowserRouter>
   );

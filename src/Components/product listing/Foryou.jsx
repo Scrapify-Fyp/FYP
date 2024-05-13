@@ -2067,7 +2067,7 @@ export default function Trending() {
                                         <FontAwesomeIcon key={index} icon={faStar} />
                                     ))}
                                 </div>
-                                <h4>${product.price}</h4>
+                                <h4>Rs: &nbsp; {product.price}</h4>
                             </div>
                             <div className="cart"><a href="#"><FontAwesomeIcon icon={faCartPlus} /></a></div>
                         </div>
