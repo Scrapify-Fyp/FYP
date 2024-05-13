@@ -57,10 +57,12 @@ export default function Signupform() {
           navigate("/Signin");
         } else {
           console.log("Error registering user:", response.status);
+          toast.success("User registered successfully")
         }
       } catch (error) {
         alert(error.message);
         console.error("Err:", error.message);
+        toast.error(error.message)
       } finally {
         setIsLoading(false); // Set loading state back to false after API call
       }
