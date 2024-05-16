@@ -79,6 +79,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Latest = () => {
   const [latestProducts, setLatestProducts] = useState([]);
@@ -89,13 +90,41 @@ const Latest = () => {
     navigate("/ProductDetail");
   };
 
-  const fetchData = async () => {
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:3002/products");
+  //     console.log("Response:", response.data);
+  //     setLatestProducts(response.data);
+  //   } catch (error) {
+  //     console.log("Error fetching products:", error);
+  //   }
+  // };
+
+  const fetchData = async (retryCount = 3, delay = 2000) => {
     try {
       const response = await axios.get("http://localhost:3002/products");
-      console.log("Response:", response.data);
       setLatestProducts(response.data);
-    } catch (error) {
-      console.log("Error fetching products:", error);
+    } catch (err) {
+      console.log(`Error fetching products: ${err.message}`);
+      if (retryCount > 0) {
+        // Retry fetching after a delay
+        console.log(`Retrying... (${retryCount} attempts remaining)`);
+        toast.warning(`Retrying... (${retryCount} attempts remaining)` , {
+          autoClose:1000,
+          // pauseOnHover:false,
+
+        })
+        setTimeout(() => {
+          fetchData(retryCount - 1, delay); // Retry with decreased retryCount
+        }, delay);
+      } else {
+        console.log("Failed to fetch data after multiple attempts.");
+        toast.warn('Failed to fetch data after multiple attempts. Please Refresh Page' , {
+          autoClose:3000,
+          // pauseOnHover:false,
+          // draggable:false
+        });
+      }
     }
   };
 
@@ -105,12 +134,19 @@ const Latest = () => {
   }, []);
 
   const handleViewAll = () => {
-    navigate("/AllProducts"); 
+    navigate("/AllProducts");
   };
 
   return (
     <section id="product1" className="section-p1">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "20px",
+        }}
+      >
         <h1>Latest Products</h1>
         <button
           style={{
@@ -120,7 +156,7 @@ const Latest = () => {
             borderRadius: "5px",
             backgroundColor: "#007bff",
             color: "#fff",
-            cursor: "pointer"
+            cursor: "pointer",
           }}
           onClick={handleViewAll}
         >
@@ -137,7 +173,11 @@ const Latest = () => {
               alt=""
               style={{ cursor: "pointer" }}
             />
-            <div onClick={redirectToProductDetail} className="des" style={{ cursor: "pointer" }}>
+            <div
+              onClick={redirectToProductDetail}
+              className="des"
+              style={{ cursor: "pointer" }}
+            >
               <span>{product.brand}</span>
               <h5>{product.name}</h5>
               <div className="star">

@@ -12,14 +12,14 @@ root.render(
   <Provider store={store}>
     <ToastContainer
       position="top-right"
-      autoClose={13000}
+      autoClose={3000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
       rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
+      pauseOnHover={false}
+      draggable={false}
+      // pauseOnHover
       theme="dark"
     />
     <App />
