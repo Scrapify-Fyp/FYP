@@ -63,10 +63,12 @@ export default function Login() {
             })
           } else {
             console.log("Error logging in:", response.data);
+            toast.error(response.data)
             // Handle login error
           }
         } catch (error) {
           console.error("Error:", error.message);
+          toast.error(error.message)
         } finally {
           setIsLoading(false);
         }
