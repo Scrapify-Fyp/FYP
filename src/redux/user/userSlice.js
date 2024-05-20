@@ -9,7 +9,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      console.log("data from the redux", action.payload);
+      // console.log("data from the redux", action.payload);
       state.user = action.payload;
     },
     clearUser: (state) => {

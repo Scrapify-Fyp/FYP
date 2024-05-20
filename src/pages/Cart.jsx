@@ -14,7 +14,7 @@ const productsData = [
   { id: 3, name: 'Trendy Thick Sole Sneakers', price: 4400, image: img3, removeIcon },
   { id: 4, name: 'Handmade Wall Hanging DIY kit', price: 3831, image: img4, removeIcon },
 ];
-console.log(productsData);
+// console.log(productsData);
 export default function Cart() {
   const [quantities, setQuantities] = useState(
     productsData.reduce((acc, product) => ({ ...acc, [product.id]: 1 }), {})

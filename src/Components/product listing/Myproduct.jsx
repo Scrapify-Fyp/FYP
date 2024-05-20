@@ -6,6 +6,7 @@ import {
   faCartPlus,
   faDeleteLeft,
   faRemove,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import img1 from "../../img/prod-10.jpg";
@@ -21,13 +22,13 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/user/userSlice";
 import { auth } from "../../hooks/auth";
 
-export default function Myproduct({refresh}) {
+export default function Myproduct({ refresh }) {
   const [Foryouproducts, setForyouproducts] = useState([]);
   const navigate = useNavigate();
   const [visibleProducts, setVisibleProducts] = useState(12);
 
   const user = auth();
-//   console.log("🚀 ~ Myproduct ~ user:", user.id);
+  //   console.log("🚀 ~ Myproduct ~ user:", user.id);
 
   const loadMoreProducts = () => {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
@@ -37,34 +38,47 @@ export default function Myproduct({refresh}) {
   };
 
   const handleRemoveItem = async (id) => {
-    // Display confirmation dialog to the user
-    const confirmed = window.confirm("Are you sure you want to delete this item?");
-    
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this item?"
+    );
+
     if (!confirmed) {
-      // User clicked "Cancel" in the confirmation dialog
       return;
     }
-  
+
     console.log("🚀 ~ handleRemoveItem ~ id:", id);
     try {
       const response = await axios.delete(
-        `http://localhost:3002/products/${id}`
+        `http://localhost:3002/products/${id}`,
+        {
+          data: { vendorId: user.id },
+        }
       );
-  
+
       console.log("Item deleted successfully:", response.data);
-      fetchData(); // Assuming fetchData is defined elsewhere to refresh data after deletion
+      fetchData();
     } catch (error) {
       console.error("Error deleting item:", error);
     }
   };
-  
+
   const fetchData = async () => {
+    // try {
+    //   const res = await axios.get(
+    //     `http://localhost:3002/user/${user.id}/products`
+    //   );
+    //   // console.log("Response:", res.data.products);
+    //   setForyouproducts(res.data.products);
+    // } catch (error) {
+    //   console.error("Error fetching data:", error);
+    // }
+
     try {
       const res = await axios.get(
-        `http://localhost:3002/user/${user.id}/products`
+        `http://localhost:3002/user/${user.id}/shop/products`
       );
-      console.log("Response:", res.data.products);
-      setForyouproducts(res.data.products);
+      console.log("Response:", res.data);
+      setForyouproducts(res.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -76,8 +90,8 @@ export default function Myproduct({refresh}) {
     <>
       <section id="product1" className="section-p1">
         <div className="pro-container">
-          {Foryouproducts.slice(0, visibleProducts).map((product) => (
-            <div className="pro" key={product.id}>
+          {Foryouproducts?.slice(0, visibleProducts).map((product, index) => (
+            <div className="pro" key={index}>
               <img
                 onClick={redirectToProductDetail}
                 src={product.imageURL}
@@ -87,8 +101,7 @@ export default function Myproduct({refresh}) {
                 <span>{product.brand}</span>
                 <h5>{product.name}</h5>
                 <div className="star">
-                  {/* Render star icons based on rating */}
-                  {Array.from({ length: product.rating }, (_, index) => (
+                  {Array?.from({ length: product.rating }, (_, index) => (
                     <FontAwesomeIcon key={index} icon={faStar} />
                   ))}
                 </div>
@@ -96,7 +109,7 @@ export default function Myproduct({refresh}) {
               </div>
               <div className="cart">
                 <FontAwesomeIcon
-                  icon={faRemove}
+                  icon={faTrash}
                   onClick={() => {
                     handleRemoveItem(product._id);
                   }}
