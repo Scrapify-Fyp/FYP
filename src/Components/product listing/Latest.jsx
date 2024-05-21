@@ -222,7 +222,7 @@ import useAxiosRetry from "../../hooks/RetryHook";
 import "./productlisting.css";
 import { toast } from 'react-toastify';
 
-const Latest = () => {
+const Latest = (props) => {
   const [latestProducts, setLatestProducts] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState(8); // Number of products to display initially
   const navigate = useNavigate();
@@ -230,6 +230,9 @@ const Latest = () => {
 
   const redirectToProductDetail = () => {
     navigate("/ProductDetail");
+  };
+  const loadMoreProducts = () => {
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
   };
 
   const fetchData = async () => {
@@ -251,12 +254,16 @@ const Latest = () => {
   }, []);
 
   const handleViewAll = () => {
-    navigate("/AllProducts");
+    navigate("/LatestProduct");
   };
 
   return (
     <section id="product1" className="section-p1">
-      <div
+    {
+      props.allproduct?(
+       <div></div> 
+      ):(
+        <div
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -280,6 +287,8 @@ const Latest = () => {
           View All
         </button>
       </div>
+      )
+    }
       <div className="pro-container">
         {/* Map over visible products and render each product */}
         {latestProducts.slice(0, visibleProducts).map((product) => (
@@ -314,6 +323,20 @@ const Latest = () => {
           </div>
         ))}
       </div>
+
+      {
+      props.allproduct?
+      latestProducts.length > visibleProducts && (
+          <div>
+            <button className="load-more" onClick={loadMoreProducts}>
+              Load More
+            </button>
+          </div>
+        ):
+        (
+          <div></div> 
+         )
+        }
     </section>
   );
 };
