@@ -7,11 +7,15 @@ import NavbarCSS from "./Navbar.module.css";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { auth } from "../hooks/auth";
+
 
 const Navbar = () => {
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = auth();
   const [cartCount, setCartCount] = useState(0);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -30,6 +34,19 @@ const Navbar = () => {
     };
   }, []);
 
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    if (user && user.id) {
+      axios
+        .get(`http://localhost:3002/users/${user.id}`)
+        .then((response) => {
+          setUserData(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+        });
+    }
+  }, []);
   const fetchCartCount = () => {
     setCartCount(4);
   };
@@ -143,12 +160,12 @@ const Navbar = () => {
                 </ul>
               </div>
             </div>
-            <div className="navbar-buttons" style={{ display: "flex" }}>
-              <NavLink to="/Cart" className=" btn btn-outline-secondary m-2">
+            <div className="navbar-buttons" style={{ display: "flex",gap:"9px" }}>
+              <NavLink to="/Cart" className=" btn btn-outline-secondary ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
+                  width="30"
+                  height="30"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -171,7 +188,9 @@ const Navbar = () => {
                   to={user ? "/Profile" : "/Signin"}
                   className="btn btn-outline-secondary my-2 my-sm-0 ml-2"
                 >
-                  <svg
+                
+                 {/* {user? (<img style={{width:"40px",height:"40px"}} src={userData.imageUrl} alt="sdkmks" /> ):
+                 ( <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"
                     height="26"
@@ -185,8 +204,26 @@ const Navbar = () => {
                   >
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                  </svg>)
+                  } */}
+                  
+             
+                  <div style={{display:"flex", alignItems:"center",gap:"7px"}}>
+                  <div>
+                  <img
+                  style={{width:"40px",height:"40px"}}
+                    src={
+                      userData?.imageUrl ||
+                      "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                    }
+                    alt="avatar"
+                    className="rounded-circle img-fluid"
+                  />
+                  </div>
+                  <div style={{paddingTop:"7px"}}>
                   {screenWidth >= 900 && <ProfileDropdown />}
+                  </div>
+                  </div>
                 </NavLink>
               }
             </div>

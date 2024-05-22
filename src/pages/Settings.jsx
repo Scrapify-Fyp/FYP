@@ -8,7 +8,7 @@ export default function Settings() {
     <div className="" style={{width: "100%", margin: "0", padding: "0px", maxWidth: "100%"}}>
             <Sidebar/>
             <main style={{margintop: '58px'}}>
-                <div className="container pt-4">
+                <div className="container">
                   <div className="settings">
                     <NavLink className="liii" to={"/Edit_profile"}><li>Account Information</li></NavLink>                 
                     <NavLink className="liii" to={"/Privacysecurity"}><li>Privacy and Security</li></NavLink>

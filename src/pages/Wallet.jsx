@@ -3,7 +3,7 @@ import Sidebar from "../Components/sidebar"
 import "./Wallet.css";
 export default function Wallet() {
   return (
-    <div className="main-container">
+    <div className="main-container" style={{width: "100%", margin: "0", padding: "0px", maxWidth: "100%"}}>
       <Sidebar />
       <main className="main-content">
         <div className="inner-container">
