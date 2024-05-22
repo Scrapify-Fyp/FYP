@@ -6,8 +6,10 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
 import { WithContext as ReactTags } from 'react-tag-input';
 import { useNavigate } from "react-router-dom";
+import { auth } from "../hooks/auth";
 export default function AddNewProduct({close}) {
-    const user = useSelector(selectUser);
+    // const user = useSelector(selectUser);
+    const user = auth();
     const navigate = useNavigate();
   
     const [selectedCategory, setSelectedCategory] = useState("");
