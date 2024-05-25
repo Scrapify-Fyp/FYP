@@ -58,6 +58,7 @@ export default function Profile() {
         `http://localhost:3002/users/${Reduxuser?.id}`
       );
       setUser(response.data);
+      console.log("🚀 ~ fun ~ response.data:", response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -189,7 +190,7 @@ export default function Profile() {
                     </div>
                     {user?.phone}
                   </div>
-                  <div className="discription">{discription}</div>
+                  <div className="discription">{user?.bio}</div>
                 </div>
                 {/* <div className={profileCSS.buttensection}>
                       <NavLink to="/edit_profile">
