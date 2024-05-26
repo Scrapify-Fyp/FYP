@@ -77,7 +77,7 @@ export default function Myproduct({ refresh }) {
       const res = await axios.get(
         `http://localhost:3002/user/${user.id}/shop/products`
       );
-      console.log("Response:", res.data);
+      // console.log("Response:", res.data);
       setForyouproducts(res.data);
     } catch (error) {
       console.error("Error fetching data:", error);

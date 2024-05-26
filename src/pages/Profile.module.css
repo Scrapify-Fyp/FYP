@@ -36,6 +36,7 @@
   padding: 20px;
 }
 .profileheader{
+  max-width: 50%;
   border: 2px solid;
   padding: 30px;
   color: white;
@@ -61,7 +62,8 @@
   margin-top: 10px;
 }
 .currentorder{
-  width: 900px;
+  width: max-content;
+  /* max-width: 1200px; */
   border-radius: 20px;
   background-color: #ea618c;
 }
