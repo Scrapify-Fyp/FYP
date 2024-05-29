@@ -346,6 +346,7 @@
 
 // Final with extra fields
 import React, { useEffect, useState } from "react";
+import { TailSpin } from "react-loader-spinner";
 import profilecss from "./Profile.module.css";
 import Sidebar from "../Components/sidebar";
 import Shopepage from "../Components/Shopepage";
@@ -491,10 +492,29 @@ export default function Myshope() {
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          height: "100vh",
+        }}
+      >
+        <TailSpin height="80" width="80" color="#4fa94d" ariaLabel="loading" />
+        <h4
+        style={{
+          padding:"30px"
+        }}>Loading....</h4>
+      </div>
+    );
+  }
   return (
     <div className={profilecss.container}>
       <div className={`${profilecss.bgWhite}`}>
