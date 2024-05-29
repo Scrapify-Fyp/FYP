@@ -33,8 +33,10 @@ export default function Myproduct({ refresh }) {
   const loadMoreProducts = () => {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
   };
-  const redirectToProductDetail = () => {
-    navigate("/ProductDetail");
+  const redirectToProductDetail = (Singleproduct) => {
+    // navigate("/ProductDetail");
+    // console.log("SingleProduct", Singleproduct);
+    navigate("/ProductDetail", { state: Singleproduct });
   };
 
   const handleRemoveItem = async (id) => {
@@ -93,25 +95,37 @@ export default function Myproduct({ refresh }) {
           {Foryouproducts?.slice(0, visibleProducts).map((product, index) => (
             <div className="pro" key={index}>
               <img
-                onClick={redirectToProductDetail}
-                src={product.imageURL}
+                // onClick={redirectToProductDetail}
+                onClick={() => {
+                  // {console.log("SingleProductMap" , product)}
+
+                  redirectToProductDetail(product);
+                }}
+                src={product?.imageURL}
                 alt={`Product Img Not Available`}
               />
-              <div onClick={redirectToProductDetail} className="des">
-                <span>{product.brand}</span>
-                <h5>{product.name}</h5>
+              <div
+                onClick={() => {
+                  // {console.log("SingleProductMap" , product)}
+
+                  redirectToProductDetail(product);
+                }}
+                className="des"
+              >
+                <span>{product?.brand}</span>
+                <h5>{product?.name}</h5>
                 <div className="star">
-                  {Array?.from({ length: product.rating }, (_, index) => (
+                  {Array?.from({ length: product?.rating }, (_, index) => (
                     <FontAwesomeIcon key={index} icon={faStar} />
                   ))}
                 </div>
-                <h4>${product.price}</h4>
+                <h4>${product?.price}</h4>
               </div>
               <div className="cart">
                 <FontAwesomeIcon
                   icon={faTrash}
                   onClick={() => {
-                    handleRemoveItem(product._id);
+                    handleRemoveItem(product?._id);
                   }}
                 />
               </div>

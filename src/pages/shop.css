@@ -354,22 +354,59 @@ body {
 }
 /*---x------- MAIN IMAGE WITH ZOOMING STYLE -------x---*/
 
-#pro-details .single-pro-details {
+/* #pro-details .single-pro-details {
     width: 50%;
-    padding-top: 30px;
+    padding-top: 20px;
     margin-left: 40px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #pro-details .single-pro-details h4 {
-    padding: 40px 0px 20px 0px;
+    padding: 20px 0px 10px 0px;
     font-size: 24px;
 
 }
 
 #pro-details .single-pro-details h2 {
     font-size: 20px;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+#pro-details .single-pro-details {
+    width: 50%;
+    padding-top: 20px;
+    margin-left: 40px;
+    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
 }
+
+#pro-details .single-pro-details h4 {
+    padding: 10px 0 00px 0;
+    font-size: 24px;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: #2c3e50;
+    letter-spacing: 0.5px;
+}
+
+#pro-details .single-pro-details h2 {
+    font-size: 20px;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    color: #34495e;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+}
+
+#pro-details .single-pro-details p {
+    font-family: 'Open Sans', sans-serif;
+    color: #555;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+    margin-bottom: 20px;
+}
+
 
 /* Size Item Radio Buttons */
 .size-item {

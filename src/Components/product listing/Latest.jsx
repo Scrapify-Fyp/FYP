@@ -209,18 +209,13 @@
 
 // export default Latest;
 
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import useAxiosRetry from "../../hooks/RetryHook";
 import "./productlisting.css";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const Latest = (props) => {
   const [latestProducts, setLatestProducts] = useState([]);
@@ -228,8 +223,8 @@ const Latest = (props) => {
   const navigate = useNavigate();
   const axios = useAxiosRetry();
 
-  const redirectToProductDetail = () => {
-    navigate("/ProductDetail");
+  const redirectToProductDetail = (product) => {
+    navigate("/ProductDetail", { state: product });
   };
   const loadMoreProducts = () => {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
@@ -242,9 +237,12 @@ const Latest = (props) => {
       setLatestProducts(response.data);
     } catch (error) {
       console.log("Error fetching products:", error);
-      toast.error('Failed to fetch data after multiple attempts. Please refresh the page.', {
-        autoClose: 3000,
-      });
+      toast.error(
+        "Failed to fetch data after multiple attempts. Please refresh the page.",
+        {
+          autoClose: 3000,
+        }
+      );
     }
   };
 
@@ -259,48 +257,50 @@ const Latest = (props) => {
 
   return (
     <section id="product1" className="section-p1">
-    {
-      props.allproduct?(
-       <div></div> 
-      ):(
+      {props.allproduct ? (
+        <div></div>
+      ) : (
         <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "20px",
-        }}
-      >
-        <h1>Latest Products</h1>
-        <button
           style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            border: "1px solid #007bff",
-            borderRadius: "5px",
-            backgroundColor: "#007bff",
-            color: "#fff",
-            cursor: "pointer",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "20px",
           }}
-          onClick={handleViewAll}
         >
-          View All
-        </button>
-      </div>
-      )
-    }
+          <h1>Latest Products</h1>
+          <button
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              border: "1px solid #007bff",
+              borderRadius: "5px",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              cursor: "pointer",
+            }}
+            onClick={handleViewAll}
+          >
+            View All
+          </button>
+        </div>
+      )}
       <div className="pro-container">
         {/* Map over visible products and render each product */}
         {latestProducts.slice(0, visibleProducts).map((product) => (
           <div className="pro" key={product._id}>
             <img
-              onClick={redirectToProductDetail}
+              onClick={() => {
+                redirectToProductDetail(product);
+              }}
               src={product.imageURL}
               alt=""
               style={{ cursor: "pointer" }}
             />
             <div
-              onClick={redirectToProductDetail}
+              onClick={() => {
+                redirectToProductDetail(product);
+              }}
               className="des"
               style={{ cursor: "pointer" }}
             >
@@ -324,19 +324,17 @@ const Latest = (props) => {
         ))}
       </div>
 
-      {
-      props.allproduct?
-      latestProducts.length > visibleProducts && (
+      {props.allproduct ? (
+        latestProducts.length > visibleProducts && (
           <div>
             <button className="load-more" onClick={loadMoreProducts}>
               Load More
             </button>
           </div>
-        ):
-        (
-          <div></div> 
-         )
-        }
+        )
+      ) : (
+        <div></div>
+      )}
     </section>
   );
 };
