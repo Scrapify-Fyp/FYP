@@ -424,13 +424,13 @@ import CartCSS from "./Cart.module.css";
 import { NavLink } from "react-router-dom";
 import removeIcon from "../img/delete-svgrepo-com.svg";
 // import { Button } from "react-bootstrap";
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+  console.log("🚀 ~ Cart ~ cartItems:", cartItems);
 
   useEffect(() => {
     // You can dispatch any actions here, if needed
@@ -461,6 +461,9 @@ const Cart = () => {
                   <td>Image</td>
                   <td>Product</td>
                   <td>Price</td>
+                  <td>Quantity</td>
+                  <td>Total</td>
+                  
                   {/* Add more table headers if needed */}
                 </tr>
               </thead>
@@ -477,9 +480,13 @@ const Cart = () => {
                       >
                         Remove
                       </button> */}
-                      <FontAwesomeIcon icon={faTrash} onClick={()=>{
-                        handleRemoveProduct(cartItem.product._id)
-                      }} />
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          handleRemoveProduct(cartItem.product._id);
+                        }}
+                      />
                     </td>
                     <td>
                       <img
@@ -490,6 +497,8 @@ const Cart = () => {
                     <td>{cartItem.product.name}</td>
                     <td>Rs. {cartItem.product.price}</td>
                     {/* Render other product details */}
+                    <td>{cartItem.quantity}</td>
+                    <td>Rs. {cartItem.product.price * cartItem.quantity}</td>
                   </tr>
                 ))}
               </tbody>
@@ -529,8 +538,13 @@ const Cart = () => {
                     <td>
                       <strong>
                         Rs.{" "}
-                        {cartItems.reduce(
+                        {/* {cartItems.reduce(
                           (total, cartItem) => total + cartItem.product.price,
+                          0
+                        )} */}
+                        {cartItems.reduce(
+                          (total, cartItem) =>
+                            total + cartItem.product.price * cartItem.quantity,
                           0
                         )}
                       </strong>

@@ -26,6 +26,7 @@
 
 // cartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
   items: [],
@@ -47,6 +48,9 @@ const cartSlice = createSlice({
         // Product already exists, you can update quantity here if needed
         // For now, let's just ignore adding duplicate products
         console.log("Product already added to the redux");
+        toast.error("Product already added to the Cart" , {
+            autoClose:1000
+        })
         return;
       }
       

@@ -433,6 +433,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cartSlice";
 import { selectUser } from "../redux/user/userSlice";
+import { toast } from "react-toastify";
 
 const SingleProductDetailPage = (props) => {
   const dispath = useDispatch();
@@ -504,7 +505,10 @@ const SingleProductDetailPage = (props) => {
     // console.log("🚀 ~ handleFormSubmit ~ cartData:", cartData);
     if(user.id === product.vendorId)
       {
-        alert("You can't add your own product to cart");
+        // alert("You can't add your own product to cart");
+        toast.error("You can't add your own product to cart" , {
+          autoClose: 1500
+        })
         return;
       }
     dispath(addToCart(cartData));
