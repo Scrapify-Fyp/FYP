@@ -25,8 +25,8 @@ export default function Shopepage({ shop }) {
     return `${formattedHours}:${formattedMinutes} ${ampm}`;
   };
 
-  const start = extractTimeWithAMPM(shop?.openingHours.start);
-  const end = extractTimeWithAMPM(shop?.openingHours.end);
+  const start = extractTimeWithAMPM(shop?.openingHours?.start);
+  const end = extractTimeWithAMPM(shop?.openingHours?.end);
   // console.log("Time:", timeString);
 
   return (
@@ -56,9 +56,13 @@ export default function Shopepage({ shop }) {
             </p>
             <p>
               <strong>Opening Hours: </strong>{" "}
-              {shop?.openingHours
-                ? "Monday - Friday, " + start + " - " + end
-                : "Monday - Friday, 9:00 AM - 6:00 PM"}
+              {/* {shop?.openingHours
+                ? "Monday - Friday, " + start? + " - " + end
+                : "Monday - Friday, 9:00 AM - 6:00 PM"} */}
+                {shop?.openingHours
+  ? `Monday - Friday, ${start ?? ''} - ${end ?? ''}`.trim().replace(/ - $/, '').replace(/^ -/, '')
+  : "Monday - Friday, 9:00 AM - 6:00 PM"}
+
               {/* {console.log(
                 "🚀 ~ Shopepage ~ shop.openingHours.start:",
                 shop.openingHours.start
