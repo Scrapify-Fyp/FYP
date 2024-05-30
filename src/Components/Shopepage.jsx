@@ -36,7 +36,7 @@ export default function Shopepage({ shop }) {
           <div className={`${profilecss.backgroundpic}`}></div>
           <div className={`${profilecss.flex} ${profilecss.itemsCenter}`}>
             <img
-              src={shop.imageUrl}
+              src={shop?.imageUrl ? shop?.imageUrl : img}
               alt="Shop Logo"
               className={`${profilecss.dp}`}
             />
@@ -56,13 +56,9 @@ export default function Shopepage({ shop }) {
             </p>
             <p>
               <strong>Opening Hours: </strong>{" "}
-              {/* {shop?.openingHours
-                ? "Monday - Friday, " + start? + " - " + end
-                : "Monday - Friday, 9:00 AM - 6:00 PM"} */}
-                {shop?.openingHours
-  ? `Monday - Friday, ${start ?? ''} - ${end ?? ''}`.trim().replace(/ - $/, '').replace(/^ -/, '')
-  : "Monday - Friday, 9:00 AM - 6:00 PM"}
-
+              {shop?.openingHours
+                ? "Monday - Friday, " + start + " - " + end
+                : "Monday - Friday, 9:00 AM - 6:00 PM"}
               {/* {console.log(
                 "🚀 ~ Shopepage ~ shop.openingHours.start:",
                 shop.openingHours.start

@@ -9,20 +9,25 @@ import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { auth } from "../hooks/auth";
+import { selectCartItems } from "../redux/cart/cartSlice";
 
 
 const Navbar = () => {
-  // const user = useSelector(selectUser);
+  const cartItems = useSelector(selectCartItems);
+  const cartItemsSize = cartItems.length;
+  console.log("🚀 ~ Navbar ~ cartItemsSize:", cartItemsSize);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = auth();
-  const [cartCount, setCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(cartItems.length);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const [screensize, setScreensize] = useState(window.innerWidth);
   const comparison = 900;
 
   useEffect(() => {
+
+    fetchCartCount();
     const handleResize = () => {
       setScreensize(window.innerWidth);
     };
@@ -32,7 +37,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [cartItemsSize]);
 
   const [userData, setUserData] = useState(null);
   useEffect(() => {
@@ -48,12 +53,8 @@ const Navbar = () => {
     }
   }, []);
   const fetchCartCount = () => {
-    setCartCount(4);
+    setCartCount(cartItemsSize);
   };
-
-  useEffect(() => {
-    fetchCartCount();
-  }, []);
 
   const handleLogout = () => {
     dispatch(clearUser());
@@ -179,7 +180,7 @@ const Navbar = () => {
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
               </NavLink>
-              {cartCount > 0 && (
+              {cartCount >= 0 && (
                 <div className={NavbarCSS.cartCount}>{cartCount}</div>
               )}
 
