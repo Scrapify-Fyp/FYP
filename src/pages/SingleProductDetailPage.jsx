@@ -437,7 +437,7 @@ import { toast } from "react-toastify";
 
 const SingleProductDetailPage = (props) => {
   const dispath = useDispatch();
-  const user  =  useSelector(selectUser);
+  const user = useSelector(selectUser);
   const location = useLocation();
   // const history = useHistory();
   const data = location.state;
@@ -500,18 +500,26 @@ const SingleProductDetailPage = (props) => {
       product,
       quantity,
       selectedSize,
-      userId: user.id,
+      userId: user?.id,
     };
     // console.log("🚀 ~ handleFormSubmit ~ cartData:", cartData);
-    if(user.id === product.vendorId)
-      {
-        // alert("You can't add your own product to cart");
-        toast.error("You can't add your own product to cart" , {
-          autoClose: 1500
-        })
-        return;
-      }
+    if (user?.id === product.vendorId) {
+      // alert("You can't add your own product to cart");
+      toast.error("You can't add your own product to cart", {
+        autoClose: 1500,
+      });
+      return;
+    }
+    if (!user) {
+      toast.error("You're not logged in!", {
+        autoClose: 1500,
+      });
+      return;
+    }
     dispath(addToCart(cartData));
+    toast.success("Added to cart!", {
+      autoClose: 1500,
+    });
 
     // history.push("/cart", { cartData });
   };
