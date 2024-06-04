@@ -30,8 +30,9 @@ import { selectUser, setUser } from "./redux/user/userSlice";
 import { auth } from "./hooks/auth";
 import { useDispatch } from "react-redux";
 import ProtectedRoute from "./Components/authMiddlware/ProtectedRoute";
-import Checkout from"./pages/Checkout"
+import Checkout from "./pages/Checkout";
 import LatestProduct from "./pages/LatestProduct";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -77,10 +78,31 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/Wallet" element={<Wallet />} />
-        <Route path="/Myshope" element={<Myshope />} />
+        <Route
+          path="/Wallet"
+          element={
+            <ProtectedRoute>
+              <Wallet />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Myshope"
+          element={
+            <ProtectedRoute>
+              <Myshope />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/Contact_us" element={<Contact_us />} />
-        <Route path="/Cart" element={<Cart />} />
+        <Route
+          path="/Cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/HeroSection" element={<HeroSection />} />
         <Route path="/Footer" element={<Footer />} />
         <Route path="/Shops" element={<Shops />} />
@@ -93,8 +115,23 @@ const App = () => {
         <Route path="/Changepassword" element={<Changepassword />} />
         <Route path="/Helpnsupport" element={<Helpnsupport />} />
         <Route path="/Singleshope" element={<Singleshope />} />
-        <Route path="/Checkout" element={<Checkout/>} />    
-        <Route path="/LatestProduct" element={<LatestProduct/>}/>
+        <Route
+          path="/Checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/LatestProduct" element={<LatestProduct />} />
+        <Route
+          path="/orderConfirmation"
+          element={
+            <ProtectedRoute>
+              <OrderConfirmationPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

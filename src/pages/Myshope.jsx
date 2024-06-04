@@ -385,6 +385,8 @@ export default function Myshope() {
         const response = await axios.get(
           `http://localhost:3002/user/${userId}/shop`
         );
+        console.log("🚀 ~ fetchUsershop ~ response:", response)
+        
         setIsShop(response.data.length > 0);
         setShop(response.data[0]);
       } catch (error) {

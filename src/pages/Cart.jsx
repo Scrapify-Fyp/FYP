@@ -415,7 +415,8 @@
 
 // export default Cart;
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation ,useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, selectCartItems } from "../redux/cart/cartSlice";
 import Navbar from "../Components/Navbar";
@@ -426,11 +427,14 @@ import removeIcon from "../img/delete-svgrepo-com.svg";
 // import { Button } from "react-bootstrap";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  console.log("🚀 ~ Cart ~ cartItems:", cartItems);
+  // console.log("🚀 ~ Cart ~ cartItems:", cartItems);
+  const [orderNote, setOrderNote] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     // You can dispatch any actions here, if needed
@@ -439,7 +443,21 @@ const Cart = () => {
   const handleRemoveProduct = (productId) => {
     dispatch(removeFromCart(productId));
   };
-
+  const handleOrderNoteChange = (event) => {
+    setOrderNote(event.target.value);
+    // console.log(orderNote);
+  };
+  const handleCheckout = () => {
+    if(cartItems.length <= 0 )
+      {
+        toast.warn("Add something in the cart!" ,{
+          autoClose:1500  
+        })
+        navigate('/');
+        return;
+      }
+    navigate("/checkout", { state: { note: orderNote } });
+  };
   return (
     <>
       <div
@@ -463,7 +481,7 @@ const Cart = () => {
                   <td>Price</td>
                   <td>Quantity</td>
                   <td>Total</td>
-                  
+
                   {/* Add more table headers if needed */}
                 </tr>
               </thead>
@@ -506,10 +524,30 @@ const Cart = () => {
           </section>
 
           <section id={CartCSS.cartadd} className={CartCSS.sectionp1}>
-            <div id={CartCSS.coupon}>
+            {/* <div id={CartCSS.coupon}>
               <h3>Add Order Note</h3>
               <div className={`${CartCSS.inputBox} ${CartCSS.w100}`}>
                 <textarea placeholder="Any extra recommendations for your Order...."></textarea>
+              </div>
+            </div> */}
+            <div id={CartCSS.coupon}>
+              <h3 style={{ color: "#333", marginBottom: "10px" }}>
+                Add Order Note
+              </h3>
+              <div className={`${CartCSS.inputBox} ${CartCSS.w100}`}>
+                <textarea
+                  placeholder="Any extra recommendations for your Order...."
+                  value={orderNote}
+                  onChange={handleOrderNoteChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    borderRadius: "5px",
+                    border: "1px solid #ccc",
+                    fontFamily: "'Roboto', sans-serif",
+                    fontSize: "1em",
+                  }}
+                ></textarea>
               </div>
             </div>
 
@@ -552,9 +590,19 @@ const Cart = () => {
                   </tr>
                 </tbody>
               </table>
-              <NavLink to="/Checkout">
+              {/* <NavLink
+                to={{
+                  pathname: "/Checkout",
+                  state: {
+                    note: orderNote,
+                  },
+                }}
+              >
                 <button className={CartCSS.normal}>Proceed to Checkout</button>
-              </NavLink>
+              </NavLink> */}
+              <button className={CartCSS.normal} onClick={handleCheckout}>
+        Proceed to Checkout
+      </button>
             </div>
           </section>
         </div>

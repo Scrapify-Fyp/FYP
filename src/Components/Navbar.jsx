@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { auth } from "../hooks/auth";
-import { selectCartItems } from "../redux/cart/cartSlice";
+import { emptyCart, selectCartItems } from "../redux/cart/cartSlice";
 
 
 const Navbar = () => {
@@ -58,6 +58,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(clearUser());
+    dispatch(emptyCart());
     Cookies.remove("token");
     navigate("/");
     toast.success("Loggedout successfully!",{
