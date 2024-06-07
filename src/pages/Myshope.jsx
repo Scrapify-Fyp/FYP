@@ -385,9 +385,12 @@ export default function Myshope() {
         const response = await axios.get(
           `http://localhost:3002/user/${userId}/shop`
         );
-        console.log("🚀 ~ fetchUsershop ~ response:", response)
-        
-        setIsShop(response.data.length > 0);
+        console.log("🚀 ~ fetchUsershop ~ response:", response);
+
+        if (response.data.length > 0) {
+          setIsShop(true);
+        }
+        // setIsShop(response.data.length > 0);
         setShop(response.data[0]);
       } catch (error) {
         console.error("Error fetching user's shop:", error);
@@ -511,9 +514,12 @@ export default function Myshope() {
       >
         <TailSpin height="80" width="80" color="#4fa94d" ariaLabel="loading" />
         <h4
-        style={{
-          padding:"30px"
-        }}>Loading....</h4>
+          style={{
+            padding: "30px",
+          }}
+        >
+          Loading....
+        </h4>
       </div>
     );
   }
