@@ -18,8 +18,10 @@ function OrderConfirmationPage() {
 
   // useEffect(() => {
     if (cartProducts.length <= 0) {
+      
       navigate("/");
     }
+    
   // }, [cartProducts, navigate]);
   
   return (
@@ -81,7 +83,7 @@ function OrderConfirmationPage() {
           transition: "background-color 0.3s, color 0.3s",
         }}
         onClick={() => {
-          dispatch(emptyCart);
+          dispatch(emptyCart());
           navigate("/");
         }}
       >
