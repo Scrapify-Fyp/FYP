@@ -441,6 +441,8 @@ const SingleProductDetailPage = (props) => {
   const location = useLocation();
   // const history = useHistory();
   const data = location.state;
+  console.log("Data from SingleProductPage: " , data);
+
   const [product, setProduct] = useState(data);
   const maxQuantity = product?.stockQuantity;
   const [quantity, setQuantity] = useState(1);

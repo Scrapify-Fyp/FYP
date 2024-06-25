@@ -288,12 +288,17 @@ const Latest = (props) => {
       <div className="pro-container">
         {/* Map over visible products and render each product */}
         {latestProducts.slice(0, visibleProducts).map((product) => (
+           
           <div className="pro" key={product._id}>
             <img
               onClick={() => {
                 redirectToProductDetail(product);
               }}
-              src={product.imageURL}
+              // src={product.imageURL[0]}
+              src = {async ()=>{
+                const res = await axios.get(product.imageURL[0]);
+                return res;
+              }}
               alt=""
               style={{ cursor: "pointer" }}
             />
