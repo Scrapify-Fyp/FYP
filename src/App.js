@@ -33,6 +33,7 @@ import ProtectedRoute from "./Components/authMiddlware/ProtectedRoute";
 import Checkout from "./pages/Checkout";
 import LatestProduct from "./pages/LatestProduct";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
+import ForgotPassword from "./Components/Forgetpassword";
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Signin" element={<Signin />} />
-
+        <Route path="/forgot-password" element={<ForgotPassword/>} />
         <Route
           path="/Profile"
           element={
