@@ -6,8 +6,6 @@ const store = configureStore({
   reducer: {
     user: userReducer,
     cart: cartReducer,
-
-    // Add other reducers here if needed
   },
 });
 

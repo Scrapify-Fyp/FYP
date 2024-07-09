@@ -295,10 +295,13 @@ const Latest = (props) => {
                 redirectToProductDetail(product);
               }}
               // src={product.imageURL[0]}
-              src = {async ()=>{
-                const res = await axios.get(product.imageURL[0]);
-                return res;
-              }}
+              src = {
+                // async ()=>{
+                // const res = await axios.get(product.imageURL[0]);
+                // return res;
+                product.imageURL[0]
+              }
+            // }
               alt=""
               style={{ cursor: "pointer" }}
             />
