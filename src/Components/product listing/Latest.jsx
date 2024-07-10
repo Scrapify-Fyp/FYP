@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Latest = (props) => {
   const [latestProducts, setLatestProducts] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(8); // Number of products to display initially
+  const [visibleProducts, setVisibleProducts] = useState(8); 
   const navigate = useNavigate();
   const axios = useAxiosRetry();
 
@@ -115,10 +115,11 @@ const Latest = (props) => {
               </div>
               <h4>${product.price}</h4>
             </div>
-            <div className="cart">
-              {/* Placeholder for adding functionality to add to cart */}
-              <a href="#" style={{ color: "#007bff" }}>
-                <FontAwesomeIcon icon={faCartPlus} />
+            <div className="cart" >
+              <a  href="#" style={{ color: "#007bff" }}>
+                <FontAwesomeIcon icon={faCartPlus} onClick={() => {
+                redirectToProductDetail(product);
+              }}/>
               </a>
             </div>
           </div>

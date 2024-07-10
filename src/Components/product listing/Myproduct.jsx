@@ -65,16 +65,6 @@ export default function Myproduct({ refresh }) {
   };
 
   const fetchData = async () => {
-    // try {
-    //   const res = await axios.get(
-    //     `http://localhost:3002/user/${user.id}/products`
-    //   );
-    //   // console.log("Response:", res.data.products);
-    //   setForyouproducts(res.data.products);
-    // } catch (error) {
-    //   console.error("Error fetching data:", error);
-    // }
-
     try {
       const res = await axios.get(
         `http://localhost:3002/user/${user.id}/shop/products`

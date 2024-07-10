@@ -1,164 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import '../pages/shop.css';
-import { useState , useEffect} from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import img1 from "../img/mug_art.png";
-import img2 from "../img/ora_prints.avif";
-import img3 from "../img/sweet_escape.png";
-import img4 from "../img/nasty-arts.jpg";
-import img5 from "../img/saeed_ghani.webp";
-import img6 from "../img/ideas-logo.webp";
-import img7 from "../img/Logo_Almirah_Black_110x.webp";
-import img8 from "../img/miniso.avif";
-import img9 from "../img/anaya_arts.webp";
-import img10 from "../img/khaadi.png";
-import img11 from "../img/jafar-jees.png";
-import img12 from "../img/PaperMarket_Logo.webp";
-import img13 from "../img/hyundai-1.png";
-import img14 from "../img/Digital_Design.jpeg";
-import img15 from "../img/pixel_print.jpeg";
-import img16 from "../img/pdf_pantry.gif";
+
 const ShopPage = () => {
     const navigate = useNavigate();
+    const [shops, setShops] = useState([]);
+    const [visibleShops, setVisibleShops] = useState(12);
+
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-      }, []);
-    // Dummy data for products
-    const Shops = [
-        {
-            id: 1,
-            imgSrc: img1, 
-            brand: "Accessories",
-            name: "Mug Art"
-        },
-        {
-            id: 2,
-            imgSrc: img2,
-            brand: "Accessories",
-            name: "Ora Prints"
-        },  
-        {
-            id: 3,
-            imgSrc: img3,
-            brand: "Food",
-            name: "Sweet Escape"
-        },
-        {
-            id: 4,
-            imgSrc: img4,
-            brand: "Fun & Enjoyment",
-            name: "Nasty Arts"
-        },
-        {
-            id: 5,
-            imgSrc: img5,
-            brand: "Health & Beauty + Perfumes",
-            name: "Saeed Ghani"
-        },
-        {
-            id: 6,
-            imgSrc: img6,
-            brand: "Perfumes",
-            name: "Ideas Fragrances"
-        },
-        {
-            id: 7,
-            imgSrc: img7,
-            brand: "Mens Wear + Womens Wear",
-            name: "Almirah"
-        },
-        {
-            id: 8,
-            imgSrc: img8,
-            brand: "Accessories",
-            name: "MiniSO"
-        },{
-            id: 9,
-            imgSrc: img9, 
-            brand: "Home Decor",
-            name: "Anaya Arts Corner"
-        },
-        {
-            id: 10,
-            imgSrc: img10,
-            brand: "Accessories + Children Wear + Home Decor + Mens Wear + Womens Wear",
-            name: "KHAADI"
-        },  
-        {
-            id: 11,
-            imgSrc: img11,
-            brand: "Accessories",
-            name: "JafferJees"
-        },
-        {
-            id: 12,
-            imgSrc: img12,
-            brand: "Art & Craft",
-            name: "Paper Market"
-        },
-        {
-            id: 13,
-            imgSrc: img13,
-            brand: "Car Service + Car Products",
-            name: "Hyundai"
-        },
-        {
-            id: 14,
-            imgSrc: img14,
-            brand: "Digital Assets",
-            name: "Digital Design Delights"
-        },
-        {
-            id: 15,
-            imgSrc: img15,
-            brand: "Digital Printing",
-            name: "Pixel Prints Hub"
-        },
-        {
-            id: 16,
-            imgSrc: img16,
-            brand: "Digital Assets",
-            name: "PDF Pantry"
-        },
-    ];
-    
-    const [visibleProducts, setVisibleProducts] = useState(12); // Initial number of visible products
 
-    const loadMoreProducts = () => {
-        setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 12); // Increase visible products by 12
+        // Fetch shops from API
+        axios.get('http://localhost:3002/shop')
+            .then(response => {
+                setShops(response.data);
+            })
+            .catch(error => {
+                console.error("There was an error fetching the shop data!", error);
+            });
+    }, []);
+
+    const loadMoreShops = () => {
+        setVisibleShops(prevVisibleShops => prevVisibleShops + 12);
     };
-    const redirectToProductDetail = () => {
-        // window.location.href = '/Singleshope';
-        navigate("/Singleshope");
+
+    const redirectToShopDetail = (shop) => {
+        navigate("/Singleshope", {state: shop});
     };
-    
+
     return (
         <>
-            <div style={{width: "100%", margin: "0", padding: "0px", maxWidth: "100%"}}>
+            <div style={{ width: "100%", margin: "0", padding: "0px", maxWidth: "100%" }}>
                 {/* SHOP PAGE */}
-
                 <section id="product1" className="section-p1">
-                <div className="pro-container">
-                    {/* Map over products and render each product */}
-                    {Shops.slice(0, visibleProducts).map(product => (
-                        <div  className="pro" key={product.id}>
-                            <img onClick={redirectToProductDetail} src={product.imgSrc} alt={`Product ${product.id}`} />
-                            <div onClick={redirectToProductDetail} className="des">
-                                <span style={{ fontSize: '14px', fontFamily: 'GillSans-Medium' }}>{product.brand}</span>
-                                <h5 style={{ fontSize: '22px', fontFamily: 'GillSans-Medium' }}>{product.name}</h5>
+                    <div className="pro-container">
+                        {/* Map over shops and render each shop */}
+                        {shops.slice(0, visibleShops).map(shop => (
+                            <div className="pro" key={shop._id}>
+                                <img onClick={
+                                    () => {redirectToShopDetail(shop);
+                                    }} src={shop.imageUrl || "https://plus.unsplash.com/premium_photo-1664202525979-80d1da46b34b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} alt={`Shop ${shop._id}`} />
+                                <div onClick={
+                                    () => {redirectToShopDetail(shop);
+                                    }} className="des">
+                                    <span style={{ fontSize: '14px', fontFamily: 'GillSans-Medium' }}>{shop.category || "Unknown"}</span>
+                                    <h5 style={{ fontSize: '22px', fontFamily: 'GillSans-Medium' }}>{shop.name}</h5>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-                {Shops.length > visibleProducts && (
-                    <div >
-                        <button className="load-more" onClick={loadMoreProducts}>Load More</button>
+                        ))}
                     </div>
-                )}
-            </section>
+                    {shops.length > visibleShops && (
+                        <div>
+                            <button className="load-more" onClick={loadMoreShops}>Load More</button>
+                        </div>
+                    )}
+                </section>
             </div>
         </>
     );
-}
+};
 
 export default ShopPage;
