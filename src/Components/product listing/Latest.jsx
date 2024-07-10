@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Latest = (props) => {
   const [latestProducts, setLatestProducts] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(4); //INITIAL NUMBER OF VISIBLE PRODUCTS
+  const [visibleProducts, setVisibleProducts] = useState(8); // Number of products to display initially
   const navigate = useNavigate();
   const axios = useAxiosRetry();
 
@@ -16,7 +16,7 @@ const Latest = (props) => {
     navigate("/ProductDetail", { state: product });
   };
   const loadMoreProducts = () => {
-    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 4); // INCREASE VISIBLE PRODUCTS BY 4
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
   };
 
   const fetchData = async () => {
@@ -56,16 +56,30 @@ const Latest = (props) => {
             alignItems: "center",
             marginBottom: "20px",
             alignItems: "center",
-            justifyContent: "center",
-            alignContent: "center",
-            marginTop: "30px",
-            marginBottom: "0px",
           }}
         >
           <h1>Latest Products</h1>
+          <button
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              border: "1px solid #007bff",
+              borderRadius: "5px",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              cursor: "pointer",
+              alignItems: "center",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+            onClick={handleViewAll}
+          >
+            View All
+          </button>
         </div>
       )}
       <div className="pro-container">
+        {/* Map over visible products and render each product */}
         {latestProducts.slice(0, visibleProducts).map((product) => (
            
           <div className="pro" key={product._id}>
@@ -73,9 +87,14 @@ const Latest = (props) => {
               onClick={() => {
                 redirectToProductDetail(product);
               }}
+              // src={product.imageURL[0]}
               src = {
+                // async ()=>{
+                // const res = await axios.get(product.imageURL[0]);
+                // return res;
                 product.imageURL[0]
               }
+            // }
               alt=""
               style={{ cursor: "pointer" }}
             />
@@ -89,6 +108,7 @@ const Latest = (props) => {
               <span>{product.brand}</span>
               <h5>{product.name}</h5>
               <div className="star">
+                {/* Render star icons based on rating */}
                 {Array.from({ length: product.rating }, (_, index) => (
                   <FontAwesomeIcon key={index} icon={faStar} />
                 ))}
@@ -96,6 +116,7 @@ const Latest = (props) => {
               <h4>${product.price}</h4>
             </div>
             <div className="cart">
+              {/* Placeholder for adding functionality to add to cart */}
               <a href="#" style={{ color: "#007bff" }}>
                 <FontAwesomeIcon icon={faCartPlus} />
               </a>
@@ -104,19 +125,17 @@ const Latest = (props) => {
         ))}
       </div>
 
-        {latestProducts.length > visibleProducts && (
-        <div>
-          <button className="load-more" onClick={loadMoreProducts}>
-            Load More
-          </button>
-        </div>
-      )}
-      {!props.allproduct && (
-        <div>
-          <button className="load-more" onClick={handleViewAll}>
-            View All
-          </button>
-        </div>
+      {props.allproduct ? (
+        latestProducts.length > visibleProducts && (
+          <div>
+            <button className="load-more" onClick={loadMoreProducts}>
+              Load More
+            </button>
+          </div>
+          
+        )
+      ) : (
+        <div></div>
       )}
     </section>
   );
