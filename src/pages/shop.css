@@ -330,7 +330,8 @@ body {
 
 /*---------- MAIN IMAGE WITH ZOOMING STYLE ----------*/
 #mainImg {
-    width: 420px;
+    width: 650px;
+    min-height: 360px;
     height: auto;
     transition: transform 0.3s ease;
     transform-origin: 0 0;
