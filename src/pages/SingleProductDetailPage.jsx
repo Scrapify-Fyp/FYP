@@ -427,6 +427,8 @@ import prod01Full03 from "../img/prod-01-full (03).jpg";
 import prod01Full04 from "../img/prod-01-full (04).jpg";
 import Youmaylike from "../Components/product listing/Youmaylike";
 import "./shop.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { useLocation } from "react-router-dom";
@@ -439,7 +441,6 @@ const SingleProductDetailPage = (props) => {
   const dispath = useDispatch();
   const user = useSelector(selectUser);
   const location = useLocation();
-  // const history = useHistory();
   const data = location.state;
   console.log("Data from SingleProductPage: " , data);
 
@@ -504,9 +505,7 @@ const SingleProductDetailPage = (props) => {
       selectedSize,
       userId: user?.id,
     };
-    // console.log("🚀 ~ handleFormSubmit ~ cartData:", cartData);
     if (user?.id === product.vendorId) {
-      // alert("You can't add your own product to cart");
       toast.error("You can't add your own product to cart", {
         autoClose: 1500,
       });
@@ -522,8 +521,6 @@ const SingleProductDetailPage = (props) => {
     toast.success("Added to cart!", {
       autoClose: 1500,
     });
-
-    // history.push("/cart", { cartData });
   };
 
   const handleContract = () => {
@@ -579,7 +576,14 @@ const SingleProductDetailPage = (props) => {
           <div className="single-pro-details">
             <h6>{product?.brand}</h6>
             <h4>{product?.name}</h4>
-            <h2>Rs. {product?.price}</h2>
+            <div>
+              <h2>Rs. {product?.price}</h2>
+              <div className="star">
+                {Array.from({ length: product.rating }, (_, index) => (
+                  <FontAwesomeIcon key={index} icon={faStar} />
+                ))}
+              </div>
+            </div>
             <form onSubmit={handleFormSubmit}>
               <div className="siz-options">
                 {["S", "M", "L", "XL"].map((size) => (
@@ -632,6 +636,7 @@ const SingleProductDetailPage = (props) => {
               {product?.description}
               <br />
               <strong>Material: </strong> {product?.material} <br />
+              <strong>Texture: </strong> {product?.rating} <br />
               <strong>Rating: </strong> {product?.rating} <br />
               <strong>Color: </strong> {product?.color}
             </span>
