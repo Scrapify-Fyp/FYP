@@ -25,7 +25,13 @@ function Checkout() {
   console.log("🚀 ~ Checkout ~ cartProduct:", cartProducts);
   const [shipping, setShipping] = useState(5);
   const [subtotal, setSubtotal] = useState(0);
+  const [paymentMethod, setPaymentMethod] = useState(""); 
+  const [paymentpage, setPaymentpage] = useState(true); 
+  const [storeres, setstoreres] = useState(); 
+  const [selectmethod, setselectmethod] = useState(true); 
+  
 
+  
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -39,7 +45,44 @@ function Checkout() {
     phone: "",
     saveInfo: false,
   });
+  const handlePaymentMethodChange = (e) => {
+    setPaymentMethod(e.target.value);
+    if(e.target.value=="online"){
+      setselectmethod(false)
+    }
+    if(e.target.value=="cashOnDelivery"){
+      setselectmethod(true);
+    } if(e.target.value==""){
+      setselectmethod(false);
+    }
+  };
+  const handlecontinoueshipping=()=>{
+    if(!selectmethod)
+   {
+    alert("Please enter payment details!")
+   }
+    else{
 
+
+      navigate('/orderConfirmation', { state: { order: storeres } });
+
+    }
+  };
+  const [cardDetails, setCardDetails] = useState({
+    cardNumber: "",
+    expiryDate: "",
+    cvc: "",
+    cardHolderName: "",
+  });
+
+  const handleChangepay = (e) => {
+    const { name, value } = e.target;
+    setCardDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+    // console.log("cardDetails:" , cardDetails)
+  };
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -76,7 +119,7 @@ function Checkout() {
       setNote(location.state.note);
     }
 
-    console.log("note: " , note);
+    // console.log("note: " , note);
 
 
   }, [cartProducts , location.state]);
@@ -114,15 +157,15 @@ function Checkout() {
       shipping,
       total: subtotal + shipping
     };
-    console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
+    // console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
 
     try {
       const response = await axios.post('http://localhost:3002/orders', orderData);
       if (response.status === 201) {
         // history.push('/order-confirmation', { order: response.data });
-        console.log("response",response);
-        // dispatch(emptyCart);
-        navigate('/orderConfirmation', { state: { order: response.data } });
+        // console.log("response",response);
+        setstoreres(response.data);
+        setPaymentpage(false);
       } else {
         console.error('Failed to create order. Please try again.');
       }
@@ -144,7 +187,9 @@ function Checkout() {
         }}
       >
         {/* Left Section */}
-        <div
+       {paymentpage? 
+       (
+       <div
           style={{
             flex: 2,
             marginRight: "20px",
@@ -453,6 +498,7 @@ function Checkout() {
                 />
               </div>
             </div>
+
             <label
               htmlFor="saveInfo"
               style={{
@@ -461,6 +507,7 @@ function Checkout() {
                 margin: "10px 0",
               }}
             >
+              
               <input
                 type="checkbox"
                 id="saveInfo"
@@ -509,6 +556,191 @@ function Checkout() {
             </div>
           </form>
         </div>
+        ):( 
+        <div
+          style={{
+            flex: 2,
+            marginRight: "20px",
+            backgroundColor: "white",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          <h2
+            style={{
+              color: "#666",
+              marginBottom: "20px",
+              textAlign: "center",
+              fontFamily: "'Roboto', sans-serif",
+            }}
+          >
+            Payment Method
+          </h2>
+          <div style={{ marginBottom: "20px" }}>
+            <select
+              id="paymentMethod"
+              name="paymentMethod"
+              value={paymentMethod}
+              onChange={handlePaymentMethodChange}
+              style={{
+                padding: "10px",
+                fontSize: "16px",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+              }}
+            >
+              <option value="">Select Payment Method</option>
+              <option value="online">Pay Online (Stripe)</option>
+              <option value="cashOnDelivery">Cash on Delivery</option>
+            </select>
+          </div>
+          {paymentMethod === "online" && <div
+      style={{
+        backgroundColor: "white",
+        padding: "20px",
+        borderRadius: "10px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      <label
+        htmlFor="cardNumber"
+        style={{ display: "block", marginBottom: "10px", fontWeight: "bold" }}
+      >
+        Card Number
+      </label>
+      <input
+        type="text"
+        id="cardNumber"
+        name="cardNumber"
+        value={cardDetails.cardNumber}
+        onChange={handleChangepay}
+        placeholder="Enter card number"
+        style={{
+          width: "100%",
+          padding: "12px",
+          marginBottom: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+        }}
+      />
+
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ flex: 1, marginRight: "10px" }}>
+          <label
+            htmlFor="expiryDate"
+            style={{
+              display: "block",
+              marginBottom: "10px",
+              fontWeight: "bold",
+            }}
+          >
+            Expiry Date
+          </label>
+          <input
+            type="text"
+            id="expiryDate"
+            name="expiryDate"
+            value={cardDetails.expiryDate}
+            onChange={handleChangepay}
+            placeholder="MM/YY"
+            style={{
+              width: "100%",
+              padding: "12px",
+              marginBottom: "20px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+            }}
+          />
+        </div>
+        <div style={{ flex: 1 }}>
+          <label
+            htmlFor="cvc"
+            style={{
+              display: "block",
+              marginBottom: "10px",
+              fontWeight: "bold",
+            }}
+          >
+            CVC
+          </label>
+          <input
+            type="text"
+            id="cvc"
+            name="cvc"
+            value={cardDetails.cvc}
+            onChange={handleChangepay}
+            placeholder="CVC"
+            style={{
+              width: "100%",
+              padding: "12px",
+              marginBottom: "20px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+            }}
+          />
+        </div>
+      </div>
+
+      <label
+        htmlFor="cardHolderName"
+        style={{ display: "block", marginBottom: "10px", fontWeight: "bold" }}
+      >
+        Cardholder Name
+      </label>
+      <input
+        type="text"
+        id="cardHolderName"
+        name="cardHolderName"
+        value={cardDetails.cardHolderName}
+        onChange={handleChangepay}
+        placeholder="Enter cardholder name"
+        style={{
+          width: "100%",
+          padding: "12px",
+          marginBottom: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+        }}
+      />
+    </div>}
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <NavLink to="/Cart">
+                <button
+                  type="button"
+                  style={{
+                    backgroundColor: "#007bff",
+                    color: "white",
+                    padding: "12px 20px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    marginTop: "20px",
+                  }}
+                >
+                  Return to Cart
+                </button>
+              </NavLink>
+              {/* <NavLink > */}
+                <button
+                  type="button"
+                  onClick={handlecontinoueshipping}
+                  style={{
+                    backgroundColor: "#28a745",
+                    color: "white",
+                    padding: "12px 20px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    marginTop: "20px",
+                  }}
+                >
+                  Continue to Shipping
+                </button>
+
+            </div>
+        </div>
+        )}
 
         {/* Right Section */}
         {/* <div
@@ -598,7 +830,7 @@ function Checkout() {
           </h3>
           {cartProducts.map((cartProduct) => (
             <div
-              key={cartProduct?.product?.id} // Assuming each product has a unique ID
+              key={cartProduct?.product?.id}  
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -705,5 +937,3 @@ function Checkout() {
 }
 
 export default Checkout;
-
-//
