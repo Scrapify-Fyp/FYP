@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import img from "../img/product.jpg";
+import {loadStripe} from '@stripe/stripe-js';
+import {
+  PaymentElement,
+  Elements,
+  useStripe,
+  useElements,
+} from '@stripe/react-stripe-js';
 import Navbar from "../Components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { emptyCart, selectCartItems } from "../redux/cart/cartSlice";
@@ -30,8 +36,6 @@ function Checkout() {
   const [storeres, setstoreres] = useState(); 
   const [selectmethod, setselectmethod] = useState(true); 
   
-
-  
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -47,42 +51,45 @@ function Checkout() {
   });
   const handlePaymentMethodChange = (e) => {
     setPaymentMethod(e.target.value);
-    if(e.target.value=="online"){
+    if(e.target.value==="online"){
       setselectmethod(false)
     }
-    if(e.target.value=="cashOnDelivery"){
+    if(e.target.value==="cashOnDelivery"){
       setselectmethod(true);
-    } if(e.target.value==""){
-      setselectmethod(false);
+    } if(e.target.value===""){
+      setselectmethod(true);
     }
   };
+const makepatments=async()=>{
+   const Stripe = await loadStripe("pk_test_51PbjfgI6d1FWRgWEQAFPEi01hM1UT7SUeSKyrli1Mq2dJtWb6Pa7Jh9IKYbTKV7JP2udUGn4eFNZthHzD1lYfwxy00fl4lgki3")
+  console.log(cartProducts);
+   try {
+    const response = await axios.post('http://localhost:3002/create-checkout-session', { products: cartProducts, order: storeres });
+   const session = await response.data;
+    const result= Stripe.redirectToCheckout({
+      sessionId:session.id
+    });
+    
+    if (result.error) {
+      console.log("Payment page error", result.error);
+    }
+
+  } catch (err) {
+    console.error('An error occurred. Please try again.', err);
+  }
+};
+
   const handlecontinoueshipping=()=>{
     if(!selectmethod)
    {
-    alert("Please enter payment details!")
+    // alert("Please enter payment details!")
+    makepatments();
    }
     else{
-
-
-      navigate('/orderConfirmation', { state: { order: storeres } });
-
+      navigate('/orderConfirmationcash', { state: { order: storeres } });
     }
   };
-  const [cardDetails, setCardDetails] = useState({
-    cardNumber: "",
-    expiryDate: "",
-    cvc: "",
-    cardHolderName: "",
-  });
-
-  const handleChangepay = (e) => {
-    const { name, value } = e.target;
-    setCardDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value,
-    }));
-    // console.log("cardDetails:" , cardDetails)
-  };
+ 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -92,14 +99,6 @@ function Checkout() {
 
     // console.log("FormData:" , formData)
   };
-
-  // const product = {
-  //   name: "Handi Crafts DIY Ideas",
-  //   price: 25,
-  //   quantity: 3,
-  //   image: img,
-  // };
-
   useEffect(() => {
     const newSubtotal = cartProducts.reduce(
       (total, cartProduct) =>
@@ -131,7 +130,7 @@ function Checkout() {
 
   const handleCheckout = async () => {
     const orderData = {
-      userID: cartProducts[0]?.userId, // Replace with actual user ID
+      userID: cartProducts[0]?.userId, 
       products: cartProducts.map(cartProduct => ({
         productID: cartProduct.product._id,
         name: cartProduct.product.name,
@@ -176,6 +175,7 @@ function Checkout() {
 
   return (
     <>
+
       <Navbar />
       <div
         style={{
@@ -595,115 +595,6 @@ function Checkout() {
               <option value="cashOnDelivery">Cash on Delivery</option>
             </select>
           </div>
-          {paymentMethod === "online" && <div
-      style={{
-        backgroundColor: "white",
-        padding: "20px",
-        borderRadius: "10px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <label
-        htmlFor="cardNumber"
-        style={{ display: "block", marginBottom: "10px", fontWeight: "bold" }}
-      >
-        Card Number
-      </label>
-      <input
-        type="text"
-        id="cardNumber"
-        name="cardNumber"
-        value={cardDetails.cardNumber}
-        onChange={handleChangepay}
-        placeholder="Enter card number"
-        style={{
-          width: "100%",
-          padding: "12px",
-          marginBottom: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-        }}
-      />
-
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div style={{ flex: 1, marginRight: "10px" }}>
-          <label
-            htmlFor="expiryDate"
-            style={{
-              display: "block",
-              marginBottom: "10px",
-              fontWeight: "bold",
-            }}
-          >
-            Expiry Date
-          </label>
-          <input
-            type="text"
-            id="expiryDate"
-            name="expiryDate"
-            value={cardDetails.expiryDate}
-            onChange={handleChangepay}
-            placeholder="MM/YY"
-            style={{
-              width: "100%",
-              padding: "12px",
-              marginBottom: "20px",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-            }}
-          />
-        </div>
-        <div style={{ flex: 1 }}>
-          <label
-            htmlFor="cvc"
-            style={{
-              display: "block",
-              marginBottom: "10px",
-              fontWeight: "bold",
-            }}
-          >
-            CVC
-          </label>
-          <input
-            type="text"
-            id="cvc"
-            name="cvc"
-            value={cardDetails.cvc}
-            onChange={handleChangepay}
-            placeholder="CVC"
-            style={{
-              width: "100%",
-              padding: "12px",
-              marginBottom: "20px",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-            }}
-          />
-        </div>
-      </div>
-
-      <label
-        htmlFor="cardHolderName"
-        style={{ display: "block", marginBottom: "10px", fontWeight: "bold" }}
-      >
-        Cardholder Name
-      </label>
-      <input
-        type="text"
-        id="cardHolderName"
-        name="cardHolderName"
-        value={cardDetails.cardHolderName}
-        onChange={handleChangepay}
-        placeholder="Enter cardholder name"
-        style={{
-          width: "100%",
-          padding: "12px",
-          marginBottom: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-        }}
-      />
-    </div>}
     <div style={{ display: "flex", justifyContent: "space-between" }}>
               <NavLink to="/Cart">
                 <button

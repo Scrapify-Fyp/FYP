@@ -34,6 +34,7 @@ import Checkout from "./pages/Checkout";
 import LatestProduct from "./pages/LatestProduct";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import ForgotPassword from "./Components/Forgetpassword";
+import OrderConfirmationPagecash from "./pages/OrderConfirmationPagecash";
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -132,7 +133,14 @@ const App = () => {
               <OrderConfirmationPage />
             </ProtectedRoute>
           }
-        />
+        /><Route
+        path="/orderConfirmationcash"
+        element={
+          <ProtectedRoute>
+            <OrderConfirmationPagecash />
+          </ProtectedRoute>
+        }
+      />
       </Routes>
     </BrowserRouter>
   );
