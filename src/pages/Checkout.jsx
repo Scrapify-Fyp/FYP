@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import img from "../img/product.jpg";
+import {loadStripe} from '@stripe/stripe-js';
+import {
+  PaymentElement,
+  Elements,
+  useStripe,
+  useElements,
+} from '@stripe/react-stripe-js';
 import Navbar from "../Components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { emptyCart, selectCartItems } from "../redux/cart/cartSlice";
@@ -25,7 +31,11 @@ function Checkout() {
   console.log("🚀 ~ Checkout ~ cartProduct:", cartProducts);
   const [shipping, setShipping] = useState(5);
   const [subtotal, setSubtotal] = useState(0);
-
+  const [paymentMethod, setPaymentMethod] = useState(""); 
+  const [paymentpage, setPaymentpage] = useState(true); 
+  const [storeres, setstoreres] = useState(); 
+  const [selectmethod, setselectmethod] = useState(true); 
+  
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -39,7 +49,47 @@ function Checkout() {
     phone: "",
     saveInfo: false,
   });
+  const handlePaymentMethodChange = (e) => {
+    setPaymentMethod(e.target.value);
+    if(e.target.value==="online"){
+      setselectmethod(false)
+    }
+    if(e.target.value==="cashOnDelivery"){
+      setselectmethod(true);
+    } if(e.target.value===""){
+      setselectmethod(true);
+    }
+  };
+const makepatments=async()=>{
+   const Stripe = await loadStripe("pk_test_51PbjfgI6d1FWRgWEQAFPEi01hM1UT7SUeSKyrli1Mq2dJtWb6Pa7Jh9IKYbTKV7JP2udUGn4eFNZthHzD1lYfwxy00fl4lgki3")
+  console.log(cartProducts);
+   try {
+    const response = await axios.post('http://localhost:3002/create-checkout-session', { products: cartProducts, order: storeres });
+   const session = await response.data;
+    const result= Stripe.redirectToCheckout({
+      sessionId:session.id
+    });
+    
+    if (result.error) {
+      console.log("Payment page error", result.error);
+    }
 
+  } catch (err) {
+    console.error('An error occurred. Please try again.', err);
+  }
+};
+
+  const handlecontinoueshipping=()=>{
+    if(!selectmethod)
+   {
+    // alert("Please enter payment details!")
+    makepatments();
+   }
+    else{
+      navigate('/orderConfirmationcash', { state: { order: storeres } });
+    }
+  };
+ 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -49,14 +99,6 @@ function Checkout() {
 
     // console.log("FormData:" , formData)
   };
-
-  // const product = {
-  //   name: "Handi Crafts DIY Ideas",
-  //   price: 25,
-  //   quantity: 3,
-  //   image: img,
-  // };
-
   useEffect(() => {
     const newSubtotal = cartProducts.reduce(
       (total, cartProduct) =>
@@ -76,7 +118,7 @@ function Checkout() {
       setNote(location.state.note);
     }
 
-    console.log("note: " , note);
+    // console.log("note: " , note);
 
 
   }, [cartProducts , location.state]);
@@ -88,7 +130,7 @@ function Checkout() {
 
   const handleCheckout = async () => {
     const orderData = {
-      userID: cartProducts[0]?.userId, // Replace with actual user ID
+      userID: cartProducts[0]?.userId, 
       products: cartProducts.map(cartProduct => ({
         productID: cartProduct.product._id,
         name: cartProduct.product.name,
@@ -114,15 +156,15 @@ function Checkout() {
       shipping,
       total: subtotal + shipping
     };
-    console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
+    // console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
 
     try {
       const response = await axios.post('http://localhost:3002/orders', orderData);
       if (response.status === 201) {
         // history.push('/order-confirmation', { order: response.data });
-        console.log("response",response);
-        // dispatch(emptyCart);
-        navigate('/orderConfirmation', { state: { order: response.data } });
+        // console.log("response",response);
+        setstoreres(response.data);
+        setPaymentpage(false);
       } else {
         console.error('Failed to create order. Please try again.');
       }
@@ -133,6 +175,7 @@ function Checkout() {
 
   return (
     <>
+
       <Navbar />
       <div
         style={{
@@ -144,7 +187,9 @@ function Checkout() {
         }}
       >
         {/* Left Section */}
-        <div
+       {paymentpage? 
+       (
+       <div
           style={{
             flex: 2,
             marginRight: "20px",
@@ -453,6 +498,7 @@ function Checkout() {
                 />
               </div>
             </div>
+
             <label
               htmlFor="saveInfo"
               style={{
@@ -461,6 +507,7 @@ function Checkout() {
                 margin: "10px 0",
               }}
             >
+              
               <input
                 type="checkbox"
                 id="saveInfo"
@@ -509,6 +556,82 @@ function Checkout() {
             </div>
           </form>
         </div>
+        ):( 
+        <div
+          style={{
+            flex: 2,
+            marginRight: "20px",
+            backgroundColor: "white",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          <h2
+            style={{
+              color: "#666",
+              marginBottom: "20px",
+              textAlign: "center",
+              fontFamily: "'Roboto', sans-serif",
+            }}
+          >
+            Payment Method
+          </h2>
+          <div style={{ marginBottom: "20px" }}>
+            <select
+              id="paymentMethod"
+              name="paymentMethod"
+              value={paymentMethod}
+              onChange={handlePaymentMethodChange}
+              style={{
+                padding: "10px",
+                fontSize: "16px",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+              }}
+            >
+              <option value="">Select Payment Method</option>
+              <option value="online">Pay Online (Stripe)</option>
+              <option value="cashOnDelivery">Cash on Delivery</option>
+            </select>
+          </div>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <NavLink to="/Cart">
+                <button
+                  type="button"
+                  style={{
+                    backgroundColor: "#007bff",
+                    color: "white",
+                    padding: "12px 20px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    marginTop: "20px",
+                  }}
+                >
+                  Return to Cart
+                </button>
+              </NavLink>
+              {/* <NavLink > */}
+                <button
+                  type="button"
+                  onClick={handlecontinoueshipping}
+                  style={{
+                    backgroundColor: "#28a745",
+                    color: "white",
+                    padding: "12px 20px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    marginTop: "20px",
+                  }}
+                >
+                  Continue to Shipping
+                </button>
+
+            </div>
+        </div>
+        )}
 
         {/* Right Section */}
         {/* <div
@@ -598,7 +721,7 @@ function Checkout() {
           </h3>
           {cartProducts.map((cartProduct) => (
             <div
-              key={cartProduct?.product?.id} // Assuming each product has a unique ID
+              key={cartProduct?.product?.id}  
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -705,5 +828,3 @@ function Checkout() {
 }
 
 export default Checkout;
-
-//
