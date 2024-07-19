@@ -915,7 +915,7 @@ export default function ScrapProducts() {
     };
   
     const redirectToProductDetail = (product) => {
-      navigate('/ScrapyardSingleProductPage', { state: product });
+      navigate('/ScrapProductDetail', { state: product });
     };
   
     return (
@@ -953,4 +953,4 @@ export default function ScrapProducts() {
         )}
       </section>
     );
-  }
+}

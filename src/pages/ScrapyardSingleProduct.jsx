@@ -11,7 +11,7 @@ import { addToCart } from "../redux/cart/cartSlice";
 import { selectUser } from "../redux/user/userSlice";
 import { toast } from "react-toastify";
 
-const SingleProductDetailPage = (props) => {
+const ScrapyardSingleProduct = (props) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const location = useLocation();
@@ -25,7 +25,9 @@ const SingleProductDetailPage = (props) => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+    console.log("Data from SingleProductPage: ", data); // Debug log
+    setProduct(data);
+  }, [data]);
 
   const handleIncreaseQuantity = () => {
     if (quantity < maxQuantity) {
@@ -102,7 +104,7 @@ const SingleProductDetailPage = (props) => {
   };
 
   // Ensure product.images is an array
-  const productImages = product?.images || [product?.imageURL];
+  const productImages = Array.isArray(product?.images) && product?.images.length > 0 ? product.images : [product?.imageURL];
 
   return (
     <>
@@ -145,70 +147,33 @@ const SingleProductDetailPage = (props) => {
           </div>
 
           <div className="single-pro-details">
-            <h6>{product?.brand}</h6>
-            <h4>{product?.name}</h4>
+            <h6>{product?.brand ?? "Unknown Brand"}</h6>
+            <h4>{product?.name ?? "Unknown Product"}</h4>
             <div>
-              <h2>Rs. {product?.price}</h2>
+              <h2>Rs. {product?.price ?? "N/A"}</h2>
               <div className="star">
-                {Array.from({ length: product.rating }, (_, index) => (
+                {Array.from({ length: product.rating || 0 }, (_, index) => (
                   <FontAwesomeIcon key={index} icon={faStar} />
                 ))}
               </div>
             </div>
             <form onSubmit={handleFormSubmit}>
-              {/* <div className="siz-options">
-                {["S", "M", "L", "XL"].map((size) => (
-                  <div className="size-item" key={size}>
-                    <input
-                      type="radio"
-                      id={size}
-                      name="size"
-                      className="option-select"
-                      value={size}
-                      checked={selectedSize === size}
-                      onChange={(e) => setSelectedSize(e.target.value)}
-                    />
-                    <label htmlFor={size} className="edit-size-checked">
-                      {size}
-                    </label>
-                  </div>
-                ))}
-              </div> */}
+              {/* Size selection (commented out for now) */}
               <div className="quantity-wrapper">
-                <button
-                  type="button"
-                  className="quantity-button"
-                  onClick={handleDecreaseQuantity}
-                >
-                  -
-                </button>
+                <button type="button" className="quantity-button" onClick={handleDecreaseQuantity}>-</button>
                 <input className="quantity" value={quantity} readOnly />
-                <button
-                  type="button"
-                  className="quantity-button"
-                  onClick={handleIncreaseQuantity}
-                >
-                  +
-                </button>
-                <button type="submit" className="normal">
-                  Add to Cart
-                </button>
-                <button
-                  type="button"
-                  onClick={handleContract}
-                  className="normal"
-                >
-                  Contract
-                </button>
+                <button type="button" className="quantity-button" onClick={handleIncreaseQuantity}>+</button>
+                <button type="submit" className="normal">Add to Cart</button>
+                <button type="button" onClick={handleContract} className="normal">Contract</button>
               </div>
             </form>
             <h4>Product Details</h4>
             <span>
-              {product?.description}
+              {product?.description ?? "No description available."}
               <br />
-              <strong>Material: </strong> {product?.material} <br />
-              <strong>Texture: </strong> {product?.rating} <br />
-              <strong>Color: </strong> {product?.color}
+              <strong>Material: </strong> {product?.material ?? "N/A"} <br />
+              <strong>Texture: </strong> {product?.texture ?? "N/A"} <br />
+              <strong>Color: </strong> {product?.color ?? "N/A"}
             </span>
           </div>
         </section>
@@ -219,4 +184,4 @@ const SingleProductDetailPage = (props) => {
   );
 };
 
-export default SingleProductDetailPage;
+export default ScrapyardSingleProduct;
