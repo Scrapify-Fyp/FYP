@@ -1,8 +1,8 @@
-
-import React ,{useState}from 'react';
+import React, { useState } from 'react';
 import './productlisting.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faCartPlus} from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
+import { faStar, faCartPlus } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
+import { useNavigate } from 'react-router-dom';
 import img1 from "../../img/Scrap Images/scrap-prod-01.jpg";
 import img2 from "../../img/prod-13.jpg";
 import img3 from "../../img/prod-6.jpg";
@@ -908,42 +908,49 @@ const Foryouproducts = [
 ];
 export default function ScrapProducts() {
     const [visibleProducts, setVisibleProducts] = useState(12); // Initial number of visible products
-
+    const navigate = useNavigate();
+  
     const loadMoreProducts = () => {
-        setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 12); // Increase visible products by 12
+      setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 12); // Increase visible products by 12
     };
-    const redirectToProductDetail = () => {
-        window.location.href = '/ProductDetail';
+  
+    const redirectToProductDetail = (product) => {
+      navigate('/ScrapyardSingleProductPage', { state: product });
     };
-  return (
-    <>
-                  <section id="product1" className="section-p1">
-                <div className="pro-container">
-                    {/* Map over products and render each product */}
-                    {Foryouproducts.slice(0, visibleProducts).map(product => (
-                        <div className="pro" key={product.id}>
-                            <img onClick={redirectToProductDetail} src={product.imgSrc} alt={`Product ${product.id}`} />
-                            <div onClick={redirectToProductDetail} className="des">
-                                <span>{product.Brand}</span>
-                                <h5>{product.Name}</h5>
-                                <div className="star">
-                                    {/* Render star icons based on rating */}
-                                    {Array.from({ length: product.Ratings }, (_, index) => (
-                                        <FontAwesomeIcon key={index} icon={faStar} />
-                                    ))}
-                                </div>
-                                <h4>{product.Price}</h4>
-                            </div>
-                            <div className="cart"><a href="#"><FontAwesomeIcon icon={faCartPlus} /></a></div>
-                        </div>
-                    ))}
+  
+    return (
+      <section id="product1" className="section-p1">
+        <div className="pro-container">
+          {/* Map over products and render each product */}
+          {Foryouproducts.slice(0, visibleProducts).map(product => (
+            <div className="pro" key={product.id}>
+              <img
+                onClick={() => redirectToProductDetail(product)}
+                src={product.imgSrc}
+                alt={`Product ${product.id}`}
+              />
+              <div onClick={() => redirectToProductDetail(product)} className="des">
+                <span>{product.Brand}</span>
+                <h5>{product.Name}</h5>
+                <div className="star">
+                  {/* Render star icons based on rating */}
+                  {Array.from({ length: product.Ratings }, (_, index) => (
+                    <FontAwesomeIcon key={index} icon={faStar} />
+                  ))}
                 </div>
-                {Foryouproducts.length > visibleProducts && (
-                    <div >
-                        <button className="load-more" onClick={loadMoreProducts}>Load More</button>
-                    </div>
-                )}
-            </section>
-    </>
-  )
-}
+                <h4>{product.Price}</h4>
+              </div>
+              <div className="cart">
+                <a href="#"><FontAwesomeIcon icon={faCartPlus} /></a>
+              </div>
+            </div>
+          ))}
+        </div>
+        {Foryouproducts.length > visibleProducts && (
+          <div>
+            <button className="load-more" onClick={loadMoreProducts}>Load More</button>
+          </div>
+        )}
+      </section>
+    );
+  }

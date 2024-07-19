@@ -867,7 +867,6 @@ const SingleProductDetailPage = (props) => {
               <br />
               <strong>Material: </strong> {product?.material} <br />
               <strong>Texture: </strong> {product?.rating} <br />
-              <strong>Rating: </strong> {product?.rating} <br />
               <strong>Color: </strong> {product?.color}
             </span>
           </div>

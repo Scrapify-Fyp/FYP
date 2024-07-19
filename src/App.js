@@ -35,6 +35,7 @@ import LatestProduct from "./pages/LatestProduct";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import ForgotPassword from "./Components/Forgetpassword";
 import OrderConfirmationPagecash from "./pages/OrderConfirmationPagecash";
+import ScrapyardSingleProductPage from "./pages/ScrapyardSingleProductPage";
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -117,6 +118,7 @@ const App = () => {
         <Route path="/Changepassword" element={<Changepassword />} />
         <Route path="/Helpnsupport" element={<Helpnsupport />} />
         <Route path="/Singleshope" element={<Singleshope />} />
+        <Route path="ScrapyardSingleProductPage" element={<ScrapyardSingleProductPage />} />
         <Route
           path="/Checkout"
           element={
