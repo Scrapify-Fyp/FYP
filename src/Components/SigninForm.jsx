@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Spinner } from "react-bootstrap";
@@ -41,6 +41,7 @@ export default function Login() {
       );
 
       if (response.status === 200) {
+        console.log("Resposne: ", response);
         dispatch(setUser(response.data.user));
         navigate("/Profile");
         toast.success("User Login successfully", {
@@ -155,12 +156,7 @@ export default function Login() {
         </div>
 
         <div className="d-grid gap-2">
-          <Button
-            variant="danger"
-            size="md"
-            type="submit"
-            disabled={isLoading}
-          >
+          <Button variant="danger" size="md" type="submit" disabled={isLoading}>
             {isLoading ? <Spinner animation="border" size="sm" /> : "Login"}
           </Button>
         </div>

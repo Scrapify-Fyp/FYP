@@ -10,6 +10,8 @@ import "./sidebar.css";
 
 export default function Sidebar(props) {
   const user = auth();
+  // console.log("🚀 ~ Sidebar ~ user:", user)
+  
   const [userData, setUserData] = useState(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
@@ -19,7 +21,7 @@ export default function Sidebar(props) {
 
   const fetchData = () => {
     axios
-      .get(`http://localhost:3002/users/${user.id}`)
+      .get(`http://localhost:3002/users/${user?._id}`)
       .then((response) => {
         const userDataFromDb = response.data;
         setUserData(userDataFromDb);

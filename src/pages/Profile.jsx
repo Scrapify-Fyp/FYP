@@ -8,9 +8,13 @@ import { selectUser } from "../redux/user/userSlice";
 import { useEffect } from "react";
 import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { auth } from "../hooks/auth";
 export default function Profile() {
   const Reduxuser = useSelector(selectUser);
-  const [user, setUser] = useState(Reduxuser);
+  // console.log("🚀 ~ Profile ~ Reduxuser:", Reduxuser);
+  const authUser = auth();
+
+  const [user, setUser] = useState(authUser);
   const navigate = useNavigate();
   const starCounts = {
     1: 50,
@@ -56,10 +60,10 @@ export default function Profile() {
   const fun = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3002/users/${Reduxuser?.id}`
+        `http://localhost:3002/users/${user?._id}`
       );
       setUser(response.data);
-      console.log("🚀 ~ fun ~ response.data:", response.data);
+      // console.log("🚀 ~ fun ~ response.data:", response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
     }

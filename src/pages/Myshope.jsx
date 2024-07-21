@@ -12,7 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function Myshope() {
   const user = auth();
-  const userId = user.id;
+  const userId = user._id;
   const [shop, setShop] = useState(null);
   const [isShop, setIsShop] = useState(false);
   const [loading, setLoading] = useState(true);
