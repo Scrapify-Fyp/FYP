@@ -341,7 +341,7 @@ export default function Analytics() {
   };
 
   useEffect(() => {
-    if (analyticsData) {
+    if (analyticsData.product) {
       getOrdersOfPredictedProduct(analyticsData?.product?._id)
         .then((orders) => {
           setordersForPredictedProduct(orders?.length || 0);
