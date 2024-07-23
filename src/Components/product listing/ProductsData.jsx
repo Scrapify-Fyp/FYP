@@ -817,479 +817,1354 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    const productsja = [
-      {
-        "vendorId": "66502428d507b3af448c541b",
-        "name": "Vase Glass",
-        "description": "Elegant glass vase for your floral arrangements",
-        "price": 25.99,
-        "categories": [
-          {
-            "category": "Physical",
-            "subcategory": "Home Decor"
-          }
-        ],
-        "stockQuantity": 50,
-        "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/e305a5733aa5c5ea282bde57ef92ae2f",
-          "https://asset.cloudinary.com/deezvvehs/2df525464247bb53f6ad31dba2e426e9",
-          "https://asset.cloudinary.com/deezvvehs/db67e645645b69339f7c9f53bf01afd2",
-          "https://asset.cloudinary.com/deezvvehs/9ab6aeb316a0c6c4203d0abfb38d2d84",
-          "https://asset.cloudinary.com/deezvvehs/9ab6aeb316a0c6c4203d0abfb38d2d84"
-        ],
-        "brand": "GlassyCraft",
-        "weight": "500g",
-        "dimensions": {
-          "length": 20,
-          "width": 20,
-          "height": 30
-        },
-        "color": "See green",
-        "material": "Glass",
-        "keywords": ["Vase", "Glass", "Home Decor"],
-        "rating": 4.8,
-        "relatedProducts": ["66588f423da511978f7c7a16", "66588ff93da511978f7c7a30", "66600018c8f5bd5a171c7c3c"],
-        "discounts": "15",
-        "availabilityStatus": "available",
-        "review": {
-          "impressions": 1200,
-          "clicks": 850,
-          "likes": 200,
-          "comments": [
-            {"comment": "Beautiful vase!", "user_id": "66502428d507b3af448c541b"},
-            {"comment": "Very elegant.", "user_id": "66644304733f50dd0c6f73fe"},
-            {"comment": "Love the design.", "user_id": "669a94583696499bfec66f05"}
-          ],
-          "favorites": 300,
-          "user_ratings": 4.8,
-          "time_on_page": "4 minutes"
-        }
-      },
-      {
-        "vendorId": "66588f423da511978f7c7a16",
-        "name": "Elegant Wall Tapestry",
-        "description": "A beautiful wall tapestry to enhance the aesthetics of your home decor.",
-        "price": 79.99,
-        "categories": [
-          {
-            "category": "Physical",
-            "subcategory": "Home Decor"
-          }
-        ],
-        "stockQuantity": 50,
-        "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/b53b276220047365168a43816504de93",
-          "https://asset.cloudinary.com/deezvvehs/20b3962704f1529a52e55dc931d41a3e",
-          "https://asset.cloudinary.com/deezvvehs/a08f6e3e1e923c21e86368f9f466d935",
-          "https://asset.cloudinary.com/deezvvehs/742a3ce0ddb42dd96d80b9da7947d6c6",
-          "https://asset.cloudinary.com/deezvvehs/98906b8d60dcde3e1e4c15ec3dcc6bc8"
-        ],
-        "brand": "Home Elegance",
-        "weight": "300g",
-        "dimensions": {
-          "length": 120,
-          "width": 80,
-          "height": 2
-        },
-        "color": "Multicolor",
-        "material": "Fabric",
-        "keywords": ["Wall Hanging", "Tapestry", "Home Decor"],
-        "rating": 4.7,
-        "relatedProducts": ["66502428d507b3af448c541b", "66588ff93da511978f7c7a30", "66600018c8f5bd5a171c7c3c"],
-        "discounts": "25",
-        "availabilityStatus": "available",
-        "review": {
-          "impressions": 900,
-          "clicks": 600,
-          "likes": 180,
-          "comments": [
-            {"comment": "Looks amazing on the wall!", "user_id": "66588f423da511978f7c7a16"},
-            {"comment": "Great quality.", "user_id": "669f53e6255d4484feb5b1a1"},
-            {"comment": "Very vibrant colors.", "user_id": "668b080b782f92112bb7d8bf"}
-          ],
-          "favorites": 250,
-          "user_ratings": 4.7,
-          "time_on_page": "5 minutes"
-        }
-      },
-      {
-        "vendorId": "66588ff93da511978f7c7a30",
-        "name": "Smartwatch",
-        "description": "Multi-functional smartwatch with fitness tracking and notifications.",
-        "price": 149.99,
-        "categories": [
-          {
-            "category": "Physical",
-            "subcategory": "Electronics"
-          }
-        ],
-        "stockQuantity": 100,
-        "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/442ecb79cd89558ecdcdd97981180c3d",
-          "https://asset.cloudinary.com/deezvvehs/d38a3007b0ea77652b5a36c0c4fc5ef7",
-          "https://asset.cloudinary.com/deezvvehs/9cca7a3d12cdce78991e88fe9126b111",
-          "https://asset.cloudinary.com/deezvvehs/d33f7959828b8de6d4627fb0bf9eb3ed",
-          "https://asset.cloudinary.com/deezvvehs/621a83faddfdc98a22c4f51c0d476db4"
-        ],
-        "brand": "TechWear",
-        "weight": "50g",
-        "dimensions": {
-          "length": 45,
-          "width": 45,
-          "height": 10
-        },
-        "color": "Black",
-        "material": "Plastic",
-        "keywords": ["Smartwatch", "Fitness", "Electronics"],
-        "rating": 4.5,
-        "relatedProducts": ["669d12840375a30a89376673", "669f5532a981dd4f5cb8f351", "669f55f28e6844f176309141"],
-        "discounts": "10",
-        "availabilityStatus": "available",
-        "review": {
-          "impressions": 1500,
-          "clicks": 1000,
-          "likes": 300,
-          "comments": [
-            {"comment": "Great features for the price.", "user_id": "66588ff93da511978f7c7a30"},
-            {"comment": "Very useful for tracking workouts.", "user_id": "669d19290f672415aea2a52e"},
-            {"comment": "Battery life could be better.", "user_id": "669f511457bfd9427de96ff5"}
-          ],
-          "favorites": 400,
-          "user_ratings": 4.5,
-          "time_on_page": "6 minutes"
-        }
-      },
-      {
-        "vendorId": "66600018c8f5bd5a171c7c3c",
-        "name": "T-shirt",
-        "description": "Comfortable cotton t-shirt in assorted colors.",
-        "price": 19.99,
-        "categories": [
-          {
-            "category": "Physical",
-            "subcategory": "Clothing"
-          }
-        ],
-        "stockQuantity": 200,
-        "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/aef3372f7e6fe11dbfc10a6a69ce3b62",
-          "https://asset.cloudinary.com/deezvvehs/e04fea4b2d16a8d03c552f44cdd0bec7",
-          "https://asset.cloudinary.com/deezvvehs/7c6fbff7e933ab0bacacb24d5a210a61",
-          "https://asset.cloudinary.com/deezvvehs/6757afd0af63e817e768d74189fbec49",
-          "https://asset.cloudinary.com/deezvvehs/6757afd0af63e817e768d74189fbec49"
-        ],
-        "brand": "CottonWear",
-        "weight": "200g",
-        "dimensions": {
-          "length": 30,
-          "width": 25,
-          "height": 2
-        },
-        "color": "Various",
-        "material": "Cotton",
-        "keywords": ["T-shirt", "Clothing", "Casual"],
-        "rating": 4.3,
-        "relatedProducts": ["66502428d507b3af448c541b", "66588f423da511978f7c7a16", "66588ff93da511978f7c7a30"],
-        "discounts": "20",
-        "availabilityStatus": "available",
-        "review": {
-          "impressions": 2000,
-          "clicks": 1400,
-          "likes": 500,
-          "comments": [
-            {"comment": "Very comfortable to wear.", "user_id": "66600018c8f5bd5a171c7c3c"},
-            {"comment": "Good quality material.", "user_id": "668ccdeeac240ef4fe234ae9"},
-            {"comment": "Value for money.", "user_id": "669d12840375a30a89376673"}
-          ],
-          "favorites": 600,
-          "user_ratings": 4.3,
-          "time_on_page": "3 minutes"
-        }
-      },
-      {
-        "vendorId": "66644304733f50dd0c6f73fe",
-        "name": "Bluetooth Headphones",
-        "description": "High-quality Bluetooth headphones with noise cancellation.",
-        "price": 89.99,
-        "categories": [
-          {
-            "category": "Physical",
-            "subcategory": "Electronics"
-          }
-        ],
-        "stockQuantity": 75,
-        "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/1b8c3bbd8b71f7c93d5c64c943ba4159",
-          "https://asset.cloudinary.com/deezvvehs/2aef55bfbdbde4c393993372c430ed6d",
-          "https://asset.cloudinary.com/deezvvehs/3a8ae091ab2a2299b2071c7554b6c9f8",
-          "https://asset.cloudinary.com/deezvvehs/5d49fcfd9f8c18d98c25d781fa7c5102",
-          "https://asset.cloudinary.com/deezvvehs/4f5687f8c2c2c057823e39d9a7b6a460"
-        ],
-        "brand": "SoundPro",
-        "weight": "300g",
-        "dimensions": {
-          "length": 20,
-          "width": 15,
-          "height": 8
-        },
-        "color": "Black",
-        "material": "Plastic",
-        "keywords": ["Headphones", "Bluetooth", "Electronics"],
-        "rating": 4.6,
-        "relatedProducts": ["669f511457bfd9427de96ff5", "669d15a54d03518bbe179f40", "669f55f28e6844f176309141"],
-        "discounts": "30",
-        "availabilityStatus": "available",
-        "review": {
-          "impressions": 1000,
-          "clicks": 700,
-          "likes": 250,
-          "comments": [
-            {"comment": "Great sound quality.", "user_id": "66644304733f50dd0c6f73fe"},
-            {"comment": "Noise cancellation works well.", "user_id": "668ce4f230985f67e3ec5465"},
-            {"comment": "Comfortable to wear for long periods.", "user_id": "669f5532a981dd4f5cb8f351"}
-          ],
-          "favorites": 350,
-          "user_ratings": 4.6,
-          "time_on_page": "5 minutes"
-        }
-      }
-    ];
+    // const productsja = [
+    //   {
+    //     "vendorId": "66502428d507b3af448c541b",
+    //     "name": "Vase Glass",
+    //     "description": "Elegant glass vase for your floral arrangements",
+    //     "price": 25.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Home Decor"
+    //       }
+    //     ],
+    //     "stockQuantity": 50,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/e305a5733aa5c5ea282bde57ef92ae2f",
+    //       "https://asset.cloudinary.com/deezvvehs/2df525464247bb53f6ad31dba2e426e9",
+    //       "https://asset.cloudinary.com/deezvvehs/db67e645645b69339f7c9f53bf01afd2",
+    //       "https://asset.cloudinary.com/deezvvehs/9ab6aeb316a0c6c4203d0abfb38d2d84",
+    //       "https://asset.cloudinary.com/deezvvehs/9ab6aeb316a0c6c4203d0abfb38d2d84"
+    //     ],
+    //     "brand": "GlassyCraft",
+    //     "weight": "500g",
+    //     "dimensions": {
+    //       "length": 20,
+    //       "width": 20,
+    //       "height": 30
+    //     },
+    //     "color": "See green",
+    //     "material": "Glass",
+    //     "keywords": ["Vase", "Glass", "Home Decor"],
+    //     "rating": 4.8,
+    //     "relatedProducts": ["66588f423da511978f7c7a16", "66588ff93da511978f7c7a30", "66600018c8f5bd5a171c7c3c"],
+    //     "discounts": "15",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 1200,
+    //       "clicks": 850,
+    //       "likes": 200,
+    //       "comments": [
+    //         {"comment": "Beautiful vase!", "user_id": "66502428d507b3af448c541b"},
+    //         {"comment": "Very elegant.", "user_id": "66644304733f50dd0c6f73fe"},
+    //         {"comment": "Love the design.", "user_id": "669a94583696499bfec66f05"}
+    //       ],
+    //       "favorites": 300,
+    //       "user_ratings": 4.8,
+    //       "time_on_page": "4 minutes"
+    //     }
+    //   },
+    //   {
+    //     "vendorId": "66588f423da511978f7c7a16",
+    //     "name": "Elegant Wall Tapestry",
+    //     "description": "A beautiful wall tapestry to enhance the aesthetics of your home decor.",
+    //     "price": 79.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Home Decor"
+    //       }
+    //     ],
+    //     "stockQuantity": 50,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/b53b276220047365168a43816504de93",
+    //       "https://asset.cloudinary.com/deezvvehs/20b3962704f1529a52e55dc931d41a3e",
+    //       "https://asset.cloudinary.com/deezvvehs/a08f6e3e1e923c21e86368f9f466d935",
+    //       "https://asset.cloudinary.com/deezvvehs/742a3ce0ddb42dd96d80b9da7947d6c6",
+    //       "https://asset.cloudinary.com/deezvvehs/98906b8d60dcde3e1e4c15ec3dcc6bc8"
+    //     ],
+    //     "brand": "Home Elegance",
+    //     "weight": "300g",
+    //     "dimensions": {
+    //       "length": 120,
+    //       "width": 80,
+    //       "height": 2
+    //     },
+    //     "color": "Multicolor",
+    //     "material": "Fabric",
+    //     "keywords": ["Wall Hanging", "Tapestry", "Home Decor"],
+    //     "rating": 4.7,
+    //     "relatedProducts": ["66502428d507b3af448c541b", "66588ff93da511978f7c7a30", "66600018c8f5bd5a171c7c3c"],
+    //     "discounts": "25",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 900,
+    //       "clicks": 600,
+    //       "likes": 180,
+    //       "comments": [
+    //         {"comment": "Looks amazing on the wall!", "user_id": "66588f423da511978f7c7a16"},
+    //         {"comment": "Great quality.", "user_id": "669f53e6255d4484feb5b1a1"},
+    //         {"comment": "Very vibrant colors.", "user_id": "668b080b782f92112bb7d8bf"}
+    //       ],
+    //       "favorites": 250,
+    //       "user_ratings": 4.7,
+    //       "time_on_page": "5 minutes"
+    //     }
+    //   },
+    //   {
+    //     "vendorId": "66588ff93da511978f7c7a30",
+    //     "name": "Smartwatch",
+    //     "description": "Multi-functional smartwatch with fitness tracking and notifications.",
+    //     "price": 149.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Electronics"
+    //       }
+    //     ],
+    //     "stockQuantity": 100,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/442ecb79cd89558ecdcdd97981180c3d",
+    //       "https://asset.cloudinary.com/deezvvehs/d38a3007b0ea77652b5a36c0c4fc5ef7",
+    //       "https://asset.cloudinary.com/deezvvehs/9cca7a3d12cdce78991e88fe9126b111",
+    //       "https://asset.cloudinary.com/deezvvehs/d33f7959828b8de6d4627fb0bf9eb3ed",
+    //       "https://asset.cloudinary.com/deezvvehs/621a83faddfdc98a22c4f51c0d476db4"
+    //     ],
+    //     "brand": "TechWear",
+    //     "weight": "50g",
+    //     "dimensions": {
+    //       "length": 45,
+    //       "width": 45,
+    //       "height": 10
+    //     },
+    //     "color": "Black",
+    //     "material": "Plastic",
+    //     "keywords": ["Smartwatch", "Fitness", "Electronics"],
+    //     "rating": 4.5,
+    //     "relatedProducts": ["669d12840375a30a89376673", "669f5532a981dd4f5cb8f351", "669f55f28e6844f176309141"],
+    //     "discounts": "10",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 1500,
+    //       "clicks": 1000,
+    //       "likes": 300,
+    //       "comments": [
+    //         {"comment": "Great features for the price.", "user_id": "66588ff93da511978f7c7a30"},
+    //         {"comment": "Very useful for tracking workouts.", "user_id": "669d19290f672415aea2a52e"},
+    //         {"comment": "Battery life could be better.", "user_id": "669f511457bfd9427de96ff5"}
+    //       ],
+    //       "favorites": 400,
+    //       "user_ratings": 4.5,
+    //       "time_on_page": "6 minutes"
+    //     }
+    //   },
+    //   {
+    //     "vendorId": "66600018c8f5bd5a171c7c3c",
+    //     "name": "T-shirt",
+    //     "description": "Comfortable cotton t-shirt in assorted colors.",
+    //     "price": 19.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Clothing"
+    //       }
+    //     ],
+    //     "stockQuantity": 200,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/aef3372f7e6fe11dbfc10a6a69ce3b62",
+    //       "https://asset.cloudinary.com/deezvvehs/e04fea4b2d16a8d03c552f44cdd0bec7",
+    //       "https://asset.cloudinary.com/deezvvehs/7c6fbff7e933ab0bacacb24d5a210a61",
+    //       "https://asset.cloudinary.com/deezvvehs/6757afd0af63e817e768d74189fbec49",
+    //       "https://asset.cloudinary.com/deezvvehs/6757afd0af63e817e768d74189fbec49"
+    //     ],
+    //     "brand": "CottonWear",
+    //     "weight": "200g",
+    //     "dimensions": {
+    //       "length": 30,
+    //       "width": 25,
+    //       "height": 2
+    //     },
+    //     "color": "Various",
+    //     "material": "Cotton",
+    //     "keywords": ["T-shirt", "Clothing", "Casual"],
+    //     "rating": 4.3,
+    //     "relatedProducts": ["66502428d507b3af448c541b", "66588f423da511978f7c7a16", "66588ff93da511978f7c7a30"],
+    //     "discounts": "20",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 2000,
+    //       "clicks": 1400,
+    //       "likes": 500,
+    //       "comments": [
+    //         {"comment": "Very comfortable to wear.", "user_id": "66600018c8f5bd5a171c7c3c"},
+    //         {"comment": "Good quality material.", "user_id": "668ccdeeac240ef4fe234ae9"},
+    //         {"comment": "Value for money.", "user_id": "669d12840375a30a89376673"}
+    //       ],
+    //       "favorites": 600,
+    //       "user_ratings": 4.3,
+    //       "time_on_page": "3 minutes"
+    //     }
+    //   },
+    //   {
+    //     "vendorId": "66644304733f50dd0c6f73fe",
+    //     "name": "Bluetooth Headphones",
+    //     "description": "High-quality Bluetooth headphones with noise cancellation.",
+    //     "price": 89.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Electronics"
+    //       }
+    //     ],
+    //     "stockQuantity": 75,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/1b8c3bbd8b71f7c93d5c64c943ba4159",
+    //       "https://asset.cloudinary.com/deezvvehs/2aef55bfbdbde4c393993372c430ed6d",
+    //       "https://asset.cloudinary.com/deezvvehs/3a8ae091ab2a2299b2071c7554b6c9f8",
+    //       "https://asset.cloudinary.com/deezvvehs/5d49fcfd9f8c18d98c25d781fa7c5102",
+    //       "https://asset.cloudinary.com/deezvvehs/4f5687f8c2c2c057823e39d9a7b6a460"
+    //     ],
+    //     "brand": "SoundPro",
+    //     "weight": "300g",
+    //     "dimensions": {
+    //       "length": 20,
+    //       "width": 15,
+    //       "height": 8
+    //     },
+    //     "color": "Black",
+    //     "material": "Plastic",
+    //     "keywords": ["Headphones", "Bluetooth", "Electronics"],
+    //     "rating": 4.6,
+    //     "relatedProducts": ["669f511457bfd9427de96ff5", "669d15a54d03518bbe179f40", "669f55f28e6844f176309141"],
+    //     "discounts": "30",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 1000,
+    //       "clicks": 700,
+    //       "likes": 250,
+    //       "comments": [
+    //         {"comment": "Great sound quality.", "user_id": "66644304733f50dd0c6f73fe"},
+    //         {"comment": "Noise cancellation works well.", "user_id": "668ce4f230985f67e3ec5465"},
+    //         {"comment": "Comfortable to wear for long periods.", "user_id": "669f5532a981dd4f5cb8f351"}
+    //       ],
+    //       "favorites": 350,
+    //       "user_ratings": 4.6,
+    //       "time_on_page": "5 minutes"
+    //     }
+    //   }
+    // ];
     
-    const prodjkas = [
+    // const prodjkas = [
+    //   {
+    //     "vendorId": "669a94583696499bfec66f05",
+    //     "name": "Portable Air Conditioner",
+    //     "description": "Compact air conditioner ideal for small rooms.",
+    //     "price": 299.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Home Appliances"
+    //       }
+    //     ],
+    //     "stockQuantity": 30,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/ae69c48a2db601dd8c014087e73b01d0",
+    //       "https://asset.cloudinary.com/deezvvehs/7e0b0a37efb3943e7fd2f1f75b739c94",
+    //       "https://asset.cloudinary.com/deezvvehs/4a12c418373579f4f4ea0267e9f4087b",
+    //       "https://asset.cloudinary.com/deezvvehs/0a91c07882c19b7427adf4e9fc92759f",
+    //       "https://asset.cloudinary.com/deezvvehs/5a4f6b1f1e93e66de0f920ac07a6c75a"
+    //     ],
+    //     "brand": "CoolBreeze",
+    //     "weight": "8kg",
+    //     "dimensions": {
+    //       "length": 35,
+    //       "width": 35,
+    //       "height": 70
+    //     },
+    //     "color": "White",
+    //     "material": "Plastic",
+    //     "keywords": ["Air Conditioner", "Portable", "Cooling"],
+    //     "rating": 4.2,
+    //     "relatedProducts": ["669d12840375a30a89376673", "669f55f28e6844f176309141", "669d15a54d03518bbe179f40"],
+    //     "discounts": "40",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 800,
+    //       "clicks": 500,
+    //       "likes": 180,
+    //       "comments": [
+    //         {"comment": "Keeps the room cool and comfortable.", "user_id": "669a94583696499bfec66f05"},
+    //         {"comment": "A bit noisy but effective.", "user_id": "669d12840375a30a89376673"},
+    //         {"comment": "Great for a small apartment.", "user_id": "669f55f28e6844f176309141"}
+    //       ],
+    //       "favorites": 220,
+    //       "user_ratings": 4.2,
+    //       "time_on_page": "6 minutes"
+    //     }
+    //   },
+    //   {
+    //     "vendorId": "669d12840375a30a89376673",
+    //     "name": "Electric Kettle",
+    //     "description": "Fast boiling electric kettle with automatic shut-off.",
+    //     "price": 39.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Kitchen Appliances"
+    //       }
+    //     ],
+    //     "stockQuantity": 120,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/a48e33f1d1168e56a1e8c0c8857aeed5",
+    //       "https://asset.cloudinary.com/deezvvehs/1e4bc8bb7d6b0bfc8d4a0b779fa7e882",
+    //       "https://asset.cloudinary.com/deezvvehs/8e3f6b1c1b8a9f2d7e92b9d02b4dc0ea",
+    //       "https://asset.cloudinary.com/deezvvehs/3c8f4b6aee5a66c72f6796d029ba6e7b",
+    //       "https://asset.cloudinary.com/deezvvehs/f8b42f978cb12b7e9a745f2c91b7cf45"
+    //     ],
+    //     "brand": "QuickBoil",
+    //     "weight": "1.2kg",
+    //     "dimensions": {
+    //       "length": 20,
+    //       "width": 20,
+    //       "height": 25
+    //     },
+    //     "color": "Silver",
+    //     "material": "Stainless Steel",
+    //     "keywords": ["Kettle", "Electric", "Boiling"],
+    //     "rating": 4.4,
+    //     "relatedProducts": ["669a94583696499bfec66f05", "669f5532a981dd4f5cb8f351", "669f55f28e6844f176309141"],
+    //     "discounts": "15",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 1000,
+    //       "clicks": 700,
+    //       "likes": 250,
+    //       "comments": [
+    //         {"comment": "Boils water quickly and efficiently.", "user_id": "669d12840375a30a89376673"},
+    //         {"comment": "Very easy to use.", "user_id": "669f55f28e6844f176309141"},
+    //         {"comment": "Good value for money.", "user_id": "669f511457bfd9427de96ff5"}
+    //       ],
+    //       "favorites": 300,
+    //       "user_ratings": 4.4,
+    //       "time_on_page": "4 minutes"
+    //     }
+    //   },
+    //   {
+    //     "vendorId": "669d15a54d03518bbe179f40",
+    //     "name": "Digital Camera",
+    //     "description": "High-resolution digital camera with manual controls.",
+    //     "price": 499.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Electronics"
+    //       }
+    //     ],
+    //     "stockQuantity": 20,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/5a4e8a6e7f5d6d97b2a55e6d69fcb3e8",
+    //       "https://asset.cloudinary.com/deezvvehs/7e60a8a25c63c89416b0c8c342fda1f3",
+    //       "https://asset.cloudinary.com/deezvvehs/3c9a3c2c2c7f3e9d1c8c2a3c2f2f3e45",
+    //       "https://asset.cloudinary.com/deezvvehs/9b3b75e2a4f1e5e9a38e0b8d44b5830e",
+    //       "https://asset.cloudinary.com/deezvvehs/9b3b75e2a4f1e5e9a38e0b8d44b5830e"
+    //     ],
+    //     "brand": "PhotoMaster",
+    //     "weight": "600g",
+    //     "dimensions": {
+    //       "length": 15,
+    //       "width": 12,
+    //       "height": 8
+    //     },
+    //     "color": "Black",
+    //     "material": "Metal",
+    //     "keywords": ["Camera", "Digital", "Photography"],
+    //     "rating": 4.7,
+    //     "relatedProducts": ["669a94583696499bfec66f05", "669d12840375a30a89376673", "669f5532a981dd4f5cb8f351"],
+    //     "discounts": "20",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 600,
+    //       "clicks": 400,
+    //       "likes": 150,
+    //       "comments": [
+    //         {"comment": "Excellent image quality.", "user_id": "669d15a54d03518bbe179f40"},
+    //         {"comment": "A bit expensive but worth it.", "user_id": "669f511457bfd9427de96ff5"},
+    //         {"comment": "Great for professional use.", "user_id": "669f5532a981dd4f5cb8f351"}
+    //       ],
+    //       "favorites": 180,
+    //       "user_ratings": 4.7,
+    //       "time_on_page": "7 minutes"
+    //     }
+    //   },
+    //   {
+    //     "vendorId": "669f511457bfd9427de96ff5",
+    //     "name": "Electric Toothbrush",
+    //     "description": "Rechargeable electric toothbrush with multiple brushing modes.",
+    //     "price": 59.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Personal Care"
+    //       }
+    //     ],
+    //     "stockQuantity": 100,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/3e51f0b7988c6b8a93c4e3db6d28e9f4",
+    //       "https://asset.cloudinary.com/deezvvehs/6b2c2fbd8c58f8bdbdc48c92c35f6f7b",
+    //       "https://asset.cloudinary.com/deezvvehs/5f6b63f85cb89e8a3d4c9c8f3a5e4a7d",
+    //       "https://asset.cloudinary.com/deezvvehs/5d0c0f0b8392c8b92e2c3d8e44e3e5e1",
+    //       "https://asset.cloudinary.com/deezvvehs/6d3b1bfe5c8e8a6e8b4b8a0c2f6c9e9e"
+    //     ],
+    //     "brand": "BrushMaster",
+    //     "weight": "300g",
+    //     "dimensions": {
+    //       "length": 10,
+    //       "width": 10,
+    //       "height": 25
+    //     },
+    //     "color": "White",
+    //     "material": "Plastic",
+    //     "keywords": ["Toothbrush", "Electric", "Oral Care"],
+    //     "rating": 4.5,
+    //     "relatedProducts": ["669a94583696499bfec66f05", "669d12840375a30a89376673", "669f55f28e6844f176309141"],
+    //     "discounts": "25",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 900,
+    //       "clicks": 600,
+    //       "likes": 220,
+    //       "comments": [
+    //         {"comment": "Very effective at cleaning.", "user_id": "669f511457bfd9427de96ff5"},
+    //         {"comment": "The battery life could be better.", "user_id": "669d12840375a30a89376673"},
+    //         {"comment": "Convenient and easy to use.", "user_id": "669f5532a981dd4f5cb8f351"}
+    //       ],
+    //       "favorites": 250,
+    //       "user_ratings": 4.5,
+    //       "time_on_page": "5 minutes"
+    //     }
+    //   },
+    //   {
+    //     "vendorId": "669f5532a981dd4f5cb8f351",
+    //     "name": "Smart Thermostat",
+    //     "description": "Smart thermostat with Wi-Fi connectivity and programmable settings.",
+    //     "price": 149.99,
+    //     "categories": [
+    //       {
+    //         "category": "Physical",
+    //         "subcategory": "Home Automation"
+    //       }
+    //     ],
+    //     "stockQuantity": 45,
+    //     "imageURL": [
+    //       "https://asset.cloudinary.com/deezvvehs/4d3e4b8b93f7c8b4e5e3c5a1e3d1b8c2",
+    //       "https://asset.cloudinary.com/deezvvehs/9e4a7b3c2d7e8b2e8f3c8e0d3e1f6d8b",
+    //       "https://asset.cloudinary.com/deezvvehs/8a9e2b7b6a8f4e8a2e3d1c7a4e5b6f0d",
+    //       "https://asset.cloudinary.com/deezvvehs/2d7c4e9f6b1a2b3e8d5c7a8b2e1d4f5b",
+    //       "https://asset.cloudinary.com/deezvvehs/4d7e8b9c2f1a3e8a5d2c6f7b1e8a3b7c"
+    //     ],
+    //     "brand": "HomeSmart",
+    //     "weight": "500g",
+    //     "dimensions": {
+    //       "length": 12,
+    //       "width": 12,
+    //       "height": 3
+    //     },
+    //     "color": "Black",
+    //     "material": "Plastic",
+    //     "keywords": ["Thermostat", "Smart", "Home Automation"],
+    //     "rating": 4.6,
+    //     "relatedProducts": ["669a94583696499bfec66f05", "669d12840375a30a89376673", "669f55f28e6844f176309141"],
+    //     "discounts": "10",
+    //     "availabilityStatus": "available",
+    //     "review": {
+    //       "impressions": 700,
+    //       "clicks": 450,
+    //       "likes": 170,
+    //       "comments": [
+    //         {"comment": "Easy to install and set up.", "user_id": "669f5532a981dd4f5cb8f351"},
+    //         {"comment": "Great for managing home temperature.", "user_id": "669d12840375a30a89376673"},
+    //         {"comment": "Works well with smart home systems.", "user_id": "669f511457bfd9427de96ff5"}
+    //       ],
+    //       "favorites": 200,
+    //       "user_ratings": 4.6,
+    //       "time_on_page": "6 minutes"
+    //     }
+    //   }
+    // ];
+    
+
+
+    [
       {
-        "vendorId": "669a94583696499bfec66f05",
-        "name": "Portable Air Conditioner",
-        "description": "Compact air conditioner ideal for small rooms.",
-        "price": 299.99,
+        "name": "Vintage Metal Gears",
+        "description": "A collection of vintage metal gears, perfect for steampunk projects and art.",
+        "price": 25.00,
         "categories": [
           {
-            "category": "Physical",
-            "subcategory": "Home Appliances"
+            "category": "Scrap",
+            "subcategory": "Metal Parts"
+          }
+        ],
+        "stockQuantity": 50,
+        "imageURL": [
+          "https://example.com/images/vintage-gears.jpg"
+        ],
+        "brand": "RustyRelics",
+        "weight": "1.2kg",
+        "dimensions": {
+          "length": 20,
+          "width": 10,
+          "height": 5
+        },
+        "color": "Silver",
+        "material": "Metal",
+        "keywords": ["gears", "metal", "steampunk", "vintage"],
+        "rating": 4.5,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d295",
+          "6493fcddc19c34b5a6c7d296"
+        ],
+        "discounts": "15% off on orders over $50",
+        "availabilityStatus": "available",
+        "vendorId": "66502428d507b3af448c541b"
+      },
+      {
+        "name": "Rustic Wood Planks",
+        "description": "Assorted rustic wood planks for DIY projects and home decor.",
+        "price": 40.00,
+        "categories": [
+          {
+            "category": "Scrap",
+            "subcategory": "Wood Pieces"
           }
         ],
         "stockQuantity": 30,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/ae69c48a2db601dd8c014087e73b01d0",
-          "https://asset.cloudinary.com/deezvvehs/7e0b0a37efb3943e7fd2f1f75b739c94",
-          "https://asset.cloudinary.com/deezvvehs/4a12c418373579f4f4ea0267e9f4087b",
-          "https://asset.cloudinary.com/deezvvehs/0a91c07882c19b7427adf4e9fc92759f",
-          "https://asset.cloudinary.com/deezvvehs/5a4f6b1f1e93e66de0f920ac07a6c75a"
+          "https://example.com/images/rustic-wood.jpg"
         ],
-        "brand": "CoolBreeze",
-        "weight": "8kg",
+        "brand": "WoodenTreasures",
+        "weight": "3.5kg",
         "dimensions": {
-          "length": 35,
-          "width": 35,
-          "height": 70
-        },
-        "color": "White",
-        "material": "Plastic",
-        "keywords": ["Air Conditioner", "Portable", "Cooling"],
-        "rating": 4.2,
-        "relatedProducts": ["669d12840375a30a89376673", "669f55f28e6844f176309141", "669d15a54d03518bbe179f40"],
-        "discounts": "40",
-        "availabilityStatus": "available",
-        "review": {
-          "impressions": 800,
-          "clicks": 500,
-          "likes": 180,
-          "comments": [
-            {"comment": "Keeps the room cool and comfortable.", "user_id": "669a94583696499bfec66f05"},
-            {"comment": "A bit noisy but effective.", "user_id": "669d12840375a30a89376673"},
-            {"comment": "Great for a small apartment.", "user_id": "669f55f28e6844f176309141"}
-          ],
-          "favorites": 220,
-          "user_ratings": 4.2,
-          "time_on_page": "6 minutes"
-        }
-      },
-      {
-        "vendorId": "669d12840375a30a89376673",
-        "name": "Electric Kettle",
-        "description": "Fast boiling electric kettle with automatic shut-off.",
-        "price": 39.99,
-        "categories": [
-          {
-            "category": "Physical",
-            "subcategory": "Kitchen Appliances"
-          }
-        ],
-        "stockQuantity": 120,
-        "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/a48e33f1d1168e56a1e8c0c8857aeed5",
-          "https://asset.cloudinary.com/deezvvehs/1e4bc8bb7d6b0bfc8d4a0b779fa7e882",
-          "https://asset.cloudinary.com/deezvvehs/8e3f6b1c1b8a9f2d7e92b9d02b4dc0ea",
-          "https://asset.cloudinary.com/deezvvehs/3c8f4b6aee5a66c72f6796d029ba6e7b",
-          "https://asset.cloudinary.com/deezvvehs/f8b42f978cb12b7e9a745f2c91b7cf45"
-        ],
-        "brand": "QuickBoil",
-        "weight": "1.2kg",
-        "dimensions": {
-          "length": 20,
+          "length": 100,
           "width": 20,
-          "height": 25
+          "height": 2
         },
-        "color": "Silver",
-        "material": "Stainless Steel",
-        "keywords": ["Kettle", "Electric", "Boiling"],
-        "rating": 4.4,
-        "relatedProducts": ["669a94583696499bfec66f05", "669f5532a981dd4f5cb8f351", "669f55f28e6844f176309141"],
-        "discounts": "15",
+        "color": "Brown",
+        "material": "Wood",
+        "keywords": ["wood", "rustic", "DIY", "planks"],
+        "rating": 4.7,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d297",
+          "6493fcddc19c34b5a6c7d298"
+        ],
+        "discounts": "10% off on first purchase",
         "availabilityStatus": "available",
-        "review": {
-          "impressions": 1000,
-          "clicks": 700,
-          "likes": 250,
-          "comments": [
-            {"comment": "Boils water quickly and efficiently.", "user_id": "669d12840375a30a89376673"},
-            {"comment": "Very easy to use.", "user_id": "669f55f28e6844f176309141"},
-            {"comment": "Good value for money.", "user_id": "669f511457bfd9427de96ff5"}
-          ],
-          "favorites": 300,
-          "user_ratings": 4.4,
-          "time_on_page": "4 minutes"
-        }
+        "vendorId": "66588f423da511978f7c7a16"
       },
       {
-        "vendorId": "669d15a54d03518bbe179f40",
-        "name": "Digital Camera",
-        "description": "High-resolution digital camera with manual controls.",
-        "price": 499.99,
+        "name": "Old Bicycle Parts",
+        "description": "Assorted old bicycle parts, ideal for restoration or artistic projects.",
+        "price": 35.00,
         "categories": [
           {
-            "category": "Physical",
-            "subcategory": "Electronics"
+            "category": "Scrap",
+            "subcategory": "Bicycle Parts"
           }
         ],
         "stockQuantity": 20,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/5a4e8a6e7f5d6d97b2a55e6d69fcb3e8",
-          "https://asset.cloudinary.com/deezvvehs/7e60a8a25c63c89416b0c8c342fda1f3",
-          "https://asset.cloudinary.com/deezvvehs/3c9a3c2c2c7f3e9d1c8c2a3c2f2f3e45",
-          "https://asset.cloudinary.com/deezvvehs/9b3b75e2a4f1e5e9a38e0b8d44b5830e",
-          "https://asset.cloudinary.com/deezvvehs/9b3b75e2a4f1e5e9a38e0b8d44b5830e"
+          "https://example.com/images/bicycle-parts.jpg"
         ],
-        "brand": "PhotoMaster",
-        "weight": "600g",
+        "brand": "CycleScraps",
+        "weight": "2.8kg",
         "dimensions": {
-          "length": 15,
-          "width": 12,
-          "height": 8
+          "length": 30,
+          "width": 20,
+          "height": 15
         },
-        "color": "Black",
+        "color": "Mixed",
         "material": "Metal",
-        "keywords": ["Camera", "Digital", "Photography"],
-        "rating": 4.7,
-        "relatedProducts": ["669a94583696499bfec66f05", "669d12840375a30a89376673", "669f5532a981dd4f5cb8f351"],
-        "discounts": "20",
+        "keywords": ["bicycle", "parts", "restoration", "scrap"],
+        "rating": 4.2,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d299",
+          "6493fcddc19c34b5a6c7d29a"
+        ],
+        "discounts": "Buy 2, get 1 free",
         "availabilityStatus": "available",
-        "review": {
-          "impressions": 600,
-          "clicks": 400,
-          "likes": 150,
-          "comments": [
-            {"comment": "Excellent image quality.", "user_id": "669d15a54d03518bbe179f40"},
-            {"comment": "A bit expensive but worth it.", "user_id": "669f511457bfd9427de96ff5"},
-            {"comment": "Great for professional use.", "user_id": "669f5532a981dd4f5cb8f351"}
-          ],
-          "favorites": 180,
-          "user_ratings": 4.7,
-          "time_on_page": "7 minutes"
-        }
+        "vendorId": "66588ff93da511978f7c7a30"
       },
       {
-        "vendorId": "669f511457bfd9427de96ff5",
-        "name": "Electric Toothbrush",
-        "description": "Rechargeable electric toothbrush with multiple brushing modes.",
-        "price": 59.99,
+        "name": "Antique Metal Boxes",
+        "description": "Vintage metal boxes, great for storage or decorative purposes.",
+        "price": 50.00,
         "categories": [
           {
-            "category": "Physical",
-            "subcategory": "Personal Care"
+            "category": "Scrap",
+            "subcategory": "Metal Containers"
+          }
+        ],
+        "stockQuantity": 15,
+        "imageURL": [
+          "https://example.com/images/metal-boxes.jpg"
+        ],
+        "brand": "AntiqueFinds",
+        "weight": "5.0kg",
+        "dimensions": {
+          "length": 40,
+          "width": 30,
+          "height": 20
+        },
+        "color": "Bronze",
+        "material": "Metal",
+        "keywords": ["boxes", "metal", "vintage", "storage"],
+        "rating": 4.8,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d29b",
+          "6493fcddc19c34b5a6c7d29c"
+        ],
+        "discounts": "20% off on orders over $100",
+        "availabilityStatus": "available",
+        "vendorId": "665977bb9158dc98dae37bd1"
+      },
+      {
+        "name": "Scrap Electronic Components",
+        "description": "Various scrap electronic components for repair and projects.",
+        "price": 30.00,
+        "categories": [
+          {
+            "category": "Scrap",
+            "subcategory": "Electronic Parts"
+          }
+        ],
+        "stockQuantity": 40,
+        "imageURL": [
+          "https://example.com/images/electronic-components.jpg"
+        ],
+        "brand": "ElectroBits",
+        "weight": "1.5kg",
+        "dimensions": {
+          "length": 20,
+          "width": 20,
+          "height": 10
+        },
+        "color": "Assorted",
+        "material": "Mixed",
+        "keywords": ["electronic", "components", "scrap", "repair"],
+        "rating": 4.3,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d29d",
+          "6493fcddc19c34b5a6c7d29e"
+        ],
+        "discounts": "15% off on orders over $70",
+        "availabilityStatus": "available",
+        "vendorId": "66600018c8f5bd5a171c7c3c"
+      },
+      {
+        "name": "Vintage Typewriter Keys",
+        "description": "Collection of vintage typewriter keys, perfect for crafts and decor.",
+        "price": 20.00,
+        "categories": [
+          {
+            "category": "Scrap",
+            "subcategory": "Typewriter Parts"
+          }
+        ],
+        "stockQuantity": 60,
+        "imageURL": [
+          "https://example.com/images/typewriter-keys.jpg"
+        ],
+        "brand": "KeyCraft",
+        "weight": "0.8kg",
+        "dimensions": {
+          "length": 15,
+          "width": 10,
+          "height": 5
+        },
+        "color": "Black and Silver",
+        "material": "Metal",
+        "keywords": ["typewriter", "keys", "vintage", "crafts"],
+        "rating": 4.6,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d29f",
+          "6493fcddc19c34b5a6c7d2a0"
+        ],
+        "discounts": "10% off on your first order",
+        "availabilityStatus": "available",
+        "vendorId": "66644304733f50dd0c6f73fe"
+      }
+    ]
+
+    
+    [
+      {
+        "name": "Old Wooden Crates",
+        "description": "Vintage wooden crates, ideal for rustic decoration or storage.",
+        "price": 45.00,
+        "categories": [
+          {
+            "category": "Scrap",
+            "subcategory": "Wooden Crates"
+          }
+        ],
+        "stockQuantity": 25,
+        "imageURL": [
+          "https://example.com/images/wooden-crates.jpg"
+        ],
+        "brand": "RusticFinds",
+        "weight": "4.0kg",
+        "dimensions": {
+          "length": 50,
+          "width": 30,
+          "height": 25
+        },
+        "color": "Weathered Brown",
+        "material": "Wood",
+        "keywords": ["crates", "wooden", "vintage", "storage"],
+        "rating": 4.4,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a1",
+          "6493fcddc19c34b5a6c7d2a2"
+        ],
+        "discounts": "10% off on orders over $100",
+        "availabilityStatus": "available",
+        "vendorId": "667a91bc7e1b3646aed814f1"
+      },
+      {
+        "name": "Scrap Metal Sheets",
+        "description": "Assorted scrap metal sheets for construction or creative projects.",
+        "price": 60.00,
+        "categories": [
+          {
+            "category": "Scrap",
+            "subcategory": "Metal Sheets"
+          }
+        ],
+        "stockQuantity": 10,
+        "imageURL": [
+          "https://example.com/images/metal-sheets.jpg"
+        ],
+        "brand": "MetalWorks",
+        "weight": "7.0kg",
+        "dimensions": {
+          "length": 100,
+          "width": 50,
+          "height": 1
+        },
+        "color": "Steel Gray",
+        "material": "Metal",
+        "keywords": ["metal", "sheets", "scrap", "construction"],
+        "rating": 4.6,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a3",
+          "6493fcddc19c34b5a6c7d2a4"
+        ],
+        "discounts": "15% off on bulk orders",
+        "availabilityStatus": "available",
+        "vendorId": "667a93fab99e3bbf04293ea9"
+      },
+      {
+        "name": "Vintage Clock Parts",
+        "description": "A collection of vintage clock parts, ideal for collectors and restorers.",
+        "price": 55.00,
+        "categories": [
+          {
+            "category": "Scrap",
+            "subcategory": "Clock Parts"
+          }
+        ],
+        "stockQuantity": 12,
+        "imageURL": [
+          "https://example.com/images/clock-parts.jpg"
+        ],
+        "brand": "TimeWorn",
+        "weight": "2.5kg",
+        "dimensions": {
+          "length": 30,
+          "width": 20,
+          "height": 15
+        },
+        "color": "Gold and Silver",
+        "material": "Mixed",
+        "keywords": ["clock", "parts", "vintage", "restoration"],
+        "rating": 4.9,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a5",
+          "6493fcddc19c34b5a6c7d2a6"
+        ],
+        "discounts": "20% off on first purchase",
+        "availabilityStatus": "available",
+        "vendorId": "668b080b782f92112bb7d8bf"
+      },
+      {
+        "name": "Old Glass Bottles",
+        "description": "Assorted old glass bottles, perfect for crafts or decoration.",
+        "price": 25.00,
+        "categories": [
+          {
+            "category": "Scrap",
+            "subcategory": "Glass Bottles"
+          }
+        ],
+        "stockQuantity": 40,
+        "imageURL": [
+          "https://example.com/images/glass-bottles.jpg"
+        ],
+        "brand": "GlassTreasures",
+        "weight": "3.0kg",
+        "dimensions": {
+          "length": 25,
+          "width": 25,
+          "height": 15
+        },
+        "color": "Clear",
+        "material": "Glass",
+        "keywords": ["bottles", "glass", "vintage", "crafts"],
+        "rating": 4.1,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a7",
+          "6493fcddc19c34b5a6c7d2a8"
+        ],
+        "discounts": "10% off on orders over $50",
+        "availabilityStatus": "available",
+        "vendorId": "668ccdeeac240ef4fe234ae9"
+      },
+      {
+        "name": "Antique Metal Tools",
+        "description": "Assorted antique metal tools, ideal for collectors and restorers.",
+        "price": 70.00,
+        "categories": [
+          {
+            "category": "Scrap",
+            "subcategory": "Metal Tools"
+          }
+        ],
+        "stockQuantity": 8,
+        "imageURL": [
+          "https://example.com/images/metal-tools.jpg"
+        ],
+        "brand": "ToolHeritage",
+        "weight": "6.0kg",
+        "dimensions": {
+          "length": 40,
+          "width": 20,
+          "height": 10
+        },
+        "color": "Rusty Brown",
+        "material": "Metal",
+        "keywords": ["tools", "metal", "antique", "collectibles"],
+        "rating": 4.7,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a9",
+          "6493fcddc19c34b5a6c7d2aa"
+        ],
+        "discounts": "25% off on orders over $150",
+        "availabilityStatus": "available",
+        "vendorId": "668cddb4316ac0b46c0418a1"
+      }
+    ]
+    [
+      {
+        "name": "Creative Design Software",
+        "description": "Powerful software for graphic design, animation, and video editing.",
+        "price": 299.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Software"
+          }
+        ],
+        "stockQuantity": 50,
+        "imageURL": [
+          "https://example.com/images/creative-software.jpg"
+        ],
+        "brand": "DesignPro",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["software", "graphic design", "animation", "video editing"],
+        "rating": 4.8,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a1",
+          "6493fcddc19c34b5a6c7d2a2"
+        ],
+        "discounts": "15% off on new subscriptions",
+        "availabilityStatus": "available",
+        "vendorId": "66502428d507b3af448c541b"
+      },
+      {
+        "name": "Advanced Project Management Tool",
+        "description": "All-in-one project management tool with advanced features for tracking and collaboration.",
+        "price": 199.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Software"
           }
         ],
         "stockQuantity": 100,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/3e51f0b7988c6b8a93c4e3db6d28e9f4",
-          "https://asset.cloudinary.com/deezvvehs/6b2c2fbd8c58f8bdbdc48c92c35f6f7b",
-          "https://asset.cloudinary.com/deezvvehs/5f6b63f85cb89e8a3d4c9c8f3a5e4a7d",
-          "https://asset.cloudinary.com/deezvvehs/5d0c0f0b8392c8b92e2c3d8e44e3e5e1",
-          "https://asset.cloudinary.com/deezvvehs/6d3b1bfe5c8e8a6e8b4b8a0c2f6c9e9e"
+          "https://example.com/images/project-management-tool.jpg"
         ],
-        "brand": "BrushMaster",
-        "weight": "300g",
+        "brand": "ProjectMaster",
+        "weight": "N/A",
         "dimensions": {
-          "length": 10,
-          "width": 10,
-          "height": 25
+          "length": null,
+          "width": null,
+          "height": null
         },
-        "color": "White",
-        "material": "Plastic",
-        "keywords": ["Toothbrush", "Electric", "Oral Care"],
-        "rating": 4.5,
-        "relatedProducts": ["669a94583696499bfec66f05", "669d12840375a30a89376673", "669f55f28e6844f176309141"],
-        "discounts": "25",
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["project management", "collaboration", "tracking", "software"],
+        "rating": 4.6,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a3",
+          "6493fcddc19c34b5a6c7d2a4"
+        ],
+        "discounts": "20% off for teams of 5 or more",
         "availabilityStatus": "available",
-        "review": {
-          "impressions": 900,
-          "clicks": 600,
-          "likes": 220,
-          "comments": [
-            {"comment": "Very effective at cleaning.", "user_id": "669f511457bfd9427de96ff5"},
-            {"comment": "The battery life could be better.", "user_id": "669d12840375a30a89376673"},
-            {"comment": "Convenient and easy to use.", "user_id": "669f5532a981dd4f5cb8f351"}
-          ],
-          "favorites": 250,
-          "user_ratings": 4.5,
-          "time_on_page": "5 minutes"
-        }
+        "vendorId": "66588f423da511978f7c7a16"
       },
       {
-        "vendorId": "669f5532a981dd4f5cb8f351",
-        "name": "Smart Thermostat",
-        "description": "Smart thermostat with Wi-Fi connectivity and programmable settings.",
+        "name": "High-Resolution Digital Art Pack",
+        "description": "A collection of high-resolution digital art assets for designers and artists.",
+        "price": 79.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Art Pack"
+          }
+        ],
+        "stockQuantity": 200,
+        "imageURL": [
+          "https://example.com/images/digital-art-pack.jpg"
+        ],
+        "brand": "ArtVault",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["digital art", "art assets", "design", "high-resolution"],
+        "rating": 4.9,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a5",
+          "6493fcddc19c34b5a6c7d2a6"
+        ],
+        "discounts": "10% off on first purchase",
+        "availabilityStatus": "available",
+        "vendorId": "66588ff93da511978f7c7a30"
+      },
+      {
+        "name": "Customizable E-Book Templates",
+        "description": "A set of customizable templates for creating professional e-books.",
+        "price": 49.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Templates"
+          }
+        ],
+        "stockQuantity": 150,
+        "imageURL": [
+          "https://example.com/images/ebook-templates.jpg"
+        ],
+        "brand": "TemplateWorld",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["e-book templates", "customizable", "design", "templates"],
+        "rating": 4.5,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a7",
+          "6493fcddc19c34b5a6c7d2a8"
+        ],
+        "discounts": "Buy 2 get 1 free",
+        "availabilityStatus": "available",
+        "vendorId": "665977bb9158dc98dae37bd1"
+      },
+      {
+        "name": "Digital Marketing Strategy Guide",
+        "description": "Comprehensive guide to digital marketing strategies and best practices.",
+        "price": 29.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Guides"
+          }
+        ],
+        "stockQuantity": 300,
+        "imageURL": [
+          "https://example.com/images/marketing-guide.jpg"
+        ],
+        "brand": "MarketMinds",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["digital marketing", "guide", "strategy", "best practices"],
+        "rating": 4.3,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a9",
+          "6493fcddc19c34b5a6c7d2aa"
+        ],
+        "discounts": "5% off on bundle purchase",
+        "availabilityStatus": "available",
+        "vendorId": "66600018c8f5bd5a171c7c3c"
+      }
+    ]
+    [
+      {
+        "name": "Creative Design Software",
+        "description": "Powerful software for graphic design, animation, and video editing.",
+        "price": 299.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Software"
+          }
+        ],
+        "stockQuantity": 50,
+        "imageURL": [
+          "https://example.com/images/creative-software.jpg"
+        ],
+        "brand": "DesignPro",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["software", "graphic design", "animation", "video editing"],
+        "rating": 4.8,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a1",
+          "6493fcddc19c34b5a6c7d2a2"
+        ],
+        "discounts": "15% off on new subscriptions",
+        "availabilityStatus": "available",
+        "vendorId": "66502428d507b3af448c541b"
+      },
+      {
+        "name": "Advanced Project Management Tool",
+        "description": "All-in-one project management tool with advanced features for tracking and collaboration.",
+        "price": 199.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Software"
+          }
+        ],
+        "stockQuantity": 100,
+        "imageURL": [
+          "https://example.com/images/project-management-tool.jpg"
+        ],
+        "brand": "ProjectMaster",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["project management", "collaboration", "tracking", "software"],
+        "rating": 4.6,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a3",
+          "6493fcddc19c34b5a6c7d2a4"
+        ],
+        "discounts": "20% off for teams of 5 or more",
+        "availabilityStatus": "available",
+        "vendorId": "66588f423da511978f7c7a16"
+      },
+      {
+        "name": "High-Resolution Digital Art Pack",
+        "description": "A collection of high-resolution digital art assets for designers and artists.",
+        "price": 79.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Art Pack"
+          }
+        ],
+        "stockQuantity": 200,
+        "imageURL": [
+          "https://example.com/images/digital-art-pack.jpg"
+        ],
+        "brand": "ArtVault",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["digital art", "art assets", "design", "high-resolution"],
+        "rating": 4.9,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a5",
+          "6493fcddc19c34b5a6c7d2a6"
+        ],
+        "discounts": "10% off on first purchase",
+        "availabilityStatus": "available",
+        "vendorId": "66588ff93da511978f7c7a30"
+      },
+      {
+        "name": "Customizable E-Book Templates",
+        "description": "A set of customizable templates for creating professional e-books.",
+        "price": 49.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Templates"
+          }
+        ],
+        "stockQuantity": 150,
+        "imageURL": [
+          "https://example.com/images/ebook-templates.jpg"
+        ],
+        "brand": "TemplateWorld",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["e-book templates", "customizable", "design", "templates"],
+        "rating": 4.5,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a7",
+          "6493fcddc19c34b5a6c7d2a8"
+        ],
+        "discounts": "Buy 2 get 1 free",
+        "availabilityStatus": "available",
+        "vendorId": "665977bb9158dc98dae37bd1"
+      },
+      {
+        "name": "Digital Marketing Strategy Guide",
+        "description": "Comprehensive guide to digital marketing strategies and best practices.",
+        "price": 29.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Guides"
+          }
+        ],
+        "stockQuantity": 300,
+        "imageURL": [
+          "https://example.com/images/marketing-guide.jpg"
+        ],
+        "brand": "MarketMinds",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["digital marketing", "guide", "strategy", "best practices"],
+        "rating": 4.3,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2a9",
+          "6493fcddc19c34b5a6c7d2aa"
+        ],
+        "discounts": "5% off on bundle purchase",
+        "availabilityStatus": "available",
+        "vendorId": "66600018c8f5bd5a171c7c3c"
+      }
+    ]
+            
+
+    [
+      {
+        "name": "Interactive Web Design Templates",
+        "description": "Collection of interactive web design templates for building engaging websites.",
+        "price": 89.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Templates"
+          }
+        ],
+        "stockQuantity": 120,
+        "imageURL": [
+          "https://example.com/images/web-design-templates.jpg"
+        ],
+        "brand": "WebCraft",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["web design", "templates", "interactive", "website"],
+        "rating": 4.7,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2ab",
+          "6493fcddc19c34b5a6c7d2ac"
+        ],
+        "discounts": "10% off on first purchase",
+        "availabilityStatus": "available",
+        "vendorId": "66644304733f50dd0c6f73fe"
+      },
+      {
+        "name": "Professional Video Editing Software",
+        "description": "Feature-rich software for professional video editing and post-production.",
+        "price": 499.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Software"
+          }
+        ],
+        "stockQuantity": 30,
+        "imageURL": [
+          "https://example.com/images/video-editing-software.jpg"
+        ],
+        "brand": "EditMaster",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["video editing", "software", "professional", "post-production"],
+        "rating": 4.9,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2ad",
+          "6493fcddc19c34b5a6c7d2ae"
+        ],
+        "discounts": "25% off on yearly subscription",
+        "availabilityStatus": "available",
+        "vendorId": "667a91bc7e1b3646aed814f1"
+      },
+      {
+        "name": "3D Model Asset Pack",
+        "description": "A comprehensive pack of 3D models for use in various design and game development projects.",
         "price": 149.99,
         "categories": [
           {
-            "category": "Physical",
-            "subcategory": "Home Automation"
+            "category": "Digital Assets",
+            "subcategory": "3D Models"
           }
         ],
-        "stockQuantity": 45,
+        "stockQuantity": 80,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/4d3e4b8b93f7c8b4e5e3c5a1e3d1b8c2",
-          "https://asset.cloudinary.com/deezvvehs/9e4a7b3c2d7e8b2e8f3c8e0d3e1f6d8b",
-          "https://asset.cloudinary.com/deezvvehs/8a9e2b7b6a8f4e8a2e3d1c7a4e5b6f0d",
-          "https://asset.cloudinary.com/deezvvehs/2d7c4e9f6b1a2b3e8d5c7a8b2e1d4f5b",
-          "https://asset.cloudinary.com/deezvvehs/4d7e8b9c2f1a3e8a5d2c6f7b1e8a3b7c"
+          "https://example.com/images/3d-model-pack.jpg"
         ],
-        "brand": "HomeSmart",
-        "weight": "500g",
+        "brand": "ModelMasters",
+        "weight": "N/A",
         "dimensions": {
-          "length": 12,
-          "width": 12,
-          "height": 3
+          "length": null,
+          "width": null,
+          "height": null
         },
-        "color": "Black",
-        "material": "Plastic",
-        "keywords": ["Thermostat", "Smart", "Home Automation"],
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["3D models", "asset pack", "design", "game development"],
         "rating": 4.6,
-        "relatedProducts": ["669a94583696499bfec66f05", "669d12840375a30a89376673", "669f55f28e6844f176309141"],
-        "discounts": "10",
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2af",
+          "6493fcddc19c34b5a6c7d2b0"
+        ],
+        "discounts": "20% off on bundle purchase",
         "availabilityStatus": "available",
-        "review": {
-          "impressions": 700,
-          "clicks": 450,
-          "likes": 170,
-          "comments": [
-            {"comment": "Easy to install and set up.", "user_id": "669f5532a981dd4f5cb8f351"},
-            {"comment": "Great for managing home temperature.", "user_id": "669d12840375a30a89376673"},
-            {"comment": "Works well with smart home systems.", "user_id": "669f511457bfd9427de96ff5"}
-          ],
-          "favorites": 200,
-          "user_ratings": 4.6,
-          "time_on_page": "6 minutes"
-        }
+        "vendorId": "668b080b782f92112bb7d8bf"
+      },
+      {
+        "name": "Digital Art Brush Set",
+        "description": "A set of high-quality digital brushes for creating stunning digital artwork.",
+        "price": 39.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Art Supplies"
+          }
+        ],
+        "stockQuantity": 200,
+        "imageURL": [
+          "https://example.com/images/digital-brushes.jpg"
+        ],
+        "brand": "ArtTools",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["digital brushes", "art supplies", "artwork", "design"],
+        "rating": 4.8,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2b1",
+          "6493fcddc19c34b5a6c7d2b2"
+        ],
+        "discounts": "15% off on first purchase",
+        "availabilityStatus": "available",
+        "vendorId": "668ccdeeac240ef4fe234ae9"
+      },
+      {
+        "name": "E-Learning Course Creation Kit",
+        "description": "Toolkit for creating interactive and engaging e-learning courses.",
+        "price": 119.99,
+        "categories": [
+          {
+            "category": "Digital Assets",
+            "subcategory": "Course Creation"
+          }
+        ],
+        "stockQuantity": 150,
+        "imageURL": [
+          "https://example.com/images/elearning-kit.jpg"
+        ],
+        "brand": "EduTech",
+        "weight": "N/A",
+        "dimensions": {
+          "length": null,
+          "width": null,
+          "height": null
+        },
+        "color": "N/A",
+        "material": "Digital",
+        "keywords": ["e-learning", "course creation", "interactive", "education"],
+        "rating": 4.5,
+        "relatedProducts": [
+          "6493fcddc19c34b5a6c7d2b3",
+          "6493fcddc19c34b5a6c7d2b4"
+        ],
+        "discounts": "10% off on bundle purchase",
+        "availabilityStatus": "available",
+        "vendorId": "668cddb4316ac0b46c0418a1"
       }
-    ];
+    ]
     
