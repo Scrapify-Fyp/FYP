@@ -53,7 +53,7 @@ export default function Myproduct({ refresh }) {
       const response = await axios.delete(
         `http://localhost:3002/products/${id}`,
         {
-          data: { vendorId: user.id },
+          data: { vendorId: user._id },
         }
       );
 
@@ -67,7 +67,7 @@ export default function Myproduct({ refresh }) {
   const fetchData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3002/user/${user.id}/shop/products`
+        `http://localhost:3002/user/${user._id}/shop/products`
       );
       // console.log("Response:", res.data);
       setForyouproducts(res.data);
