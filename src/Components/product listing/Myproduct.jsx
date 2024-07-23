@@ -53,7 +53,7 @@ export default function Myproduct({ refresh }) {
       const response = await axios.delete(
         `http://localhost:3002/products/${id}`,
         {
-          data: { vendorId: user.id },
+          data: { vendorId: user._id },
         }
       );
 

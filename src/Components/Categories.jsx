@@ -3,36 +3,22 @@ import React, { useState, useEffect } from "react";
 const Categories = () => {
   const categories = [
     {
-      name: "Technologies",
-      subcategories: ["Subcategory 1.1", "Subcategory 1.2", "Subcategory 1.3"],
+      name: "Physical Products",
+      subcategories: ["Home Appliances", "Electronics", "Furniture", "Clothing", "Footwear",
+        "Kitchenware", "Toys", "Sports Equipment", "Books", "Stationery",
+        "Beauty Products", "Jewelry", "Gardening Tools", "Automobile Parts", "Pet Supplies"],
     },
     {
-      name: "Scrapyard",
-      subcategories: ["Subcategory 2.1", "Subcategory 2.2", "Subcategory 2.3"],
+      name: "Digital Assets",
+      subcategories: [ "Assignments", "Projects", "E-books", "Software", "Music",
+        "Videos", "Courses", "Templates", "Fonts", "Graphics",
+        "Photography", "Virtual Reality", "Websites", "Mobile Apps", "Games"],
     },
     {
-      name: "Find Projects / Ideas",
-      subcategories: ["Subcategory 3.1", "Subcategory 3.2", "Subcategory 3.3"],
-    },
-    {
-      name: "Home and Gardern",
-      subcategories: ["Subcategory 4.1", "Subcategory 4.2", "Subcategory 4.3"],
-    },
-    {
-      name: "Books / Gifts / Crafts",
-      subcategories: ["Subcategory 5.1", "Subcategory 5.2", "Subcategory 5.3"],
-    },
-    {
-      name: "Music and Photography",
-      subcategories: ["Subcategory 6.1", "Subcategory 6.2", "Subcategory 6.3"],
-    },
-    {
-      name: "Tech Gadgets",
-      subcategories: ["Subcategory 7.1", "Subcategory 7.2", "Subcategory 7.3"],
-    },
-    {
-      name: "Design",
-      subcategories: ["Subcategory 8.1", "Subcategory 8.2", "Subcategory 8.3"],
+      name: "Scraps",
+      subcategories: ["Wall Hangings", "Decoration Pieces", "Metal Scraps", "Wood Scraps", "Plastic Scraps",
+        "Paper Scraps", "Fabric Scraps", "Glass Scraps", "E-waste", "Batteries",
+        "Old Furniture", "Used Appliances", "Tires", "Clothing Scraps", "Miscellaneous"],
     },
   ];
 
