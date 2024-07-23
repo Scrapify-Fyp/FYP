@@ -23,7 +23,7 @@ const CommentSection = ({ productId }) => {
 
     const comment = {
       username: newUsername,
-      rating: 5, // Fixed rating of 5 for demonstration
+      rating: 5,
       text: newComment,
     };
 
@@ -52,7 +52,7 @@ const CommentSection = ({ productId }) => {
         </div>
       ))}
       <div className="add-comment">
-        <h5>Add a New Comment</h5>
+        <h5>Leave Your Comments</h5>
         <input
           type="text"
           value={newUsername}

@@ -1,54 +1,82 @@
 .comment-section {
-    margin-top: 20px;
-  }
-  
-  .comment {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 20px;
     border-radius: 5px;
-  }
-  
-  .comment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-  
-  .star {
-    display: flex;
-  }
-  
-  .add-comment {
-    margin-top: 20px;
-  }
-  
-  .add-comment input,
-  .add-comment textarea {
-    width: 100%;
+    width: 60%;
+    margin: 90px;
+}
+
+.comment-section h4 {
+    color: #0f3959;
+    font-size: 26px;
+    font-weight: 500;
     margin-bottom: 10px;
-  }
+}
   
-  .add-comment input {
-    height: 30px;
-  }
-  
-  .add-comment textarea {
-    height: 120px;
-    resize: none;
-  }
+.comment {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.comment-header {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.star {
+    color: 	#FFC150;
+    margin-top: 5px;
+}
+
+
+.add-comment {
+  margin-top: 40px;
+}
+
+.add-comment h5 {
+    color: #0f3959;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.add-comment input,
+.add-comment textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.add-comment input {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 30px;
+}
+
+.add-comment textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 120px;
+  resize: none;
+}
   
   .add-comment button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #333;
+    position: relative;
+    cursor: pointer;
+    background: #095a55;
     color: #fff;
     border: none;
-    cursor: pointer;
+    max-width: 160px;
+    padding: 12px;
+    border-radius: 4px;
   }
   
   .add-comment button:hover {
-    background-color: #555;
+    background: #0d948b;
   }
-  

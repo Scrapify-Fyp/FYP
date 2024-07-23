@@ -10,15 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cartSlice";
 import { selectUser } from "../redux/user/userSlice";
 import { toast } from "react-toastify";
-
 import { auth } from "../hooks/auth";
-
 import CommentSection from "../Components/CommentSection";
-
 
 const SingleProductDetailPage = (props) => {
   const dispatch = useDispatch();
-  // const user = useSelector(selectUser);
   const user = auth();
 
   const location = useLocation();
@@ -108,7 +104,6 @@ const SingleProductDetailPage = (props) => {
     console.log("contract");
   };
 
-  // Ensure product.images is an array
   const productImages = product?.images?.length > 0 ? product.images : [product?.imageURL];
   console.log("Product Images: ", productImages);
 
@@ -218,8 +213,10 @@ const SingleProductDetailPage = (props) => {
               <strong>Texture: </strong> {product?.rating} <br />
               <strong>Color: </strong> {product?.color}
             </span>
-            <CommentSection productId={product?.id} />
           </div>
+        </section>
+        <section className="comment-section-wrapper">
+          <CommentSection productId={product?.id} />
         </section>
         <Youmaylike />
         <Footer />
