@@ -831,11 +831,10 @@
         ],
         "stockQuantity": 50,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/e305a5733aa5c5ea282bde57ef92ae2f",
-          "https://asset.cloudinary.com/deezvvehs/2df525464247bb53f6ad31dba2e426e9",
-          "https://asset.cloudinary.com/deezvvehs/db67e645645b69339f7c9f53bf01afd2",
-          "https://asset.cloudinary.com/deezvvehs/9ab6aeb316a0c6c4203d0abfb38d2d84",
-          "https://asset.cloudinary.com/deezvvehs/9ab6aeb316a0c6c4203d0abfb38d2d84"
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484281/Digital%20Assests/Scrap%20products/Scrap%20products/Vase_pic_2_yk7qhp.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484281/Digital%20Assests/Scrap%20products/Scrap%20products/Vase_pic_3_asqga3.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484280/Digital%20Assests/Scrap%20products/Scrap%20products/Vase_pic_5_elwont.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484280/Digital%20Assests/Scrap%20products/Scrap%20products/Vase_pic_4_vrybjg.webp"
         ],
         "brand": "GlassyCraft",
         "weight": "500g",
@@ -878,11 +877,10 @@
         ],
         "stockQuantity": 50,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/b53b276220047365168a43816504de93",
-          "https://asset.cloudinary.com/deezvvehs/20b3962704f1529a52e55dc931d41a3e",
-          "https://asset.cloudinary.com/deezvvehs/a08f6e3e1e923c21e86368f9f466d935",
-          "https://asset.cloudinary.com/deezvvehs/742a3ce0ddb42dd96d80b9da7947d6c6",
-          "https://asset.cloudinary.com/deezvvehs/98906b8d60dcde3e1e4c15ec3dcc6bc8"
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484280/Digital%20Assests/Scrap%20products/Scrap%20products/wall_tapestry_pic_1_dtjhyd.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484279/Digital%20Assests/Scrap%20products/Scrap%20products/wall_tapestry_pic_2_tytwkv.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484279/Digital%20Assests/Scrap%20products/Scrap%20products/wall_tapestry_pic_3_z1gryz.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484278/Digital%20Assests/Scrap%20products/Scrap%20products/wall_tapestry_pic_4_mcmdku.webp"
         ],
         "brand": "Home Elegance",
         "weight": "300g",
@@ -925,11 +923,10 @@
         ],
         "stockQuantity": 100,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/442ecb79cd89558ecdcdd97981180c3d",
-          "https://asset.cloudinary.com/deezvvehs/d38a3007b0ea77652b5a36c0c4fc5ef7",
-          "https://asset.cloudinary.com/deezvvehs/9cca7a3d12cdce78991e88fe9126b111",
-          "https://asset.cloudinary.com/deezvvehs/d33f7959828b8de6d4627fb0bf9eb3ed",
-          "https://asset.cloudinary.com/deezvvehs/621a83faddfdc98a22c4f51c0d476db4"
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484295/Digital%20Assests/Scrap%20products/Scrap%20products/Watches%2C%20Bags%20and%20Jewellery/smartwatch_pic1_twbued.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484294/Digital%20Assests/Scrap%20products/Scrap%20products/Watches%2C%20Bags%20and%20Jewellery/smartwatch_pic3_svkorm.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484294/Digital%20Assests/Scrap%20products/Scrap%20products/Watches%2C%20Bags%20and%20Jewellery/smartwatch_pic4_ideolw.png",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484293/Digital%20Assests/Scrap%20products/Scrap%20products/Watches%2C%20Bags%20and%20Jewellery/smartwatch_pic5_zajhqi.jpg"
         ],
         "brand": "TechWear",
         "weight": "50g",
@@ -972,11 +969,10 @@
         ],
         "stockQuantity": 200,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/aef3372f7e6fe11dbfc10a6a69ce3b62",
-          "https://asset.cloudinary.com/deezvvehs/e04fea4b2d16a8d03c552f44cdd0bec7",
-          "https://asset.cloudinary.com/deezvvehs/7c6fbff7e933ab0bacacb24d5a210a61",
-          "https://asset.cloudinary.com/deezvvehs/6757afd0af63e817e768d74189fbec49",
-          "https://asset.cloudinary.com/deezvvehs/6757afd0af63e817e768d74189fbec49"
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484296/Digital%20Assests/Scrap%20products/Scrap%20products/Watches%2C%20Bags%20and%20Jewellery/tshirt_pic_1_kfcl9t.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484296/Digital%20Assests/Scrap%20products/Scrap%20products/Watches%2C%20Bags%20and%20Jewellery/tshirt_pic_2_nlubtf.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484296/Digital%20Assests/Scrap%20products/Scrap%20products/Watches%2C%20Bags%20and%20Jewellery/tshirt_pic_4_n7ex9i.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1717484295/Digital%20Assests/Scrap%20products/Scrap%20products/Watches%2C%20Bags%20and%20Jewellery/tshirt_pic_5_ncvju5.jpg"
         ],
         "brand": "CottonWear",
         "weight": "200g",
@@ -1019,11 +1015,10 @@
         ],
         "stockQuantity": 75,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/1b8c3bbd8b71f7c93d5c64c943ba4159",
-          "https://asset.cloudinary.com/deezvvehs/2aef55bfbdbde4c393993372c430ed6d",
-          "https://asset.cloudinary.com/deezvvehs/3a8ae091ab2a2299b2071c7554b6c9f8",
-          "https://asset.cloudinary.com/deezvvehs/5d49fcfd9f8c18d98c25d781fa7c5102",
-          "https://asset.cloudinary.com/deezvvehs/4f5687f8c2c2c057823e39d9a7b6a460"
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1720505700/headphone_pic4_olawfw.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1720505689/headphone_pic3_sgvedw.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1720505679/headphone_pic2_qjfybk.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1720505668/headphone_pic1_bgw0lm.jpg"
         ],
         "brand": "SoundPro",
         "weight": "300g",
@@ -1069,11 +1064,10 @@
         ],
         "stockQuantity": 30,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/ae69c48a2db601dd8c014087e73b01d0",
-          "https://asset.cloudinary.com/deezvvehs/7e0b0a37efb3943e7fd2f1f75b739c94",
-          "https://asset.cloudinary.com/deezvvehs/4a12c418373579f4f4ea0267e9f4087b",
-          "https://asset.cloudinary.com/deezvvehs/0a91c07882c19b7427adf4e9fc92759f",
-          "https://asset.cloudinary.com/deezvvehs/5a4f6b1f1e93e66de0f920ac07a6c75a"
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1720504809/Air_cooler_pic_5_yh2qsg.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1720504793/Air_cooler_pic_4_rpphyi.png",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1720504782/Air_cooler_pic_3_ullk7e.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1720504762/Air_cooler_pic_1_hrkykr.webp"
         ],
         "brand": "CoolBreeze",
         "weight": "8kg",
@@ -1116,11 +1110,10 @@
         ],
         "stockQuantity": 120,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/a48e33f1d1168e56a1e8c0c8857aeed5",
-          "https://asset.cloudinary.com/deezvvehs/1e4bc8bb7d6b0bfc8d4a0b779fa7e882",
-          "https://asset.cloudinary.com/deezvvehs/8e3f6b1c1b8a9f2d7e92b9d02b4dc0ea",
-          "https://asset.cloudinary.com/deezvvehs/3c8f4b6aee5a66c72f6796d029ba6e7b",
-          "https://asset.cloudinary.com/deezvvehs/f8b42f978cb12b7e9a745f2c91b7cf45"
+          "https://images.unsplash.com/photo-1643114786355-ff9e52736eab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1559761340-1e6a341f0b51?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1650940925927-f4a30c930a4d?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1571552879083-e93b6ea70d1d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "QuickBoil",
         "weight": "1.2kg",
@@ -1163,11 +1156,10 @@
         ],
         "stockQuantity": 20,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/5a4e8a6e7f5d6d97b2a55e6d69fcb3e8",
-          "https://asset.cloudinary.com/deezvvehs/7e60a8a25c63c89416b0c8c342fda1f3",
-          "https://asset.cloudinary.com/deezvvehs/3c9a3c2c2c7f3e9d1c8c2a3c2f2f3e45",
-          "https://asset.cloudinary.com/deezvvehs/9b3b75e2a4f1e5e9a38e0b8d44b5830e",
-          "https://asset.cloudinary.com/deezvvehs/9b3b75e2a4f1e5e9a38e0b8d44b5830e"
+          "https://images.unsplash.com/photo-1571519434393-1d65eb2df861?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1560774183-a4c2f88bab0c?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1598181433961-2196a49ed373?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1612232099404-0ca09938afac?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "PhotoMaster",
         "weight": "600g",
@@ -1210,11 +1202,11 @@
         ],
         "stockQuantity": 100,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/3e51f0b7988c6b8a93c4e3db6d28e9f4",
-          "https://asset.cloudinary.com/deezvvehs/6b2c2fbd8c58f8bdbdc48c92c35f6f7b",
-          "https://asset.cloudinary.com/deezvvehs/5f6b63f85cb89e8a3d4c9c8f3a5e4a7d",
-          "https://asset.cloudinary.com/deezvvehs/5d0c0f0b8392c8b92e2c3d8e44e3e5e1",
-          "https://asset.cloudinary.com/deezvvehs/6d3b1bfe5c8e8a6e8b4b8a0c2f6c9e9e"
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1721223308/Toothbrush_set_pic_2_nzod56.webp",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1721223303/Toothbrush_set_pic_1_xp9x1f.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1721223303/Toothbrush_set_pic_1_xp9x1f.jpg",
+          "https://res.cloudinary.com/deezvvehs/image/upload/v1721223313/Toothbrush_set_pic_4_impi2g.jpg"
+
         ],
         "brand": "BrushMaster",
         "weight": "300g",
@@ -1257,11 +1249,10 @@
         ],
         "stockQuantity": 45,
         "imageURL": [
-          "https://asset.cloudinary.com/deezvvehs/4d3e4b8b93f7c8b4e5e3c5a1e3d1b8c2",
-          "https://asset.cloudinary.com/deezvvehs/9e4a7b3c2d7e8b2e8f3c8e0d3e1f6d8b",
-          "https://asset.cloudinary.com/deezvvehs/8a9e2b7b6a8f4e8a2e3d1c7a4e5b6f0d",
-          "https://asset.cloudinary.com/deezvvehs/2d7c4e9f6b1a2b3e8d5c7a8b2e1d4f5b",
-          "https://asset.cloudinary.com/deezvvehs/4d7e8b9c2f1a3e8a5d2c6f7b1e8a3b7c"
+          "https://images.unsplash.com/photo-1545259742-b4fd8fea67e4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1619140099965-06d74aaf51fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1663602692362-80e4564384c0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1515974256630-babc85765b1d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         ],
         "brand": "HomeSmart",
         "weight": "500g",
