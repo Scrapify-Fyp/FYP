@@ -26,6 +26,7 @@ export default function AddNewProduct({ close }) {
       length: 0,
       width: 0,
       height: 0,
+
     },
     color: "",
     material: "",
@@ -33,9 +34,10 @@ export default function AddNewProduct({ close }) {
     rating: 0,
     discounts: "",
     availabilityStatus: "available",
-    vendorId: user.id,
+    vendorId: user._id,
   });
   const [tags, setTags] = useState([]);
+
 
   const handleDelete = (i) => {
     const updatedTags = tags.filter((tag, index) => index !== i);
