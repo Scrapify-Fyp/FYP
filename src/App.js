@@ -36,6 +36,7 @@ import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import ForgotPassword from "./Components/Forgetpassword";
 import OrderConfirmationPagecash from "./pages/OrderConfirmationPagecash";
 import ScrapyardSingleProduct from "./pages/ScrapyardSingleProduct";
+import View_3d_model from "./pages/View_3d_model";
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -129,6 +130,7 @@ const App = () => {
           }
         />
         <Route path="/LatestProduct" element={<LatestProduct />} />
+        <Route path="/View_3d_model" element={<View_3d_model/> } />
         <Route
           path="/orderConfirmation"
           element={
@@ -144,6 +146,7 @@ const App = () => {
           </ProtectedRoute>
         }
       />
+    
       </Routes>
     </BrowserRouter>
   );
