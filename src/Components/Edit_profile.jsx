@@ -25,7 +25,7 @@ export default function EditProfile() {
     if (currentUser) {
       // Fetch full user data from backend using user ID
       axios
-        .get(`http://localhost:3002/users/${currentUser.id}`)
+        .get(`http://localhost:3002/users/${currentUser._id}`)
         .then((response) => {
           const userData = response.data; // Assuming response.data contains user's full information
           const { firstName, lastName, email, phone, address, bio, imageUrl } =
@@ -91,7 +91,7 @@ export default function EditProfile() {
     }
 
     axios
-      .patch(`http://localhost:3002/users/${currentUser.id}`, formData)
+      .patch(`http://localhost:3002/users/${currentUser._id}`, formData)
       .then((response) => {
         console.log("Profile updated successfully:", response.data);
         navigate('/profile')
