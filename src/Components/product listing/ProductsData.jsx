@@ -1308,7 +1308,12 @@
         ],
         "stockQuantity": 50,
         "imageURL": [
-          "https://example.com/images/vintage-gears.jpg"
+          "https://images.unsplash.com/photo-1565153907400-7e01a9ab25f3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1677612031058-e90a2a6c03ed?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1507445182441-0738b50b1519?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1694394357585-489ad6c764a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1664392271317-132e491d2e7c?q=80&w=1950&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1553007837-057e28298e01?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "RustyRelics",
         "weight": "1.2kg",
@@ -1341,7 +1346,12 @@
         ],
         "stockQuantity": 30,
         "imageURL": [
-          "https://example.com/images/rustic-wood.jpg"
+          "https://plus.unsplash.com/premium_photo-1675526112779-9181f2559894?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1531824475211-72594993ce2a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1628838481476-e72b8eb443ed?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1675115145892-916cc7275bc6?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1516180598628-a57a3dda1a80?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1566739262288-351a2ee21251?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "WoodenTreasures",
         "weight": "3.5kg",
@@ -1374,7 +1384,12 @@
         ],
         "stockQuantity": 20,
         "imageURL": [
-          "https://example.com/images/bicycle-parts.jpg"
+          "https://plus.unsplash.com/premium_photo-1683120929511-af05758ec1e5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1682125837436-bce8b7799f0f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1683141509353-63d9c8642123?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1626026037862-1bda6dc65ff9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1620415598391-aa5ac16ef567?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1496147539180-13929f8aa03a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "CycleScraps",
         "weight": "2.8kg",
@@ -1407,7 +1422,12 @@
         ],
         "stockQuantity": 15,
         "imageURL": [
-          "https://example.com/images/metal-boxes.jpg"
+          "https://images.unsplash.com/photo-1483861911361-57d334ad765b?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1704118549271-64c0a2941803?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1704118549385-bedf79c4d618?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://img.freepik.com/free-photo/wooden-vintage-box-isolated-white-surface_181624-27112.jpg?t=st=1721757345~exp=1721760945~hmac=49a347ba5c6d747c1f6da7343774cebfcb5ca9f2959348e6139231f510fb89f1&w=740",
+          "https://img.freepik.com/premium-photo/silver-metal-box-isolated-white-background_875825-60521.jpg?w=900",
+          "https://img.freepik.com/premium-photo/ancient-arabic-treasure-chest_696657-12194.jpg?w=740"
         ],
         "brand": "AntiqueFinds",
         "weight": "5.0kg",
@@ -1440,7 +1460,12 @@
         ],
         "stockQuantity": 40,
         "imageURL": [
-          "https://example.com/images/electronic-components.jpg"
+          "https://img.freepik.com/free-photo/assortment-dirty-dumped-objects_23-2148996979.jpg?t=st=1721757446~exp=1721761046~hmac=16423922f3be9a3e96e06e429cd4b69b2f11526d253603bd387647a165c3d6f8&w=900",
+          "https://img.freepik.com/free-photo/view-tiny-music-boxes-collection_23-2150545647.jpg?t=st=1721757505~exp=1721761105~hmac=5cf2a28249d2d14547aee075e54900af48d0827c6efcd992c11979a8ff64e859&w=900",
+          "https://img.freepik.com/premium-photo/color-slides-negatives-after-scanning-white_165541-95.jpg?w=900",
+          "https://img.freepik.com/free-photo/high-angle-hard-drive-still-life-close-up_23-2149319361.jpg?t=st=1721757581~exp=1721761181~hmac=625acb63fa2b0ecc3bd695289d07c6576686a0511dd2a3864bf83d7a31693252&w=900",
+          "https://img.freepik.com/premium-photo/directly-shot-cpu-parts-wooden-table_1048944-4811424.jpg?w=900",
+          "https://img.freepik.com/premium-photo/heap-computer-hardware-isolated-white_266732-23923.jpg?w=740"
         ],
         "brand": "ElectroBits",
         "weight": "1.5kg",
@@ -1473,7 +1498,12 @@
         ],
         "stockQuantity": 60,
         "imageURL": [
-          "https://example.com/images/typewriter-keys.jpg"
+          "https://plus.unsplash.com/premium_photo-1664391649733-b92a94066d7b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1475770230762-6409e81d7589?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1525453689870-bfab0d1af50d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1548943995-56fbe6e5a13e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1521225753516-46438a76f25a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1518406537068-308f1590a298?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "KeyCraft",
         "weight": "0.8kg",
@@ -1510,7 +1540,12 @@
         ],
         "stockQuantity": 25,
         "imageURL": [
-          "https://example.com/images/wooden-crates.jpg"
+          "https://images.unsplash.com/photo-1650704185126-c88177b9580a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1695735926939-b73a650ac41d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1522401411131-5d6159fe88e8?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1516972810927-80185027ca84?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1515768343027-13709c719fce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://img.freepik.com/premium-photo/old-wooden-crate-box-isolated-white-background_82783-480.jpg?w=740"
         ],
         "brand": "RusticFinds",
         "weight": "4.0kg",
@@ -1543,7 +1578,12 @@
         ],
         "stockQuantity": 10,
         "imageURL": [
-          "https://example.com/images/metal-sheets.jpg"
+          "https://img.freepik.com/premium-photo/pile-heavy-duty-chains-with-word-heavy-duty-them_752899-3998.jpg?w=900",
+          "https://img.freepik.com/free-photo/rusty-metal-sheets_1259-219.jpg?t=st=1721759204~exp=1721762804~hmac=c46fab04d3b78b3c7c74af6630d75d31d11a3226401a1a6c5ea0bc78fd1ad6ea&w=900",
+          "https://img.freepik.com/free-photo/closeup-rusty-iron-ship-walls-with-grey-paint-it_181624-7061.jpg?t=st=1721759257~exp=1721762857~hmac=52aa1cf3f9a6714e852e4b4332b7c1f5c21135491073b07cde8bcac22a803332&w=360",
+          "https://images.unsplash.com/photo-1520697517317-6767553cc51a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1451755032734-ada8d61ecf2f?q=80&w=1904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1517155505529-258758459af8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fFNjcmFwJTIwbWV0YWwlMjBzaGVldHN8ZW58MHx8MHx8fDA%3D"
         ],
         "brand": "MetalWorks",
         "weight": "7.0kg",
@@ -1576,7 +1616,12 @@
         ],
         "stockQuantity": 12,
         "imageURL": [
-          "https://example.com/images/clock-parts.jpg"
+          "https://img.freepik.com/free-photo/futuristic-time-machine_23-2151599346.jpg?t=st=1721759443~exp=1721763043~hmac=d39396c64ad85adc554b731ff9f1a7d9fb27c2b3229d4c2b23a61421070ff186&w=740",
+          "https://img.freepik.com/free-photo/futuristic-time-machine_23-2151599339.jpg?t=st=1721759498~exp=1721763098~hmac=1e428a3371c652d8122a500eefb26b627393a5a6fceae0a524e3ddb3e796bef8&w=740",
+          "https://img.freepik.com/premium-photo/clock-mechanism-white-wal_38039-820.jpg?w=360",
+          "https://img.freepik.com/premium-photo/close-view-old-clock-mechanism-with-gears-cogs-your-successful-business-design-macro_375001-5237.jpg?w=740",
+          "https://img.freepik.com/free-photo/futuristic-time-machine_23-2151599338.jpg?t=st=1721759598~exp=1721763198~hmac=f793aa8b8e2126cc782576557c43615dd034278fddc999d04f175d75f2cf8a83&w=740",
+          "https://img.freepik.com/free-photo/circular-clock-outdoors-still-life_23-2150436128.jpg?t=st=1721759637~exp=1721763237~hmac=10b9e78f8dec05a571b5e3719497b5acf0729f51465a90bd44af4186690770ae&w=360"
         ],
         "brand": "TimeWorn",
         "weight": "2.5kg",
@@ -1609,7 +1654,12 @@
         ],
         "stockQuantity": 40,
         "imageURL": [
-          "https://example.com/images/glass-bottles.jpg"
+          "https://img.freepik.com/free-photo/top-view-sustainably-produced-alcoholic-beverage_23-2150162981.jpg?t=st=1721759726~exp=1721763326~hmac=2aa9055650e776ae57901ef68c59e57ce9df5c431a170643cefea12b24531e71&w=360",
+          "https://img.freepik.com/premium-photo/original-glass-bottles-isolated-white_392895-375915.jpg?w=360",
+          "https://img.freepik.com/premium-photo/glass-bottles-jars-colored-background_222822-85.jpg?w=740",
+          "https://img.freepik.com/premium-photo/luxury-wine-bottle-glass-table-elegant-celebration-design-generated-by-artificial-intelligence_24911-86061.jpg?w=1060",
+          "https://img.freepik.com/premium-photo/vintage-glass-milk-bottles-with-metal-carrier-ai-generated_866663-5885.jpg?w=1060",
+          "https://img.freepik.com/premium-photo/decoration-dining-table_38700-963.jpg?w=900"
         ],
         "brand": "GlassTreasures",
         "weight": "3.0kg",
@@ -1642,7 +1692,12 @@
         ],
         "stockQuantity": 8,
         "imageURL": [
-          "https://example.com/images/metal-tools.jpg"
+          "https://img.freepik.com/free-photo/top-view-construction-hammers-still-life_23-2150563143.jpg?t=st=1721759914~exp=1721763514~hmac=d5d376d2d8422bc2010e334217bb7cc5970e56c121debf39c75f9be8ff9c3b98&w=360",
+          "https://img.freepik.com/premium-photo/high-angle-view-work-tools-table_1048944-24026413.jpg?w=900",
+          "https://img.freepik.com/free-photo/father-s-day-with-tools-frame_23-2148510703.jpg?t=st=1721759995~exp=1721763595~hmac=d778d3283db8fc54b27da1fca1f08dd4ac165330ffba200d7b021a816c86dfff&w=900",
+          "https://img.freepik.com/premium-photo/tool-renovation-grunge-wood_51530-103.jpg?w=900",
+          "https://img.freepik.com/premium-photo/vintage-woodworking-tools-workbench_738298-1607.jpg?w=900",
+          "https://img.freepik.com/premium-photo/gardening-tools-wooden-background-top-view-flat-lay_1015980-434390.jpg?w=740"
         ],
         "brand": "ToolHeritage",
         "weight": "6.0kg",
@@ -1677,7 +1732,12 @@
         ],
         "stockQuantity": 50,
         "imageURL": [
-          "https://example.com/images/creative-software.jpg"
+          "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1504805572947-34fad45aed93?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1501159599894-155982264a55?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1501780392773-287d506245a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1498075702571-ecb018f3752d?q=80&w=1778&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "DesignPro",
         "weight": "N/A",
@@ -1710,7 +1770,12 @@
         ],
         "stockQuantity": 100,
         "imageURL": [
-          "https://example.com/images/project-management-tool.jpg"
+          "https://plus.unsplash.com/premium_photo-1668446396640-11fa8d483856?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://img.freepik.com/free-photo/high-angle-employees-using-tablet_23-2148339334.jpg?t=st=1721752460~exp=1721756060~hmac=15174a5fde5ee734bc28b006a7e196c95e310fe1cc472bae83052ec735f49775&w=900",
+          "https://img.freepik.com/premium-photo/tablet-with-business-scheme_253658-10627.jpg?w=900",
+          "https://img.freepik.com/premium-vector/gears-world-design_25030-11385.jpg?w=740",
+          "https://img.freepik.com/free-photo/standard-quality-control-collage-concept_23-2149595836.jpg?t=st=1721752477~exp=1721756077~hmac=d494e55f67f11cf869c047ba4e7ec96394d1b7a83e1e275e1bde507ad3e5392b&w=900",
+          "https://img.freepik.com/premium-photo/man-touching-business-elements-icons-screen_488220-45384.jpg?w=900"
         ],
         "brand": "ProjectMaster",
         "weight": "N/A",
@@ -1743,7 +1808,12 @@
         ],
         "stockQuantity": 200,
         "imageURL": [
-          "https://example.com/images/digital-art-pack.jpg"
+          "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1471666875520-c75081f42081?q=80&w=1944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1456086272160-b28b0645b729?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1577083552792-a0d461cb1dd6?q=80&w=1940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1578926314433-e2789279f4aa?q=80&w=1910&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "ArtVault",
         "weight": "N/A",
@@ -1776,7 +1846,13 @@
         ],
         "stockQuantity": 150,
         "imageURL": [
-          "https://example.com/images/ebook-templates.jpg"
+          "https://plus.unsplash.com/premium_photo-1677402408071-232d1c3c3787?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1529158062015-cad636e205a0?q=80&w=1953&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1419640303358-44f0d27f48e7?q=80&w=1985&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1513185041617-8ab03f83d6c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1685136482508-ff00024d187a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "TemplateWorld",
         "weight": "N/A",
@@ -1809,7 +1885,12 @@
         ],
         "stockQuantity": 300,
         "imageURL": [
-          "https://example.com/images/marketing-guide.jpg"
+          "https://images.unsplash.com/photo-1504270997636-07ddfbd48945?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1661693882933-fc9008e3c5a0?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "MarketMinds",
         "weight": "N/A",
@@ -1844,7 +1925,12 @@
         ],
         "stockQuantity": 50,
         "imageURL": [
-          "https://example.com/images/creative-software.jpg"
+          "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1504805572947-34fad45aed93?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1501159599894-155982264a55?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1501780392773-287d506245a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1498075702571-ecb018f3752d?q=80&w=1778&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "DesignPro",
         "weight": "N/A",
@@ -1877,7 +1963,12 @@
         ],
         "stockQuantity": 100,
         "imageURL": [
-          "https://example.com/images/project-management-tool.jpg"
+          "https://plus.unsplash.com/premium_photo-1668446396640-11fa8d483856?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://img.freepik.com/free-photo/high-angle-employees-using-tablet_23-2148339334.jpg?t=st=1721752460~exp=1721756060~hmac=15174a5fde5ee734bc28b006a7e196c95e310fe1cc472bae83052ec735f49775&w=900",
+          "https://img.freepik.com/premium-photo/tablet-with-business-scheme_253658-10627.jpg?w=900",
+          "https://img.freepik.com/premium-vector/gears-world-design_25030-11385.jpg?w=740",
+          "https://img.freepik.com/free-photo/standard-quality-control-collage-concept_23-2149595836.jpg?t=st=1721752477~exp=1721756077~hmac=d494e55f67f11cf869c047ba4e7ec96394d1b7a83e1e275e1bde507ad3e5392b&w=900",
+          "https://img.freepik.com/premium-photo/man-touching-business-elements-icons-screen_488220-45384.jpg?w=900"
         ],
         "brand": "ProjectMaster",
         "weight": "N/A",
@@ -1910,7 +2001,12 @@
         ],
         "stockQuantity": 200,
         "imageURL": [
-          "https://example.com/images/digital-art-pack.jpg"
+          "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1471666875520-c75081f42081?q=80&w=1944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1456086272160-b28b0645b729?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1577083552792-a0d461cb1dd6?q=80&w=1940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1578926314433-e2789279f4aa?q=80&w=1910&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "ArtVault",
         "weight": "N/A",
@@ -1943,7 +2039,13 @@
         ],
         "stockQuantity": 150,
         "imageURL": [
-          "https://example.com/images/ebook-templates.jpg"
+          "https://plus.unsplash.com/premium_photo-1677402408071-232d1c3c3787?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1529158062015-cad636e205a0?q=80&w=1953&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1419640303358-44f0d27f48e7?q=80&w=1985&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1513185041617-8ab03f83d6c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1685136482508-ff00024d187a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "TemplateWorld",
         "weight": "N/A",
@@ -1976,7 +2078,12 @@
         ],
         "stockQuantity": 300,
         "imageURL": [
-          "https://example.com/images/marketing-guide.jpg"
+          "https://images.unsplash.com/photo-1504270997636-07ddfbd48945?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1661693882933-fc9008e3c5a0?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "MarketMinds",
         "weight": "N/A",
@@ -2013,7 +2120,12 @@
         ],
         "stockQuantity": 120,
         "imageURL": [
-          "https://example.com/images/web-design-templates.jpg"
+          "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1493421419110-74f4e85ba126?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1955&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1501556424050-d4816356b73e?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1576153192396-180ecef2a715?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1598368195835-91e67f80c9d7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "WebCraft",
         "weight": "N/A",
@@ -2046,7 +2158,12 @@
         ],
         "stockQuantity": 30,
         "imageURL": [
-          "https://example.com/images/video-editing-software.jpg"
+          "https://plus.unsplash.com/premium_photo-1661308267167-c63fcd8a2003?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1661494433799-adbd88223f55?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1581093808268-7a25a3625207?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1682506456442-a051e8dae813?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1581088657139-d5a5cce14c87?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "EditMaster",
         "weight": "N/A",
@@ -2079,7 +2196,12 @@
         ],
         "stockQuantity": 80,
         "imageURL": [
-          "https://example.com/images/3d-model-pack.jpg"
+          "https://img.freepik.com/premium-photo/2_873925-138453.jpg?w=740",
+          "https://img-new.cgtrader.com/items/2577872/049cd37f4d/basic-asset-pack-3d-model-049cd37f4d.jpg",
+          "https://img.freepik.com/free-vector/realistic-3d-abstract-shape-set_23-2150899862.jpg?t=st=1721761136~exp=1721764736~hmac=d1bf3e96a744d9d7f08e664374973e61e2f7330818e756ac4606e15a989d1c97&w=740",
+          "https://img.freepik.com/premium-vector/collection-illustrations-different-objects-including-one-that-says-other-is-yello_889056-190383.jpg?w=1060",
+          "https://img.freepik.com/premium-vector/gradient-podium-illustration_23-2151585339.jpg?w=900",
+          "https://img.freepik.com/free-vector/antigravity-geometric-shapes-with-3d-effect_52683-21162.jpg?t=st=1721761220~exp=1721764820~hmac=d465be94e21c42ad4d2fc0bdc0cfa43c16d24068e1ca4f0c3df923a08f28f47c&w=900"
         ],
         "brand": "ModelMasters",
         "weight": "N/A",
@@ -2112,7 +2234,12 @@
         ],
         "stockQuantity": 200,
         "imageURL": [
-          "https://example.com/images/digital-brushes.jpg"
+          "https://plus.unsplash.com/premium_photo-1673467011288-462c72c5ec69?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1491245338813-c6832976196e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1671120246955-d55648c93dc5?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1658301720419-d1c963f7993b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1571950314243-22311024e76f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1522410818928-5522dacd5066?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "ArtTools",
         "weight": "N/A",
@@ -2145,7 +2272,12 @@
         ],
         "stockQuantity": 150,
         "imageURL": [
-          "https://example.com/images/elearning-kit.jpg"
+          "https://images.unsplash.com/photo-1610500796385-3ffc1ae2f046?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1594643781026-abcb610d394f?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1681488088523-ef98813db228?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1596496181848-3091d4878b24?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1611532736787-039db068611c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1599081595833-a54f00b6ed08?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         "brand": "EduTech",
         "weight": "N/A",

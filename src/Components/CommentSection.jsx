@@ -1,37 +1,35 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../redux/user/userSlice";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import "./CommentSection.css"; // Import the CSS file
 
 const CommentSection = ({ productId }) => {
-  const user = useSelector(selectUser);
   const [comments, setComments] = useState([
     { username: "Alice", rating: 5, text: "Great product!" },
     { username: "Bob", rating: 4, text: "Good quality, but a bit pricey." },
     { username: "Charlie", rating: 3, text: "Average experience." }
   ]);
   const [newComment, setNewComment] = useState("");
-  const [newRating, setNewRating] = useState(5);
+  const [newUsername, setNewUsername] = useState("");
 
   const handleAddComment = () => {
-    if (!user) {
-      toast.error("You're not logged in!", {
+    if (!newUsername || !newComment) {
+      toast.error("Username and comment are required!", {
         autoClose: 1500,
       });
       return;
     }
 
     const comment = {
-      username: user.username,
-      rating: newRating,
+      username: newUsername,
+      rating: 5, // Fixed rating of 5 for demonstration
       text: newComment,
     };
 
     setComments([...comments, comment]);
+    setNewUsername("");
     setNewComment("");
-    setNewRating(5);
     toast.success("Comment added!", {
       autoClose: 1500,
     });
@@ -55,25 +53,19 @@ const CommentSection = ({ productId }) => {
       ))}
       <div className="add-comment">
         <h5>Add a New Comment</h5>
+        <input
+          type="text"
+          value={newUsername}
+          onChange={(e) => setNewUsername(e.target.value)}
+          placeholder="Your username"
+          required
+        />
         <textarea
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           placeholder="Write your comment here..."
+          required
         />
-        <div className="rating-input">
-          <label htmlFor="rating">Rating:</label>
-          <select
-            id="rating"
-            value={newRating}
-            onChange={(e) => setNewRating(Number(e.target.value))}
-          >
-            {[1, 2, 3, 4, 5].map((rating) => (
-              <option key={rating} value={rating}>
-                {rating}
-              </option>
-            ))}
-          </select>
-        </div>
         <button onClick={handleAddComment}>Add Comment</button>
       </div>
     </div>
