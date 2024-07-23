@@ -15,6 +15,7 @@ const Latest = (props) => {
   const redirectToProductDetail = (product) => {
     navigate("/ProductDetail", { state: product });
   };
+
   const loadMoreProducts = () => {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
   };
@@ -23,7 +24,9 @@ const Latest = (props) => {
     try {
       const response = await axios.get("http://localhost:3002/products");
       console.log("Response:", response.data);
-      setLatestProducts(response.data);
+      // Sort products in ascending order based on name
+      const sortedProducts = response.data.sort((a, b) => a.name.localeCompare(b.name));
+      setLatestProducts(sortedProducts);
     } catch (error) {
       console.log("Error fetching products:", error);
       toast.error(
@@ -61,16 +64,17 @@ const Latest = (props) => {
           <h1>Latest Products</h1>
           <button
             style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              border: "1px solid #007bff",
-              borderRadius: "5px",
-              backgroundColor: "#007bff",
-              color: "#fff",
+              marginTop: "30px",
+              width: "130px",
+              height: "40px",
+              lineHeight: "40px",
+              borderRadius: "50px",
+              backgroundColor: "#e8f6ea",
+              fontWeight: "500",
+              color: "#088178",
+              border: "1px solid #cce7d0",
+              textAlign: "center",
               cursor: "pointer",
-              alignItems: "center",
-              justifyContent: "center",
-              alignContent: "center",
             }}
             onClick={handleViewAll}
           >
@@ -81,20 +85,12 @@ const Latest = (props) => {
       <div className="pro-container">
         {/* Map over visible products and render each product */}
         {latestProducts.slice(0, visibleProducts).map((product) => (
-           
           <div className="pro" key={product._id}>
             <img
               onClick={() => {
                 redirectToProductDetail(product);
               }}
-              // src={product.imageURL[0]}
-              src = {
-                // async ()=>{
-                // const res = await axios.get(product.imageURL[0]);
-                // return res;
-                product.imageURL[0]
-              }
-            // }
+              src={product.imageURL[0]}
               alt=""
               style={{ cursor: "pointer" }}
             />
@@ -115,8 +111,8 @@ const Latest = (props) => {
               </div>
               <h4>${product.price}</h4>
             </div>
-            <div className="cart" >
-              <a  href="#" style={{ color: "#007bff" }}>
+            <div className="cart">
+              <a href="#" style={{ color: "#007bff" }}>
                 <FontAwesomeIcon icon={faCartPlus} onClick={() => {
                 redirectToProductDetail(product);
               }}/>
@@ -133,7 +129,6 @@ const Latest = (props) => {
               Load More
             </button>
           </div>
-          
         )
       ) : (
         <div></div>
