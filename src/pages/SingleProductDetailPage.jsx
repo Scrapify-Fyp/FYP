@@ -669,13 +669,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cartSlice";
 import { selectUser } from "../redux/user/userSlice";
 import { toast } from "react-toastify";
+import { auth } from "../hooks/auth";
 
 const SingleProductDetailPage = (props) => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
+  const user = auth();
+
   const location = useLocation();
   const data = location.state;
-  console.log("Data from SingleProductPage: ", data);
+  console.log("Data from SingleProductPage: ", data , user);
 
   const [product, setProduct] = useState(data);
   const maxQuantity = product?.stockQuantity;
@@ -736,9 +739,9 @@ const SingleProductDetailPage = (props) => {
       product,
       quantity,
       selectedSize,
-      userId: user?.id,
+      userId: user?._id,
     };
-    if (user?.id === product.vendorId) {
+    if (user?._id === product.vendorId) {
       toast.error("You can't add your own product to cart", {
         autoClose: 1500,
       });

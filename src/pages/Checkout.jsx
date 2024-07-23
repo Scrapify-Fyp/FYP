@@ -156,7 +156,7 @@ const makepatments=async()=>{
       shipping,
       total: subtotal + shipping
     };
-    // console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
+    console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
 
     try {
       const response = await axios.post('http://localhost:3002/orders', orderData);

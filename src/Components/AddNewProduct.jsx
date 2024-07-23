@@ -31,7 +31,7 @@ export default function AddNewProduct({close}) {
       rating: 0,
       discounts: "",
       availabilityStatus: "available",
-      vendorId: user.id,
+      vendorId: user._id,
     });
     const [tags, setTags] = useState([]);
   const [suggestions, setSuggestions] = useState([
