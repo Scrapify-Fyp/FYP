@@ -455,7 +455,7 @@ export default function Analytics() {
                   <td style={tableDataStyle}>
                     {
                       analyticsData && analyticsData.prediction
-                        ? analyticsData.prediction === true
+                        ? analyticsData.prediction[0] == true
                           ? "Price Should Increase"
                           : "Price Should Decrease"
                         : "N/A" // Display "N/A" or any default value when `analyticsData` or `analyticsData.prediction` is not available

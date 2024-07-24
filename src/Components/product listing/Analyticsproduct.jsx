@@ -139,8 +139,8 @@ export default function AnalyticsProduct(props) {
   }, [user._id]);
 
   const getPredictions = async (product) => {
-    const shares = 10;
-    const time_on_page = 4;
+    const shares = 100;
+    const time_on_page = 50;
     const inputData = {
       input: [
         product.review.impressions,

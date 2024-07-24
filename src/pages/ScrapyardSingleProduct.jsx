@@ -275,7 +275,6 @@ import axios from "axios";
 
 import ThreeScene from "../Components/3d view/ThreeScene";
 
-
 const ScrapyardSingleProduct = (props) => {
   const dispatch = useDispatch();
   const user = auth();
@@ -284,22 +283,22 @@ const ScrapyardSingleProduct = (props) => {
   const data = location.state;
 
   // Toy car default values
-  const product = {
-    brand: "Hot Wheels",
-    name: "Speed Racer Toy Car",
-    price: 299.99,
-    rating: 4,
-    stockQuantity: 10,
-    description: "A sleek and speedy toy car perfect for kids.",
-    material: "Die-cast metal",
-    texture: "Smooth",
-    color: "Red",
-    imageURL: "/images/toy-car.jpg", // Ensure this path is correct
-    images: ["/images/toy-car-1.jpg", "/images/toy-car-2.jpg"],
-    vendorId: "12345" // Example vendor ID
-  };
+  // const product = {
+  //   brand: "Hot Wheels",
+  //   name: "Speed Racer Toy Car",
+  //   price: 299.99,
+  //   rating: 4,
+  //   stockQuantity: 10,
+  //   description: "A sleek and speedy toy car perfect for kids.",
+  //   material: "Die-cast metal",
+  //   texture: "Smooth",
+  //   color: "Red",
+  //   imageURL: "/images/toy-car.jpg", // Ensure this path is correct
+  //   images: ["/images/toy-car-1.jpg", "/images/toy-car-2.jpg"],
+  //   vendorId: "12345" // Example vendor ID
+  // };
 
-  // const [product, setProduct] = useState(defaultToyCar);
+  const [product, setProduct] = useState(data);
   const maxQuantity = product?.stockQuantity;
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");
@@ -307,18 +306,39 @@ const ScrapyardSingleProduct = (props) => {
 
   const handleContract = () => {};
 
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log("Data from SingleProductPage: ", data);
-    setProduct(data);
-  }, [data]);
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  //   console.log("Data from SingleProductPage: ", data);
+  //   setProduct(data);
+  // }, [data]);
 
   // useEffect(() => {
   //   window.scrollTo({ top: 0, behavior: "smooth" });
   //   setProduct(data || defaultToyCar);
   // }, [data]);
 
+  const getThisProduct = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3002/products/${product?._id}`
+      );
+
+      console.log("Item deleted successfully:", response.data);
+      console.log("Item deleted successfully:", product);
+      setProduct(response.data);
+
+      // fetchData();
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+  useEffect(() => {
+    getThisProduct();
+    // setProduct(response.data);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    console.log("Data from SingleProductPage: ", data);
+    setProduct(data);
+  }, [data]);
 
   const handleIncreaseQuantity = () => {
     if (quantity < maxQuantity) {
@@ -390,7 +410,7 @@ const ScrapyardSingleProduct = (props) => {
     });
   };
 
-  const handleRecomendations = async () => {
+  const handleRecomendations = async (product) => {
     // Extract features needed for AI model
     const features = {
       density: product?.density || 0,
