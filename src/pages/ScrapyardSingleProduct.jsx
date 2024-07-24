@@ -284,22 +284,22 @@ const ScrapyardSingleProduct = (props) => {
   const data = location.state;
 
   // Toy car default values
-  const product = {
-    brand: "Hot Wheels",
-    name: "Speed Racer Toy Car",
-    price: 299.99,
-    rating: 4,
-    stockQuantity: 10,
-    description: "A sleek and speedy toy car perfect for kids.",
-    material: "Die-cast metal",
-    texture: "Smooth",
-    color: "Red",
-    imageURL: "/images/toy-car.jpg", // Ensure this path is correct
-    images: ["/images/toy-car-1.jpg", "/images/toy-car-2.jpg"],
-    vendorId: "12345" // Example vendor ID
-  };
+  // const product = {
+  //   brand: "Hot Wheels",
+  //   name: "Speed Racer Toy Car",
+  //   price: 299.99,
+  //   rating: 4,
+  //   stockQuantity: 10,
+  //   description: "A sleek and speedy toy car perfect for kids.",
+  //   material: "Die-cast metal",
+  //   texture: "Smooth",
+  //   color: "Red",
+  //   imageURL: "/images/toy-car.jpg", // Ensure this path is correct
+  //   images: ["/images/toy-car-1.jpg", "/images/toy-car-2.jpg"],
+  //   vendorId: "12345" // Example vendor ID
+  // };
 
-  // const [product, setProduct] = useState(defaultToyCar);
+  const [product, setProduct] = useState(data);
   const maxQuantity = product?.stockQuantity;
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");

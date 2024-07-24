@@ -1,32 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { clearUser, selectUser } from "../redux/user/userSlice";
 import NavbarCSS from "./Navbar.module.css";
-import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { auth } from "../hooks/auth";
 import { emptyCart, selectCartItems } from "../redux/cart/cartSlice";
 
-
 const Navbar = () => {
   const cartItems = useSelector(selectCartItems);
   const cartItemsSize = cartItems.length;
-  console.log("🚀 ~ Navbar ~ cartItemsSize:", cartItemsSize);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = auth();
   const [cartCount, setCartCount] = useState(cartItems.length);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
   const [screensize, setScreensize] = useState(window.innerWidth);
   const comparison = 900;
 
-  useEffect(() => {
+  const [searchQuery, setSearchQuery] = useState(""); // New state for search query
 
+  useEffect(() => {
     fetchCartCount();
     const handleResize = () => {
       setScreensize(window.innerWidth);
@@ -51,7 +48,8 @@ const Navbar = () => {
           console.error("Error fetching user data:", error);
         });
     }
-  }, []);
+  }, [user]);
+
   const fetchCartCount = () => {
     setCartCount(cartItemsSize);
   };
@@ -61,10 +59,22 @@ const Navbar = () => {
     dispatch(emptyCart());
     Cookies.remove("token");
     navigate("/");
-    toast.success("Loggedout successfully!",{
-      autoClose:1000,
-    })
+    toast.success("Logged out successfully!", {
+      autoClose: 1000,
+    });
   };
+
+  const handleSearchInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim() !== "") {
+      navigate(`/search?query=${searchQuery}`);
+    }
+  };
+
   const ProfileDropdown = () => (
     <NavDropdown id="profile-dropdown">
       {user && (
@@ -104,32 +114,32 @@ const Navbar = () => {
             </NavLink>
             <div className={NavbarCSS.searchroutes}>
               <div className={NavbarCSS.navbarsearch}>
-                <form className="form-inline">
+                <form className="form-inline" onSubmit={handleSearchSubmit}>
                   <input
                     className="form-control mr-sm-2"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
+                    value={searchQuery}
+                    onChange={handleSearchInputChange}
                   />
-                  <NavLink to="/Search">
-                    <button type="submit">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="feather feather-search"
-                      >
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                      </svg>
-                    </button>
-                  </NavLink>
+                  <button type="submit">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-search"
+                    >
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
                 </form>
               </div>
               <div className={NavbarCSS.routes}>
@@ -162,8 +172,8 @@ const Navbar = () => {
                 </ul>
               </div>
             </div>
-            <div className="navbar-buttons" style={{ display: "flex",gap:"9px" }}>
-              <NavLink to="/Cart" className=" btn btn-outline-secondary ">
+            <div className="navbar-buttons" style={{ display: "flex", gap: "9px" }}>
+              <NavLink to="/Cart" className="btn btn-outline-secondary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -184,60 +194,34 @@ const Navbar = () => {
               {cartCount >= 0 && (
                 <div className={NavbarCSS.cartCount}>{cartCount}</div>
               )}
-
-              {
-                <NavLink
-                  to={user ? "/Profile" : "/Signin"}
-                  className="btn btn-outline-secondary my-2 my-sm-0 ml-2"
-                >
-                
-                 {/* {user? (<img style={{width:"40px",height:"40px"}} src={userData.imageUrl} alt="sdkmks" /> ):
-                 ( <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="26"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="feather feather-user"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>)
-                  } */}
-                  
-             
-                  <div style={{display:"flex", alignItems:"center",gap:"7px"}}>
+              <NavLink to={user ? "/Profile" : "/Signin"} className="btn btn-outline-secondary my-2 my-sm-0 ml-2">
+                <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
                   <div>
-                  <img
-                  style={{width:"40px",height:"40px"}}
-                    src={
-                      userData?.imageUrl ||
-                      "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                    }
-                    alt="avatar"
-                    className="rounded-circle img-fluid"
-                  />
+                    <img
+                      style={{ width: "40px", height: "40px" }}
+                      src={
+                        userData?.imageUrl ||
+                        "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                      }
+                      alt="avatar"
+                      className="rounded-circle img-fluid"
+                    />
                   </div>
-                  <div style={{paddingTop:"7px"}}>
-                  {screenWidth >= 900 && <ProfileDropdown />}
+                  <div style={{ paddingTop: "7px" }}>
+                    {screenWidth >= 900 && <ProfileDropdown />}
                   </div>
-                  </div>
-                </NavLink>
-              }
+                </div>
+              </NavLink>
             </div>
           </nav>
         </div>
       ) : (
         <nav className="navbar navbar-expand-lg navbar-light">
-          <a className="navbar-brand" href="/">
+          <NavLink className="navbar-brand" to="/">
             <h4>
               <strong>Scrapify</strong>
             </h4>
-          </a>
+          </NavLink>
           <button
             to="/Profile"
             className="navbar-toggler"
@@ -250,18 +234,17 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div
-            className="collapse navbar-collapse mobile-route-buttons"
-            id="navbarNav"
-          >
+          <div className="collapse navbar-collapse mobile-route-buttons" id="navbarNav">
             <div className="search-routes">
               <div className="navbar-search">
-                <form className="form-inline">
+                <form className="form-inline" onSubmit={handleSearchSubmit}>
                   <input
                     className="form-control mr-sm-2"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
+                    value={searchQuery}
+                    onChange={handleSearchInputChange}
                   />
                   <button type="submit">
                     <svg
@@ -271,9 +254,9 @@ const Navbar = () => {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="feather feather-search"
                     >
                       <circle cx="11" cy="11" r="8"></circle>
@@ -290,28 +273,29 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
+                    <NavLink className="nav-link" to="/Shops">
                       Shops
-                    </a>
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      About Us
-                    </a>
+                    <NavLink className="nav-link" to="/Scrapyard">
+                      Scrapyard
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/Contact_us">
+                    <NavLink className="nav-link" to="/Digitalassets">
+                      Digital assets
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/Contact_us">
                       Contact Us
-                    </a>
+                    </NavLink>
                   </li>
                 </ul>
               </div>
               <div className="navbar-buttons">
-                <NavLink
-                  to="/Profile"
-                  className="btn btn-outline-secondary m-2"
-                  type="button"
-                >
+                <NavLink to="/Cart" className="btn btn-outline-secondary m-2" type="button">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"
@@ -319,9 +303,9 @@ const Navbar = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="feather feather-shopping-cart"
                   >
                     <circle cx="9" cy="21" r="1"></circle>
@@ -329,11 +313,7 @@ const Navbar = () => {
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                   </svg>
                 </NavLink>
-                <NavLink
-                  to="/Profile"
-                  className="btn btn-outline-secondary my-2 my-sm-0 ml-2"
-                  type="button"
-                >
+                <NavLink to="/Profile" className="btn btn-outline-secondary my-2 my-sm-0 ml-2" type="button">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"
@@ -341,9 +321,9 @@ const Navbar = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="feather feather-user"
                   >
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
