@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Trending = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(4); // Start with 4 products visible
+  const [visibleProducts, setVisibleProducts] = useState(8); // Start with 4 products visible
   const navigate = useNavigate();
   const axios = useAxiosRetry();
 
@@ -89,13 +89,13 @@ const Trending = () => {
       </div>
 
       {/* Conditional Load More button */}
-      {trendingProducts.length > 4 && visibleProducts < trendingProducts.length && (
+      {/* {trendingProducts.length > 4 && visibleProducts < trendingProducts.length && (
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           <button className="load-more" onClick={loadMoreProducts}>
             Load More
           </button>
         </div>
-      )}
+      )} */}
     </section>
   );
 };

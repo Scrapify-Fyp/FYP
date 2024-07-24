@@ -10,24 +10,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cartSlice";
 import { selectUser } from "../redux/user/userSlice";
 import { toast } from "react-toastify";
+import ThreeScene from "../Components/3d view/ThreeScene";
 
 const ScrapyardSingleProduct = (props) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const location = useLocation();
   const data = location.state;
-  console.log("Data from SingleProductPage: ", data);
 
-  const [product, setProduct] = useState(data);
+  // Toy car default values
+  const product = {
+    brand: "Hot Wheels",
+    name: "Speed Racer Toy Car",
+    price: 299.99,
+    rating: 4,
+    stockQuantity: 10,
+    description: "A sleek and speedy toy car perfect for kids.",
+    material: "Die-cast metal",
+    texture: "Smooth",
+    color: "Red",
+    imageURL: "/images/toy-car.jpg", // Ensure this path is correct
+    images: ["/images/toy-car-1.jpg", "/images/toy-car-2.jpg"],
+    vendorId: "12345" // Example vendor ID
+  };
+
+  // const [product, setProduct] = useState(defaultToyCar);
   const maxQuantity = product?.stockQuantity;
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log("Data from SingleProductPage: ", data); // Debug log
-    setProduct(data);
-  }, [data]);
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  //   setProduct(data || defaultToyCar);
+  // }, [data]);
 
   const handleIncreaseQuantity = () => {
     if (quantity < maxQuantity) {
@@ -103,6 +118,10 @@ const ScrapyardSingleProduct = (props) => {
     console.log("contract");
   };
 
+  const render = () => {
+    return <ThreeScene />;
+  };
+
   // Ensure product.images is an array
   const productImages = Array.isArray(product?.images) && product?.images.length > 0 ? product.images : [product?.imageURL];
 
@@ -117,7 +136,7 @@ const ScrapyardSingleProduct = (props) => {
           <div id="pro-details">
             <div className="single-pro-img">
               <div className="small-img-grp">
-                {productImages.map((imgSrc, index) => (
+                {/* {productImages.map((imgSrc, index) => (
                   <div className="small-img-col" key={index}>
                     <img
                       src={imgSrc}
@@ -127,20 +146,22 @@ const ScrapyardSingleProduct = (props) => {
                       onClick={() => handleSmallImageClick(imgSrc)}
                     />
                   </div>
-                ))}
+                ))} */}
               </div>
               <div
+                style={{ width: "560px", height: "400px" }}
                 id="mainImgContainer"
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
+                // onMouseMove={handleMouseMove}
+                // onMouseLeave={handleMouseLeave}
               >
-                <img
+                {render()}
+                {/* <img
                   src={productImages[0] || ""}
                   width="100%"
                   height="auto"
                   id="mainImg"
                   alt="Main Image"
-                />
+                /> */}
               </div>
               <div id="magnifier"></div>
             </div>
@@ -158,7 +179,6 @@ const ScrapyardSingleProduct = (props) => {
               </div>
             </div>
             <form onSubmit={handleFormSubmit}>
-              {/* Size selection (commented out for now) */}
               <div className="quantity-wrapper">
                 <button type="button" className="quantity-button" onClick={handleDecreaseQuantity}>-</button>
                 <input className="quantity" value={quantity} readOnly />
