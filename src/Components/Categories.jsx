@@ -21,34 +21,7 @@ const Categories = () => {
         "Old Furniture", "Used Appliances", "Tires", "Clothing Scraps", "Miscellaneous"],
     },
   ];
-
-  // const sliderItems = [
-  //   {
-  //     //   image: "https://placehold.it/1200x400",
-  //     image:
-  //       "https://images.unsplash.com/photo-1554517222-e8b264ce5a35?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //     title: "First Slide Title",
-  //     text: "Some text related to the first slide.",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.unsplash.com/photo-1530736563750-5705fa77c26c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fDEyMDAlMjB4JTIwNDAwfGVufDB8MHwwfHx8Mg%3D%3D",
-  //     title: "Second Slide Title",
-  //     text: "Some text related to the second slide.",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/2611690/pexels-photo-2611690.jpeg?auto=compress&cs=tinysrgb&w=600",
-  //     title: "Third Slide Title",
-  //     text: "Some text related to the second slide.",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/8355599/pexels-photo-8355599.jpeg?auto=compress&cs=tinysrgb&w=600",
-  //     title: "Fourth Slide Title",
-  //     text: "Some text related to the second slide.",
-  //   },
-  // ];
+  
   const [openCategory, setOpenCategory] = useState(null);
 
   const handleOnClickCategory = (index) => {
