@@ -4,32 +4,38 @@ const Categories = () => {
   const categories = [
     {
       name: "Physical Products",
-      subcategories: ["Home Appliances", "Electronics", "Furniture", "Clothing", "Footwear",
+      subcategories: [
+        "Home Appliances", "Electronics", "Furniture", "Clothing", "Footwear",
         "Kitchenware", "Toys", "Sports Equipment", "Books", "Stationery",
-        "Beauty Products", "Jewelry", "Gardening Tools", "Automobile Parts", "Pet Supplies"],
+        "Beauty Products", "Jewelry", "Gardening Tools", "Automobile Parts", "Pet Supplies"
+      ],
     },
     {
       name: "Digital Assets",
-      subcategories: [ "Assignments", "Projects", "E-books", "Software", "Music",
+      subcategories: [
+        "Assignments", "Projects", "E-books", "Software", "Music",
         "Videos", "Courses", "Templates", "Fonts", "Graphics",
-        "Photography", "Virtual Reality", "Websites", "Mobile Apps", "Games"],
+        "Photography", "Virtual Reality", "Websites", "Mobile Apps", "Games"
+      ],
     },
     {
       name: "Scraps",
-      subcategories: ["Wall Hangings", "Decoration Pieces", "Metal Scraps", "Wood Scraps", "Plastic Scraps",
+      subcategories: [
+        "Wall Hangings", "Decoration Pieces", "Metal Scraps", "Wood Scraps", "Plastic Scraps",
         "Paper Scraps", "Fabric Scraps", "Glass Scraps", "E-waste", "Batteries",
-        "Old Furniture", "Used Appliances", "Tires", "Clothing Scraps", "Miscellaneous"],
+        "Old Furniture", "Used Appliances", "Tires", "Clothing Scraps", "Miscellaneous"
+      ],
     },
   ];
-  
-  const [openCategory, setOpenCategory] = useState(null);
+
+  const [openCategory, setOpenCategory] = useState(0); // Default to first category open
 
   const handleOnClickCategory = (index) => {
-    setOpenCategory(openCategory === index ? null : index);
+    setOpenCategory(openCategory === index ? null : index); // Toggle category
   };
 
   const [screensize, setScreensize] = useState(window.innerWidth);
-  const comparison = 900;
+
   useEffect(() => {
     const handleResize = () => {
       setScreensize(window.innerWidth);
@@ -42,61 +48,46 @@ const Categories = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []); // Empty dependency array ensures the effect runs only once during component mount
+
   return (
     <div>
-      <>
-      <h4 style={{ paddingTop: "20px" }}>
-    Classification
-    </h4>
-        <ul className="list-group">
-          {categories.map((category, index) => (
-            <li key={index} className="list-group-item" style={{ paddingTop: "10px" }}>
-              <div className="d-flex justify-content-between">
-                <a href="#" style={{ textDecoration: "none", color: "black", paddingTop:"8px" }}>
-                  {category.name}
-                </a>
-                <button
-                  style={{ textDecoration: "none" }}
-                  //   className="btn btn-link text-dark p-0"
-                  //   type="button"
-                  //   data-bs-toggle="collapse"
-                  //   data-bs-target={`#subcategories${index}`}
-                  //   aria-expanded="false"
-                  //   aria-controls={`subcategories${index}`}
-                  //   onClick={handleOnClickCategory}
-                  className="btn btn-link text-dark"
-                  type="button"
-                  onClick={() => {
-                    handleOnClickCategory(index);
-                  }}
-                >
-                  {/* <i className="bi bi-chevron-down" style={{ color: '#6c757d' }}></i> */}
-                  {/* &#9654; */}
-                  {openCategory === index ? "▼" : "▶"}
-                </button>
-              </div>
-              <div
-                className={`collapse ${openCategory === index ? "show" : ""}`}
-                id={`subcategories${index}`}
+      <h4 style={{ paddingTop: "20px" }}>Classification</h4>
+      <ul className="list-group">
+        {categories.map((category, index) => (
+          <li key={index} className="list-group-item" style={{ paddingTop: "10px" }}>
+            <div className="d-flex justify-content-between">
+              <a href="#" style={{ textDecoration: "none", color: "black", paddingTop: "8px" }}>
+                {category.name}
+              </a>
+              <button
+                className="btn  text-dark"
+                type="button"
+                onClick={() => handleOnClickCategory(index)}
               >
-                <div className="list-group-item">
-                  {category.subcategories.map((subcategory, subIndex) => (
-                    <li key={subIndex} style={{ listStyle: "none" }}>
-                      <a
-                        className="me-2"
-                        href="#"
-                        style={{ textDecoration: "none", color: "black" }}
-                      >
-                        {subcategory}
-                      </a>
-                    </li>
-                  ))}
-                </div>
+                {openCategory === index ? "▼" : "▶"}
+              </button>
+            </div>
+            <div
+              className={`collapse ${openCategory === index ? "show" : ""}`}
+              id={`subcategories${index}`}
+            >
+              <div className="list-group-item">
+                {category.subcategories.map((subcategory, subIndex) => (
+                  <li key={subIndex} style={{ listStyle: "none" }}>
+                    <a
+                      className="me-2"
+                      href="#"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      {subcategory}
+                    </a>
+                  </li>
+                ))}
               </div>
-            </li>
-          ))}
-        </ul>
-      </>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

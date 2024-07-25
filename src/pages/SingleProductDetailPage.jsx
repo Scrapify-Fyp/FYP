@@ -104,7 +104,8 @@ const SingleProductDetailPage = (props) => {
     console.log("contract");
   };
 
-  const productImages = product?.images?.length > 0 ? product.images : [product?.imageURL];
+  // const productImages = product?.images?.length > 0 ? product.images : [product?.imageURL];
+  const productImages = product?.imageURL;
   console.log("Product Images: ", productImages);
 
   return (
