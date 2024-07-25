@@ -1,3 +1,4 @@
+/* Navbar.module.css */
 .navbar nav {
   display: flex;
   justify-content: space-between;
@@ -38,7 +39,7 @@
   background-color: transparent;
   color: inherit;
   border: none;
-  padding-right: 7px;
+  padding-right: 15px;
 }
 .searchroutes {
   display: flex;
@@ -75,22 +76,6 @@
   background: red;
   font-size: 12px;
 }
-
-/* .nav-link-container {
-  position: relative;
-}
-
-.nav-link-container:hover .dropdown-container {
-  display: block;
-}
-
-.dropdown-container {
-  display: none;
-  position: absolute;
-  top: 100%; 
-  left: 0;
-  z-index: 1000; 
-} */
 
 /* Additional styling as needed */
 
