@@ -10,11 +10,16 @@ const SearchPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(8); 
+  const [visibleProducts, setVisibleProducts] = useState(8);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const query = new URLSearchParams(location.search).get("query");
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get("query") || '';
+  const sort = queryParams.get("sort") || '';
+  const price = queryParams.get("price") || '';
+  const category = queryParams.get("category") || '';
+  const rating = queryParams.get("rating") || '';
 
   const redirectToProductDetail = (product) => {
     navigate("/ProductDetail", { state: product });
@@ -28,11 +33,15 @@ const SearchPage = () => {
     const fetchSearchResults = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:3002/search?query=${query}`);
+        console.log('Fetching with parameters:', { query, sort, price, category, rating }); // Debugging line
+        const response = await axios.get(`http://localhost:3002/search`, {
+          params: { query, sort, price, category, rating }
+        });
+        setError("");
         setSearchResults(response.data);
       } catch (error) {
         setError("Failed to fetch search results");
-        toast.error("Failed to fetch search results after multiple attempts. Please refresh the page.", {
+        toast.error("Failed to fetch search results. Please try again later.", {
           autoClose: 3000,
         });
       } finally {
@@ -40,10 +49,8 @@ const SearchPage = () => {
       }
     };
 
-    if (query) {
-      fetchSearchResults();
-    }
-  }, [query]);
+    fetchSearchResults();
+  }, [location.search]); // Make sure this dependency is correct
 
   return (
     <section id="product1" className="section-p1">
@@ -65,17 +72,13 @@ const SearchPage = () => {
         {searchResults.slice(0, visibleProducts).map((product) => (
           <div className="pro" key={product._id}>
             <img
-              onClick={() => {
-                redirectToProductDetail(product);
-              }}
+              onClick={() => redirectToProductDetail(product)}
               src={product.imageURL[0]}
               alt=""
               style={{ cursor: "pointer" }}
             />
             <div
-              onClick={() => {
-                redirectToProductDetail(product);
-              }}
+              onClick={() => redirectToProductDetail(product)}
               className="des"
               style={{ cursor: "pointer" }}
             >
@@ -90,9 +93,7 @@ const SearchPage = () => {
             </div>
             <div className="cart">
               <a href="#" style={{ color: "#007bff" }}>
-                <FontAwesomeIcon icon={faCartPlus} onClick={() => {
-                redirectToProductDetail(product);
-              }} />
+                <FontAwesomeIcon icon={faCartPlus} onClick={() => redirectToProductDetail(product)} />
               </a>
             </div>
           </div>
