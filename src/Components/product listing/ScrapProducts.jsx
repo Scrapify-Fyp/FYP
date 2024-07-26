@@ -924,23 +924,23 @@ export default function ScrapProducts() {
       // Make the API call to fetch all products
       const response = await axios.get("http://localhost:3002/products");
       const products = response.data;
-      console.log(
-        "🚀 ~ getScrapProducts ~ products:",
-        products[16].categories[0].category
-      );
+      console.log("🚀 ~ getScrapProducts ~ Wholeproducts:", products);
+      console.log("🚀 ~ getScrapProducts ~ Cateogiryproducts:", products[0].categories[0].category);
 
       // Check if the response contains products
-      if (Array.isArray(products)) {
-        const filteredScrapProducts = products.filter(
-          (product) =>
-            product.categories &&
-            product.categories[0] &&
-            product.categories[0].category === "scrap"
-        );
-        console.log(
-          "🚀 ~ getScrapProducts ~ filteredScrapProducts:",
-          filteredScrapProducts
-        );
+      // if (Array.isArray(products)) {
+        if (products && Array.isArray(products)) {
+          const filteredScrapProducts = products.filter(
+            (product) =>
+              product.categories &&
+              Array.isArray(product.categories) &&
+              product.categories.length > 0 &&
+              product.categories[0].category === "Scrap"
+          );
+        
+          console.log(filteredScrapProducts);
+    
+        
 
         // Set the scrap products to state
         setScrapProducts(filteredScrapProducts);
@@ -988,7 +988,7 @@ export default function ScrapProducts() {
               <h4>{product.Price}</h4>
             </div>
             <div className="cart">
-              <a href="#" >
+              <a href="#">
                 {" "}
                 {/* Add appropriate function for cart action */}
                 <FontAwesomeIcon icon={faCartPlus} />
