@@ -5,14 +5,45 @@ import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import useAxiosRetry from "../../hooks/RetryHook";
 import "./productlisting.css";
 import { toast } from "react-toastify";
+import { auth } from "../../hooks/auth";
 
 const Latest = (props) => {
   const [latestProducts, setLatestProducts] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(8); 
+  const [visibleProducts, setVisibleProducts] = useState(8);
   const navigate = useNavigate();
   const axios = useAxiosRetry();
+  const user = auth();
 
-  const redirectToProductDetail = (product) => {
+  const redirectToProductDetail = async (product, interactionType) => {
+    if (!user) {
+      console.log("User Not FOund!");
+      toast.error("You're not logged in!", {
+        position: "top-center",
+        autoClose: 500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+    }
+    if (user?._id === product.vendorId) {
+      console.log("the click of your own product cannot be counted!");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/updateInteraction`,
+        {
+          userId: user?._id,
+          productId: product?._id,
+          interactionType,
+          incrementValue: 1,
+        }
+      );
+      console.log("🚀 ~ redirectToProductDetail ~ response:", response);
+    } catch (error) {
+      console.error(error);
+    }
     navigate("/ProductDetail", { state: product });
   };
 
@@ -25,7 +56,9 @@ const Latest = (props) => {
       const response = await axios.get("http://localhost:3002/products");
       console.log("Response:", response.data);
       // Sort products in ascending order based on name
-      const sortedProducts = response.data.sort((a, b) => a.name.localeCompare(b.name));
+      const sortedProducts = response.data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
       setLatestProducts(sortedProducts);
     } catch (error) {
       console.log("Error fetching products:", error);
@@ -88,7 +121,7 @@ const Latest = (props) => {
           <div className="pro" key={product._id}>
             <img
               onClick={() => {
-                redirectToProductDetail(product);
+                redirectToProductDetail(product, "clicks");
               }}
               src={product.imageURL[0]}
               alt=""
@@ -113,9 +146,12 @@ const Latest = (props) => {
             </div>
             <div className="cart">
               <a href="#" style={{ color: "#007bff" }}>
-                <FontAwesomeIcon icon={faCartPlus} onClick={() => {
-                redirectToProductDetail(product);
-              }}/>
+                <FontAwesomeIcon
+                  icon={faCartPlus}
+                  onClick={() => {
+                    redirectToProductDetail(product);
+                  }}
+                />
               </a>
             </div>
           </div>
