@@ -5,8 +5,9 @@ import img from "../img/mandp.jpg";
 import Myproduct from "./product listing/Myproduct";
 import { Modal, Button } from "react-bootstrap";
 import AddNewProduct from "./AddNewProduct";
-export default function Shopepage({ shop }) {
-  // console.log("🚀 ~ Shopepage ~ shop:", shop);
+import { FaEdit } from "react-icons/fa";
+
+export default function Shopepage({ shop, onEditClick }) {
   const [showModal, setShowModal] = useState(false);
   const handleModalClose = () => setShowModal(false);
   const handleViewAllClick = () => setShowModal(true);
@@ -27,7 +28,6 @@ export default function Shopepage({ shop }) {
 
   const start = extractTimeWithAMPM(shop?.openingHours?.start);
   const end = extractTimeWithAMPM(shop?.openingHours?.end);
-  // console.log("Time:", timeString);
 
   return (
     <>
@@ -59,10 +59,6 @@ export default function Shopepage({ shop }) {
               {shop?.openingHours
                 ? "Monday - Friday, " + start + " - " + end
                 : "Monday - Friday, 9:00 AM - 6:00 PM"}
-              {/* {console.log(
-                "🚀 ~ Shopepage ~ shop.openingHours.start:",
-                shop.openingHours.start
-              )} */}
             </p>
             <p>
               <strong>Email:</strong>{" "}
@@ -75,13 +71,30 @@ export default function Shopepage({ shop }) {
           </div>
         </header>
         <div className={`${profilecss.myproduct}`}>
-          <button
-            style={{ marginLeft: "30px" }}
-            onClick={handleViewAllClick}
-            className="btn btn-success"
-          >
-            Add New Product
-          </button>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <button
+              style={{
+                marginLeft: "30px",
+                padding: "10px 20px",
+                background: "#4fa94d",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+              onClick={onEditClick}
+            >
+              <FaEdit style={{ marginRight: "8px" }} />
+              Edit Shop
+            </button>
+            <button
+              style={{ padding: "10px 20px", background: "#4fa94d", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}
+              onClick={handleViewAllClick}
+              className="btn btn-success"
+            >
+              Add New Product
+            </button>
+          </div>
           <Myproduct refresh={handleModalClose} />
         </div>
 
