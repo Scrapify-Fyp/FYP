@@ -24,24 +24,103 @@ body {
   z-index: 600;
   transition: all 0.3s ease;
 }
-
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.profile-description{
+  font-size: 11px;
+ border: 2px solid rgb(152, 149, 149);
+ border-radius: 20px;
+ text-align: center;
+ padding: 2px 7px 2px 7px;
+}
+.add-description{
+  font-size: 12px;
+  opacity: 60%;
+  padding-top: -100px;
+}
+.des-img{
+  padding-left: 3px;
+  opacity: 50%;
+  width: 12px;
+  height: 12px;
+}
+.add-description:hover{
+  cursor: pointer; 
+}
+.profile-description:hover{
+color: #fff;                    
+background-color: #007bff;      
+border-color: #007bff;          
+cursor: pointer;               
+transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+} 
 .sidebar .profile-dp {
   display: block;
   text-align: center;
   margin-bottom: 10px;
 }
-
 .sidebar .list-group {
   display: flex;
   flex-direction: column;
 }
-
 .sidebar .list-group-item {
   background-color: #fbfbfb;
   text-align: center;
   padding: 10px;
 }
+.ReactTags {
+  border: none;
+  padding: 5px;
+  display: inline-block;
+  width: 100%;
+}
 
+.ReactTags__tagInputField {
+  display: inline-block;
+  width: 220px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #61c162;
+  transition: 0.5s;
+
+}
+
+.ReactTags__tagInputField:focus {
+  border: 1px solid #054407;
+  transition: 0.5s;
+}
+
+
+.ReactTags__tag {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 3px 6px;
+  background-color: #bfc6cb;
+  color: #000000;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.ReactTags__tag:hover {
+  background-color: #979fa8;
+}
+
+.ReactTags__remove {
+  margin-left: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+} 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 991px) {
   .sidebar {
