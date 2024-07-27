@@ -1,0 +1,19 @@
+@media (max-width: 767px) {
+    .sidebar {
+      display: none;
+    }
+    .toggler {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .toggler {
+      display: none;
+    }
+  }
+  
+  main {
+    padding: 1rem;
+  }
+  

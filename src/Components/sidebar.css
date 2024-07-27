@@ -56,6 +56,10 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   }
+  .profile-dp img {
+    width: 100px;
+    height: 100px;
+  }
   .profile-description{
     font-size: 11px;
    border: 2px solid rgb(152, 149, 149);
@@ -133,4 +137,23 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  #sidebarMenu {
+    position: fixed;
+    z-index: 1000;
+    height: 100%;
+    width: 250px;
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  #sidebarMenu {
+    width: 250px;
+  }
 }
