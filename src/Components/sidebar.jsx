@@ -131,6 +131,130 @@
 
 
 
+// import React, { useState, useEffect } from "react";
+// import { NavLink } from "react-router-dom";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faBars } from "@fortawesome/free-solid-svg-icons";
+// import axios from "axios";
+// import Navbar from "./Navbar";
+// import { auth } from "../hooks/auth";
+// import "./sidebar.css"; // Create this file for custom styles
+
+// export default function Sidebar(props) {
+//   const user = auth();
+//   const [userData, setUserData] = useState(null);
+//   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+//   const toggleSidebar = () => {
+//     setSidebarCollapsed(!sidebarCollapsed);
+//   };
+
+//   const fetchData = () => {
+//     axios
+//       .get(`http://localhost:3002/users/${user?._id}`)
+//       .then((response) => {
+//         const userDataFromDb = response.data;
+//         setUserData(userDataFromDb);
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching user data:", error);
+//       });
+//   };
+
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <>
+//       <Navbar />
+//       <div className="container-fluid">
+//         <header>
+//           <nav
+//             id="sidebarMenu"
+//             className={`collapse d-lg-block sidebar collapse bg-white ${
+//               sidebarCollapsed ? "show" : ""
+//             }`}
+//           >
+//             <div className="profile-dp text-center">
+//               <div className="mb-4">
+//                 <img
+//                   style={{ width: "150px", height: "150px" }}
+//                   src={
+//                     userData?.imageUrl ||
+//                     "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+//                   }
+//                   alt="avatar"
+//                   className="rounded-circle img-fluid"
+//                 />
+//                 <h6 style={{ fontSize: "18px" }} className="my-3">
+//                   {user?.firstName.toUpperCase()}
+//                 </h6>
+//               </div>
+//             </div>
+//             <div className="list-group list-group-flush mx-3 mt-4">
+//               <NavLink
+//                 to="/Profile"
+//                 className="text-center list-group-item list-group-item-action py-2 ripple"
+//               >
+//                 <span>Profile</span>
+//               </NavLink>
+//               <NavLink
+//                 to="/Analytics"
+//                 className="text-center list-group-item list-group-item-action py-2 ripple"
+//               >
+//                 <span>Analytics</span>
+//               </NavLink>
+//               <NavLink
+//                 to="/Myshope"
+//                 className="text-center list-group-item list-group-item-action py-2 ripple"
+//               >
+//                 <span>My Shop</span>
+//               </NavLink>
+//               <NavLink
+//                 to="/Order_history"
+//                 className="text-center list-group-item list-group-item-action py-2 ripple"
+//               >
+//                 <span>Order History</span>
+//               </NavLink>
+//               <NavLink
+//                 to="/Wallet"
+//                 className="text-center list-group-item list-group-item-action py-2 ripple"
+//               >
+//                 <span>Payments</span>
+//               </NavLink>
+//               <NavLink
+//                 to="/Settings"
+//                 className={`${props.activeprofile} text-center list-group-item list-group-item-action py-2 ripple`}
+//               >
+//                 <span>Settings</span>
+//               </NavLink>
+//             </div>
+//           </nav>
+
+//           <nav className="navbar navbar-expand-lg navbar-light toglr">
+//             <div className="container-fluid">
+//               <button
+//                 className="navbar-toggler"
+//                 type="button"
+//                 onClick={toggleSidebar}
+//                 aria-controls="sidebarMenu"
+//                 aria-expanded={sidebarCollapsed ? "true" : "false"}
+//                 aria-label="Toggle navigation"
+//               >
+//                 <FontAwesomeIcon icon={faBars} />
+//               </button>
+//             </div>
+//           </nav>
+//         </header>
+//       </div>
+//     </>
+//   );
+// }
+
+
+
+
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -138,7 +262,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Navbar from "./Navbar";
 import { auth } from "../hooks/auth";
-import "./sidebar.css"; // Create this file for custom styles
+import "./sidebar.css";
 
 export default function Sidebar(props) {
   const user = auth();
@@ -172,9 +296,7 @@ export default function Sidebar(props) {
         <header>
           <nav
             id="sidebarMenu"
-            className={`collapse d-lg-block sidebar collapse bg-white ${
-              sidebarCollapsed ? "show" : ""
-            }`}
+            className={`collapse d-lg-block sidebar ${sidebarCollapsed ? "show" : ""}`}
           >
             <div className="profile-dp text-center">
               <div className="mb-4">

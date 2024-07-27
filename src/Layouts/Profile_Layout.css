@@ -1,19 +1,20 @@
-@media (max-width: 767px) {
-    .sidebar {
-      display: none;
-    }
-    .toggler {
-      display: block;
-    }
+.d-flex {
+  display: flex;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+@media (max-width: 991px) {
+  .d-flex {
+    flex-direction: column;
   }
-  
-  @media (min-width: 768px) {
-    .toggler {
-      display: none;
-    }
+}
+
+@media (max-width: 735px) {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
   }
-  
-  main {
-    padding: 1rem;
-  }
-  
+}

@@ -1,159 +1,111 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:wght@200,300,400,500,600,700,800,900&display=swap');
-*
-{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 body {
-    background-color: #fbfbfb;
-  }
-  @media (min-width: 791.98px) {
-    main {
-      padding-left: 240px;
-    }
-  }
+  background-color: #fbfbfb;
+}
 
-  /* Sidebar */
+/* General sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 70px; /* Default top position */
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  padding: 38px 0 0;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  background-color: #ffffff;
+  z-index: 600;
+  transition: all 0.3s ease;
+}
+
+.sidebar .profile-dp {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sidebar .list-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .list-group-item {
+  background-color: #fbfbfb;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 991px) {
   .sidebar {
-    position: fixed;
-    top: 70px;
-    bottom: 0;
-    left: 0;
-    padding: 38px 0 0; 
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-    width: 240px;
-    z-index: 600;
+    top: auto;
+    bottom: 0; /* Position sidebar at the bottom */
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    box-shadow: none;
   }
- .list-group-item{
-    background-color: #fbfbfb;
- } 
-  
-  @media (max-width: 791.98px) {
-    .sidebar {
-      width: 50%; 
-    }
-    
+
+  .sidebar .profile-dp {
+    display: none; /* Hide profile picture */
   }
-  @media (max-width: 333px) {
-    .sidebar {
-      width: 60%; 
-    }
+
+  .sidebar .list-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
-  .sidebar .active {
-    border-radius: 5px;
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+
+  .sidebar .list-group-item {
+    flex: 1 1 20%;
+    font-size: 14px;
   }
-  .my-3{
-    margin-bottom: 0px!important;
+}
+
+@media (max-width: 735px) {
+  .sidebar {
+    padding: 8px 0;
   }
-  .sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: 0.5rem;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+
+  .sidebar .list-group {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  .profile-dp img {
-    width: 100px;
-    height: 100px;
+
+  .sidebar .list-group-item {
+    flex: 1 1 25%;
+    font-size: 13px;
   }
-  .profile-description{
-    font-size: 11px;
-   border: 2px solid rgb(152, 149, 149);
-   border-radius: 20px;
-   text-align: center;
-   padding: 2px 7px 2px 7px;
+}
+
+@media (max-width: 530px) {
+  .sidebar {
+    padding: 6px 0;
   }
-  .add-description{
+
+  .sidebar .list-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sidebar .list-group-item {
+    flex: 1 1 33%;
     font-size: 12px;
-    opacity: 60%;
-    padding-top: -100px;
-  }
-  .des-img{
-    padding-left: 3px;
-    opacity: 50%;
-    width: 12px;
-    height: 12px;
-  }
-  .add-description:hover{
-    cursor: pointer; 
-  }
-  .profile-description:hover{
-    color: #fff;                    /* Text color */
-  background-color: #007bff;      /* Background color */
-  border-color: #007bff;          /* Border color */
-  cursor: pointer;                /* Cursor style */
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
- } 
-
-
-
- .ReactTags {
-  border: none;
-  padding: 5px;
-  display: inline-block;
-  width: 100%;
-}
-/* Styles for the input field of the React Tags component */
-.ReactTags__tagInputField {
-  display: inline-block;
-  width: 220px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  padding: 5px;
-  margin-bottom: 5px;
-  border: 1px solid #61c162;
-  transition: 0.5s;
-
-}
-
-.ReactTags__tagInputField:focus {
-  border: 1px solid #054407;
-  transition: 0.5s;
-}
-
-
-.ReactTags__tag {
-  display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  padding: 3px 6px;
-  background-color: #bfc6cb;
-  color: #000000;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.ReactTags__tag:hover {
-  background-color: #979fa8;
-}
-
-.ReactTags__remove {
-  margin-left: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-@media (max-width: 767px) {
-  #sidebarMenu {
-    position: fixed;
-    z-index: 1000;
-    height: 100%;
-    width: 250px;
-  }
-
-  .container-fluid {
-    padding: 0;
   }
 }
 
-@media (min-width: 768px) {
-  #sidebarMenu {
-    width: 250px;
-  }
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.my-3 {
+  margin-bottom: 0px !important;
 }
