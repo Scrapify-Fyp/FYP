@@ -92,3 +92,11 @@
 #product1 .pro .cart .fa-cart-plus {
     color: #088178;
 }
+  
+  @media (max-width: 768px) {
+    #product1 .pro-container {
+      flex-direction: column;
+      padding: 10px;
+    }
+  }
+  
