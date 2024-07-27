@@ -39,6 +39,7 @@ import ScrapyardSingleProduct from "./pages/ScrapyardSingleProduct";
 import View_3d_model from "./pages/View_3d_model";
 import ImageUpload from "./Components/3d view/ImageUplaod";
 import ThreeScene from "./Components/3d view/ThreeScene";
+import Dashboard_Layout from "../src/Layouts/Dashboard_Layout";
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -122,6 +123,7 @@ const App = () => {
         <Route path="/Helpnsupport" element={<Helpnsupport />} />
         <Route path="/Singleshope" element={<Singleshope />} />
         <Route path="/ScrapProductDetail" element={<ScrapyardSingleProduct />} />
+        <Route path="/Dashboard_Layout" element={<Dashboard_Layout/>} />
         
         <Route
           path="/Checkout"
