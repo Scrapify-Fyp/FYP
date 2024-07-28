@@ -1,154 +1,133 @@
+.container{
+    align-items: center;
+}   
 
-/* Container styles */
-.container {
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    padding: 70px;
+    position: relative;
     background-color: #088178;
-    color: white;
-    padding: 40px 0;
-  }
-  
-  .footer {
+    color: white;  
+}
+
+.footerSection {
+    flex-direction: row;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Footer section styles */
-  .footerSection {
-    width: 90%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .footerHeading {
-    font-size: 50px;
+}
+.footerheading{
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .detailSectionLine {
-    border-bottom: 2px solid #FFC208;
-    width: 50px;
-    margin-bottom: 10px;
-  }
-  
-  .contactInfo {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .contactItem {
-    display: flex;
+ }
+.daitelSection {
+    padding: 30px 40px 50px 30px;
+    width: 300px;
     align-items: center;
+    font-size: 15px;
+    background-color: #0f625c;
+}
+
+.daitelSection img {
+    width: 170px;
+    padding-bottom: 30px;
+}
+
+.daitelSectionLine {
+    border: 1px solid white;
+    opacity: 20%;
+}
+
+.otherPages {
+    padding-left: 80px;
+    padding-top: 15px;
+}
+
+.otherPages h5 {
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.footerLi {
+    display: flex;
     gap: 10px;
-    margin: 5px 0;
-  }
-  
-  /* Contact link styles */
-  .contactItem a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .contactItem svg {
-    width: 20px;
-    height: 20px;
-    fill: #FFC208;
-  }
-  
-  /* Quick links section styles */
-  .quickLinks {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .quickLinks h5 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .quickLinks div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .linkItem {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    margin: 5px 0;
-  }
-  
-  .linkItem a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .linkItem svg {
-    width: 20px;
-    height: 20px;
-    fill: #FFC208;
-  }
-  
-  /* Newsletter section styles */
-  .newsletter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .newsletter h5 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .newsletterInput {
-    padding: 8px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 4px;
-    outline: none;
-  }
-  
-  .newsletterButton {
-    padding: 8px 16px;
-    background-color: #FFC208;
-    border: none;
-    border-radius: 4px;
+    padding-top: 10px;
+    transition: 0.3s;
+}
+
+.footerLi:hover {
+    color: #FFC208;
     cursor: pointer;
-    color: #222;
-  }
-  
-  .newsletterButton:hover {
-    background-color: #ffb400;
-  }
-  
-  /* Social media section styles */
-  .socialSection {
+    transition: 0.3s;
+}
+
+.newsletter h5 {
+    font-weight: bold;
+    padding: 15px 15px 15px 10px;
+}
+
+.newsletter{
+    padding-left: 75px;
+}
+
+.newletterinput{
+    margin:  15px 0px 15px 0px;
+    border-radius: 25px;
+    width: 330px;
+    height: 50px;
+    text-align: left;
+}
+
+.footerSubscribeBtn {
     text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .socialMediaIcons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .socialMediaIcons svg {
-    width: 25px;
-    height: 25px;
-    fill: #FFC208;
-  }
-  
-  /* Footer bottom styles */
-  .footerBottom {
-    text-align: center;
-    margin-top: 20px;
+    padding-top: 8px;
+    margin: -61px 6px 0px 180px;
+    border: none;
+    border-radius: 21px;
+    background-color:#0b4945;
+    color: white;
+    width: 140px;
     font-size: 16px;
-  }
-  
+    transition: 0.3s;
+    height: 42px;
+}
+
+.footerSubscribeBtn:hover {
+    background-color: #FFC208;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter p {
+    padding-top: 30px;
+    font-size: 14px;
+
+}
+
+.footerIcons svg {
+    transition: 0.3s;
+    color: white;
+}
+
+.footerIcons svg:hover {
+    cursor: pointer;
+    fill: #FFC208;
+    padding: 3px;
+    transition: 0.3s;
+}
+
+.footerIcons {
+    display: flex;
+    gap: 18px;
+}
+
+.footerLine {
+    border: 1px solid white;
+    margin-top: 100px;
+    opacity: 60%;
+    width: 1000px;
+}
