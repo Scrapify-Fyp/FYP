@@ -103,6 +103,7 @@ export default function AnalyticsProduct(props) {
   const [products, setProducts] = useState([]);
   const [isShop, setIsShop] = useState(false);
   const [prediction, setPrediction] = useState(null); // Use null for better handling
+  const [predictionsData, setPredictionsData] = useState();
 
   const loadMoreProducts = () => {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
@@ -132,25 +133,35 @@ export default function AnalyticsProduct(props) {
         toast.error("Error fetching shop. Please try again later.");
       }
     };
-
     if (user._id) {
       fetchUserShop();
     }
   }, [user._id]);
 
   const getPredictions = async (product) => {
-    const shares = 100;
-    const time_on_page = 50;
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/interactions/${product._id}`
+      );
+      console.log(
+        "🚀 ~ fetchUserShopData From Interactions ~ response:",
+        response
+      );
+      setPredictionsData(response.data);
+    } catch (error) {}
+
+    // const shares = 100;
+    // const time_on_page = 50;
     const inputData = {
       input: [
-        product.review.impressions,
-        product.review.clicks,
-        product.review.likes,
-        shares,
-        product.review.comments.length,
-        product.review.favorites,
-        product.rating,
-        time_on_page,
+        predictionsData?.impressions || 0,
+        predictionsData?.clicks?.count || 0,
+        predictionsData?.likes?.count || 0,
+        predictionsData?.shares?.count || 0,
+        predictionsData?.comments?.count || 0,
+        predictionsData?.favorites?.count || 0,
+        product?.rating || 0,
+        predictionsData?.timeOnPage || 0,
       ],
     };
     console.log("🚀 ~ getPredictions ~ inputData:", inputData);
@@ -162,14 +173,14 @@ export default function AnalyticsProduct(props) {
       );
       setPrediction(response.data.prediction);
       console.log("Prediction:", response.data.prediction);
-      console.log("predictions Producst: " , products , " single" , product);
+      console.log("predictions Producst: ", products, " single", product);
 
       // Only show alert after prediction is set
-    //   if (response.data.prediction) {
-    //     alert("Based on the given product, the price should Decrease!");
-    //   } else {
-    //     alert("Based on the given product, the price should Increase!");
-    //   }
+      //   if (response.data.prediction) {
+      //     alert("Based on the given product, the price should Decrease!");
+      //   } else {
+      //     alert("Based on the given product, the price should Increase!");
+      //   }
 
       // Update parent component with new data
 
@@ -193,7 +204,7 @@ export default function AnalyticsProduct(props) {
             <div className="pro" key={product._id}>
               <img
                 onClick={() => getPredictions(product)}
-                src={product.imgSrc}
+                src={product.imageURL}
                 alt={`Product ${product.id}`}
               />
               <div onClick={() => getPredictions(product)} className="des">

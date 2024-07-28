@@ -151,7 +151,7 @@ export default function AddNewProduct({ close, product }) {
     e.preventDefault();
     try {
       if (product) {
-        await axios.put(
+        await axios.patch(
           `http://localhost:3002/products/${product._id}`,
           formData,
           {
