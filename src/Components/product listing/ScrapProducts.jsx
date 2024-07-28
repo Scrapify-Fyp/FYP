@@ -1,1009 +1,250 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./productlisting.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons"; // Import necessary icons
+import { faStar, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import img1 from "../../img/Scrap Images/scrap-prod-01.jpg";
-import img2 from "../../img/prod-13.jpg";
-import img3 from "../../img/prod-6.jpg";
-import img4 from "../../img/Scrap Images/scrap-prod-02.jpg";
-import img5 from "../../img/Scrap Images/scrap-prod-03.jpg";
-import img6 from "../../img/prod-8.jpg";
-import img7 from "../../img/prod-1.jpg";
-import img8 from "../../img/prod-5.jpg";
-import img9 from "../../img/Scrap Images/scrap-prod-04.jpg";
-import img10 from "../../img/Scrap Images/scrap-prod-05.jpg";
 import axios from "axios";
-const Foryouproducts = [
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
+import { Puff } from "react-loader-spinner";
+import { toast } from "react-toastify";
+import ShareDialog from "./ShareDialogue";
+import { auth } from "../../hooks/auth";
+import useAxiosRetry from "../../hooks/RetryHook";
 
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-  {
-    id: 1,
-    imgSrc: img8,
-    Brand: "Handicrafts",
-    Name: "Crstal Handicrafted Royal Craft",
-    Ratings: 5,
-    Price: "$1330",
-  },
-
-  {
-    id: 2,
-    imgSrc: img7,
-    Brand: "Tealight Candle Holders",
-    Name: "Decorative Light Glass",
-    Ratings: 4,
-    Price: "$140",
-  },
-
-  {
-    id: 3,
-    imgSrc: img2,
-    Brand: "Handicrafts",
-    Name: "Pure Craft Hand Bag",
-    Ratings: 5,
-    Price: "$20",
-  },
-
-  {
-    id: 4,
-    imgSrc: img6,
-    Brand: "Candle Holders",
-    Name: "Candle Holder Candlestick",
-    Ratings: 4.5,
-    Price: "$134",
-  },
-
-  {
-    id: 5,
-    imgSrc: img1,
-    Brand: "Rubbish Revival",
-    Name: "Sea Glass and Starfish",
-    Ratings: 5,
-    Price: "$60",
-  },
-
-  {
-    id: 6,
-    imgSrc: img9,
-    Brand: "Metal Recyclying",
-    Name: "Metal Stand for Pens and Pencils",
-    Ratings: 4,
-    Price: "$175",
-  },
-
-  {
-    id: 7,
-    imgSrc: img4,
-    Brand: "Stained Glass",
-    Name: "Windows Bird Decor",
-    Ratings: 5,
-    Price: "$35",
-  },
-
-  {
-    id: 8,
-    imgSrc: img5,
-    Brand: "Murano Glass",
-    Name: "Necklace Moon in aqua-turquoise",
-    Ratings: 5,
-    Price: "$45",
-  },
-
-  {
-    id: 9,
-    imgSrc: img3,
-    Brand: "Wall Hangings",
-    Name: "Eye Mandala Set",
-    Ratings: 4,
-    Price: "$60",
-  },
-
-  {
-    id: 10,
-    imgSrc: img10,
-    Brand: "Stained Glass for Window",
-    Name: "Japanese Crane Unique Suncatcher",
-    Ratings: 5,
-    Price: "$50",
-  },
-];
 export default function ScrapProducts() {
   const [visibleProducts, setVisibleProducts] = useState(12);
-  const [scrapProducts, setScrapProducts] = useState();
+  const [scrapProducts, setScrapProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
+  const [selectedProductUrl, setSelectedProductUrl] = useState("");
+  const [selectedProductId, setSelectedProductId] = useState("");
   const navigate = useNavigate();
+  const user = auth();
+  const axios = useAxiosRetry();
+  const observer = useRef();
 
   const loadMoreProducts = () => {
-    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12); // Increase visible products by 12
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
   };
 
   const redirectToProductDetail = (product) => {
-    navigate("/ScrapProductDetail", { state: product });
+    const startTime = new Date();
+    navigate("/ScrapProductDetail", { state: { product, startTime } });
   };
 
-  const getScrapProducts = async () => {
+  const updateInteraction = async (product, interactionType, additionalData = {}) => {
+    if (!user) {
+      toast.error("You're not logged in!", {
+        position: "top-center",
+        autoClose: 500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+      return;
+    }
+
+    if (user._id === product.vendorId) {
+      return;
+    }
+
     try {
-      // Make the API call to fetch all products
-      const response = await axios.get("http://localhost:3002/products");
-      const products = response.data;
-      console.log("🚀 ~ getScrapProducts ~ Wholeproducts:", products);
-      console.log("🚀 ~ getScrapProducts ~ Cateogiryproducts:", products[0].categories[0].category);
-
-      // Check if the response contains products
-      // if (Array.isArray(products)) {
-        if (products && Array.isArray(products)) {
-          const filteredScrapProducts = products.filter(
-            (product) =>
-              product.categories &&
-              Array.isArray(product.categories) &&
-              product.categories.length > 0 &&
-              product.categories[0].category === "Scrap"
-          );
-        
-          console.log(filteredScrapProducts);
-    
-        
-
-        // Set the scrap products to state
-        setScrapProducts(filteredScrapProducts);
-        // console.log("Scrap Products:", scrapProducts);
-
-        // Return the scrap products if needed
-        // return scrapProducts;
-      } else {
-        console.error("Invalid response format");
-        // return [];
-      }
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/updateInteraction`, {
+        userId: user._id,
+        productId: product._id,
+        interactionType,
+        incrementValue: 1,
+        ...additionalData,
+      });
     } catch (error) {
-      console.error("Error fetching products:", error);
-      return [];
+      console.error(error);
     }
   };
+
+  const handleLikeClick = async (product) => {
+    await updateInteraction(product, "likes");
+  };
+
+  const handleImpressions = (product) => {
+    updateInteraction(product, "impressions");
+  };
+
+  const fetchScrapProducts = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get("http://localhost:3002/products");
+      const products = response.data;
+
+      if (products && Array.isArray(products)) {
+        const filteredScrapProducts = products.filter(
+          (product) =>
+            product.categories &&
+            Array.isArray(product.categories) &&
+            product.categories.length > 0 &&
+            product.categories[0].category === "Scrap"
+        );
+        setScrapProducts(filteredScrapProducts);
+      } else {
+        console.error("Invalid response format");
+      }
+    } catch (error) {
+      toast.error("Failed to fetch data after multiple attempts. Please refresh the page.", {
+        autoClose: 3000,
+      });
+      console.error("Error fetching products:", error);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
-    getScrapProducts();
-    console.log("Scrap Products after use efectr:", scrapProducts);
+    fetchScrapProducts();
   }, []);
 
+  useEffect(() => {
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const productId = entry.target.dataset.productId;
+          handleImpressions({ _id: productId });
+          observer.current.unobserve(entry.target);
+        }
+      });
+    };
+
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    observer.current = new IntersectionObserver(handleIntersection, options);
+
+    const elements = document.querySelectorAll(".pro");
+    elements.forEach((element) => {
+      observer.current.observe(element);
+    });
+
+    return () => {
+      if (observer.current) {
+        elements.forEach((element) => {
+          observer.current.unobserve(element);
+        });
+      }
+    };
+  }, [scrapProducts]);
+
+  const openShareDialog = async (product) => {
+    await updateInteraction(product, "shares");
+    setSelectedProductId(product._id);
+    setSelectedProductUrl(window.location.href);
+    setIsShareDialogOpen(true);
+  };
+
+  const closeShareDialog = () => {
+    setIsShareDialogOpen(false);
+  };
+
   return (
-    <section id="product1" className="section-p1">
-      <div className="pro-container">
-        {/* Map over products and render each product */}
-        {scrapProducts?.slice(0, visibleProducts).map((product) => (
-          <div className="pro" key={product.id}>
-            <img
-              onClick={() => redirectToProductDetail(product)}
-              src={product.imgSrc} // Ensure this is the correct property name
-              alt={`Product ${product.id}`}
-            />
-            <div
-              onClick={() => redirectToProductDetail(product)}
-              className="des"
-            >
-              <span>{product.Brand}</span>
-              <h5>{product.Name}</h5>
-              <div className="star">
-                {/* Render star icons based on rating */}
-                {Array.from({ length: product.Ratings || 0 }, (_, index) => (
-                  <FontAwesomeIcon key={index} icon={faStar} />
-                ))}
-              </div>
-              <h4>{product.Price}</h4>
-            </div>
-            <div className="cart">
-              <a href="#">
-                {" "}
-                {/* Add appropriate function for cart action */}
-                <FontAwesomeIcon icon={faCartPlus} />
-              </a>
-            </div>
+    <>
+      {loading && (
+        <div
+          className="spinner-container"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "20px",
+            }}
+          >
+            <h1>Scrap Products</h1>
           </div>
-        ))}
-      </div>
-      {Foryouproducts.length > visibleProducts && (
-        <div>
-          <button className="load-more" onClick={loadMoreProducts}>
-            Load More
-          </button>
+          <Puff
+            height={100}
+            width={100}
+            radius={1}
+            color="grey"
+            ariaLabel="puff-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
         </div>
       )}
-    </section>
+      {!loading && (
+        <section id="product1" className="section-p1">
+          <div className="pro-container">
+            {scrapProducts.slice(0, visibleProducts).map((product) => (
+              <div
+              className="pro"
+              key={product._id}
+              data-product-id={product._id}
+            >
+              <img
+                onClick={() => redirectToProductDetail(product)}
+                src={product.imageURL[0]}
+                alt=""
+                style={{ cursor: "pointer" }}
+              />
+              <div
+                onClick={() => redirectToProductDetail(product)}
+                className="des"
+                style={{ cursor: "pointer" }}
+              >
+                <span>{product.brand}</span>
+                <h5>{product.name}</h5>
+                <div className="star">
+                  {Array.from({ length: product.rating }, (_, index) => (
+                    <FontAwesomeIcon key={index} icon={faStar} />
+                  ))}
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h4
+                style={{
+                  color: "#088178",
+                  fontFamily:"sans-serif"
+                }}
+                >${product.price}</h4>
+                <div className="LATESTcart">
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    onClick={() => handleLikeClick(product)}
+                  />
+
+                  <FontAwesomeIcon
+                    icon={faShare}
+                    onClick={() => openShareDialog(product)}
+                  />
+                </div>
+              </div>
+            </div>
+            ))}
+          </div>
+          {scrapProducts.length > visibleProducts && (
+            <div>
+              <button className="load-more" onClick={loadMoreProducts}>
+                Load More
+              </button>
+            </div>
+          )}
+        </section>
+      )}
+
+      <ShareDialog
+        isOpen={isShareDialogOpen}
+        onRequestClose={closeShareDialog}
+      />
+    </>
   );
 }

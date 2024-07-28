@@ -260,8 +260,9 @@ const Trending = (props) => {
           className="spinner-container"
           style={{
             display: "flex",
+            flexDirection:"column",
             justifyContent: "center",
-            flexDirection: "row",
+            alignItems:"center" 
           }}
         >
           <div
