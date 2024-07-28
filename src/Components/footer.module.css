@@ -1,133 +1,228 @@
-.container{
+.container {
     align-items: center;
-}   
+    background-color: #088178;
+    color: white;
+    padding: 40px 0;
+}
 
+/* Footer Styles */
 .footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
-    padding: 70px;
+    padding: 70px 20px; /* Added padding for better spacing */
     position: relative;
     background-color: #088178;
-    color: white;  
+    color: white;
 }
 
+/* Footer Section Styles */
 .footerSection {
-    flex-direction: row;
+    width: 90%;
+    max-width: 1200px;
     display: flex;
-}
-.footerheading{
-    text-align: center;
-    font-size: 30px;
-    padding-bottom: 20px;
-    font-weight: bold;
- }
-.daitelSection {
-    padding: 30px 40px 50px 30px;
-    width: 300px;
-    align-items: center;
-    font-size: 15px;
-    background-color: #0f625c;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.daitelSection img {
-    width: 170px;
-    padding-bottom: 30px;
+/* Footer Heading Styles */
+.footerheading {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .daitelSectionLine {
-    border: 1px solid white;
-    opacity: 20%;
+    border-bottom: 2px solid #FFC208;
+    width: 50px;
+    margin-bottom: 20px; /* Increased margin for better spacing */
 }
 
-.otherPages {
-    padding-left: 80px;
-    padding-top: 15px;
+/* Detail Section Styles */
+.daitelSection {
+    padding: 30px 40px;
+    width: 300px;
+    background-color: #0f625c;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.otherPages h5 {
-    font-weight: bold;
-    padding-bottom: 15px;
+.daitelSection svg {
+    width: 19px;
+    height: 19px;
+    fill: #FFC208;
 }
 
-.footerLi {
+.daitelSection div {
     display: flex;
+    align-items: center;
     gap: 10px;
-    padding-top: 10px;
-    transition: 0.3s;
+    margin-bottom: 10px;
 }
 
-.footerLi:hover {
+/* Quick Links and Other Pages Styles */
+.otherPages, .quickLinks {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.otherPages h5, .quickLinks h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footerLi, .linkItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    margin: 5px 0;
+    transition: color 0.3s;
+}
+
+.footerLi:hover, .linkItem:hover {
     color: #FFC208;
     cursor: pointer;
-    transition: 0.3s;
+}
+
+.footerLi svg, .linkItem svg {
+    width: 11px;
+    height: 11px;
+    fill: #FFC208;
+}
+
+/* Newsletter Section Styles */
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 20px;
 }
 
 .newsletter h5 {
+    font-size: 18px;
     font-weight: bold;
-    padding: 15px 15px 15px 10px;
+    margin-bottom: 15px;
 }
 
-.newsletter{
-    padding-left: 75px;
-}
-
-.newletterinput{
-    margin:  15px 0px 15px 0px;
-    border-radius: 25px;
-    width: 330px;
-    height: 50px;
-    text-align: left;
-}
-
-.footerSubscribeBtn {
-    text-align: center;
-    padding-top: 8px;
-    margin: -61px 6px 0px 180px;
+.newsletterInput {
+    padding: 8px;
+    margin-right: 10px;
     border: none;
-    border-radius: 21px;
-    background-color:#0b4945;
-    color: white;
-    width: 140px;
-    font-size: 16px;
-    transition: 0.3s;
-    height: 42px;
+    border-radius: 4px;
+    outline: none;
+    width: 250px;
+    height: 40px;
 }
 
-.footerSubscribeBtn:hover {
+.newsletterButton {
+    padding: 8px 16px;
     background-color: #FFC208;
-    color: black;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    transition: 0.3s;
+    color: #222;
+    font-size: 16px;
 }
 
-.newsletter p {
-    padding-top: 30px;
-    font-size: 14px;
-
+.newsletterButton:hover {
+    background-color: #ffb400;
 }
 
-.footerIcons svg {
-    transition: 0.3s;
-    color: white;
+/* Social Media Section Styles */
+.socialSection {
+    text-align: center;
+    margin-top: 20px;
+    flex-direction: row;
 }
 
-.footerIcons svg:hover {
-    cursor: pointer;
-    fill: #FFC208;
-    padding: 3px;
-    transition: 0.3s;
-}
-
-.footerIcons {
+.socialMediaIcons {
     display: flex;
-    gap: 18px;
+    justify-content: center;
+    gap: 20px;
 }
 
-.footerLine {
-    border: 1px solid white;
-    margin-top: 100px;
-    opacity: 60%;
-    width: 1000px;
+.socialMediaIcons svg {
+    width: 25px;
+    height: 25px;
+    fill: #FFC208;
+}
+
+/* Footer Bottom Styles */
+.footerBottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer {
+        padding: 50px 10px;
+    }
+
+    .footerSection {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .daitelSection {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .otherPages, .quickLinks {
+        padding: 0;
+    }
+
+    .footerLi, .linkItem {
+        font-size: 14px;
+    }
+
+    .newsletterInput {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .newsletterButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footerheading {
+        font-size: 24px;
+    }
+
+    .footerLi, .linkItem {
+        font-size: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .daitelSection {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .newsletterInput {
+        height: 40px;
+    }
+
+    .newsletterButton {
+        font-size: 14px;
+        height: 36px;
+    }
+
+    .socialMediaIcons svg {
+        width: 20px;
+        height: 20px;
+    }
 }
