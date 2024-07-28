@@ -5,19 +5,17 @@
     padding: 40px 0;
 }
 
-/* Footer Styles */
 .footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
-    padding: 70px 20px; /* Added padding for better spacing */
+    padding: 70px 20px; 
     position: relative;
     background-color: #088178;
     color: white;
 }
 
-/* Footer Section Styles */
 .footerSection {
     width: 90%;
     max-width: 1200px;
@@ -26,7 +24,6 @@
     justify-content: space-between;
 }
 
-/* Footer Heading Styles */
 .footerheading {
     font-size: 30px;
     font-weight: bold;
@@ -34,13 +31,12 @@
     margin-bottom: 20px;
 }
 
-.daitelSectionLine {
+/* .daitelSectionLine {
     border-bottom: 2px solid #FFC208;
     width: 50px;
-    margin-bottom: 20px; /* Increased margin for better spacing */
-}
+    margin-bottom: 20px; 
+} */
 
-/* Detail Section Styles */
 .daitelSection {
     padding: 30px 40px;
     width: 300px;
@@ -63,7 +59,11 @@
     margin-bottom: 10px;
 }
 
-/* Quick Links and Other Pages Styles */
+.daitelSectionLine {
+    border: 1px solid white;
+    opacity: 20%;
+}
+
 .otherPages, .quickLinks {
     padding: 0 20px;
     display: flex;
@@ -131,11 +131,37 @@
     font-size: 16px;
 }
 
+.footerSubscribeBtn {
+    text-align: center;
+    padding-top: 8px;
+    margin: 10px 6px 0px 20px;
+    border: none;
+    border-radius: 21px;
+    background-color:#0b4945;
+    color: white;
+    width: 140px;
+    font-size: 16px;
+    transition: 0.3s;
+    height: 42px;
+}
+
 .newsletterButton:hover {
     background-color: #ffb400;
 }
 
-/* Social Media Section Styles */
+.newsletter p {
+    padding-top: 10px;
+    font-size: 14px;
+
+}
+
+.footerSubscribeBtn:hover {
+    background-color: #FFC208;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 .socialSection {
     text-align: center;
     margin-top: 20px;
@@ -154,11 +180,27 @@
     fill: #FFC208;
 }
 
-/* Footer Bottom Styles */
 .footerBottom {
     text-align: center;
     margin-top: 20px;
     font-size: 16px;
+}
+
+.footerIcons svg {
+    transition: 0.3s;
+    color: white;
+}
+
+.footerIcons svg:hover {
+    cursor: pointer;
+    fill: #FFC208;
+    padding: 3px;
+    transition: 0.3s;
+}
+
+.footerIcons {
+    display: flex;
+    gap: 18px;
 }
 
 /* Responsive Styles */
