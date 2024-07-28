@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../hooks/auth";
 import { WithContext as ReactTags } from 'react-tag-input';
 import { storage } from "../Config/Firbase"; 
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ProgressBar } from 'react-bootstrap';
 
 export default function AddNewProduct({ close, product }) {
   const user = auth();
@@ -40,6 +41,8 @@ export default function AddNewProduct({ close, product }) {
   const [subCategories, setSubCategories] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
   const [tags, setTags] = useState([]);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -87,20 +90,20 @@ export default function AddNewProduct({ close, product }) {
     if (category === "physicalProduct") {
       subCategoryOptions = [
         "Home Appliances", "Electronics", "Furniture", "Clothing", "Footwear",
-        "Kitchenware", "Toys", "Sports Equipment", "Books", "Stationery",
-        "Beauty Products", "Jewelry", "Gardening Tools", "Automobile Parts", "Pet Supplies"
+        "Kitchenware", "Toys", "Sports Equipment", "Stationery",
+        "Beauty Products", "Jewelry", "Gardening Tools", "Automobile Parts"
       ];
     } else if (category === "digitalAsset") {
       subCategoryOptions = [
-        "Assignments", "Projects", "E-books", "Software", "Music",
-        "Videos", "Courses", "Templates", "Fonts", "Graphics",
+        "Assignments", "Projects", "E-books", "Software",
+       "Courses", "Templates", "Fonts", "Graphics",
         "Photography", "Virtual Reality", "Websites", "Mobile Apps", "Games"
       ];
     } else if (category === "scrap") {
       subCategoryOptions = [
         "Wall Hangings", "Decoration Pieces", "Metal Scraps", "Wood Scraps", "Plastic Scraps",
-        "Paper Scraps", "Fabric Scraps", "Glass Scraps", "E-waste", "Batteries",
-        "Old Furniture", "Used Appliances", "Tires", "Clothing Scraps", "Miscellaneous"
+        "Paper Scraps", "Glass Scraps", "E-waste", "Batteries",
+        "Old Furniture", "Used Appliances", "Tires", "Clothing Scraps"
       ];
     }
     setSubCategories(subCategoryOptions);
@@ -120,19 +123,23 @@ export default function AddNewProduct({ close, product }) {
       const storageRef = ref(storage, `images/${file.name}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
   
+      setUploading(true);
       await new Promise((resolve, reject) => {
         uploadTask.on(
           "state_changed",
           (snapshot) => {
-            // Handle progress updates if needed
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            setUploadProgress(progress);
           },
           (error) => {
             console.error("Error uploading image:", error);
+            setUploading(false);
             reject(error);
           },
           async () => {
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             uploadedImages.push(downloadURL);
+            setUploading(false);
             resolve();
           }
         );
@@ -263,9 +270,10 @@ export default function AddNewProduct({ close, product }) {
               </select>
             </div>
           </div>
+
           <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="subcategory" className="form-label ANP-label">Sub-Category:</label>
+              <label htmlFor="subcategory" className="form-label ANP-label">Subcategory:</label>
               <select
                 id="subcategory"
                 name="subcategory"
@@ -274,97 +282,87 @@ export default function AddNewProduct({ close, product }) {
                 className="form-select ANP-select"
                 required
               >
-                <option value="">Select Sub-Category</option>
-                {subCategories.map((subCategory) => (
-                  <option key={subCategory} value={subCategory}>
-                    {subCategory}
-                  </option>
+                <option value="">Select Subcategory</option>
+                {subCategories.map((subCategory, index) => (
+                  <option key={index} value={subCategory}>{subCategory}</option>
                 ))}
               </select>
             </div>
           </div>
-        </div>
 
-        <div className="mb-3">
-          <label htmlFor="brand" className="form-label ANP-label">Brand:</label>
-          <input
-            type="text"
-            id="brand"
-            name="brand"
-            value={formData.brand}
-            onChange={handleChange}
-            className="form-control ANP-input"
-          />
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="brand" className="form-label ANP-label">Brand:</label>
+              <input
+                type="text"
+                id="brand"
+                name="brand"
+                value={formData.brand}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                required
+              />
+            </div>
+          </div>
         </div>
 
         <div className="row g-3">
           <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="length" className="form-label ANP-label">Length:</label>
-              <input
-                type="number"
-                id="length"
-                name="dimensions.length"
-                value={formData.dimensions.length}
-                onChange={handleChange}
-                className="form-control ANP-input"
-                min="0"
-                step="0.01"
-                required
-              />
-            </div>
-          </div>
-          <div className="col-sm">
-            <div className="mb-3">
-              <label htmlFor="width" className="form-label ANP-label">Width:</label>
-              <input
-                type="number"
-                id="width"
-                name="dimensions.width"
-                value={formData.dimensions.width}
-                onChange={handleChange}
-                className="form-control ANP-input"
-                min="0"
-                step="0.01"
-                required
-              />
-            </div>
-          </div>
-          <div className="col-sm">
-            <div className="mb-3">
-              <label htmlFor="height" className="form-label ANP-label">Height:</label>
-              <input
-                type="number"
-                id="height"
-                name="dimensions.height"
-                value={formData.dimensions.height}
-                onChange={handleChange}
-                className="form-control ANP-input"
-                min="0"
-                step="0.01"
-                required
-              />
-            </div>
-          </div>
-          <div className="col-sm">
-            <div className="mb-3">
               <label htmlFor="weight" className="form-label ANP-label">Weight:</label>
               <input
-                type="number"
+                type="text"
                 id="weight"
                 name="weight"
                 value={formData.weight}
                 onChange={handleChange}
                 className="form-control ANP-input"
-                min="0"
-                step="0.01"
                 required
               />
             </div>
           </div>
-        </div>
 
-        <div className="row g-3">
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="dimensions" className="form-label ANP-label">Dimensions (L x W x H):</label>
+              <div className="input-group">
+                <input
+                  type="number"
+                  id="length"
+                  name="dimensions.length"
+                  value={formData.dimensions.length}
+                  onChange={handleChange}
+                  className="form-control ANP-input"
+                  min="0"
+                  required
+                  placeholder="Length"
+                />
+                <input
+                  type="number"
+                  id="width"
+                  name="dimensions.width"
+                  value={formData.dimensions.width}
+                  onChange={handleChange}
+                  className="form-control ANP-input"
+                  min="0"
+                  required
+                  placeholder="Width"
+                />
+                <input
+                  type="number"
+                  id="height"
+                  name="dimensions.height"
+                  value={formData.dimensions.height}
+                  onChange={handleChange}
+                  className="form-control ANP-input"
+                  min="0"
+                  required
+                  placeholder="Height"
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="col-sm">
             <div className="mb-3">
               <label htmlFor="color" className="form-label ANP-label">Color:</label>
@@ -375,9 +373,11 @@ export default function AddNewProduct({ close, product }) {
                 value={formData.color}
                 onChange={handleChange}
                 className="form-control ANP-input"
+                required
               />
             </div>
           </div>
+
           <div className="col-sm">
             <div className="mb-3">
               <label htmlFor="material" className="form-label ANP-label">Material:</label>
@@ -388,86 +388,43 @@ export default function AddNewProduct({ close, product }) {
                 value={formData.material}
                 onChange={handleChange}
                 className="form-control ANP-input"
+                required
               />
             </div>
           </div>
         </div>
 
         <div className="mb-3">
-          <label className="form-label ANP-label">Images:</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="form-control ANP-input"
-            multiple
-          />
-          <div className="mt-3">
-            {formData.imageURL.map((url, index) => (
-              <div key={index} className="d-inline-block me-2">
-                <img src={url} alt={`Product ${index}`} className="img-thumbnail" style={{ width: "100px", height: "100px" }} />
-                <button
-                  type="button"
-                  className="btn btn-danger btn-sm mt-1"
-                  onClick={() => handleDeleteImage(url)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label ANP-label">Keywords:</label>
+          <label htmlFor="keywords" className="form-label ANP-label">Keywords:</label>
           <ReactTags
             tags={tags}
             handleDelete={handleDelete}
             handleAddition={handleAddition}
             handleDrag={handleDrag}
-            placeholder="Add new keyword"
             inputFieldPosition="bottom"
+            autocomplete
             classNames={{
-              tags: 'ReactTags__tags',
-              tagInput: 'ReactTags__tagInput',
-              tagInputField: 'ReactTags__tagInputField form-control',
-              selected: 'ReactTags__selected',
-              tag: 'ReactTags__tag btn btn-primary btn-sm',
-              remove: 'ReactTags__remove btn btn-danger btn-sm',
+              tags: 'tagsClass',
+              tagInput: 'tagInputClass',
+              tagInputField: 'tagInputFieldClass',
+              selected: 'selectedClass',
+              tag: 'tagClass',
+              remove: 'removeClass',
+              suggestions: 'suggestionsClass',
             }}
           />
         </div>
 
-        <div className="row g-3">
-          <div className="col-sm">
-            <div className="mb-3">
-              <label htmlFor="rating" className="form-label ANP-label">Rating:</label>
-              <input
-                type="number"
-                id="rating"
-                name="rating"
-                value={formData.rating}
-                onChange={handleChange}
-                className="form-control ANP-input"
-                min="0"
-                max="5"
-                step="0.1"
-              />
-            </div>
-          </div>
-          <div className="col-sm">
-            <div className="mb-3">
-              <label htmlFor="discounts" className="form-label ANP-label">Discounts:</label>
-              <input
-                type="text"
-                id="discounts"
-                name="discounts"
-                value={formData.discounts}
-                onChange={handleChange}
-                className="form-control ANP-input"
-              />
-            </div>
-          </div>
+        <div className="mb-3">
+          <label htmlFor="discounts" className="form-label ANP-label">Discounts:</label>
+          <input
+            type="text"
+            id="discounts"
+            name="discounts"
+            value={formData.discounts}
+            onChange={handleChange}
+            className="form-control ANP-input"
+          />
         </div>
 
         <div className="mb-3">
@@ -481,12 +438,53 @@ export default function AddNewProduct({ close, product }) {
             required
           >
             <option value="available">Available</option>
-            <option value="out of stock">Out of Stock</option>
-            <option value="preorder">Preorder</option>
+            <option value="unavailable">Unavailable</option>
           </select>
         </div>
 
-        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="rating" className="form-label ANP-label">Rating:</label>
+          <input
+            type="number"
+            id="rating"
+            name="rating"
+            value={formData.rating}
+            onChange={handleChange}
+            className="form-control ANP-input"
+            min="0"
+            max="5"
+            step="0.1"
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="images" className="form-label ANP-label">Images:</label>
+          <input
+            type="file"
+            id="images"
+            name="images"
+            onChange={handleFileChange}
+            className="form-control ANP-input"
+            multiple
+          />
+          {uploading && <ProgressBar now={uploadProgress} label={`${uploadProgress.toFixed(0)}%`} />}
+          <div className="mt-2">
+            {formData.imageURL.map((url, index) => (
+              <div key={index} className="image-preview">
+                <img src={url} alt={`Product Image ${index}`} className="img-thumbnail" style={{ width: "100px", height: "100px" }} />
+                <button
+                  type="button"
+                  className="btn btn-danger btn-sm mt-1"
+                  onClick={() => handleDeleteImage(url)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button type="submit" onClick={handleSubmit} className="btn btn-primary">
           {product ? "Update Product" : "Add Product"}
         </button>
       </form>

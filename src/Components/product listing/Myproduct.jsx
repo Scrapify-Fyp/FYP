@@ -17,8 +17,9 @@ export default function Myproduct({ onEditClick }) {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
   };
 
-  const redirectToProductDetail = (Singleproduct) => {
-    navigate("/ProductDetail", { state: Singleproduct });
+  const redirectToProductDetail = (product) => {
+    const startTime = new Date();
+    navigate("/ProductDetail", { state: { product, startTime } });
   };
 
   const handleRemoveItem = async (id) => {
@@ -32,7 +33,7 @@ export default function Myproduct({ onEditClick }) {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3002/products/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/products/${id}`,
         {
           data: { vendorId: user._id },
         }
@@ -46,7 +47,7 @@ export default function Myproduct({ onEditClick }) {
   const fetchData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3002/user/${user._id}/shop/products`
+        `${process.env.REACT_APP_BASE_URL}/user/${user._id}/shop/products`
       );
       setForyouproducts(res.data);
     } catch (error) {

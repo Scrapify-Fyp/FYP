@@ -79,7 +79,7 @@ const Latest = (props) => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3002/products");
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/products`);;
       console.log("Response:", response.data);
       const sortedProducts = response.data.sort((a, b) =>
         a.name.localeCompare(b.name)

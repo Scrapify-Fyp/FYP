@@ -71,7 +71,7 @@ export default function ScrapProducts() {
   const fetchScrapProducts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3002/products");
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/products`);
       const products = response.data;
 
       if (products && Array.isArray(products)) {
