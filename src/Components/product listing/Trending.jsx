@@ -52,7 +52,7 @@ const Trending = () => {
           marginBottom: "20px",
         }}
       >
-        <h1>Trending Products</h1>
+        <h1 className="LTS-PRO">Trending Products</h1>
       </div>
       <div className="pro-container">
         {/* Map over visible products and render each product */}

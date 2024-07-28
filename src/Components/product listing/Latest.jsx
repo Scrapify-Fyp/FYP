@@ -61,7 +61,7 @@ const Latest = (props) => {
             alignItems: "center",
           }}
         >
-          <h1>Latest Products</h1>
+          <h1 className="LTS-PRO"> Latest Products</h1>
           <button
             style={{
               marginTop: "30px",
@@ -76,7 +76,8 @@ const Latest = (props) => {
               textAlign: "center",
               cursor: "pointer",
             }}
-            onClick={handleViewAll}
+            onClick={handleViewAll} 
+            className="LTS-BTN"
           >
             View All
           </button>

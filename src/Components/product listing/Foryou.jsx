@@ -50,7 +50,7 @@ const Foryou = () => {
           marginBottom: "20px",
         }}
       >
-        <h1>For You</h1>
+        <h1 className="LTS-PRO">For You</h1>
       </div>
       <div className="pro-container">
         {/* Map over visible products and render each product */}

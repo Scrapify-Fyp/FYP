@@ -178,6 +178,56 @@ body {
 #product1 .pro .cart .fa-cart-plus {
     color: #088178;
 }
+
+
+@media (max-width: 1025px) {
+    #product1 .pro {
+        width: 32%;
+    }
+    #product1 .pro-container {
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 890px) {
+    #product1 .pro {
+        width: 48%;
+    }
+    h1.LTS-PRO{
+        font-size: 40px;
+    }
+    button .LTS-BTN{
+        margin-top: 0;
+    }
+    #product1 .pro-container {
+        justify-content: space-around;
+    }
+    #product1 .section-p1 {
+        padding: 30px 50px;
+    }
+}
+
+@media (max-width: 700px) {
+    h1.LTS-PRO{
+        font-size: 40px;
+    }
+    button .LTS-BTN {
+        margin-top: 0;
+    }
+    #product1 .pro {
+        width: 100%;
+    }
+    #product1 .pro-container {
+        justify-content: space-around;
+    }
+    #product1 .section-p1 {
+        padding: 30px 30px;
+
+    }
+}
+
+
+
 /*-----x--------- ALL PRODUCTS ----------x-----*/
 
 /* -------------- DIGITAL ASSETS PRODUCTS STYLING -------------- */
