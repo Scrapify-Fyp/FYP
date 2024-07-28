@@ -8,15 +8,11 @@ import { WithContext as ReactTags } from 'react-tag-input';
 import { storage } from "../Config/Firbase"; 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-
 export default function AddNewProduct({ close, product }) {
   const user = auth();
   const navigate = useNavigate();
 
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedSubCategory, setSelectedSubCategory] = useState("");
-  const [subCategories, setSubCategories] = useState([]);
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     description: "",
     price: 0,
@@ -37,21 +33,34 @@ export default function AddNewProduct({ close, product }) {
     discounts: "",
     availabilityStatus: "available",
     vendorId: user._id,
-  });
+  };
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedSubCategory, setSelectedSubCategory] = useState("");
+  const [subCategories, setSubCategories] = useState([]);
+  const [formData, setFormData] = useState(initialFormData);
   const [tags, setTags] = useState([]);
-  const [newImages, setNewImages] = useState([]);
 
   useEffect(() => {
     if (product) {
-      setFormData(product);
+      setFormData({
+        ...product,
+        categories: [{ category: product.categories[0]?.category || "", subcategory: product.categories[0]?.subcategory || "" }],
+        keywords: product.keywords || [],
+      });
       setSelectedCategory(product.categories[0]?.category || "");
       setSelectedSubCategory(product.categories[0]?.subcategory || "");
       setTags(product.keywords.map((keyword) => ({ id: keyword, text: keyword })));
+    } else {
+      setFormData(initialFormData);
+      setSelectedCategory("");
+      setSelectedSubCategory("");
+      setTags([]);
     }
   }, [product]);
 
   const handleDelete = (i) => {
-    const updatedTags = tags.filter((tag, index) => index !== i);
+    const updatedTags = tags.filter((_, index) => index !== i);
     setTags(updatedTags);
 
     const updatedKeywords = formData.keywords.filter((_, index) => index !== i);
@@ -68,7 +77,6 @@ export default function AddNewProduct({ close, product }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData);
   };
 
   const handleCategoryChange = (e) => {
@@ -132,7 +140,7 @@ export default function AddNewProduct({ close, product }) {
     }
     return uploadedImages;
   };
-  
+
   const handleFileChange = async (e) => {
     const files = Array.from(e.target.files);
     try {
@@ -142,6 +150,7 @@ export default function AddNewProduct({ close, product }) {
       console.error("Error uploading images:", error);
     }
   };
+
   const handleDeleteImage = (url) => {
     const updatedImages = formData.imageURL.filter((image) => image !== url);
     setFormData({ ...formData, imageURL: updatedImages });
@@ -151,7 +160,7 @@ export default function AddNewProduct({ close, product }) {
     e.preventDefault();
     try {
       if (product) {
-        await axios.put(
+        await axios.patch(
           `http://localhost:3002/products/${product._id}`,
           formData,
           {
@@ -256,10 +265,10 @@ export default function AddNewProduct({ close, product }) {
           </div>
           <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="subCategory" className="form-label ANP-label">Sub-Category:</label>
+              <label htmlFor="subcategory" className="form-label ANP-label">Sub-Category:</label>
               <select
-                id="subCategory"
-                name="subCategory"
+                id="subcategory"
+                name="subcategory"
                 value={selectedSubCategory}
                 onChange={handleSubCategoryChange}
                 className="form-select ANP-select"
@@ -267,30 +276,12 @@ export default function AddNewProduct({ close, product }) {
               >
                 <option value="">Select Sub-Category</option>
                 {subCategories.map((subCategory) => (
-                  <option key={subCategory} value={subCategory}>{subCategory}</option>
+                  <option key={subCategory} value={subCategory}>
+                    {subCategory}
+                  </option>
                 ))}
               </select>
             </div>
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="images" className="form-label ANP-label">Images:</label>
-          <input
-            type="file"
-            id="images"
-            name="images"
-            multiple
-            onChange={handleFileChange}
-            className="form-control ANP-input"
-          />
-          <div className="image-preview mt-2">
-            {formData.imageURL.map((url, index) => (
-              <div key={index} className="image-thumbnail flex flex-wrap">
-                <img style={{width:"250px",height:"300px"}} src={url} alt={`Product Image ${index + 1}`} className="img-thumbnail" />
-                <button type="button" className="btn btn-danger btn-sm" onClick={() => handleDeleteImage(url)}>Delete</button>
-              </div>
-            ))}
           </div>
         </div>
 
@@ -308,73 +299,122 @@ export default function AddNewProduct({ close, product }) {
 
         <div className="row g-3">
           <div className="col-sm">
-            <label htmlFor="weight" className="form-label ANP-label">Weight:</label>
-            <input
-              type="text"
-              id="weight"
-              name="weight"
-              value={formData.weight}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
+            <div className="mb-3">
+              <label htmlFor="length" className="form-label ANP-label">Length:</label>
+              <input
+                type="number"
+                id="length"
+                name="dimensions.length"
+                value={formData.dimensions.length}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
           </div>
           <div className="col-sm">
-            <label htmlFor="color" className="form-label ANP-label">Color:</label>
-            <input
-              type="text"
-              id="color"
-              name="color"
-              value={formData.color}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
+            <div className="mb-3">
+              <label htmlFor="width" className="form-label ANP-label">Width:</label>
+              <input
+                type="number"
+                id="width"
+                name="dimensions.width"
+                value={formData.dimensions.width}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
           </div>
           <div className="col-sm">
-            <label htmlFor="material" className="form-label ANP-label">Material:</label>
-            <input
-              type="text"
-              id="material"
-              name="material"
-              value={formData.material}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
+            <div className="mb-3">
+              <label htmlFor="height" className="form-label ANP-label">Height:</label>
+              <input
+                type="number"
+                id="height"
+                name="dimensions.height"
+                value={formData.dimensions.height}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="weight" className="form-label ANP-label">Weight:</label>
+              <input
+                type="number"
+                id="weight"
+                name="weight"
+                value={formData.weight}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
           </div>
         </div>
 
         <div className="row g-3">
           <div className="col-sm">
-            <label htmlFor="length" className="form-label ANP-label">Length:</label>
-            <input
-              type="number"
-              id="length"
-              name="length"
-              value={formData.dimensions.length}
-              onChange={(e) => setFormData({ ...formData, dimensions: { ...formData.dimensions, length: e.target.value } })}
-              className="form-control ANP-input"
-            />
+            <div className="mb-3">
+              <label htmlFor="color" className="form-label ANP-label">Color:</label>
+              <input
+                type="text"
+                id="color"
+                name="color"
+                value={formData.color}
+                onChange={handleChange}
+                className="form-control ANP-input"
+              />
+            </div>
           </div>
           <div className="col-sm">
-            <label htmlFor="width" className="form-label ANP-label">Width:</label>
-            <input
-              type="number"
-              id="width"
-              name="width"
-              value={formData.dimensions.width}
-              onChange={(e) => setFormData({ ...formData, dimensions: { ...formData.dimensions, width: e.target.value } })}
-              className="form-control ANP-input"
-            />
+            <div className="mb-3">
+              <label htmlFor="material" className="form-label ANP-label">Material:</label>
+              <input
+                type="text"
+                id="material"
+                name="material"
+                value={formData.material}
+                onChange={handleChange}
+                className="form-control ANP-input"
+              />
+            </div>
           </div>
-          <div className="col-sm">
-            <label htmlFor="height" className="form-label ANP-label">Height:</label>
-            <input
-              type="number"
-              id="height"
-              name="height"
-              value={formData.dimensions.height}
-              onChange={(e) => setFormData({ ...formData, dimensions: { ...formData.dimensions, height: e.target.value } })}
-              className="form-control ANP-input"
-            />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label ANP-label">Images:</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="form-control ANP-input"
+            multiple
+          />
+          <div className="mt-3">
+            {formData.imageURL.map((url, index) => (
+              <div key={index} className="d-inline-block me-2">
+                <img src={url} alt={`Product ${index}`} className="img-thumbnail" style={{ width: "100px", height: "100px" }} />
+                <button
+                  type="button"
+                  className="btn btn-danger btn-sm mt-1"
+                  onClick={() => handleDeleteImage(url)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -385,21 +425,49 @@ export default function AddNewProduct({ close, product }) {
             handleDelete={handleDelete}
             handleAddition={handleAddition}
             handleDrag={handleDrag}
+            placeholder="Add new keyword"
             inputFieldPosition="bottom"
-            autocomplete
+            classNames={{
+              tags: 'ReactTags__tags',
+              tagInput: 'ReactTags__tagInput',
+              tagInputField: 'ReactTags__tagInputField form-control',
+              selected: 'ReactTags__selected',
+              tag: 'ReactTags__tag btn btn-primary btn-sm',
+              remove: 'ReactTags__remove btn btn-danger btn-sm',
+            }}
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="discounts" className="form-label ANP-label">Discounts:</label>
-          <input
-            type="text"
-            id="discounts"
-            name="discounts"
-            value={formData.discounts}
-            onChange={handleChange}
-            className="form-control ANP-input"
-          />
+        <div className="row g-3">
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="rating" className="form-label ANP-label">Rating:</label>
+              <input
+                type="number"
+                id="rating"
+                name="rating"
+                value={formData.rating}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                min="0"
+                max="5"
+                step="0.1"
+              />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="discounts" className="form-label ANP-label">Discounts:</label>
+              <input
+                type="text"
+                id="discounts"
+                name="discounts"
+                value={formData.discounts}
+                onChange={handleChange}
+                className="form-control ANP-input"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="mb-3">
@@ -413,16 +481,14 @@ export default function AddNewProduct({ close, product }) {
             required
           >
             <option value="available">Available</option>
-            <option value="unavailable">Unavailable</option>
+            <option value="out of stock">Out of Stock</option>
+            <option value="preorder">Preorder</option>
           </select>
         </div>
 
-        <div className="d-flex justify-content-end">
-          <button type="button" className="btn btn-secondary me-2" onClick={close}>Cancel</button>
-          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
-            {product ? "Update Product" : "Add Product"}
-          </button>
-        </div>
+        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+          {product ? "Update Product" : "Add Product"}
+        </button>
       </form>
     </div>
   );
