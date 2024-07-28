@@ -131,10 +131,14 @@
 
 
 
+
+
+
+
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faUser, faChartLine, faStore, faHistory, faWallet, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faChartLine, faStore, faHistory, faWallet, faCog } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Navbar from "./Navbar";
 import { auth } from "../hooks/auth";
@@ -170,10 +174,7 @@ export default function Sidebar(props) {
       <Navbar />
       <div className="container-fluid">
         <header>
-          <nav
-            id="sidebarMenu"
-            className={`collapse d-lg-block sidebar ${sidebarCollapsed ? "show" : ""}`}
-          >
+          <nav id="sidebarMenu" className={`sidebar ${sidebarCollapsed ? "collapsed" : ""}`}>
             <div className="profile-dp text-center">
               <div className="mb-4">
                 <img
@@ -191,63 +192,30 @@ export default function Sidebar(props) {
               </div>
             </div>
             <div className="list-group list-group-flush mx-3 mt-4">
-              <NavLink
-                to="/Profile"
-                className="text-center list-group-item list-group-item-action py-2 ripple"
-              >
+              <NavLink to="/Profile" className="text-center list-group-item list-group-item-action py-2 ripple">
                 <FontAwesomeIcon icon={faUser} className="side-icon" />
                 <span className="icon-label">Profile</span>
               </NavLink>
-              <NavLink
-                to="/Analytics"
-                className="text-center list-group-item list-group-item-action py-2 ripple"
-              >
+              <NavLink to="/Analytics" className="text-center list-group-item list-group-item-action py-2 ripple">
                 <FontAwesomeIcon icon={faChartLine} className="side-icon" />
                 <span className="icon-label">Analytics</span>
               </NavLink>
-              <NavLink
-                to="/Myshope"
-                className="text-center list-group-item list-group-item-action py-2 ripple"
-              >
+              <NavLink to="/Myshope" className="text-center list-group-item list-group-item-action py-2 ripple">
                 <FontAwesomeIcon icon={faStore} className="side-icon" />
                 <span className="icon-label">My Shop</span>
               </NavLink>
-              <NavLink
-                to="/Order_history"
-                className="text-center list-group-item list-group-item-action py-2 ripple"
-              >
+              <NavLink to="/Order_history" className="text-center list-group-item list-group-item-action py-2 ripple">
                 <FontAwesomeIcon icon={faHistory} className="side-icon" />
                 <span className="icon-label">Order History</span>
               </NavLink>
-              <NavLink
-                to="/Wallet"
-                className="text-center list-group-item list-group-item-action py-2 ripple"
-              >
+              <NavLink to="/Wallet" className="text-center list-group-item list-group-item-action py-2 ripple">
                 <FontAwesomeIcon icon={faWallet} className="side-icon" />
                 <span className="icon-label">Payments</span>
               </NavLink>
-              <NavLink
-                to="/Settings"
-                className={`${props.activeprofile} text-center list-group-item list-group-item-action py-2 ripple`}
-              >
+              <NavLink to="/Settings" className={`${props.activeprofile} text-center list-group-item list-group-item-action py-2 ripple`}>
                 <FontAwesomeIcon icon={faCog} className="side-icon" />
                 <span className="icon-label">Settings</span>
               </NavLink>
-            </div>
-          </nav>
-
-          <nav className="navbar navbar-expand-lg navbar-light toglr">
-            <div className="container-fluid">
-              <button
-                className="navbar-toggler"
-                type="button"
-                onClick={toggleSidebar}
-                aria-controls="sidebarMenu"
-                aria-expanded={sidebarCollapsed ? "true" : "false"}
-                aria-label="Toggle navigation"
-              >
-                <FontAwesomeIcon icon={faBars} />
-              </button>
             </div>
           </nav>
         </header>

@@ -73,22 +73,13 @@ body {
     width: 100%;
   }
 
-  .side-icon {
-    display: inline;
-    margin-left: 40px;
-    margin-right: 40px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
   .profile-dp {
     display: none;
   }
 
   .sidebar .list-group {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     padding: 0;
     align-items: center;
@@ -96,7 +87,7 @@ body {
   }
 
   .sidebar .list-group-item {
-    flex: 0 1 50px;
+    flex: 0 1 auto;
     font-size: 14px;
     border: none;
   }
@@ -104,29 +95,42 @@ body {
   .sidebar .list-group-item .icon-label {
     display: none;
   }
+  .side-icon {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 735px) {
   .sidebar .list-group-item {
-    flex: 0 1 33.33%;
+    flex: 0 1 auto;
   }
+
   .profile-dp {
     display: none;
   }
+
   .side-icon {
-    display: inline;
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 20px;
   }
 }
 
 @media (max-width: 530px) {
   .sidebar .list-group-item {
-    flex: 0 1 25%;
+    flex: 0 1 auto;
   }
+
   .profile-dp {
     display: none;
   }
+
   .side-icon {
-    display: inline;
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 20px;
   }
 }
 
@@ -188,7 +192,6 @@ body {
   width: 100%;
 }
 
-/* Styles for the input field of the React Tags component */
 .ReactTags__tagInputField {
   display: inline-block;
   width: 220px;
@@ -215,20 +218,39 @@ body {
   font-size: 13px;
   list-style: none;
   margin-bottom: 5px;
-  margin-right: 5px;
-  padding: 5px 8px;
-  font-family: 'Poppins', sans-serif;
-  transition: 0.5s;
+  padding: 5px;
 }
 
 .ReactTags__remove {
-  cursor: pointer;
+  display: inline-block;
   color: #fff;
-  font-weight: bold;
   margin-left: 8px;
-  transition: 0.3s;
+  cursor: pointer;
 }
 
-.ReactTags__remove:hover {
-  color: #007bff;
+.ReactTags__suggestions {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #007bff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.ReactTags__suggestions li {
+  border-bottom: 1px solid #007bff;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.ReactTags__suggestions li:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+.ReactTags__suggestions li.is-active {
+  background: #007bff;
+  color: #fff;
 }
