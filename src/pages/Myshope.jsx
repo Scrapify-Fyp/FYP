@@ -9,15 +9,16 @@ import { auth } from "../hooks/auth";
 import { Modal, Button, Form, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { FaEdit } from "react-icons/fa";
 
 export default function Myshope() {
   const user = auth();
   const userId = user._id;
-  console.log(user);
   const [shop, setShop] = useState(null);
   const [isShop, setIsShop] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false); // New state for edit mode
   const [formData, setFormData] = useState({
     shopName: "",
     shopNameError: "",
@@ -39,13 +40,23 @@ export default function Myshope() {
         const response = await axios.get(
           `http://localhost:3002/user/${userId}/shop`
         );
-        console.log("🚀 ~ fetchUsershop ~ response:", response);
-
         if (response.data.length > 0) {
           setIsShop(true);
+          setShop(response.data[0]);
+          setFormData({
+            shopName: response.data[0].name,
+            description: response.data[0].description,
+            address: response.data[0].address,
+            openingHours: {
+              start: new Date(response.data[0].openingHours.start),
+              end: new Date(response.data[0].openingHours.end),
+            },
+            email: response.data[0].email,
+            phone: response.data[0].phone,
+            imageUrl: response.data[0].imageUrl,
+            imageFile: null,
+          });
         }
-        // setIsShop(response.data.length > 0);
-        setShop(response.data[0]);
       } catch (error) {
         console.error("Error fetching user's shop:", error);
         toast.error("Error fetching shop. Please try again later.");
@@ -77,7 +88,7 @@ export default function Myshope() {
     }));
   };
 
-  const handleCreateShop = async () => {
+  const handleCreateOrUpdateShop = async () => {
     const {
       shopName,
       description,
@@ -88,7 +99,6 @@ export default function Myshope() {
       imageUrl,
       imageFile,
     } = formData;
-    console.log("🚀 ~ handleCreateShop ~ formData:", formData);
 
     try {
       if (!shopName) {
@@ -99,7 +109,7 @@ export default function Myshope() {
         return;
       }
 
-      let shopData = {
+      const shopData = {
         name: shopName,
         description,
         userId,
@@ -113,7 +123,12 @@ export default function Myshope() {
         imageUrl,
       };
 
-      if (imageFile) {
+      if (isEditMode) {
+        // Update shop
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/shop/${shop._id}`, shopData);
+        toast.success("Shop updated successfully!");
+      } else {
+        // Create new shop
         const formDataToSend = new FormData();
         formDataToSend.append("name", shopName);
         formDataToSend.append("description", description);
@@ -130,30 +145,29 @@ export default function Myshope() {
         formDataToSend.append("phone", phone);
         formDataToSend.append("image", imageFile);
 
-        const response = await axios.post(
-          "http://localhost:3002/shop",
-          formDataToSend
-        );
-        setShop(response.data);
-      } else {
-        const response = await axios.post(
-          "http://localhost:3002/shop",
-          shopData
-        );
-        setShop(response.data);
+        await axios.post("http://localhost:3002/shop", formDataToSend);
+        toast.success("Shop created successfully!");
       }
 
       setIsShop(true);
       setShowModal(false);
     } catch (error) {
-      console.error("Error creating shop:", error);
-      toast.error("Error creating shop. Please try again later.");
+      console.error(
+        isEditMode ? "Error updating shop:" : "Error creating shop:",
+        error
+      );
+      toast.error(
+        isEditMode
+          ? "Error updating shop. Please try again later."
+          : "Error creating shop. Please try again later."
+      );
     }
   };
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
+  const handleEditClick = () => {
+    setIsEditMode(true);
+    setShowModal(true);
+  };
 
   if (loading) {
     return (
@@ -177,13 +191,19 @@ export default function Myshope() {
       </div>
     );
   }
+
   return (
     <div className={profilecss.container}>
       <div className={`${profilecss.bgWhite}`}>
         <Sidebar />
         <main style={{ marginTop: "58px" }}>
           {isShop ? (
-            <Shopepage shop={shop} />
+            <div>
+              <Shopepage
+            shop={shop}
+            onEditClick={handleEditClick} // Pass the edit button handler
+          />            
+            </div>
           ) : (
             <div>
               <h2 style={{ color: "#980f0f", textAlign: "center" }}>
@@ -204,7 +224,10 @@ export default function Myshope() {
                   borderRadius: "5px",
                   cursor: "pointer",
                 }}
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                  setIsEditMode(false);
+                  setShowModal(true);
+                }}
               >
                 Create New Shop
               </button>
@@ -214,7 +237,9 @@ export default function Myshope() {
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Create New Shop</Modal.Title>
+          <Modal.Title>
+            {isEditMode ? "Edit Shop" : "Create New Shop"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
@@ -280,7 +305,8 @@ export default function Myshope() {
                         showTimeSelectOnly
                         timeIntervals={15}
                         timeCaption="Start Time"
-                        dateFormat="h:mm aa"
+                        dateFormat="h
+                      aa"
                         className="form-control"
                       />
                       <DatePicker
@@ -290,7 +316,8 @@ export default function Myshope() {
                         showTimeSelectOnly
                         timeIntervals={15}
                         timeCaption="End Time"
-                        dateFormat="h:mm aa"
+                        dateFormat="h
+                      aa"
                         className="form-control"
                       />
                     </div>
@@ -359,8 +386,8 @@ export default function Myshope() {
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleCreateShop}>
-            Create Shop
+          <Button variant="primary" onClick={handleCreateOrUpdateShop}>
+            {isEditMode ? "Update Shop" : "Create Shop"}
           </Button>
         </Modal.Footer>
       </Modal>
