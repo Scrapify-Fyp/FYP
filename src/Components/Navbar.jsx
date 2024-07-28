@@ -20,7 +20,9 @@ const Navbar = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [screensize, setScreensize] = useState(window.innerWidth);
   const comparison = 900;
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
   const [searchQuery, setSearchQuery] = useState(""); // New state for search query
 
   useEffect(() => {
@@ -224,150 +226,125 @@ const Navbar = () => {
           </nav>
         </div>
       ) : (
-        <nav className="navbar navbar-expand-lg navbar-light p-3">
-          <NavLink className="navbar-brand" to="/">
-            <h4>
-              <strong>Scrapify</strong>
-            </h4>
-          </NavLink>
-          <button
-            to="/Profile"
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div
-            className="collapse navbar-collapse mobile-route-buttons"
-            id="navbarNav"
-          >
-            
-            <div className="search-routes">
-              <div className="navbar-search pt-2 d-flex flex-row justify-content-between align-items-center">
-                <div>
-                <form className="form-inline" onSubmit={handleSearchSubmit}>
-                  <div className="input-group">
-                    <input
-                      className="form-control"
-                      type="search"
-                      placeholder="Search"
-                      aria-label="Search"
-                      value={searchQuery}
-                      onChange={handleSearchInputChange}
-                    />
-                    <div className="input-group-append">
-                      <button
-                        className="btn btn-outline-secondary"
-                        type="submit"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="feather feather-search"
-                        >
-                          <circle cx="11" cy="11" r="8"></circle>
-                          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-                </div>
-                
-
-                <div className="navbar-buttons">
-                <NavLink
-                  to="/Cart"
-                  className="btn btn-outline-secondary m-2"
-                  type="button"
-                >
+        <nav className="navbar navbar-expand-lg navbar-light bg-light p-3">
+      <NavLink className="navbar-brand" to="/">
+        <h4>
+          <strong>Scrapify</strong>
+        </h4>
+      </NavLink>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded={!isNavCollapsed ? true : false}
+        aria-label="Toggle navigation"
+        onClick={handleNavCollapse}
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarNav">
+        <div className="d-flex flex-column flex-lg-row align-items-left w-100">
+          <form className="form-inline my-2 my-lg-0 mx-lg-auto " onSubmit={handleSearchSubmit}>
+            <div className="input-group">
+              <input
+                className="form-control"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                value={searchQuery}
+                onChange={handleSearchInputChange}
+              />
+              <div className="input-group-append">
+                <button className="btn btn-outline-secondary" type="submit">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="feather feather-shopping-cart"
+                    className="feather feather-search"
                   >
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
-                </NavLink>
-                <NavLink
-                  to="/Profile"
-                  className="btn btn-outline-secondary my-2"
-                  type="button"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="feather feather-user"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </NavLink>
+                </button>
               </div>
-
-              </div>
-
-              <div className="routes d-flex pt-1 flex-row justify-content-center">
-                <ul className="navbar-nav ml-auto d-flex flex-row gap-4">
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/Home">
-                      Home
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/Shops">
-                      Shops
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/Scrapyard">
-                      Scrapyard
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/Digitalassets">
-                      Digital assets
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/Contact_us">
-                      Contact Us
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
-             
             </div>
+          </form>
+          
+          <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/">
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/Shops">
+                Shops
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/Scrapyard">
+                Scrapyard
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/Digitalassets">
+                Digital assets
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/Contact_us">
+                Contact Us
+              </NavLink>
+            </li>
+          </ul>
+          <div className="navbar-buttons my-2 my-lg-0 d-flex flex-row">
+            <NavLink to="/Cart" className="btn btn-outline-secondary mx-2" type="button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-shopping-cart"
+              >
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </NavLink>
+            <NavLink to="/Profile" className="btn btn-outline-secondary mx-2" type="button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-user"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </NavLink>
           </div>
-        </nav>
+        </div>
+      </div>
+    </nav>
       )}
     </>
   );
