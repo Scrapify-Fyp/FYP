@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./sidebar.css";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../hooks/auth";
 import { WithContext as ReactTags } from 'react-tag-input';
+import { storage } from "../Config/Firbase"; 
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-export default function AddNewProduct({ close }) {
+
+export default function AddNewProduct({ close, product }) {
   const user = auth();
   const navigate = useNavigate();
 
@@ -26,7 +29,6 @@ export default function AddNewProduct({ close }) {
       length: 0,
       width: 0,
       height: 0,
-
     },
     color: "",
     material: "",
@@ -37,7 +39,16 @@ export default function AddNewProduct({ close }) {
     vendorId: user._id,
   });
   const [tags, setTags] = useState([]);
+  const [newImages, setNewImages] = useState([]);
 
+  useEffect(() => {
+    if (product) {
+      setFormData(product);
+      setSelectedCategory(product.categories[0]?.category || "");
+      setSelectedSubCategory(product.categories[0]?.subcategory || "");
+      setTags(product.keywords.map((keyword) => ({ id: keyword, text: keyword })));
+    }
+  }, [product]);
 
   const handleDelete = (i) => {
     const updatedTags = tags.filter((tag, index) => index !== i);
@@ -95,13 +106,70 @@ export default function AddNewProduct({ close }) {
     setFormData({ ...formData, categories: [{ category: selectedCategory, subcategory }] });
   };
 
+  const handleImageUpload = async (files) => {
+    const uploadedImages = [];
+    for (const file of files) {
+      const storageRef = ref(storage, `images/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+  
+      await new Promise((resolve, reject) => {
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            // Handle progress updates if needed
+          },
+          (error) => {
+            console.error("Error uploading image:", error);
+            reject(error);
+          },
+          async () => {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            uploadedImages.push(downloadURL);
+            resolve();
+          }
+        );
+      });
+    }
+    return uploadedImages;
+  };
+  
+  const handleFileChange = async (e) => {
+    const files = Array.from(e.target.files);
+    try {
+      const uploadedImages = await handleImageUpload(files);
+      setFormData({ ...formData, imageURL: [...formData.imageURL, ...uploadedImages] });
+    } catch (error) {
+      console.error("Error uploading images:", error);
+    }
+  };
+  const handleDeleteImage = (url) => {
+    const updatedImages = formData.imageURL.filter((image) => image !== url);
+    setFormData({ ...formData, imageURL: updatedImages });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3002/products/", formData);
-      close();
+      if (product) {
+        await axios.put(
+          `http://localhost:3002/products/${product._id}`,
+          formData,
+          {
+            headers: { Authorization: `Bearer ${user.token}` },
+          }
+        );
+      } else {
+        await axios.post(
+          "http://localhost:3002/products",
+          formData,
+          {
+            headers: { Authorization: `Bearer ${user.token}` },
+          }
+        );
+      }
+      close(); 
     } catch (error) {
-      console.error(error);
+      console.error("Error saving product:", error);
     }
   };
 
@@ -111,9 +179,8 @@ export default function AddNewProduct({ close }) {
         <div className="row g-3">
           <div className="col-sm-6">
             <div className="mb-3">
-              <label htmlFor="name" className="form-label ANP-label">
-                Name:
-              </label>
+              <h2>{product ? "Edit Product" : "Add New Product"}</h2>
+              <label htmlFor="name" className="form-label ANP-label">Name:</label>
               <input
                 type="text"
                 id="name"
@@ -127,9 +194,7 @@ export default function AddNewProduct({ close }) {
           </div>
           <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="price" className="form-label ANP-label">
-                Price:
-              </label>
+              <label htmlFor="price" className="form-label ANP-label">Price:</label>
               <input
                 type="number"
                 id="price"
@@ -143,9 +208,7 @@ export default function AddNewProduct({ close }) {
             </div>
           </div>
           <div className="col-sm">
-            <label htmlFor="stockQuantity" className="form-label ANP-label">
-              Stock Quantity:
-            </label>
+            <label htmlFor="stockQuantity" className="form-label ANP-label">Stock Quantity:</label>
             <input
               type="number"
               id="stockQuantity"
@@ -160,31 +223,28 @@ export default function AddNewProduct({ close }) {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="description" className="form-label ANP-label">
-            Description:
-          </label>
+          <label htmlFor="description" className="form-label ANP-label">Description:</label>
           <textarea
             id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
             className="form-control ANP-input"
+            rows="3"
             required
           ></textarea>
         </div>
 
-        <div className="row">
-          <div className="col">
+        <div className="row g-3">
+          <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="category" className="form-label ANP-label">
-                Category:
-              </label>
+              <label htmlFor="category" className="form-label ANP-label">Category:</label>
               <select
                 id="category"
-                className="form-select ANP-input"
                 name="category"
                 value={selectedCategory}
                 onChange={handleCategoryChange}
+                className="form-select ANP-select"
                 required
               >
                 <option value="">Select Category</option>
@@ -194,83 +254,61 @@ export default function AddNewProduct({ close }) {
               </select>
             </div>
           </div>
-
-          <div className="col">
+          <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="subCategory" className="form-label ANP-label">
-                Sub-category:
-              </label>
+              <label htmlFor="subCategory" className="form-label ANP-label">Sub-Category:</label>
               <select
                 id="subCategory"
-                className="form-select ANP-input"
                 name="subCategory"
                 value={selectedSubCategory}
                 onChange={handleSubCategoryChange}
+                className="form-select ANP-select"
                 required
               >
-                <option value="">Select Sub-category</option>
+                <option value="">Select Sub-Category</option>
                 {subCategories.map((subCategory) => (
-                  <option key={subCategory} value={subCategory}>
-                    {subCategory}
-                  </option>
+                  <option key={subCategory} value={subCategory}>{subCategory}</option>
                 ))}
               </select>
             </div>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col">
-            <label htmlFor="brand" className="form-label ANP-label">
-              Brand:
-            </label>
-            <input
-              type="text"
-              id="brand"
-              name="brand"
-              value={formData.brand}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
+        <div className="mb-3">
+          <label htmlFor="images" className="form-label ANP-label">Images:</label>
+          <input
+            type="file"
+            id="images"
+            name="images"
+            multiple
+            onChange={handleFileChange}
+            className="form-control ANP-input"
+          />
+          <div className="image-preview mt-2">
+            {formData.imageURL.map((url, index) => (
+              <div key={index} className="image-thumbnail flex flex-wrap">
+                <img style={{width:"250px",height:"300px"}} src={url} alt={`Product Image ${index + 1}`} className="img-thumbnail" />
+                <button type="button" className="btn btn-danger btn-sm" onClick={() => handleDeleteImage(url)}>Delete</button>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="imageInput" className="form-label ANP-label">
-            Image URL or File:
-          </label>
-          <div className="input-group">
-            <input
-              type="text"
-              id="imageInput"
-              name="imageURL"
-              value={formData.imageURL}
-              onChange={handleChange}
-              className="form-control ANP-input"
-              placeholder="Enter image URL"
-            />
-            <input
-              style={{ marginLeft: "30px" }}
-              type="file"
-              id="imageFile"
-              name="imageFile"
-              accept="image/*"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                if (file) {
-                  console.log("File selected:", file);
-                }
-              }}
-              className="form-control ANP-input"
-            />
-          </div>
+          <label htmlFor="brand" className="form-label ANP-label">Brand:</label>
+          <input
+            type="text"
+            id="brand"
+            name="brand"
+            value={formData.brand}
+            onChange={handleChange}
+            className="form-control ANP-input"
+          />
         </div>
 
-        <div className="row gx-3 gy-2 align-items-center">
-          <div className="col-sm-2">
-            <label htmlFor="weight" className="form-label ANP-label">
-              Weight:
-            </label>
+        <div className="row g-3">
+          <div className="col-sm">
+            <label htmlFor="weight" className="form-label ANP-label">Weight:</label>
             <input
               type="text"
               id="weight"
@@ -280,71 +318,8 @@ export default function AddNewProduct({ close }) {
               className="form-control ANP-input"
             />
           </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="dimensions-length" className="form-label ANP-label">
-              Length:
-            </label>
-            <input
-              type="number"
-              id="dimensions-length"
-              name="length"
-              value={formData.dimensions.length}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  dimensions: { ...formData.dimensions, length: e.target.value },
-                })
-              }
-              className="form-control ANP-input"
-              min="0"
-            />
-          </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="dimensions-width" className="form-label ANP-label">
-              Width:
-            </label>
-            <input
-              type="number"
-              id="dimensions-width"
-              name="width"
-              value={formData.dimensions.width}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  dimensions: { ...formData.dimensions, width: e.target.value },
-                })
-              }
-              className="form-control ANP-input"
-              min="0"
-            />
-          </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="dimensions-height" className="form-label ANP-label">
-              Height:
-            </label>
-            <input
-              type="number"
-              id="dimensions-height"
-              name="height"
-              value={formData.dimensions.height}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  dimensions: { ...formData.dimensions, height: e.target.value },
-                })
-              }
-              className="form-control ANP-input"
-              min="0"
-            />
-          </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="color" className="form-label ANP-label">
-              Color:
-            </label>
+          <div className="col-sm">
+            <label htmlFor="color" className="form-label ANP-label">Color:</label>
             <input
               type="text"
               id="color"
@@ -354,11 +329,8 @@ export default function AddNewProduct({ close }) {
               className="form-control ANP-input"
             />
           </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="material" className="form-label ANP-label">
-              Material:
-            </label>
+          <div className="col-sm">
+            <label htmlFor="material" className="form-label ANP-label">Material:</label>
             <input
               type="text"
               id="material"
@@ -370,75 +342,87 @@ export default function AddNewProduct({ close }) {
           </div>
         </div>
 
-        <div className="row mt-3">
-          <div className="col">
-            <label htmlFor="rating" className="form-label ANP-label">
-              Rating:
-            </label>
+        <div className="row g-3">
+          <div className="col-sm">
+            <label htmlFor="length" className="form-label ANP-label">Length:</label>
             <input
               type="number"
-              id="rating"
-              name="rating"
-              value={formData.rating}
-              onChange={handleChange}
+              id="length"
+              name="length"
+              value={formData.dimensions.length}
+              onChange={(e) => setFormData({ ...formData, dimensions: { ...formData.dimensions, length: e.target.value } })}
               className="form-control ANP-input"
-              min="0"
-              max="5"
             />
           </div>
-
-          <div className="col">
-            <label htmlFor="discounts" className="form-label ANP-label">
-              Discounts:
-            </label>
+          <div className="col-sm">
+            <label htmlFor="width" className="form-label ANP-label">Width:</label>
             <input
-              type="text"
-              id="discounts"
-              name="discounts"
-              value={formData.discounts}
-              onChange={handleChange}
+              type="number"
+              id="width"
+              name="width"
+              value={formData.dimensions.width}
+              onChange={(e) => setFormData({ ...formData, dimensions: { ...formData.dimensions, width: e.target.value } })}
+              className="form-control ANP-input"
+            />
+          </div>
+          <div className="col-sm">
+            <label htmlFor="height" className="form-label ANP-label">Height:</label>
+            <input
+              type="number"
+              id="height"
+              name="height"
+              value={formData.dimensions.height}
+              onChange={(e) => setFormData({ ...formData, dimensions: { ...formData.dimensions, height: e.target.value } })}
               className="form-control ANP-input"
             />
           </div>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="availabilityStatus" className="form-label ANP-label">
-            Availability Status:
-          </label>
-          <select
-            id="availabilityStatus"
-            className="form-select ANP-input"
-            name="availabilityStatus"
-            value={formData.availabilityStatus}
-            onChange={handleChange}
-            required
-          >
-            <option value="available">Available</option>
-            <option value="outOfStock">Out of Stock</option>
-          </select>
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="keywords" className="form-label ANP-label">
-            Keywords:
-          </label>
+          <label className="form-label ANP-label">Keywords:</label>
           <ReactTags
             tags={tags}
             handleDelete={handleDelete}
             handleAddition={handleAddition}
             handleDrag={handleDrag}
-            placeholder="Add new keyword"
+            inputFieldPosition="bottom"
+            autocomplete
           />
         </div>
 
-        <button
-          className="btn btn-primary mt-3"
-          onClick={handleSubmit}
-          type="submit"
-        >
-          Submit
-        </button>
+        <div className="mb-3">
+          <label htmlFor="discounts" className="form-label ANP-label">Discounts:</label>
+          <input
+            type="text"
+            id="discounts"
+            name="discounts"
+            value={formData.discounts}
+            onChange={handleChange}
+            className="form-control ANP-input"
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="availabilityStatus" className="form-label ANP-label">Availability Status:</label>
+          <select
+            id="availabilityStatus"
+            name="availabilityStatus"
+            value={formData.availabilityStatus}
+            onChange={handleChange}
+            className="form-select ANP-select"
+            required
+          >
+            <option value="available">Available</option>
+            <option value="unavailable">Unavailable</option>
+          </select>
+        </div>
+
+        <div className="d-flex justify-content-end">
+          <button type="button" className="btn btn-secondary me-2" onClick={close}>Cancel</button>
+          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+            {product ? "Update Product" : "Add Product"}
+          </button>
+        </div>
       </form>
     </div>
   );

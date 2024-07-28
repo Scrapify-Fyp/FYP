@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import profilecss from "../pages/Profile.module.css";
 import img from "../img/mandp.jpg";
 import Myproduct from "./product listing/Myproduct";
@@ -8,69 +7,62 @@ import AddNewProduct from "./AddNewProduct";
 import { FaEdit } from "react-icons/fa";
 
 export default function Shopepage({ shop, onEditClick }) {
-  const [showModal, setShowModal] = useState(false);
-  const handleModalClose = () => setShowModal(false);
-  const handleViewAllClick = () => setShowModal(true);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [productToEdit, setProductToEdit] = useState(null);
 
-  const extractTimeWithAMPM = (dateString) => {
-    const date = new Date(dateString);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
+  // Toggle modal visibility
+  const handleModalClose = () => setShowAddModal(false);
+  const handleModalOpen = () => setShowAddModal(true);
 
-    const hour12 = hours % 12 || 12; // Convert to 12-hour format
-
-    const formattedHours = hour12.toString().padStart(2, "0");
-    const formattedMinutes = minutes.toString().padStart(2, "0");
-
-    return `${formattedHours}:${formattedMinutes} ${ampm}`;
+  // Handle product edit click
+  const handleEditClick = (product) => {
+    setProductToEdit(product);
+    handleModalOpen(); // Open modal for editing
   };
 
-  const start = extractTimeWithAMPM(shop?.openingHours?.start);
-  const end = extractTimeWithAMPM(shop?.openingHours?.end);
+  // Format time to 12-hour format with AM/PM
+  const formatTimeWithAMPM = (dateString) => {
+    const date = new Date(dateString);
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12; // Convert to 12-hour format
+
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${ampm}`;
+  };
+
+  // Extract and format opening hours
+  const start = shop?.openingHours?.start ? formatTimeWithAMPM(shop.openingHours.start) : "9:00 AM";
+  const end = shop?.openingHours?.end ? formatTimeWithAMPM(shop.openingHours.end) : "6:00 PM";
 
   return (
     <>
-      <div className={`${profilecss.container}`}>
-        <header className={`${profilecss.myshopheader}`}>
-          <div className={`${profilecss.backgroundpic}`}></div>
+      <div className={profilecss.container}>
+        <header className={profilecss.myshopheader}>
+          <div className={profilecss.backgroundpic}></div>
           <div className={`${profilecss.flex} ${profilecss.itemsCenter}`}>
             <img
-              src={shop?.imageUrl ? shop?.imageUrl : img}
+              src={shop?.imageUrl || img}
               alt="Shop Logo"
-              className={`${profilecss.dp}`}
+              className={profilecss.dp}
             />
-            <div className={`${profilecss.ml2}`}>
-              <h1 className={`${profilecss.textLg}`}>{shop?.name}</h1>
-              <p className={`${profilecss.textSm}`}>
-                {shop?.description
-                  ? shop.description
-                  : "Luxe Living brings you a curated collection of sophisticated home decor and furnishings, designed to elevate your living space with timeless elegance and modern flair. From luxurious furniture pieces to exquisite decor accents, our selection is crafted to inspire and transform your home into a sanctuary of style and comfort. Discover the epitome of refined living with Luxe Living."}
+            <div className={profilecss.ml2}>
+              <h1 className={profilecss.textLg}>{shop?.name || "Shop Name"}</h1>
+              <p className={profilecss.textSm}>
+                {shop?.description || 
+                  "Luxe Living brings you a curated collection of sophisticated home decor and furnishings, designed to elevate your living space with timeless elegance and modern flair. From luxurious furniture pieces to exquisite decor accents, our selection is crafted to inspire and transform your home into a sanctuary of style and comfort. Discover the epitome of refined living with Luxe Living."
+                }
               </p>
             </div>
           </div>
-          <div className={`${profilecss.description}`}>
-            <p>
-              <strong>Address:</strong>{" "}
-              {shop?.address ? shop.address : "123 Main Street, City, Country"}
-            </p>
-            <p>
-              <strong>Opening Hours: </strong>{" "}
-              {shop?.openingHours
-                ? "Monday - Friday, " + start + " - " + end
-                : "Monday - Friday, 9:00 AM - 6:00 PM"}
-            </p>
-            <p>
-              <strong>Email:</strong>{" "}
-              {shop?.email ? shop.email : "example@example.com"}
-            </p>
-            <p>
-              <strong>Phone:</strong>{" "}
-              {shop?.phone ? shop.phone : "123-456-7890"}
-            </p>
+          <div className={profilecss.description}>
+            <p><strong>Address:</strong> {shop?.address || "123 Main Street, City, Country"}</p>
+            <p><strong>Opening Hours:</strong> {`Monday - Friday, ${start} - ${end}`}</p>
+            <p><strong>Email:</strong> {shop?.email || "example@example.com"}</p>
+            <p><strong>Phone:</strong> {shop?.phone || "123-456-7890"}</p>
           </div>
         </header>
-        <div className={`${profilecss.myproduct}`}>
+        <div className={profilecss.myproduct}>
           <div style={{ display: "flex", gap: "10px" }}>
             <button
               style={{
@@ -88,22 +80,28 @@ export default function Shopepage({ shop, onEditClick }) {
               Edit Shop
             </button>
             <button
-              style={{ padding: "10px 20px", background: "#4fa94d", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}
-              onClick={handleViewAllClick}
-              className="btn btn-success"
+              style={{
+                padding: "10px 20px",
+                background: "#4fa94d",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+              onClick={handleModalOpen}
             >
               Add New Product
             </button>
           </div>
-          <Myproduct refresh={handleModalClose} />
+          <Myproduct onEditClick={handleEditClick} />
         </div>
 
-        <Modal show={showModal} onHide={handleModalClose} size="xl">
+        <Modal show={showAddModal} onHide={handleModalClose} size="xl">
           <Modal.Header closeButton>
-            <Modal.Title>Add new Product</Modal.Title>
+            <Modal.Title>{productToEdit ? "Edit Product" : "Add New Product"}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <AddNewProduct close={handleModalClose} />
+            <AddNewProduct close={handleModalClose} product={productToEdit} />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleModalClose}>
