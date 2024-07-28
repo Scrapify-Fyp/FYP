@@ -11,172 +11,122 @@ body {
   background-color: #fbfbfb;
 }
 
-/* General sidebar styles */
+.side-icon {
+  display: none;
+}
+
+@media (min-width: 791.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+/* Sidebar */
 .sidebar {
   position: fixed;
-  top: 70px; /* Default top position */
-  left: 0;
+  top: 70px;
   bottom: 0;
-  width: 240px;
+  left: 0;
   padding: 38px 0 0;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
   background-color: #ffffff;
   z-index: 600;
   transition: all 0.3s ease;
 }
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: 0.5rem;
-  overflow-x: hidden;
-  overflow-y: auto;
+
+.sidebar.collapsed {
+  width: 60px;
 }
-.profile-description{
-  font-size: 11px;
- border: 2px solid rgb(152, 149, 149);
- border-radius: 20px;
- text-align: center;
- padding: 2px 7px 2px 7px;
+
+.sidebar.collapsed .icon-label {
+  display: none;
 }
-.add-description{
-  font-size: 12px;
-  opacity: 60%;
-  padding-top: -100px;
+
+.sidebar.collapsed .profile-dp {
+  display: none;
 }
-.des-img{
-  padding-left: 3px;
-  opacity: 50%;
-  width: 12px;
-  height: 12px;
-}
-.add-description:hover{
-  cursor: pointer; 
-}
-.profile-description:hover{
-color: #fff;                    
-background-color: #007bff;      
-border-color: #007bff;          
-cursor: pointer;               
-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-} 
-.sidebar .profile-dp {
-  display: block;
+
+.sidebar.collapsed .list-group-item {
   text-align: center;
-  margin-bottom: 10px;
 }
-.sidebar .list-group {
-  display: flex;
-  flex-direction: column;
+
+.sidebar.collapsed .list-group-item .fa {
+  margin-right: 0;
 }
-.sidebar .list-group-item {
+
+.list-group-item {
   background-color: #fbfbfb;
-  text-align: center;
-  padding: 10px;
-}
-.ReactTags {
-  border: none;
-  padding: 5px;
-  display: inline-block;
-  width: 100%;
 }
 
-.ReactTags__tagInputField {
-  display: inline-block;
-  width: 220px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  padding: 5px;
-  margin-bottom: 5px;
-  border: 1px solid #61c162;
-  transition: 0.5s;
-
-}
-
-.ReactTags__tagInputField:focus {
-  border: 1px solid #054407;
-  transition: 0.5s;
-}
-
-
-.ReactTags__tag {
-  display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  padding: 3px 6px;
-  background-color: #bfc6cb;
-  color: #000000;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.ReactTags__tag:hover {
-  background-color: #979fa8;
-}
-
-.ReactTags__remove {
-  margin-left: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-} 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 991px) {
   .sidebar {
-    top: auto;
-    bottom: 0; /* Position sidebar at the bottom */
     width: 100%;
     height: auto;
-    padding: 10px 0;
-    box-shadow: none;
+    bottom: 0;
+    top: auto;
+    padding: 8px 0;
+    text-align: center;
   }
 
-  .sidebar .profile-dp {
-    display: none; /* Hide profile picture */
+  .sidebar.collapsed {
+    width: 100%;
+  }
+
+  .side-icon {
+    display: inline;
+    margin-left: 40px;
+    margin-right: 40px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .profile-dp {
+    display: none;
   }
 
   .sidebar .list-group {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    padding: 0;
+    align-items: center;
+    text-align: center;
   }
 
   .sidebar .list-group-item {
-    flex: 1 1 20%;
+    flex: 0 1 50px;
     font-size: 14px;
+    border: none;
+  }
+
+  .sidebar .list-group-item .icon-label {
+    display: none;
   }
 }
 
 @media (max-width: 735px) {
-  .sidebar {
-    padding: 8px 0;
-  }
-
-  .sidebar .list-group {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
   .sidebar .list-group-item {
-    flex: 1 1 25%;
-    font-size: 13px;
+    flex: 0 1 33.33%;
+  }
+  .profile-dp {
+    display: none;
+  }
+  .side-icon {
+    display: inline;
   }
 }
 
 @media (max-width: 530px) {
-  .sidebar {
-    padding: 6px 0;
-  }
-
-  .sidebar .list-group {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
   .sidebar .list-group-item {
-    flex: 1 1 33%;
-    font-size: 12px;
+    flex: 0 1 25%;
+  }
+  .profile-dp {
+    display: none;
+  }
+  .side-icon {
+    display: inline;
   }
 }
 
@@ -187,4 +137,98 @@ transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-
 
 .my-3 {
   margin-bottom: 0px !important;
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.profile-description {
+  font-size: 11px;
+  border: 2px solid rgb(152, 149, 149);
+  border-radius: 20px;
+  text-align: center;
+  padding: 2px 7px 2px 7px;
+}
+
+.add-description {
+  font-size: 12px;
+  opacity: 60%;
+  padding-top: -100px;
+}
+
+.des-img {
+  padding-left: 3px;
+  opacity: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.add-description:hover {
+  cursor: pointer;
+}
+
+.profile-description:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.ReactTags {
+  border: none;
+  padding: 5px;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Styles for the input field of the React Tags component */
+.ReactTags__tagInputField {
+  display: inline-block;
+  width: 220px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #61c162;
+  transition: 0.5s;
+}
+
+.ReactTags__tagInputField:focus {
+  border: 1px solid #054407;
+  transition: 0.5s;
+}
+
+.ReactTags__tag {
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  background: #007bff;
+  color: #fff;
+  display: inline-block;
+  font-size: 13px;
+  list-style: none;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 5px 8px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.5s;
+}
+
+.ReactTags__remove {
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.ReactTags__remove:hover {
+  color: #007bff;
 }
