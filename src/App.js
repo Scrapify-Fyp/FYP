@@ -39,11 +39,12 @@ import ScrapyardSingleProduct from "./pages/ScrapyardSingleProduct";
 import View_3d_model from "./pages/View_3d_model";
 import ImageUpload from "./Components/3d view/ImageUplaod";
 import ThreeScene from "./Components/3d view/ThreeScene";
-<<<<<<< HEAD
-import Dashboard_Layout from "../src/Layouts/Dashboard_Layout";
-=======
-import Profile_Layout from "./Layouts/Profile_Layout";
->>>>>>> 3cc00601b8728dbe3b620a80159d221f7c96acab
+import Dashboard_Layout from "./Layouts/Dashboard_Layout";
+// <<<<<<< HEAD
+// import Dashboard_Layout from "../src/Layouts/Dashboard_Layout";
+// =======
+// import Profile_Layout from "./Layouts/Profile_Layout";
+// >>>>>>> 3cc00601b8728dbe3b620a80159d221f7c96acab
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -127,13 +128,14 @@ const App = () => {
         <Route path="/Helpnsupport" element={<Helpnsupport />} />
         <Route path="/Singleshope" element={<Singleshope />} />
         <Route path="/ScrapProductDetail" element={<ScrapyardSingleProduct />} />
-<<<<<<< HEAD
+        <Route path="/Dashboard_Layout" element={<Dashboard_Layout />} />
+{/* <<<<<<< HEAD
         <Route path="/Dashboard_Layout" element={<Dashboard_Layout/>} />
         
 =======
         <Route path="/Profile_Layout" element={<Profile_Layout />} />
 
->>>>>>> 3cc00601b8728dbe3b620a80159d221f7c96acab
+>>>>>>> 3cc00601b8728dbe3b620a80159d221f7c96acab */}
         <Route
           path="/Checkout"
           element={
