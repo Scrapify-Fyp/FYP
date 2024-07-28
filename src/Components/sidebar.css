@@ -100,6 +100,9 @@ body {
     margin: 0 15px;
     font-size: 20px;
   }
+  main {
+    padding-left: 0px;
+  }
 }
 
 @media (max-width: 735px) {
@@ -116,6 +119,9 @@ body {
     margin: 0 15px;
     font-size: 20px;
   }
+  main {
+    padding-left: 0px;
+  }
 }
 
 @media (max-width: 530px) {
@@ -131,6 +137,10 @@ body {
     display: inline-block;
     margin: 0 15px;
     font-size: 20px;
+  }
+
+  main {
+    padding-left: 0px;
   }
 }
 
