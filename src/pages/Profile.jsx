@@ -556,7 +556,7 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-              <div className={profileCSS.box}>
+              {/* <div className={profileCSS.box}>
                 <div className={profileCSS.boxdiv}>
                   <div className={profileCSS.boxheadersvg}>
                     <svg
@@ -608,7 +608,7 @@ export default function Profile() {
                   </button>
                 </div>
                 <NavLink className={profileCSS.viewprobtn}>View all</NavLink>
-              </div>
+              </div> */}
             </div>
           </div>
         </main>
