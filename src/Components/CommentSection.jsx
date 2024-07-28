@@ -74,10 +74,7 @@
 
 // export default CommentSection;
 
-
-
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -85,19 +82,35 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import { selectIsAuthenticated } from "../redux/authSlice"; // Adjust the path
 import "./CommentSection.css"; // Import the CSS file
+import { auth } from "../hooks/auth";
+import axios from "axios";
 
-const CommentSection = ({ productId }) => {
+const CommentSection = ({ productId, setCommentCount, commentCount }) => {
   const [comments, setComments] = useState([
     { username: "Alice", rating: 5, text: "Great product!" },
     { username: "Bob", rating: 4, text: "Good quality, but a bit pricey." },
-    { username: "Charlie", rating: 3, text: "Average experience." }
+    { username: "Charlie", rating: 3, text: "Average experience." },
   ]);
   const [newComment, setNewComment] = useState("");
   const [newUsername, setNewUsername] = useState("");
-  const isAuthenticated = useSelector(selectIsAuthenticated); // Get authentication status from Redux
+  const isAuthenticated = auth(); // Get authentication status from Redux
   const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleAddComment = () => {
+  const saveComment = async () => {
+    try {
+      const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/products/${productId}`,{
+        comment: newComment,
+      });
+      if(response.status == 200)
+      {
+        console.log("Comment saved successfully");
+      }
+      else console.log("Comment not saved");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleAddComment = async () => {
     if (!isAuthenticated) {
       toast.error("Please sign in to add a comment.", {
         autoClose: 1500,
@@ -125,7 +138,28 @@ const CommentSection = ({ productId }) => {
     toast.success("Comment added!", {
       autoClose: 1500,
     });
+    setCommentCount(comments.length);
+
+    saveComment();
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/updateInteraction`,
+        {
+          userId: isAuthenticated?._id,
+          productId: productId,
+          interactionType: "comments",
+          incrementValue: 1,
+        }
+      );
+      console.log("🚀 ~ updateInteraction ~ response:", response);
+    } catch (error) {
+      console.log(error);
+    }
   };
+  useEffect(() => {
+    setCommentCount(comments.length);
+  }, []);
 
   return (
     <div className="comment-section">
