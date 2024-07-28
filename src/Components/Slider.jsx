@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Categories from "./Categories";
-// import image1 from "../Assets/Images/CategoryImages/Glass.jpeg";
 import './HeroSection.css'
 
 //IMAGES

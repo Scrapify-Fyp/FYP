@@ -1,0 +1,20 @@
+.d-flex {
+  display: flex;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+@media (max-width: 991px) {
+  .d-flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 735px) {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

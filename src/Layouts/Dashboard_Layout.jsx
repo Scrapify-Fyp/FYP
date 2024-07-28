@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import React from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+=======
+import React from 'react'
+// import  Navbar  from '../Components/Navbar'
+import  Footer  from '../Components/Footer'
+>>>>>>> 3cc00601b8728dbe3b620a80159d221f7c96acab
 
 export default function Dashboard_Layout({ children }) {
   return (
