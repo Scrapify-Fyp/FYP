@@ -4,11 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-export default function ScrapProducts() {
-  const [visibleProducts, setVisibleProducts] = useState(12);
-  const [scrapProducts, setScrapProducts] = useState([]);
-
 import { Puff } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import ShareDialog from "./ShareDialogue";
@@ -22,10 +17,9 @@ export default function ScrapProducts() {
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const [selectedProductUrl, setSelectedProductUrl] = useState("");
   const [selectedProductId, setSelectedProductId] = useState("");
-
   const navigate = useNavigate();
   const user = auth();
-  const axios = useAxiosRetry();
+  const axiosInstance = useAxiosRetry();
   const observer = useRef();
 
   const loadMoreProducts = () => {
@@ -54,37 +48,14 @@ export default function ScrapProducts() {
     }
 
     try {
-
-      // Make the API call to fetch all products
-      const response = await axios.get("http://localhost:3002/products");
-      const products = response.data;
-      console.log("🚀 ~ getScrapProducts ~ Wholeproducts:", products);
-      console.log(
-        "🚀 ~ getScrapProducts ~ Cateogiryproducts:",
-        products[0].categories[0].category
-      );
-
-      // Check if the response contains products
-      // if (Array.isArray(products)) {
-      if (products && Array.isArray(products)) {
-        const filteredScrapProducts = products.filter(
-          (product) =>
-            product.categories &&
-            Array.isArray(product.categories) &&
-            product.categories.length > 0 &&
-            product.categories[0].category === "Scrap"
-        );
-
-        console.log(filteredScrapProducts);
-
-      await axios.post(`${process.env.REACT_APP_BASE_URL}/updateInteraction`, {
+      await axiosInstance.post(`${process.env.REACT_APP_BASE_URL}/updateInteraction`, {
         userId: user._id,
         productId: product._id,
         interactionType,
         incrementValue: 1,
         ...additionalData,
       });
-    }} catch (error) {
+    } catch (error) {
       console.error(error);
     }
   };
@@ -93,7 +64,6 @@ export default function ScrapProducts() {
     await updateInteraction(product, "likes");
   };
 
-
   const handleImpressions = (product) => {
     updateInteraction(product, "impressions");
   };
@@ -101,7 +71,7 @@ export default function ScrapProducts() {
   const fetchScrapProducts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/products`);
+      const response = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/products`);
       const products = response.data;
 
       if (products && Array.isArray(products)) {
@@ -174,8 +144,6 @@ export default function ScrapProducts() {
   };
 
   return (
-
-
     <>
       {loading && (
         <div
@@ -213,59 +181,57 @@ export default function ScrapProducts() {
           <div className="pro-container">
             {scrapProducts.slice(0, visibleProducts).map((product) => (
               <div
-              className="pro"
-              key={product._id}
-              data-product-id={product._id}
-
-            >
-              <img
-                onClick={() => redirectToProductDetail(product)}
-                src={product.imageURL[0]}
-                alt=""
-                style={{ cursor: "pointer" }}
-              />
-              <div
-                onClick={() => redirectToProductDetail(product)}
-                className="des"
-                style={{ cursor: "pointer" }}
+                className="pro"
+                key={product._id}
+                data-product-id={product._id}
               >
-                <span>{product.brand}</span>
-                <h5>{product.name}</h5>
-                <div className="star">
-                  {Array.from({ length: product.rating }, (_, index) => (
-                    <FontAwesomeIcon key={index} icon={faStar} />
-                  ))}
+                <img
+                  onClick={() => redirectToProductDetail(product)}
+                  src={product.imageURL[0]}
+                  alt=""
+                  style={{ cursor: "pointer" }}
+                />
+                <div
+                  onClick={() => redirectToProductDetail(product)}
+                  className="des"
+                  style={{ cursor: "pointer" }}
+                >
+                  <span>{product.brand}</span>
+                  <h5>{product.name}</h5>
+                  <div className="star">
+                    {Array.from({ length: product.rating }, (_, index) => (
+                      <FontAwesomeIcon key={index} icon={faStar} />
+                    ))}
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <h4
+                    style={{
+                      color: "#088178",
+                      fontFamily: "sans-serif",
+                    }}
+                  >
+                    ${product.price}
+                  </h4>
+                  <div className="LATESTcart">
+                    <FontAwesomeIcon
+                      icon={faHeart}
+                      onClick={() => handleLikeClick(product)}
+                    />
+                    <FontAwesomeIcon
+                      icon={faShare}
+                      onClick={() => openShareDialog(product)}
+                    />
+                  </div>
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <h4
-                style={{
-                  color: "#088178",
-                  fontFamily:"sans-serif"
-                }}
-                >${product.price}</h4>
-                <div className="LATESTcart">
-                  <FontAwesomeIcon
-                    icon={faHeart}
-                    onClick={() => handleLikeClick(product)}
-                  />
-
-                  <FontAwesomeIcon
-                    icon={faShare}
-                    onClick={() => openShareDialog(product)}
-                  />
-                </div>
-              </div>
-
-            </div>
             ))}
           </div>
-
           {scrapProducts.length > visibleProducts && (
             <div>
               <button className="load-more" onClick={loadMoreProducts}>
@@ -274,14 +240,8 @@ export default function ScrapProducts() {
             </div>
           )}
         </section>
-
       )}
-
-      <ShareDialog
-        isOpen={isShareDialogOpen}
-        onRequestClose={closeShareDialog}
-      />
+      <ShareDialog isOpen={isShareDialogOpen} onRequestClose={closeShareDialog} />
     </>
-
   );
 }
