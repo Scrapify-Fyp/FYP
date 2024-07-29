@@ -235,7 +235,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cart/cartSlice";
 import { toast } from "react-toastify";
@@ -248,6 +248,7 @@ const SingleProductDetailPage = (props) => {
   const user = auth();
   const axios = useAxiosRetry();
 
+  const navigate = useNavigate();
   const location = useLocation();
   // console.log("🚀 ~ SingleProductDetailPage ~ location:", location);
 
@@ -383,7 +384,13 @@ const SingleProductDetailPage = (props) => {
   };
 
   const handleContract = () => {
-    console.log("contract");
+    if (user._id === product.vendorId) {
+      toast.error("You cannot contract your own product!", {
+        autoClose: 1000,
+      });
+      return;
+    }
+    navigate("/contract", { state: product });
   };
 
   // const productImages = product?.images?.length > 0 ? product.images : [product?.imageURL];

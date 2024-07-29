@@ -119,6 +119,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useLocation } from "react-router-dom";
 import { auth } from "../hooks/auth";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 const ContractForm = () => {
   const user = auth();
@@ -163,21 +164,21 @@ const ContractForm = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
-  
+
     // Title
     doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
     doc.text("Contract Agreement", 20, 20);
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
-  
+
     // Add a line separator
     doc.setLineWidth(1.5);
     doc.line(20, 25, 190, 25);
-  
+
     // Add spacing
     let yOffset = 30;
-  
+
     // Introduction
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
@@ -188,7 +189,7 @@ const ContractForm = () => {
       { maxWidth: 170 }
     );
     yOffset += 20;
-  
+
     // Buyer Information
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
@@ -198,7 +199,7 @@ const ContractForm = () => {
     yOffset += 10;
     doc.text(`Buyer Name: ${buyerName}`, 20, yOffset);
     yOffset += 10;
-  
+
     // Seller Information
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
@@ -208,7 +209,7 @@ const ContractForm = () => {
     yOffset += 10;
     doc.text(`Seller Name: ${sellerName}`, 20, yOffset);
     yOffset += 10;
-  
+
     // Product Information
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
@@ -218,7 +219,7 @@ const ContractForm = () => {
     yOffset += 10;
     doc.text(`Product Name: ${productName}`, 20, yOffset);
     yOffset += 10;
-  
+
     // Contract Dates
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
@@ -230,7 +231,7 @@ const ContractForm = () => {
     yOffset += 10;
     doc.text(`Contract End Date: ${contractEndDate}`, 20, yOffset);
     yOffset += 10;
-  
+
     // Duration
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
@@ -240,11 +241,11 @@ const ContractForm = () => {
     yOffset += 10;
     doc.text(`Duration: ${duration} months`, 20, yOffset);
     yOffset += 20;
-  
+
     // Add a line separator
     doc.setLineWidth(1.5);
     doc.line(20, yOffset, 190, yOffset);
-  
+
     // Footer
     yOffset += 10;
     doc.setFontSize(10);
@@ -258,88 +259,94 @@ const ContractForm = () => {
     doc.text("Signature of Buyer: ___________________", 20, yOffset);
     yOffset += 10;
     doc.text("Signature of Seller: ___________________", 20, yOffset);
-  
+
     // Save the PDF
-    doc.save(`${buyerName}+${sellerName}+${productName}.pdf`);
+    doc.save(`${buyerName}-${sellerName}-${productName}.pdf`);
   };
-  
-  
-  
+
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Contract Form</h2>
-      <form>
-        <div className="form-group mb-3">
-          <label htmlFor="buyerName">Buyer Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="buyerName"
-            value={buyerName}
-            onChange={(e) => setBuyerName(e.target.value)}
-            placeholder="Enter buyer's name"
-          />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="sellerName">Seller Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="sellerName"
-            value={sellerName}
-            onChange={(e) => setSellerName(e.target.value)}
-            placeholder="Enter seller's name"
-          />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="productName">Product Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="productName"
-            value={productName}
-            onChange={(e) => setProductName(e.target.value)}
-            placeholder="Enter product name"
-          />
-        </div>
-        <div
-        style={{
-            display:"flex",
-            justifyContent:"center",
-            gap:"50px"
-        }}>
+    <>
+    <Navbar/>
+      <div className="container mt-5">
+        <h2 className="mb-4">Contract Form</h2>
+        <form>
           <div className="form-group mb-3">
-            <label htmlFor="contractStartDate">Contract Start Date</label>
+            <label htmlFor="buyerName">Buyer Name</label>
             <input
-              type="date"
+              type="text"
               className="form-control"
-              id="contractStartDate"
-              value={contractStartDate}
-              onChange={(e) => {
-                setContractStartDate(e.target.value);
-                calculateDuration();
-              }}
+              id="buyerName"
+              value={buyerName}
+              onChange={(e) => setBuyerName(e.target.value)}
+              placeholder="Enter buyer's name"
             />
           </div>
           <div className="form-group mb-3">
-            <label htmlFor="contractEndDate">Contract End Date</label>
+            <label htmlFor="sellerName">Seller Name</label>
             <input
-              type="date"
+              type="text"
               className="form-control"
-              id="contractEndDate"
-              value={contractEndDate}
-              onChange={(e) => {
-                setContractEndDate(e.target.value);
-                calculateDuration();
-              }}
+              id="sellerName"
+              value={sellerName}
+              onChange={(e) => setSellerName(e.target.value)}
+              placeholder="Enter seller's name"
             />
           </div>
-        </div>
-        <button type="button" className="btn btn-primary" onClick={generatePDF}>
-          Save as PDF
-        </button>
-      </form>
-    </div>
+          <div className="form-group mb-3">
+            <label htmlFor="productName">Product Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="productName"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
+              placeholder="Enter product name"
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "50px",
+            }}
+          >
+            <div className="form-group mb-3">
+              <label htmlFor="contractStartDate">Contract Start Date</label>
+              <input
+                type="date"
+                className="form-control"
+                id="contractStartDate"
+                value={contractStartDate}
+                onChange={(e) => {
+                  setContractStartDate(e.target.value);
+                  calculateDuration();
+                }}
+              />
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="contractEndDate">Contract End Date</label>
+              <input
+                type="date"
+                className="form-control"
+                id="contractEndDate"
+                value={contractEndDate}
+                onChange={(e) => {
+                  setContractEndDate(e.target.value);
+                  calculateDuration();
+                }}
+              />
+            </div>
+          </div>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={generatePDF}
+          >
+            Save as PDF
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 
