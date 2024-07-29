@@ -83,7 +83,7 @@ export default function Digilassets() {
 
   const redirectToProductDetail = (product) => {
     const startTime = new Date();
-    navigate("/ProductDetail", { state: { product, startTime } });
+    navigate("/DigitalProductDetail", { state: { product, startTime } });
   };
 
   useEffect(() => {

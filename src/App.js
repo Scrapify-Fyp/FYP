@@ -37,11 +37,15 @@ import ForgotPassword from "./Components/Forgetpassword";
 import OrderConfirmationPagecash from "./pages/OrderConfirmationPagecash";
 import ScrapyardSingleProduct from "./pages/ScrapyardSingleProduct";
 import View_3d_model from "./pages/View_3d_model";
-import ImageUpload from "./Components/3d view/ImageUplaod";
+import ImageUpload from "./Components/3d view/ImageUplaod"; 
 import ThreeScene from "./Components/3d view/ThreeScene";
 import Dashboard_Layout from "./Layouts/Dashboard_Layout";
 import Profile_Layout from "./Layouts/Profile_Layout";
+
 import ContractForm from "./Components/ContractForm";
+=======
+import DigitalSingleProduct from "./pages/DigitalSingleProduct";
+
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -125,6 +129,7 @@ const App = () => {
         <Route path="/Helpnsupport" element={<Helpnsupport />} />
         <Route path="/Singleshope" element={<Singleshope />} />
         <Route path="/ScrapProductDetail" element={<ScrapyardSingleProduct />} />
+        <Route path="/DigitalProductDetail" element={<DigitalSingleProduct />} />
         <Route path="/Dashboard_Layout" element={<Dashboard_Layout />} />
         <Route path="/Profile_Layout" element={<Profile_Layout />} />
         <Route path="/contract" element={<ContractForm />} />
