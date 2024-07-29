@@ -160,11 +160,19 @@ const Foryou = () => {
                       <FontAwesomeIcon key={index} icon={faStar} />
                     ))}
                   </div>
-                  <h4>${product.price}</h4>
                 </div>
                 <div className="LATESTcart">
+                <h4>${product.price}</h4>
+                  <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap:"20px"
+                  }}>
                   <FontAwesomeIcon icon={faHeart} onClick={() => handleLikeClick(product)} />
                   <FontAwesomeIcon icon={faShare} onClick={() => openShareDialog(product)} />
+                  </div>
                 </div>
               </div>
             ))}
