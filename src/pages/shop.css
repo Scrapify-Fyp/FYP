@@ -227,6 +227,22 @@ body {
 }
 
 
+/* @media (max-width: 780px) {
+    .filter-slider {
+      display: flex; 
+    }
+    
+    .filter-dropdown {
+      display: block; 
+    }
+    
+    .filter-dropdown select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  } */
+  
+  /* shop.css */
 
 /*-----x--------- ALL PRODUCTS ----------x-----*/
 

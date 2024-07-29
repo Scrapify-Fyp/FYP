@@ -10,7 +10,7 @@ const SearchPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(8);
+  const [visibleProducts, setVisibleProducts] = useState(9);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 

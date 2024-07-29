@@ -13,8 +13,7 @@ const Categories = () => {
     {
       name: "Digital Assets",
       subcategories: [
-        "Assignments", "Projects", "E-books", "Software", "Music",
-        "Videos", "Courses", "Templates", "Fonts", "Graphics",
+        "Assignments", "Projects", "E-books", "Software", "Courses", "Templates", "Graphics",
         "Photography", "Virtual Reality", "Websites", "Mobile Apps", "Games"
       ],
     },
