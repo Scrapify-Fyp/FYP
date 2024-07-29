@@ -281,6 +281,9 @@ const ScrapyardSingleProduct = (props) => {
 
   const location = useLocation();
   const data = location.state;
+  // console.log("🚀 ~ ScrapyardSingleProduct ~ data:", data)
+
+  const [scrapData, setScrapData] = useState(null);
 
   // Toy car default values
   // const product = {
@@ -336,7 +339,7 @@ const ScrapyardSingleProduct = (props) => {
     getThisProduct();
     // setProduct(response.data);
     window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log("Data from SingleProductPage: ", data);
+    // console.log("Data from SingleProductPage: ", data);
     setProduct(data);
   }, [data]);
 
@@ -410,30 +413,42 @@ const ScrapyardSingleProduct = (props) => {
     });
   };
 
-  const handleRecomendations = async (product) => {
+  const handleRecomendations = async () => {
+    console.log(product, "in thie single scrap");
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/srap-data/product/${product?._id}`
+        `${process.env.REACT_APP_BASE_URL}/scrap-data/product/${product?._id}`
       );
-        // setScrapData(response.data);
-    } catch (error) {}
-    // Extract features needed for AI model
+
+      console.log("Rsponse: ", response);
+      setScrapData(response.data[0]);
+      // console.log("Response: " , scrapData);
+
+      // setScrapData(response.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      console.log("Response: ", scrapData);
+    }
+
     const features = {
-      density: product?.density || 0,
-      melting_point: product?.melting_point || 0,
-      flexibility_High: product?.flexibility_High || 0,
-      flexibility_Low: product?.flexibility_Low || 0,
-      flexibility_Medium: product?.flexibility_Medium || 0,
-      flexibility_nan: product?.flexibility_nan || 0,
-      durability_High: product?.durability_High || 0,
-      durability_Low: product?.durability_Low || 0,
-      durability_Medium: product?.durability_Medium || 0,
-      durability_nan: product?.durability_nan || 0,
-      recyclability_High: product?.recyclability_High || 0,
-      recyclability_Low: product?.recyclability_Low || 0,
-      recyclability_Medium: product?.recyclability_Medium || 0,
-      recyclability_nan: product?.recyclability_nan || 0,
+      density: scrapData?.density || 0,
+      melting_point: scrapData?.melting_point || 0,
+      flexibility_High: scrapData?.flexibility === "High" ? 1 : 0,
+      flexibility_Low: scrapData?.flexibility === "Low" ? 1 : 0,
+      flexibility_Medium: scrapData?.flexibility === "Medium" ? 1 : 0,
+      flexibility_nan: !scrapData?.flexibility ? 1 : 0,
+      durability_High: scrapData?.durability === "High" ? 1 : 0,
+      durability_Low: scrapData?.durability === "Low" ? 1 : 0,
+      durability_Medium: scrapData?.durability === "Medium" ? 1 : 0,
+      durability_nan: !scrapData?.durability ? 1 : 0,
+      recyclability_High: scrapData?.recyclability === "High" ? 1 : 0,
+      recyclability_Low: scrapData?.recyclability === "Low" ? 1 : 0,
+      recyclability_Medium: scrapData?.recyclability === "Medium" ? 1 : 0,
+      recyclability_nan: !scrapData?.recyclability ? 1 : 0,
     };
+
+    console.log("features", features);
 
     try {
       const response = await axios.post(
@@ -446,16 +461,23 @@ const ScrapyardSingleProduct = (props) => {
         }
       );
 
-      // Handle the data received from the API
-      console.log(response.data.prediction[0]);
-      setPredictions(response.data.prediction[0]);
-      // console.log(predictions.predictions);
-      console.log(predictions);
-      alert(predictions);
+      // Access the prediction data
+      const prediction = response.data.prediction[0];
+
+      // Update the component state or perform actions with the data
+      setPredictions(prediction);
+
+      // Log the prediction and state for debugging
+      console.log("Prediction:", prediction);
+      console.log("Predictions State:", prediction);
+      alert(JSON.stringify(prediction)); // Convert to string for alert
 
       // Update your component state or perform other actions with the data
     } catch (error) {
       console.error("Error fetching recommendations:", error);
+    } finally {
+      // setPredictions(response?.data?.prediction[0]);
+      console.log("finally", predictions);
     }
   };
 
