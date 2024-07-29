@@ -17,8 +17,8 @@ export default function Myproduct({ onEditClick }) {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 12);
   };
 
-  const redirectToProductDetail = (Singleproduct) => {
-    navigate("/ProductDetail", { state: Singleproduct });
+  const redirectToProductDetail = (product) => {
+    navigate("/ProductDetail", { state: {product} });
   };
 
   const handleRemoveItem = async (id) => {
@@ -56,7 +56,7 @@ export default function Myproduct({ onEditClick }) {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [onEditClick]);
 
   return (
     <>

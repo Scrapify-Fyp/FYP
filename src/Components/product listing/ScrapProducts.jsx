@@ -925,22 +925,23 @@ export default function ScrapProducts() {
       const response = await axios.get("http://localhost:3002/products");
       const products = response.data;
       console.log("🚀 ~ getScrapProducts ~ Wholeproducts:", products);
-      console.log("🚀 ~ getScrapProducts ~ Cateogiryproducts:", products[0].categories[0].category);
+      console.log(
+        "🚀 ~ getScrapProducts ~ Cateogiryproducts:",
+        products[0].categories[0].category
+      );
 
       // Check if the response contains products
       // if (Array.isArray(products)) {
-        if (products && Array.isArray(products)) {
-          const filteredScrapProducts = products.filter(
-            (product) =>
-              product.categories &&
-              Array.isArray(product.categories) &&
-              product.categories.length > 0 &&
-              product.categories[0].category === "Scrap"
-          );
-        
-          console.log(filteredScrapProducts);
-    
-        
+      if (products && Array.isArray(products)) {
+        const filteredScrapProducts = products.filter(
+          (product) =>
+            product.categories &&
+            Array.isArray(product.categories) &&
+            product.categories.length > 0 &&
+            product.categories[0].category === "Scrap"
+        );
+
+        console.log(filteredScrapProducts);
 
         // Set the scrap products to state
         setScrapProducts(filteredScrapProducts);
@@ -967,25 +968,25 @@ export default function ScrapProducts() {
       <div className="pro-container">
         {/* Map over products and render each product */}
         {scrapProducts?.slice(0, visibleProducts).map((product) => (
-          <div className="pro" key={product.id}>
+          <div className="pro" key={product._id}>
             <img
               onClick={() => redirectToProductDetail(product)}
-              src={product.imgSrc} // Ensure this is the correct property name
-              alt={`Product ${product.id}`}
+              src={product.imageURL[0]} // Ensure this is the correct property name
+              alt={`Product ${product._id}`}
             />
             <div
               onClick={() => redirectToProductDetail(product)}
               className="des"
             >
-              <span>{product.Brand}</span>
-              <h5>{product.Name}</h5>
+              <span>{product.brand}</span>
+              <h5>{product.name}</h5>
               <div className="star">
                 {/* Render star icons based on rating */}
-                {Array.from({ length: product.Ratings || 0 }, (_, index) => (
+                {Array.from({ length: product.ratings || 0 }, (_, index) => (
                   <FontAwesomeIcon key={index} icon={faStar} />
                 ))}
               </div>
-              <h4>{product.Price}</h4>
+              <h4>{product.price}</h4>
             </div>
             <div className="cart">
               <a href="#">
@@ -997,13 +998,13 @@ export default function ScrapProducts() {
           </div>
         ))}
       </div>
-      {Foryouproducts.length > visibleProducts && (
+      {/* {scrapProducts.length > visibleProducts && (
         <div>
           <button className="load-more" onClick={loadMoreProducts}>
             Load More
           </button>
         </div>
-      )}
+      )} */}
     </section>
   );
 }
