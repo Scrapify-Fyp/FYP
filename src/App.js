@@ -41,6 +41,7 @@ import ImageUpload from "./Components/3d view/ImageUplaod";
 import ThreeScene from "./Components/3d view/ThreeScene";
 import Dashboard_Layout from "./Layouts/Dashboard_Layout";
 import Profile_Layout from "./Layouts/Profile_Layout";
+import ContractForm from "./Components/ContractForm";
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -126,6 +127,8 @@ const App = () => {
         <Route path="/ScrapProductDetail" element={<ScrapyardSingleProduct />} />
         <Route path="/Dashboard_Layout" element={<Dashboard_Layout />} />
         <Route path="/Profile_Layout" element={<Profile_Layout />} />
+        <Route path="/contract" element={<ContractForm />} />
+
         <Route
           path="/Checkout"
           element={

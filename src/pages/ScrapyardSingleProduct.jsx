@@ -265,11 +265,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cart/cartSlice";
 import { toast } from "react-toastify";
-
+// In your main JS/CSS file
+import "bootstrap/dist/css/bootstrap.min.css";
 import { auth } from "../hooks/auth";
 import axios from "axios";
 
@@ -281,6 +282,7 @@ const ScrapyardSingleProduct = (props) => {
 
   const location = useLocation();
   const data = location.state;
+  const navigate = useNavigate();
   // console.log("🚀 ~ ScrapyardSingleProduct ~ data:", data)
 
   const [scrapData, setScrapData] = useState(null);
@@ -307,7 +309,15 @@ const ScrapyardSingleProduct = (props) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [predictions, setPredictions] = useState(null);
 
-  const handleContract = () => {};
+  const handleContract = () => {
+    if (user._id === product.vendorId) {
+      toast.error("You cannot contract your own product!",{
+        autoClose:1000
+      });
+      return;
+    }
+    navigate("/contract", { state: product });
+  };
 
   // useEffect(() => {
   //   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -520,14 +530,14 @@ const ScrapyardSingleProduct = (props) => {
                 // onMouseMove={handleMouseMove}
                 // onMouseLeave={handleMouseLeave}
               >
-                {render()}
-                {/* <img
+                {/* {render()} */}
+                <img
                   src={productImages[0] || ""}
                   width="100%"
                   height="auto"
                   id="mainImg"
                   alt="Main Image"
-                /> */}
+                />
               </div>
               <div id="magnifier"></div>
             </div>
