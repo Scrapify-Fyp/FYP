@@ -415,7 +415,7 @@ const ScrapyardSingleProduct = (props) => {
       const response = await axios.get(
         `${process.env.REACT_APP_BASE_URL}/srap-data/product/${product?._id}`
       );
-        setScrapData(response.data);
+        // setScrapData(response.data);
     } catch (error) {}
     // Extract features needed for AI model
     const features = {

@@ -67,7 +67,7 @@ export default function AddNewProduct({ close, product }) {
     }));
   };
 
-  const [tags, setTags] = useState([]);
+  // const [tags, setTags] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
 

@@ -78,7 +78,7 @@ export default function ScrapProducts() {
         incrementValue: 1,
         ...additionalData,
       });
-    } catch (error) {
+    }} catch (error) {
       console.error(error);
     }
   };
