@@ -43,7 +43,7 @@ import Dashboard_Layout from "./Layouts/Dashboard_Layout";
 import Profile_Layout from "./Layouts/Profile_Layout";
 
 import ContractForm from "./Components/ContractForm";
-=======
+
 import DigitalSingleProduct from "./pages/DigitalSingleProduct";
 
 const App = () => {
