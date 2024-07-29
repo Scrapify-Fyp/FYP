@@ -28,7 +28,7 @@ export default function ScrapProducts() {
 
   const redirectToProductDetail = (product) => {
     const startTime = new Date();
-    navigate("/ScrapProductDetail", { state: { product, startTime } });
+    navigate("/ScrapProductDetail", { state: product });
   };
 
   const updateInteraction = async (product, interactionType, additionalData = {}) => {
@@ -104,7 +104,7 @@ export default function ScrapProducts() {
             product.categories &&
             Array.isArray(product.categories) &&
             product.categories.length > 0 &&
-            product.categories[0].category === "Scrap"
+            product.categories[0].category === "Scrap" || product.categories[0].category === "scrap"
         );
         setScrapProducts(filteredScrapProducts);
       } else {
