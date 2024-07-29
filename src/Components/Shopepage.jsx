@@ -11,13 +11,17 @@ export default function Shopepage({ shop, onEditClick }) {
   const [productToEdit, setProductToEdit] = useState(null);
 
   // Toggle modal visibility
-  const handleModalClose = () => setShowAddModal(false);
+  const handleModalClose = () => {
+    setShowAddModal(false);
+    setProductToEdit(null); // Reset product to edit
+  };
   const handleModalOpen = () => setShowAddModal(true);
 
   // Handle product edit click
-  const handleEditClick = (product) => {
+  const handleEditClick = (product ) => {
     setProductToEdit(product);
     handleModalOpen(); // Open modal for editing
+
   };
 
   // Format time to 12-hour format with AM/PM
@@ -28,12 +32,18 @@ export default function Shopepage({ shop, onEditClick }) {
     const ampm = hours >= 12 ? "PM" : "AM";
     hours = hours % 12 || 12; // Convert to 12-hour format
 
-    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${ampm}`;
+    return `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")} ${ampm}`;
   };
 
   // Extract and format opening hours
-  const start = shop?.openingHours?.start ? formatTimeWithAMPM(shop.openingHours.start) : "9:00 AM";
-  const end = shop?.openingHours?.end ? formatTimeWithAMPM(shop.openingHours.end) : "6:00 PM";
+  const start = shop?.openingHours?.start
+    ? formatTimeWithAMPM(shop.openingHours.start)
+    : "9:00 AM";
+  const end = shop?.openingHours?.end
+    ? formatTimeWithAMPM(shop.openingHours.end)
+    : "6:00 PM";
 
   return (
     <>
@@ -49,17 +59,26 @@ export default function Shopepage({ shop, onEditClick }) {
             <div className={profilecss.ml2}>
               <h1 className={profilecss.textLg}>{shop?.name || "Shop Name"}</h1>
               <p className={profilecss.textSm}>
-                {shop?.description || 
-                  "Luxe Living brings you a curated collection of sophisticated home decor and furnishings, designed to elevate your living space with timeless elegance and modern flair. From luxurious furniture pieces to exquisite decor accents, our selection is crafted to inspire and transform your home into a sanctuary of style and comfort. Discover the epitome of refined living with Luxe Living."
-                }
+                {shop?.description ||
+                  "Luxe Living brings you a curated collection of sophisticated home decor and furnishings, designed to elevate your living space with timeless elegance and modern flair. From luxurious furniture pieces to exquisite decor accents, our selection is crafted to inspire and transform your home into a sanctuary of style and comfort. Discover the epitome of refined living with Luxe Living."}
               </p>
             </div>
           </div>
           <div className={profilecss.description}>
-            <p><strong>Address:</strong> {shop?.address || "123 Main Street, City, Country"}</p>
-            <p><strong>Opening Hours:</strong> {`Monday - Friday, ${start} - ${end}`}</p>
-            <p><strong>Email:</strong> {shop?.email || "example@example.com"}</p>
-            <p><strong>Phone:</strong> {shop?.phone || "123-456-7890"}</p>
+            <p>
+              <strong>Address:</strong>{" "}
+              {shop?.address || "123 Main Street, City, Country"}
+            </p>
+            <p>
+              <strong>Opening Hours:</strong>{" "}
+              {`Monday - Friday, ${start} - ${end}`}
+            </p>
+            <p>
+              <strong>Email:</strong> {shop?.email || "example@example.com"}
+            </p>
+            <p>
+              <strong>Phone:</strong> {shop?.phone || "123-456-7890"}
+            </p>
           </div>
         </header>
         <div className={profilecss.myproduct}>
@@ -98,7 +117,9 @@ export default function Shopepage({ shop, onEditClick }) {
 
         <Modal show={showAddModal} onHide={handleModalClose} size="xl">
           <Modal.Header closeButton>
-            <Modal.Title>{productToEdit ? "Edit Product" : "Add New Product"}</Modal.Title>
+            <Modal.Title>
+              {productToEdit ? "Edit Product" : "Add New Product"}
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <AddNewProduct close={handleModalClose} product={productToEdit} />

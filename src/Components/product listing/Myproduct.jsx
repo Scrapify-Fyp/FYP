@@ -18,8 +18,9 @@ export default function Myproduct({ onEditClick }) {
   };
 
   const redirectToProductDetail = (product) => {
-    const startTime = new Date();
-    navigate("/ProductDetail", { state: { product, startTime } });
+
+    navigate("/ProductDetail", { state: {product} });
+
   };
 
   const handleRemoveItem = async (id) => {
@@ -57,7 +58,7 @@ export default function Myproduct({ onEditClick }) {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [onEditClick]);
 
   return (
     <>

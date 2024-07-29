@@ -249,10 +249,10 @@ const SingleProductDetailPage = (props) => {
   const axios = useAxiosRetry();
 
   const location = useLocation();
-  console.log("🚀 ~ SingleProductDetailPage ~ location:", location);
+  // console.log("🚀 ~ SingleProductDetailPage ~ location:", location);
 
   const data = location?.state?.product;
-  console.log("Data from SingleProductPage: ", data, user);
+  // console.log("Data from SingleProductPage: ", data, user);
 
   const [product, setProduct] = useState(data);
   const maxQuantity = product?.stockQuantity;
@@ -306,7 +306,7 @@ const SingleProductDetailPage = (props) => {
           timeOnPage: timeOnPage,
         }
       );
-      console.log("🚀 ~ updateTimeOnPageInteraction ~ response:", response);
+      // console.log("🚀 ~ updateTimeOnPageInteraction ~ response:", response);
     } catch (error) {
       console.error(error);
     }
@@ -388,7 +388,7 @@ const SingleProductDetailPage = (props) => {
 
   // const productImages = product?.images?.length > 0 ? product.images : [product?.imageURL];
   const productImages = product?.imageURL;
-  console.log("Product Images: ", productImages);
+  // console.log("Product Images: ", productImages);
 
   return (
     <>

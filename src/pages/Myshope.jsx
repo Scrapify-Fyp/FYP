@@ -45,6 +45,8 @@ export default function Myshope() {
         const response = await axios.get(
           `http://localhost:3002/user/${userId}/shop`
         );
+        console.log("🚀 ~ fetchUsershop ~ response:", response)
+        
         if (response.data.length > 0) {
           setIsShop(true);
           setShop(response.data[0]);
@@ -53,8 +55,8 @@ export default function Myshope() {
             description: response.data[0].description,
             address: response.data[0].address,
             openingHours: {
-              start: new Date(response.data[0].openingHours.start),
-              end: new Date(response.data[0].openingHours.end),
+              start: new Date(response.data[0].openingHours?.start),
+              end: new Date(response.data[0].openingHours?.end),
             },
             email: response.data[0].email,
             phone: response.data[0].phone,

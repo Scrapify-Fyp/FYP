@@ -48,6 +48,29 @@ export default function ScrapProducts() {
     }
 
     try {
+
+      // Make the API call to fetch all products
+      const response = await axios.get("http://localhost:3002/products");
+      const products = response.data;
+      console.log("🚀 ~ getScrapProducts ~ Wholeproducts:", products);
+      console.log(
+        "🚀 ~ getScrapProducts ~ Cateogiryproducts:",
+        products[0].categories[0].category
+      );
+
+      // Check if the response contains products
+      // if (Array.isArray(products)) {
+      if (products && Array.isArray(products)) {
+        const filteredScrapProducts = products.filter(
+          (product) =>
+            product.categories &&
+            Array.isArray(product.categories) &&
+            product.categories.length > 0 &&
+            product.categories[0].category === "Scrap"
+        );
+
+        console.log(filteredScrapProducts);
+
       await axios.post(`${process.env.REACT_APP_BASE_URL}/updateInteraction`, {
         userId: user._id,
         productId: product._id,
@@ -63,6 +86,7 @@ export default function ScrapProducts() {
   const handleLikeClick = async (product) => {
     await updateInteraction(product, "likes");
   };
+
 
   const handleImpressions = (product) => {
     updateInteraction(product, "impressions");
@@ -144,6 +168,7 @@ export default function ScrapProducts() {
   };
 
   return (
+
     <>
       {loading && (
         <div
@@ -228,9 +253,11 @@ export default function ScrapProducts() {
                   />
                 </div>
               </div>
+
             </div>
             ))}
           </div>
+
           {scrapProducts.length > visibleProducts && (
             <div>
               <button className="load-more" onClick={loadMoreProducts}>
@@ -246,5 +273,6 @@ export default function ScrapProducts() {
         onRequestClose={closeShareDialog}
       />
     </>
+
   );
 }
