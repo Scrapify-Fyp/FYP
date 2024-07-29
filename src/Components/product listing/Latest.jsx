@@ -173,7 +173,7 @@ const Latest = (props) => {
               alignItems: "center",
             }}
           >
-          <h1 className="LTS-PRO"> Latest Products</h1>
+          <h1 className="LTS-PRO"> Latest Products </h1>
             
           </div>
           <Puff
@@ -192,32 +192,11 @@ const Latest = (props) => {
           {props.allproduct ? (
             <div></div>
           ) : (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: "20px",
-                alignItems: "center",
-              }}
-            >
+            <div className="PROD-Div">
               <h1>Latest Products</h1>
-              <button
-                style={{
-                  marginTop: "30px",
-                  width: "130px",
-                  height: "40px",
-                  lineHeight: "40px",
-                  borderRadius: "50px",
-                  backgroundColor: "#e8f6ea",
-                  fontWeight: "500",
-                  color: "#088178",
-                  border: "1px solid #cce7d0",
-                  textAlign: "center",
-                  cursor: "pointer",
-                }}
-onClick={handleViewAll} 
-            className="LTS-BTN"              >
+              <button className="LTS-BTN"
+            onClick={handleViewAll} 
+              >
                 View All
               </button>
             </div>
