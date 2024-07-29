@@ -7,7 +7,55 @@
   font-family: 'Poppins', sans-serif;
 }
 .analyticheading{
-    padding-bottom: 10px;
+     padding-top: 30px;
+     font-size: 24px;
+}
+
+.container {
+     width: 100%;
+     margin: 0;
+     padding: 0;
+     max-width: 100%;
+}
+
+.containerStyle {
+     margin: 20px 30px;
+     padding: 1rem;
+     width: auto;
+}
+
+.cardStyle {
+     background-color: #f8f9fa;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     border-radius: 0.5rem;
+     padding: 1rem;
+     margin-bottom: 4rem;
+     text-align: center;
+     width: 100%;
+}
+
+.tableStyle {
+     width: 100%;
+     border-collapse: collapse;
+}
+
+.predictTheadVal {
+     width: 100%;
+     text-align: center;
+     justify-content: center;
+     align-content: center;
+     align-items: center;
+}
+
+.tableHeaderStyle {
+     background-color: #343a40;
+     color: #fff;
+     padding: 0.75rem;
+}
+
+.tableDataStyle {
+     padding: 0.75rem;
+     border-bottom: 1px solid #ddd;
 }
 
 .boxdivproductselecter{
@@ -41,17 +89,18 @@
      justify-content: flex-end;
 }
 .selectproductbox{
-     background-color:#ea618c;
-     width: 80%;
+     background-color:#E5ECF6;
+     width: 100%;
      height: 580px;
      align-items: center;
      justify-content: center;
      border-radius: 30px;
-     padding: 20px;
+     padding: 30px 20px;
 }
 .productselectslider{
      color: white;
      display: flex;
+     flex-direction: column;
      padding-top: 10px;
      align-items: center;
      justify-content: space-between;
@@ -82,9 +131,14 @@
      justify-content: center;
 }
 .btndiv button {
-  color: white;
-  border-color: white;
+  color: #088178;
+  border-color: #088178;
 }
+
+.btndiv button:hover {
+     background-color: #C51A31;
+}
+
 .arrowbutton {
     font-size: 50px;
     cursor: pointer;
@@ -96,6 +150,45 @@
 
  .graph{
      height: 344px;
-    width: 700px;
- }
+    width: 730px;
+}
  
+@media (max-width: 991px) {
+     .selectproductbox {
+          width: auto;
+     }
+     .containerStyle {
+          margin: 20px 0px;
+          padding: 1rem;
+          width: 100%;
+     }
+}
+
+@media (max-width: 735px) {
+     .selectproductbox {
+          width: 600px;
+     }
+     .graph {
+          width: 100%;
+     }
+     .containerStyle {
+          margin: 20px 0px;
+          padding: 1rem;
+          width: 100%;
+     }
+}
+
+@media (max-width: 530px) {
+     .selectproductbox {
+          width: 100%;
+          text-align: center;
+     }
+     .graph {
+          width: 100%;
+     }
+     .containerStyle {
+          margin: 20px 0px;
+          padding: 1rem;
+          width: 100%;
+     }
+}

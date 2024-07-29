@@ -1,0 +1,55 @@
+.Main_Container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+  
+  @media (max-width: 1200px) {
+    /* Styles for screens smaller than 1200px */
+  }
+  
+  @media (max-width: 992px) {
+    .Main_Container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    } 
+}
+  
+  @media (max-width: 768px) {
+    /* Styles for screens smaller than 768px */
+    .Main_Container {
+      padding: 10px;
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+    }
+  
+    .Navbar, .Footer {
+      padding: 0 10px;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    /* Styles for screens smaller than 576px */
+    .Main_Container {
+      padding: 5px;
+    }
+  
+    .Navbar, .Footer {
+      padding: 0 5px;
+    }
+  
+    /* Example for responsive grid layout */
+    .Latest, .Trending, .Foryou {
+      /* display: flex; */
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

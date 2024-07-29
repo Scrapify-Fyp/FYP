@@ -274,7 +274,7 @@ const Trending = (props) => {
               alignItems: "center",
             }}
           >
-            <h1>Trending Products</h1>
+        <h1 className="LTS-PRO">Trending Products</h1>
           </div>
           <Puff
             height={100}
@@ -323,18 +323,14 @@ const Trending = (props) => {
             </div>
           )}
           <div className="pro-container">
-            {trendingProducts.slice(0, visibleProducts).map((product) => (
-              <div
-                className="pro"
-                key={product._id}
-                data-product-id={product._id}
-              >
-                <img
-                  onClick={() => redirectToProductDetail(product)}
-                  src={product.imageURL[0]}
-                  alt=""
-                  style={{ cursor: "pointer" }}
-                />
+          {trendingProducts.slice(0, visibleProducts).map((product) => (
+          <div className="pro" key={product._id}>
+            <img
+              onClick={() => redirectToProductDetail(product)}
+              src={product.imageURL[0]} // Ensure correct path for image
+              alt=""
+              style={{ cursor: "pointer" }}
+            />
                 <div
                   onClick={() => redirectToProductDetail(product)}
                   className="des"

@@ -162,22 +162,88 @@ body {
 }
 
 #product1 .pro .cart {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 48px;
+    height: 39px;
+    line-height: 41px;
     border-radius: 50px;
     background-color: #e8f6ea;
     font-weight: 500;
     color: #088178;
     border: 1px solid #cce7d0;
     position: absolute;
-    bottom: 20px;
-    right: 10px;
+    bottom: 12px;
+    right: 14px;
 }
 
 #product1 .pro .cart .fa-cart-plus {
     color: #088178;
 }
+
+
+@media (max-width: 1025px) {
+    #product1 .pro {
+        width: 32%;
+    }
+    #product1 .pro-container {
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 890px) {
+    #product1 .pro {
+        width: 48%;
+    }
+    h1.LTS-PRO{
+        font-size: 40px;
+    }
+    button .LTS-BTN{
+        margin-top: 0;
+    }
+    #product1 .pro-container {
+        justify-content: space-around;
+    }
+    #product1 .section-p1 {
+        padding: 30px 50px;
+    }
+}
+
+@media (max-width: 700px) {
+    h1.LTS-PRO{
+        font-size: 40px;
+    }
+    button .LTS-BTN {
+        margin-top: 0;
+    }
+    #product1 .pro {
+        width: 100%;
+    }
+    #product1 .pro-container {
+        justify-content: space-around;
+    }
+    #product1 .section-p1 {
+        padding: 30px 30px;
+
+    }
+}
+
+
+/* @media (max-width: 780px) {
+    .filter-slider {
+      display: flex; 
+    }
+    
+    .filter-dropdown {
+      display: block; 
+    }
+    
+    .filter-dropdown select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  } */
+  
+  /* shop.css */
+
 /*-----x--------- ALL PRODUCTS ----------x-----*/
 
 /* -------------- DIGITAL ASSETS PRODUCTS STYLING -------------- */

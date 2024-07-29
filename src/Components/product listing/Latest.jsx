@@ -163,6 +163,7 @@ const Latest = (props) => {
             alignItems:"center"  
           }}
         >
+
           <div
             style={{
               display: "flex",
@@ -172,7 +173,7 @@ const Latest = (props) => {
               alignItems: "center",
             }}
           >
-            <h1>Latest Products</h1>
+          <h1 className="LTS-PRO"> Latest Products</h1>
             
           </div>
           <Puff
@@ -215,8 +216,8 @@ const Latest = (props) => {
                   textAlign: "center",
                   cursor: "pointer",
                 }}
-                onClick={handleViewAll}
-              >
+onClick={handleViewAll} 
+            className="LTS-BTN"              >
                 View All
               </button>
             </div>

@@ -9,6 +9,56 @@ import { useNavigate } from 'react-router-dom';
 import { Puff } from 'react-loader-spinner';
 
 export default function Digilassets() {
+  const containerStyle = {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '20px',
+      justifyContent: 'center',
+      padding: '20px',
+    };
+  
+    const productStyle = {
+      backgroundColor: '#fff',
+      border: '1px solid #ddd',
+      borderRadius: '8px',
+      overflow: 'hidden',
+      width: screenWidth <= 480 ? '100%' : screenWidth <= 768 ? '45%' : '30%',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      cursor: 'pointer',
+    };
+  
+    const imageStyle = {
+      width: '100%',
+      height: 'auto',
+      display: 'block',
+    };
+  
+    const descriptionStyle = {
+      padding: '10px',
+    };
+  
+    const titleStyle = {
+      fontSize: screenWidth <= 480 ? '12px' : screenWidth <= 768 ? '14px' : '16px',
+      margin: '5px 0',
+    };
+  
+    const priceStyle = {
+      fontSize: screenWidth <= 480 ? '14px' : screenWidth <= 768 ? '16px' : '18px',
+      color: '#088178',
+    };
+
+    const buttonStyle = {
+      padding: '10px 20px',
+      backgroundColor: '#e8f6ea',
+      color: '#088178',
+      border: 'none',
+      borderRadius: '50px',
+      cursor: 'pointer',
+      fontSize: screenWidth <= 480 ? '14px' : '16px',
+      marginTop: '30px',
+      width: '30%',
+    };
+  
     const [digitalassets, setDigitalAssets] = useState([]);
     const [visibleProducts, setVisibleProducts] = useState(12);
     const [loading, setLoading] = useState(true);
@@ -85,33 +135,26 @@ export default function Digilassets() {
                     {error && <p>{error}</p>}
                     {!loading && !error && digitalassets.length === 0 && <p>No digital assets found.</p>}
 
-                    {digitalassets.slice(0, visibleProducts).map((product, index) => (
-                        <div key={index} className="pro-scrap">
-                            <img
-                                onClick={() => redirectToProductDetail(product)}
-                                src={product.imageURL}
-                                alt={product.name}
-                                style={{ cursor: 'pointer' }}
-                            />
-                            <div
-                                onClick={() => redirectToProductDetail(product)}
-                                className="des"
-                                style={{ cursor: 'pointer' }}
-                            >
-                                <span>
-                                    <FontAwesomeIcon icon={faClock} /> {product.deliveryTime || 'N/A'}
-                                </span>
-                                <h5>{product.brand}</h5>
-                                <div className="star">
-                                    {[...Array(Math.floor(product.rating) || 0)].map((_, i) => (
-                                        <FontAwesomeIcon key={i} icon={solidStar} />
-                                    ))}
-                                    {product.stars % 1 !== 0 && <FontAwesomeIcon icon={faStarHalf} />}
-                                </div>
-                                <h4>{product.price}</h4>
-                            </div>
-                        </div>
-                    ))}
+                       <div style={containerStyle}>
+          {digitalassets.slice(0, visibleProducts).map((product, index) => (
+            <div key={index} style={productStyle} onClick={redirectToProductDetail}>
+              <img src={product.image} alt={product.title} style={imageStyle} />
+              <div style={descriptionStyle}>
+                <span>
+                  <FontAwesomeIcon icon={faClock} /> {product.deliveryTime}
+                </span>
+                <h5 style={titleStyle}>{product.title}</h5>
+                <div style={{ margin: '10px 0' }}>
+                  {[...Array(product.stars)].map((_, i) => (
+                    <FontAwesomeIcon key={i} icon={solidStar} style={{ color: '#f5c518', marginRight: '2px' }} />
+                  ))}
+                  {product.stars % 1 !== 0 && <FontAwesomeIcon icon={faStarHalf} style={{ color: '#f5c518', marginRight: '2px' }} />}
+                </div>
+                <h4 style={priceStyle}>{product.price}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
                 </div>
                 {digitalassets.length > visibleProducts && (
                     <div>

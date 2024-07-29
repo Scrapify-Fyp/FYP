@@ -124,11 +124,13 @@ export default function Profile() {
                       flexDirection: "column",
                       alignItems: "center",
                       marginBottom: "20px",
+                      color: "white",
                     }}
                   >
                     <h2
                       style={{
                         fontSize: "24px",
+                        color: "white",
                         margin: "0",
                         textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
                       }}
@@ -293,11 +295,12 @@ export default function Profile() {
                           textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
                           display: "flex",
                           alignItems: "center",
+                          color: "white",
                         }}
                       >
                         <i
                           className="bi bi-bag"
-                          style={{ marginRight: "10px", fontSize: "24px" }}
+                          style={{ marginRight: "10px", fontSize: "24px", color: "white" }}
                         ></i>
                         Running Orders
                       </h2>
@@ -358,11 +361,12 @@ export default function Profile() {
                           textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
                           display: "flex",
                           alignItems: "center",
+                          color: "white"
                         }}
                       >
                         <i
                           className="bi bi-check-circle"
-                          style={{ marginRight: "10px", fontSize: "24px" }}
+                          style={{ marginRight: "10px", fontSize: "24px", color: "white" }}
                         ></i>
                         Completed Orders
                       </h2>
@@ -423,11 +427,12 @@ export default function Profile() {
                           textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
                           display: "flex",
                           alignItems: "center",
+                          color: "white",
                         }}
                       >
                         <i
                           className="bi bi-arrow-counterclockwise"
-                          style={{ marginRight: "10px", fontSize: "24px" }}
+                          style={{ marginRight: "10px", fontSize: "24px", color: "white" }}
                         ></i>
                         Returned Orders
                       </h2>
@@ -551,7 +556,7 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-              <div className={profileCSS.box}>
+              {/* <div className={profileCSS.box}>
                 <div className={profileCSS.boxdiv}>
                   <div className={profileCSS.boxheadersvg}>
                     <svg
@@ -603,7 +608,7 @@ export default function Profile() {
                   </button>
                 </div>
                 <NavLink className={profileCSS.viewprobtn}>View all</NavLink>
-              </div>
+              </div> */}
             </div>
           </div>
         </main>

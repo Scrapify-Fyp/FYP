@@ -1,39 +1,55 @@
-.container{
+.container {
     align-items: center;
-}   
+    background-color: #088178;
+    color: white;
+}
 
 .footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
-    padding: 70px;
+    padding: 70px 20px; 
     position: relative;
     background-color: #088178;
-    color: white;  
+    color: white;
 }
 
 .footerSection {
-    flex-direction: row;
+    width: 90%;
+    max-width: 1200px;
     display: flex;
-}
-.footerheading{
-    text-align: center;
-    font-size: 30px;
-    padding-bottom: 20px;
-    font-weight: bold;
- }
-.daitelSection {
-    padding: 30px 40px 50px 30px;
-    width: 300px;
-    align-items: center;
-    font-size: 15px;
-    background-color: #0f625c;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.daitelSection img {
-    width: 170px;
-    padding-bottom: 30px;
+.footerheading {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.daitelSection {
+    padding: 30px 40px;
+    width: 300px;
+    background-color: #0f625c;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.daitelSection svg {
+    width: 19px;
+    height: 19px;
+    fill: #FFC208;
+}
+
+.daitelSection div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 .daitelSectionLine {
@@ -41,50 +57,77 @@
     opacity: 20%;
 }
 
-.otherPages {
-    padding-left: 80px;
-    padding-top: 15px;
-}
-
-.otherPages h5 {
-    font-weight: bold;
-    padding-bottom: 15px;
-}
-
-.footerLi {
+.otherPages, .quickLinks {
+    padding: 0 20px;
     display: flex;
-    gap: 10px;
-    padding-top: 10px;
-    transition: 0.3s;
+    flex-direction: column;
 }
 
-.footerLi:hover {
+.otherPages h5, .quickLinks h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footerLi, .linkItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    margin: 5px 0;
+    transition: color 0.3s;
+}
+
+.footerLi:hover, .linkItem:hover {
     color: #FFC208;
     cursor: pointer;
-    transition: 0.3s;
+}
+
+.footerLi svg, .linkItem svg {
+    width: 11px;
+    height: 11px;
+    fill: #FFC208;
+}
+
+/* Newsletter Section Styles */
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 20px;
 }
 
 .newsletter h5 {
+    font-size: 18px;
     font-weight: bold;
-    padding: 15px 15px 15px 10px;
+    margin-bottom: 15px;
 }
 
-.newsletter{
-    padding-left: 75px;
+.newsletterInput {
+    padding: 8px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    width: 250px;
+    height: 40px;
 }
 
-.newletterinput{
-    margin:  15px 0px 15px 0px;
-    border-radius: 25px;
-    width: 330px;
-    height: 50px;
-    text-align: left;
+.newsletterButton {
+    padding: 8px 16px;
+    background-color: #FFC208;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #222;
+    font-size: 16px;
 }
 
 .footerSubscribeBtn {
     text-align: center;
     padding-top: 8px;
-    margin: -61px 6px 0px 180px;
+    margin: 10px 6px 0px 20px;
     border: none;
     border-radius: 21px;
     background-color:#0b4945;
@@ -95,6 +138,16 @@
     height: 42px;
 }
 
+.newsletterButton:hover {
+    background-color: #ffb400;
+}
+
+.newsletter p {
+    padding-top: 10px;
+    font-size: 14px;
+
+}
+
 .footerSubscribeBtn:hover {
     background-color: #FFC208;
     color: black;
@@ -102,10 +155,28 @@
     transition: 0.3s;
 }
 
-.newsletter p {
-    padding-top: 30px;
-    font-size: 14px;
+.socialSection {
+    text-align: center;
+    margin-top: 20px;
+    flex-direction: row;
+}
 
+.socialMediaIcons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.socialMediaIcons svg {
+    width: 25px;
+    height: 25px;
+    fill: #FFC208;
+}
+
+.footerBottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
 }
 
 .footerIcons svg {
@@ -125,10 +196,65 @@
     gap: 18px;
 }
 
-.footerLine {
-    border: 1px solid white;
-    margin-top: 100px;
-    opacity: 60%;
-    width: 1000px;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer {
+        padding: 50px 10px;
+    }
+
+    .footerSection {
+        align-items: center;
+    }
+
+    .daitelSection {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .otherPages, .quickLinks {
+        padding: 0;
+    }
+
+    .footerLi, .linkItem {
+        font-size: 14px;
+    }
+
+    .newsletterInput {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .newsletterButton {
+        width: 100%;
+        margin-top: 10px;
+    }
 }
 
+@media (max-width: 480px) {
+    .footerheading {
+        font-size: 24px;
+    }
+
+    .footerLi, .linkItem {
+        font-size: 12px;
+    }
+
+    .daitelSection {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .newsletterInput {
+        height: 40px;
+    }
+
+    .newsletterButton {
+        font-size: 14px;
+        height: 36px;
+    }
+
+    .socialMediaIcons svg {
+        width: 20px;
+        height: 20px;
+    }
+}

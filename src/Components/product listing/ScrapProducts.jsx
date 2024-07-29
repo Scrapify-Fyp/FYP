@@ -4,6 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+export default function ScrapProducts() {
+  const [visibleProducts, setVisibleProducts] = useState(12);
+  const [scrapProducts, setScrapProducts] = useState([]);
+
 import { Puff } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import ShareDialog from "./ShareDialogue";
@@ -17,6 +22,7 @@ export default function ScrapProducts() {
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const [selectedProductUrl, setSelectedProductUrl] = useState("");
   const [selectedProductId, setSelectedProductId] = useState("");
+
   const navigate = useNavigate();
   const user = auth();
   const axios = useAxiosRetry();
@@ -169,6 +175,7 @@ export default function ScrapProducts() {
 
   return (
 
+
     <>
       {loading && (
         <div
@@ -209,6 +216,7 @@ export default function ScrapProducts() {
               className="pro"
               key={product._id}
               data-product-id={product._id}
+
             >
               <img
                 onClick={() => redirectToProductDetail(product)}
@@ -266,6 +274,7 @@ export default function ScrapProducts() {
             </div>
           )}
         </section>
+
       )}
 
       <ShareDialog

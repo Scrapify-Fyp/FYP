@@ -130,6 +130,7 @@ const Foryou = () => {
   };
 
   return (
+
     <>
       {loading && (
         <div
@@ -149,7 +150,7 @@ const Foryou = () => {
               marginBottom: "20px",
             }}
           >
-            <h1>For You</h1>
+            <h1 className="LTS-PRO">For You</h1>
           </div>
           <Puff
             height={100}
@@ -171,34 +172,33 @@ const Foryou = () => {
               marginBottom: "20px",
             }}
           >
-            <h1>For You</h1>
+            <h1 className="LTS-PRO">For You</h1>
           </div>
-          <div className="pro-container">
-            {foryouProducts.slice(0, visibleProducts).map((product) => (
-              <div className="pro" key={product._id} data-product-id={product._id}>
-                <img
-                  onClick={() => redirectToProductDetail(product)}
-                  src={product.imageURL[0]}
-                  alt=""
-                  style={{ cursor: "pointer" }}
-                />
-                <div
-                  onClick={() => redirectToProductDetail(product)}
-                  className="des"
-                  style={{ cursor: "pointer" }}
-                >
-                  <span>{product.brand}</span>
-                  <h5>{product.name}</h5>
-                  <div className="star">
-                    {Array.from({ length: product.rating }, (_, index) => (
-                      <FontAwesomeIcon key={index} icon={faStar} />
-                    ))}
-                  </div>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                  <h4 style={{ color: "#088178", fontFamily: "sans-serif" }}>
-                    ${product.price}
-                  </h4>
+      <div className="pro-container">
+        {/* Map over visible products and render each product */}
+        {foryouProducts.slice(0, visibleProducts).map((product) => (
+          <div className="pro" key={product._id}>
+            <img
+              onClick={() => redirectToProductDetail(product)}
+              src={product.imageURL[0]} // Ensure correct path for image
+              alt=""
+              style={{ cursor: "pointer" }}
+            />
+            <div
+              onClick={() => redirectToProductDetail(product)}
+              className="des"
+              style={{ cursor: "pointer" }}
+            >
+              <span>{product.brand}</span>
+              <h5>{product.name}</h5>
+              <div className="star">
+                {/* Render star icons based on rating */}
+                {Array.from({ length: Math.floor(product.rating) }, (_, index) => (
+                  <FontAwesomeIcon key={index} icon={faStar} />
+                ))}
+              </div>
+              <h4>${product.price}</h4>
+            </div>
                   <div className="LATESTcart">
                     <FontAwesomeIcon icon={faHeart} onClick={() => handleLikeClick(product)} />
                     <FontAwesomeIcon icon={faShare} onClick={() => openShareDialog(product)} />
