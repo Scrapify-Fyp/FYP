@@ -6,18 +6,24 @@ import Shopepage from "../Components/Shopepage";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { auth } from "../hooks/auth";
-import { Modal, Button, Form, Row, Col, Container } from "react-bootstrap";
+import { Modal, Button, Form, Row, Col, Container, ProgressBar } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { FaEdit } from "react-icons/fa";
+import { storage } from "../Config/Firbase"; // Corrected Firebase import
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"; // Corrected Firebase methods
 
 export default function Myshope() {
   const user = auth();
   const userId = user._id;
-  console.log(user);
   const [shop, setShop] = useState(null);
   const [isShop, setIsShop] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
   const [formData, setFormData] = useState({
     shopName: "",
     shopNameError: "",
@@ -39,13 +45,25 @@ export default function Myshope() {
         const response = await axios.get(
           `http://localhost:3002/user/${userId}/shop`
         );
-        console.log("🚀 ~ fetchUsershop ~ response:", response);
-
+        console.log("🚀 ~ fetchUsershop ~ response:", response)
+        
         if (response.data.length > 0) {
           setIsShop(true);
+          setShop(response.data[0]);
+          setFormData({
+            shopName: response.data[0].name,
+            description: response.data[0].description,
+            address: response.data[0].address,
+            openingHours: {
+              start: new Date(response.data[0].openingHours?.start),
+              end: new Date(response.data[0].openingHours?.end),
+            },
+            email: response.data[0].email,
+            phone: response.data[0].phone,
+            imageUrl: response.data[0].imageUrl,
+            imageFile: null,
+          });
         }
-        // setIsShop(response.data.length > 0);
-        setShop(response.data[0]);
       } catch (error) {
         console.error("Error fetching user's shop:", error);
         toast.error("Error fetching shop. Please try again later.");
@@ -77,7 +95,7 @@ export default function Myshope() {
     }));
   };
 
-  const handleCreateShop = async () => {
+  const handleCreateOrUpdateShop = async () => {
     const {
       shopName,
       description,
@@ -85,10 +103,8 @@ export default function Myshope() {
       openingHours,
       email,
       phone,
-      imageUrl,
       imageFile,
     } = formData;
-    console.log("🚀 ~ handleCreateShop ~ formData:", formData);
 
     try {
       if (!shopName) {
@@ -99,7 +115,50 @@ export default function Myshope() {
         return;
       }
 
-      let shopData = {
+      let uploadedImageUrl = formData.imageUrl;
+
+      if (imageFile) {
+        // Upload image to Firebase Storage
+        setUploading(true);
+        const storageRef = ref(storage, `shops/${userId}/${imageFile.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+        // Convert upload task to a promise
+        await new Promise((resolve, reject) => {
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              // Handle progress updates
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              setUploadProgress(progress);
+            },
+            (error) => {
+              // Handle unsuccessful uploads
+              console.error("Upload failed:", error);
+              toast.error("Image upload failed.");
+              setUploading(false);
+              reject(error);
+            },
+            async () => {
+              // Handle successful uploads on complete
+              try {
+                uploadedImageUrl = await getDownloadURL(uploadTask.snapshot.ref);
+                setUploading(false);
+                setUploadSuccess(true);
+                console.log("uploadedImageUrl", uploadedImageUrl);
+                resolve();
+              } catch (error) {
+                console.error("Error getting download URL:", error);
+                toast.error("Error retrieving image URL.");
+                setUploading(false);
+                reject(error);
+              }
+            }
+          );
+        });
+      }
+
+      const shopData = {
         name: shopName,
         description,
         userId,
@@ -110,50 +169,38 @@ export default function Myshope() {
         },
         email,
         phone,
-        imageUrl,
+        imageUrl: uploadedImageUrl,
       };
 
-      if (imageFile) {
-        const formDataToSend = new FormData();
-        formDataToSend.append("name", shopName);
-        formDataToSend.append("description", description);
-        formDataToSend.append("userId", userId);
-        formDataToSend.append("address", address);
-        formDataToSend.append(
-          "openingHours",
-          JSON.stringify({
-            start: openingHours.start.toISOString(),
-            end: openingHours.end.toISOString(),
-          })
-        );
-        formDataToSend.append("email", email);
-        formDataToSend.append("phone", phone);
-        formDataToSend.append("image", imageFile);
-
-        const response = await axios.post(
-          "http://localhost:3002/shop",
-          formDataToSend
-        );
-        setShop(response.data);
+      if (isEditMode) {
+        // Update shop
+        await axios.put(`http://localhost:3002/shop/${shop._id}`, shopData);
+        toast.success("Shop updated successfully!");
       } else {
-        const response = await axios.post(
-          "http://localhost:3002/shop",
-          shopData
-        );
-        setShop(response.data);
+        // Create new shop
+        await axios.post("http://localhost:3002/shop", shopData);
+        toast.success("Shop created successfully!");
       }
 
       setIsShop(true);
       setShowModal(false);
     } catch (error) {
-      console.error("Error creating shop:", error);
-      toast.error("Error creating shop. Please try again later.");
+      console.error(
+        isEditMode ? "Error updating shop:" : "Error creating shop:",
+        error
+      );
+      toast.error(
+        isEditMode
+          ? "Error updating shop. Please try again later."
+          : "Error creating shop. Please try again later."
+      );
     }
   };
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
+  const handleEditClick = () => {
+    setIsEditMode(true);
+    setShowModal(true);
+  };
 
   if (loading) {
     return (
@@ -177,13 +224,19 @@ export default function Myshope() {
       </div>
     );
   }
+
   return (
     <div className={profilecss.container}>
       <div className={`${profilecss.bgWhite}`}>
         <Sidebar />
         <main style={{ marginTop: "58px" }}>
           {isShop ? (
-            <Shopepage shop={shop} />
+            <div>
+              <Shopepage
+                shop={shop}
+                onEditClick={handleEditClick} // Pass the edit button handler
+              />
+            </div>
           ) : (
             <div>
               <h2 style={{ color: "#980f0f", textAlign: "center" }}>
@@ -204,7 +257,10 @@ export default function Myshope() {
                   borderRadius: "5px",
                   cursor: "pointer",
                 }}
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                  setIsEditMode(false);
+                  setShowModal(true);
+                }}
               >
                 Create New Shop
               </button>
@@ -214,7 +270,9 @@ export default function Myshope() {
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Create New Shop</Modal.Title>
+          <Modal.Title>
+            {isEditMode ? "Edit Shop" : "Create New Shop"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
@@ -272,28 +330,28 @@ export default function Myshope() {
                 <Col md={6}>
                   <Form.Group controlId="openingHours">
                     <Form.Label>Opening Hours</Form.Label>
-                    <div style={{ display: "flex", gap: "10px" }}>
-                      <DatePicker
-                        selected={formData.openingHours.start}
-                        onChange={(date) => handleDateChange("start", date)}
-                        showTimeSelect
-                        showTimeSelectOnly
-                        timeIntervals={15}
-                        timeCaption="Start Time"
-                        dateFormat="h:mm aa"
-                        className="form-control"
-                      />
-                      <DatePicker
-                        selected={formData.openingHours.end}
-                        onChange={(date) => handleDateChange("end", date)}
-                        showTimeSelect
-                        showTimeSelectOnly
-                        timeIntervals={15}
-                        timeCaption="End Time"
-                        dateFormat="h:mm aa"
-                        className="form-control"
-                      />
-                    </div>
+                    <Row>
+                      <Col>
+                        <Form.Label>Start</Form.Label>
+                        <DatePicker
+                          selected={formData.openingHours.start}
+                          onChange={(date) => handleDateChange("start", date)}
+                          showTimeSelect
+                          dateFormat="Pp"
+                          className="form-control"
+                        />
+                      </Col>
+                      <Col>
+                        <Form.Label>End</Form.Label>
+                        <DatePicker
+                          selected={formData.openingHours.end}
+                          onChange={(date) => handleDateChange("end", date)}
+                          showTimeSelect
+                          dateFormat="Pp"
+                          className="form-control"
+                        />
+                      </Col>
+                    </Row>
                   </Form.Group>
                 </Col>
               </Row>
@@ -314,7 +372,7 @@ export default function Myshope() {
                   <Form.Group controlId="phone">
                     <Form.Label>Phone</Form.Label>
                     <Form.Control
-                      type="text"
+                      type="tel"
                       placeholder="Enter phone number"
                       name="phone"
                       value={formData.phone}
@@ -324,43 +382,45 @@ export default function Myshope() {
                 </Col>
               </Row>
               <Row className="mb-3">
-                <Col md={6}>
-                  <Form.Group controlId="imageUrl">
-                    <Form.Label>Image URL</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter image URL"
-                      name="imageUrl"
-                      value={formData.imageUrl}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group controlId="imageFile">
-                    <Form.Label>Upload Image</Form.Label>
+                <Col md={12}>
+                  <Form.Group controlId="image">
+                    <Form.Label>Shop Image</Form.Label>
                     <Form.Control
                       type="file"
-                      name="imageFile"
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setFormData((prevFormData) => ({
                           ...prevFormData,
                           imageFile: e.target.files[0],
-                        }))
-                      }
+                        }));
+                      }}
                     />
+                    {uploading && (
+                      <ProgressBar
+                        animated
+                        now={uploadProgress}
+                        label={`${Math.round(uploadProgress)}%`}
+                        className="mt-2"
+                      />
+                    )}
+                    {uploadSuccess && (
+                      <div className="text-success mt-2">Upload successful!</div>
+                    )}
                   </Form.Group>
                 </Col>
               </Row>
+              <Button
+                variant="primary"
+                onClick={handleCreateOrUpdateShop}
+                disabled={uploading}
+              >
+                {loading ? "Saving..." : "Save"}
+              </Button>
             </Form>
           </Container>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleCreateShop}>
-            Create Shop
+            Close
           </Button>
         </Modal.Footer>
       </Modal>

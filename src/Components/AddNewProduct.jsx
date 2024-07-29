@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./sidebar.css";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../hooks/auth";
-import { WithContext as ReactTags } from 'react-tag-input';
 
-export default function AddNewProduct({ close }) {
+import { WithContext as ReactTags } from "react-tag-input";
+import { storage } from "../Config/Firbase";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import ScrapForm from "./ScrapForm";
+import { ProgressBar } from 'react-bootstrap';
+
+
+export default function AddNewProduct({ close, product }) {
   const user = auth();
   const navigate = useNavigate();
-
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
   const [subCategories, setSubCategories] = useState([]);
-  const [formData, setFormData] = useState({
+  const [tags, setTags] = useState([]);
+  const [updatedData, setUpdatedData] = useState(null);
+
+  const initialFormData = {
     name: "",
     description: "",
     price: 0,
@@ -26,7 +38,6 @@ export default function AddNewProduct({ close }) {
       length: 0,
       width: 0,
       height: 0,
-
     },
     color: "",
     material: "",
@@ -35,12 +46,59 @@ export default function AddNewProduct({ close }) {
     discounts: "",
     availabilityStatus: "available",
     vendorId: user._id,
+  };
+  const [scrapFormData, setScrapFormData] = useState({
+    material: "",
+    density: "",
+    flexibility: "",
+    durability: "",
+    melting_point: "",
+    recyclability: "",
   });
-  const [tags, setTags] = useState([]);
 
+  const [formData, setFormData] = useState(initialFormData);
+
+  // Handler for scrap-specific form changes
+  const handleScrapFormChange = (e) => {
+    const { name, value } = e.target;
+    setScrapFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // const [tags, setTags] = useState([]);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
+
+
+  useEffect(() => {
+    if (product) {
+      setFormData({
+        ...product,
+        categories: [
+          {
+            category: product.categories[0]?.category || "",
+            subcategory: product.categories[0]?.subcategory || "",
+          },
+        ],
+        keywords: product.keywords || [],
+      });
+      setSelectedCategory(product.categories[0]?.category || "");
+      setSelectedSubCategory(product.categories[0]?.subcategory || "");
+      setTags(
+        product.keywords.map((keyword) => ({ id: keyword, text: keyword }))
+      );
+    } else {
+      setFormData(initialFormData);
+      setSelectedCategory("");
+      setSelectedSubCategory("");
+      setTags([]);
+    }
+  }, [product]);
 
   const handleDelete = (i) => {
-    const updatedTags = tags.filter((tag, index) => index !== i);
+    const updatedTags = tags.filter((_, index) => index !== i);
     setTags(updatedTags);
 
     const updatedKeywords = formData.keywords.filter((_, index) => index !== i);
@@ -56,8 +114,17 @@ export default function AddNewProduct({ close }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    console.log(formData);
+    if (name.startsWith('dimensions.')) {
+      setFormData({
+        ...formData,
+        dimensions: {
+          ...formData.dimensions,
+          [name.split('.')[1]]: value
+        }
+      });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleCategoryChange = (e) => {
@@ -67,21 +134,23 @@ export default function AddNewProduct({ close }) {
     let subCategoryOptions = [];
     if (category === "physicalProduct") {
       subCategoryOptions = [
+
         "Home Appliances", "Electronics", "Furniture", "Clothing", "Footwear",
-        "Kitchenware", "Toys", "Sports Equipment", "Books", "Stationery",
-        "Beauty Products", "Jewelry", "Gardening Tools", "Automobile Parts", "Pet Supplies"
+        "Kitchenware", "Toys", "Sports Equipment", "Stationery",
+        "Beauty Products", "Jewelry", "Gardening Tools", "Automobile Parts"
       ];
     } else if (category === "digitalAsset") {
       subCategoryOptions = [
-        "Assignments", "Projects", "E-books", "Software", "Music",
-        "Videos", "Courses", "Templates", "Fonts", "Graphics",
+        "Assignments", "Projects", "E-books", "Software",
+       "Courses", "Templates", "Fonts", "Graphics",
         "Photography", "Virtual Reality", "Websites", "Mobile Apps", "Games"
       ];
     } else if (category === "scrap") {
       subCategoryOptions = [
         "Wall Hangings", "Decoration Pieces", "Metal Scraps", "Wood Scraps", "Plastic Scraps",
-        "Paper Scraps", "Fabric Scraps", "Glass Scraps", "E-waste", "Batteries",
-        "Old Furniture", "Used Appliances", "Tires", "Clothing Scraps", "Miscellaneous"
+        "Paper Scraps", "Glass Scraps", "E-waste", "Batteries",
+        "Old Furniture", "Used Appliances", "Tires", "Clothing Scraps"
+
       ];
     }
     setSubCategories(subCategoryOptions);
@@ -92,16 +161,127 @@ export default function AddNewProduct({ close }) {
   const handleSubCategoryChange = (e) => {
     const subcategory = e.target.value;
     setSelectedSubCategory(subcategory);
-    setFormData({ ...formData, categories: [{ category: selectedCategory, subcategory }] });
+    setFormData({
+      ...formData,
+      categories: [{ category: selectedCategory, subcategory }],
+    });
+  };
+
+  const handleImageUpload = async (files) => {
+    const uploadedImages = [];
+    for (const file of files) {
+      const storageRef = ref(storage, `images/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+  
+      setUploading(true);
+
+      await new Promise((resolve, reject) => {
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            setUploadProgress(progress);
+          },
+          (error) => {
+            console.error("Error uploading image:", error);
+            setUploading(false);
+            reject(error);
+          },
+          async () => {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            uploadedImages.push(downloadURL);
+            setUploading(false);
+            resolve();
+          }
+        );
+      });
+    }
+    return uploadedImages;
+  };
+
+  const handleFileChange = async (e) => {
+    const files = Array.from(e.target.files);
+    try {
+      const uploadedImages = await handleImageUpload(files);
+      setFormData({
+        ...formData,
+        imageURL: [...formData.imageURL, ...uploadedImages],
+      });
+    } catch (error) {
+      console.error("Error uploading images:", error);
+    }
+  };
+
+  const handleDeleteImage = (url) => {
+    const updatedImages = formData.imageURL.filter((image) => image !== url);
+    setFormData({ ...formData, imageURL: updatedImages });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const res = await axios.post("http://localhost:3002/products/", formData);
-      close();
+      if (product) {
+        const response = await axios.patch(
+          `http://localhost:3002/products/${product._id}`,
+          formData,
+          {
+            headers: { Authorization: `Bearer ${user.token}` },
+          }
+        );
+        setUpdatedData(response.data.product); // Update state with the response data
+        if (selectedCategory === "scrap") {
+          saveScrapData(response.data.product._id);
+        }
+      } else {
+        const response = await axios.post(
+          "http://localhost:3002/products",
+          formData,
+          {
+            headers: { Authorization: `Bearer ${user.token}` },
+          }
+        );
+        setUpdatedData(response.data.product); // Update state with the response data
+        if (selectedCategory === "scrap") {
+          saveScrapData(response.data.product._id);
+        }
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error saving product:", error);
+    }
+
+    close();
+  };
+
+  const saveScrapData = async (productID) => {
+    const scrapData = {
+      scrapFormData,
+      productID,
+    };
+    console.log("🚀 ~ saveScrapData ~ scrapData:", scrapData)
+    
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/scrap-data`,
+        scrapData,
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
+        }
+      );
+      if (response.status === 200) {
+        console.log("Scrap data saved successfully!");
+      }
+    } catch (error) {
+      if (error.response) {
+        console.log(
+          `Error: ${error.response.data.error || "An error occurred"}`
+        );
+      } else if (error.request) {
+        console.log("Error: No response from server");
+      } else {
+        console.log(`Error: ${error.message}`);
+      }
     }
   };
 
@@ -111,7 +291,10 @@ export default function AddNewProduct({ close }) {
         <div className="row g-3">
           <div className="col-sm-6">
             <div className="mb-3">
-              <label htmlFor="name" className="form-label ANP-label">
+              <h2 className="mb-4">
+                {product ? "Edit Product" : "Add New Product"}
+              </h2>
+              <label htmlFor="name" className="form-label">
                 Name:
               </label>
               <input
@@ -120,14 +303,14 @@ export default function AddNewProduct({ close }) {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="form-control ANP-input"
+                className="form-control"
                 required
               />
             </div>
           </div>
           <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="price" className="form-label ANP-label">
+              <label htmlFor="price" className="form-label">
                 Price:
               </label>
               <input
@@ -136,31 +319,33 @@ export default function AddNewProduct({ close }) {
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
-                className="form-control ANP-input"
+                className="form-control"
                 min="0"
                 required
               />
             </div>
           </div>
           <div className="col-sm">
-            <label htmlFor="stockQuantity" className="form-label ANP-label">
-              Stock Quantity:
-            </label>
-            <input
-              type="number"
-              id="stockQuantity"
-              name="stockQuantity"
-              value={formData.stockQuantity}
-              onChange={handleChange}
-              className="form-control ANP-input"
-              min="0"
-              required
-            />
+            <div className="mb-3">
+              <label htmlFor="stockQuantity" className="form-label">
+                Stock Quantity:
+              </label>
+              <input
+                type="number"
+                id="stockQuantity"
+                name="stockQuantity"
+                value={formData.stockQuantity}
+                onChange={handleChange}
+                className="form-control"
+                min="0"
+                required
+              />
+            </div>
           </div>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="description" className="form-label ANP-label">
+          <label htmlFor="description" className="form-label">
             Description:
           </label>
           <textarea
@@ -168,23 +353,24 @@ export default function AddNewProduct({ close }) {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="form-control ANP-input"
+            className="form-control"
+            rows="3"
             required
           ></textarea>
         </div>
 
-        <div className="row">
-          <div className="col">
+        <div className="row g-3">
+          <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="category" className="form-label ANP-label">
+              <label htmlFor="category" className="form-label">
                 Category:
               </label>
               <select
                 id="category"
-                className="form-select ANP-input"
                 name="category"
                 value={selectedCategory}
                 onChange={handleCategoryChange}
+                className="form-select"
                 required
               >
                 <option value="">Select Category</option>
@@ -195,250 +381,258 @@ export default function AddNewProduct({ close }) {
             </div>
           </div>
 
-          <div className="col">
+          <div className="col-sm">
             <div className="mb-3">
-              <label htmlFor="subCategory" className="form-label ANP-label">
-                Sub-category:
-              </label>
+
+              <label htmlFor="subcategory" className="form-label ANP-label">Subcategory:</label>
+
               <select
-                id="subCategory"
-                className="form-select ANP-input"
-                name="subCategory"
+                id="subcategory"
+                name="subcategory"
                 value={selectedSubCategory}
                 onChange={handleSubCategoryChange}
+                className="form-select"
                 required
               >
-                <option value="">Select Sub-category</option>
-                {subCategories.map((subCategory) => (
-                  <option key={subCategory} value={subCategory}>
-                    {subCategory}
-                  </option>
+                <option value="">Select Subcategory</option>
+                {subCategories.map((subCategory, index) => (
+                  <option key={index} value={subCategory}>{subCategory}</option>
                 ))}
               </select>
             </div>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col">
-            <label htmlFor="brand" className="form-label ANP-label">
-              Brand:
-            </label>
-            <input
-              type="text"
-              id="brand"
-              name="brand"
-              value={formData.brand}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
-          </div>
-        </div>
+        {selectedCategory === "scrap" && (
+          <ScrapForm
+            scrapFormData={scrapFormData}
+            handleScrapFormChange={handleScrapFormChange}
+          />
+        )}
 
         <div className="mb-3">
-          <label htmlFor="imageInput" className="form-label ANP-label">
-            Image URL or File:
+          <label htmlFor="brand" className="form-label ANP-label">
+            Brand:
           </label>
-          <div className="input-group">
-            <input
-              type="text"
-              id="imageInput"
-              name="imageURL"
-              value={formData.imageURL}
-              onChange={handleChange}
-              className="form-control ANP-input"
-              placeholder="Enter image URL"
-            />
-            <input
-              style={{ marginLeft: "30px" }}
-              type="file"
-              id="imageFile"
-              name="imageFile"
-              accept="image/*"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                if (file) {
-                  console.log("File selected:", file);
-                }
-              }}
-              className="form-control ANP-input"
-            />
-          </div>
-        </div>
-
-        <div className="row gx-3 gy-2 align-items-center">
-          <div className="col-sm-2">
-            <label htmlFor="weight" className="form-label ANP-label">
-              Weight:
-            </label>
-            <input
-              type="text"
-              id="weight"
-              name="weight"
-              value={formData.weight}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
-          </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="dimensions-length" className="form-label ANP-label">
-              Length:
-            </label>
-            <input
-              type="number"
-              id="dimensions-length"
-              name="length"
-              value={formData.dimensions.length}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  dimensions: { ...formData.dimensions, length: e.target.value },
-                })
-              }
-              className="form-control ANP-input"
-              min="0"
-            />
-          </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="dimensions-width" className="form-label ANP-label">
-              Width:
-            </label>
-            <input
-              type="number"
-              id="dimensions-width"
-              name="width"
-              value={formData.dimensions.width}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  dimensions: { ...formData.dimensions, width: e.target.value },
-                })
-              }
-              className="form-control ANP-input"
-              min="0"
-            />
-          </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="dimensions-height" className="form-label ANP-label">
-              Height:
-            </label>
-            <input
-              type="number"
-              id="dimensions-height"
-              name="height"
-              value={formData.dimensions.height}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  dimensions: { ...formData.dimensions, height: e.target.value },
-                })
-              }
-              className="form-control ANP-input"
-              min="0"
-            />
-          </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="color" className="form-label ANP-label">
-              Color:
-            </label>
-            <input
-              type="text"
-              id="color"
-              name="color"
-              value={formData.color}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
-          </div>
-
-          <div className="col-sm-2">
-            <label htmlFor="material" className="form-label ANP-label">
-              Material:
-            </label>
-            <input
-              type="text"
-              id="material"
-              name="material"
-              value={formData.material}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
-          </div>
-        </div>
-
-        <div className="row mt-3">
-          <div className="col">
-            <label htmlFor="rating" className="form-label ANP-label">
-              Rating:
-            </label>
-            <input
-              type="number"
-              id="rating"
-              name="rating"
-              value={formData.rating}
-              onChange={handleChange}
-              className="form-control ANP-input"
-              min="0"
-              max="5"
-            />
-          </div>
-
-          <div className="col">
-            <label htmlFor="discounts" className="form-label ANP-label">
-              Discounts:
-            </label>
-            <input
-              type="text"
-              id="discounts"
-              name="discounts"
-              value={formData.discounts}
-              onChange={handleChange}
-              className="form-control ANP-input"
-            />
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="availabilityStatus" className="form-label ANP-label">
-            Availability Status:
-          </label>
-          <select
-            id="availabilityStatus"
-            className="form-select ANP-input"
-            name="availabilityStatus"
-            value={formData.availabilityStatus}
+          <input
+            type="text"
+            id="brand"
+            name="brand"
+            value={formData.brand}
             onChange={handleChange}
-            required
-          >
-            <option value="available">Available</option>
-            <option value="outOfStock">Out of Stock</option>
-          </select>
+            className="form-control"
+          />
+        </div>
+
+        <div className="row g-3">
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="length" className="form-label">
+                Length:
+              </label>
+              <input
+                type="number"
+                id="length"
+                name="dimensions.length"
+                value={formData.dimensions.length}
+                onChange={handleChange}
+                className="form-control"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="width" className="form-label">
+                Width:
+              </label>
+              <input
+                type="number"
+                id="width"
+                name="dimensions.width"
+                value={formData.dimensions.width}
+                onChange={handleChange}
+                className="form-control"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="height" className="form-label">
+                Height:
+              </label>
+              <input
+                type="number"
+                id="height"
+                name="dimensions.height"
+                value={formData.dimensions.height}
+                onChange={handleChange}
+                className="form-control"
+                min="0"
+                step="0.01"
+
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="row g-3">
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="weight" className="form-label">
+                Weight:
+              </label>
+              <input
+                type="text"
+                id="weight"
+                name="weight"
+                value={formData.weight}
+                onChange={handleChange}
+
+                className="form-control ANP-input"
+                min="0"
+                step="0.01"
+
+                required
+              />
+            </div>
+          </div>
+
+
+
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="color" className="form-label ANP-label">Color:</label>
+              <input
+                type="text"
+                id="color"
+                name="color"
+                value={formData.color}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="mb-3">
+              <label htmlFor="material" className="form-label ANP-label">Material:</label>
+              <input
+                type="text"
+                id="material"
+                name="material"
+                value={formData.material}
+                onChange={handleChange}
+                className="form-control ANP-input"
+                required
+              />
+            </div>
+          </div>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="keywords" className="form-label ANP-label">
-            Keywords:
-          </label>
+          <label htmlFor="keywords" className="form-label ANP-label">Keywords:</label>
           <ReactTags
             tags={tags}
             handleDelete={handleDelete}
             handleAddition={handleAddition}
             handleDrag={handleDrag}
-            placeholder="Add new keyword"
+
+            inputFieldPosition="bottom"
+            autocomplete
+            classNames={{
+              tags: 'tagsClass',
+              tagInput: 'tagInputClass',
+              tagInputField: 'tagInputFieldClass',
+              selected: 'selectedClass',
+              tag: 'tagClass',
+              remove: 'removeClass',
+              suggestions: 'suggestionsClass',
+            }}
           />
         </div>
 
-        <button
-          className="btn btn-primary mt-3"
-          onClick={handleSubmit}
-          type="submit"
-        >
-          Submit
+
+        <div className="mb-3">
+          <label htmlFor="discounts" className="form-label ANP-label">Discounts:</label>
+          <input
+            type="text"
+            id="discounts"
+            name="discounts"
+            value={formData.discounts}
+            onChange={handleChange}
+            className="form-control ANP-input"
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="availabilityStatus" className="form-label ANP-label">Availability Status:</label>
+          <select
+            id="availabilityStatus"
+            name="availabilityStatus"
+            value={formData.availabilityStatus}
+            onChange={handleChange}
+            className="form-select ANP-select"
+            required
+          >
+            <option value="available">Available</option>
+            <option value="unavailable">Unavailable</option>
+          </select>
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="rating" className="form-label ANP-label">Rating:</label>
+          <input
+            type="number"
+            id="rating"
+            name="rating"
+            value={formData.rating}
+            onChange={handleChange}
+            className="form-control ANP-input"
+            min="0"
+            max="5"
+            step="0.1"
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="images" className="form-label ANP-label">Images:</label>
+          <input
+            type="file"
+            id="images"
+            name="images"
+            onChange={handleFileChange}
+            className="form-control ANP-input"
+            multiple
+          />
+          {uploading && <ProgressBar now={uploadProgress} label={`${uploadProgress.toFixed(0)}%`} />}
+          <div className="mt-2">
+            {formData.imageURL.map((url, index) => (
+              <div key={index} className="image-preview">
+                <img src={url} alt={`Product Image ${index}`} className="img-thumbnail" style={{ width: "100px", height: "100px" }} />
+                <button
+                  type="button"
+                  className="btn btn-danger btn-sm mt-1"
+                  onClick={() => handleDeleteImage(url)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button type="submit" onClick={handleSubmit} className="btn btn-primary">
+          {product ? "Update Product" : "Add Product"}
         </button>
+
       </form>
     </div>
   );

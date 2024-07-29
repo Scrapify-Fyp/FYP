@@ -323,8 +323,8 @@ const ScrapyardSingleProduct = (props) => {
         `http://localhost:3002/products/${product?._id}`
       );
 
-      console.log("Item deleted successfully:", response.data);
-      console.log("Item deleted successfully:", product);
+      // console.log("Item deleted successfully:", response.data);
+      // console.log("Item deleted successfully:", product);
       setProduct(response.data);
 
       // fetchData();
@@ -353,7 +353,7 @@ const ScrapyardSingleProduct = (props) => {
   };
 
   const handleSmallImageClick = (src) => {
-    document.getElementById("mainImg").src = src;
+    document.getElementById("mainImgContainer").src = src;
   };
 
   const handleMouseMove = (event) => {
@@ -411,6 +411,12 @@ const ScrapyardSingleProduct = (props) => {
   };
 
   const handleRecomendations = async (product) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/srap-data/product/${product?._id}`
+      );
+        // setScrapData(response.data);
+    } catch (error) {}
     // Extract features needed for AI model
     const features = {
       density: product?.density || 0,
@@ -474,7 +480,7 @@ const ScrapyardSingleProduct = (props) => {
           <div id="pro-details">
             <div className="single-pro-img">
               <div className="small-img-grp">
-                {/* {productImages.map((imgSrc, index) => (
+                {productImages.map((imgSrc, index) => (
                   <div className="small-img-col" key={index}>
                     <img
                       src={imgSrc}
@@ -484,7 +490,7 @@ const ScrapyardSingleProduct = (props) => {
                       onClick={() => handleSmallImageClick(imgSrc)}
                     />
                   </div>
-                ))} */}
+                ))}
               </div>
               <div
                 style={{ width: "560px", height: "400px" }}
