@@ -554,9 +554,10 @@ const ScrapyardSingleProduct = (props) => {
                 ))}
               </div>
             </div>
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} >
               <div className="quantity-wrapper">
-                <button
+               <div style={{marginLeft:"20px"}}>
+               <button
                   type="button"
                   className="quantity-button"
                   onClick={handleDecreaseQuantity}
@@ -574,7 +575,9 @@ const ScrapyardSingleProduct = (props) => {
                 <button type="submit" className="normal">
                   Add to Cart
                 </button>
-                <button
+               </div>
+               <div class="mt-3 mb-3">
+                 <button
                   type="button"
                   onClick={handleContract}
                   className="normal"
@@ -588,6 +591,7 @@ const ScrapyardSingleProduct = (props) => {
                 >
                   Recommend
                 </button>
+               </div>
               </div>
             </form>
             <h4>Product Details</h4>
