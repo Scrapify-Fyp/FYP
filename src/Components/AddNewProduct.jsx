@@ -224,7 +224,7 @@ export default function AddNewProduct({ close, product }) {
     try {
       if (product) {
         const response = await axios.patch(
-          `http://localhost:3002/products/${product._id}`,
+          `${process.env.REACT_APP_BASE_URL}/products/${product._id}`,
           formData,
           {
             headers: { Authorization: `Bearer ${user.token}` },
@@ -236,7 +236,7 @@ export default function AddNewProduct({ close, product }) {
         }
       } else {
         const response = await axios.post(
-          "http://localhost:3002/products",
+          `${process.env.REACT_APP_BASE_URL}/products`,
           formData,
           {
             headers: { Authorization: `Bearer ${user.token}` },

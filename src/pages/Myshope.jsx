@@ -43,7 +43,7 @@ export default function Myshope() {
     const fetchUsershop = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3002/user/${userId}/shop`
+          `${process.env.REACT_APP_BASE_URL}/user/${userId}/shop`
         );
         console.log("🚀 ~ fetchUsershop ~ response:", response)
         
@@ -174,11 +174,11 @@ export default function Myshope() {
 
       if (isEditMode) {
         // Update shop
-        await axios.put(`http://localhost:3002/shop/${shop._id}`, shopData);
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/shop/${shop._id}`, shopData);
         toast.success("Shop updated successfully!");
       } else {
         // Create new shop
-        await axios.post("http://localhost:3002/shop", shopData);
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/shop`, shopData);
         toast.success("Shop created successfully!");
       }
 

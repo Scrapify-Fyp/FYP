@@ -38,7 +38,7 @@ export default function Signupform() {
     setTimeout(async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3002/signup",
+          `${process.env.REACT_APP_BASE_URL}/signup`,
           formData
         );
 

@@ -35,7 +35,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/login",
+        `${process.env.REACT_APP_BASE_URL}/login`,
         formData,
         { withCredentials: true }
       );
@@ -64,7 +64,7 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3002/google-login",
+        `${process.env.REACT_APP_BASE_URL}/google-login`,
         { token: response.credential },
         { withCredentials: true }
       );

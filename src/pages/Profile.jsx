@@ -60,7 +60,7 @@ export default function Profile() {
   const fun = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3002/users/${user?._id}`
+        `${process.env.REACT_APP_BASE_URL}/users/${user?._id}`
       );
       setUser(response.data);
       // console.log("🚀 ~ fun ~ response.data:", response.data);

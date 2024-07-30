@@ -64,7 +64,7 @@ const makepatments=async()=>{
    const Stripe = await loadStripe("pk_test_51PbjfgI6d1FWRgWEQAFPEi01hM1UT7SUeSKyrli1Mq2dJtWb6Pa7Jh9IKYbTKV7JP2udUGn4eFNZthHzD1lYfwxy00fl4lgki3")
   console.log(cartProducts);
    try {
-    const response = await axios.post('http://localhost:3002/create-checkout-session', { products: cartProducts, order: storeres });
+    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/create-checkout-session`, { products: cartProducts, order: storeres });
    const session = await response.data;
     const result= Stripe.redirectToCheckout({
       sessionId:session.id
@@ -159,7 +159,7 @@ const makepatments=async()=>{
     console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
 
     try {
-      const response = await axios.post('http://localhost:3002/orders', orderData);
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/orders`, orderData);
       if (response.status === 201) {
         // history.push('/order-confirmation', { order: response.data });
         // console.log("response",response);

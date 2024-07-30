@@ -79,7 +79,7 @@ export default function AnalyticsProduct(props) {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/predict",
+        `${process.env.REACT_APP_AI_URL}:5000/predict`,
         inputData
       );
       setPrediction(response.data.prediction);

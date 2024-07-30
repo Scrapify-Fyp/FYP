@@ -66,7 +66,9 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <div className="container">
+      <div className="content">
+      <BrowserRouter >
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Signup" element={<Signup />} />
@@ -163,6 +165,8 @@ const App = () => {
     
       </Routes>
     </BrowserRouter>
+    </div>
+    </div>
   );
 };
 

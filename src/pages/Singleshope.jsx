@@ -15,7 +15,7 @@ export default function Singleshope() {
 
   useEffect(() => {
     if (shop?.userId) {
-      axios.get(`http://localhost:3002/user/${shop.userId}/shop/products`)
+      axios.get(`${process.env.REACT_APP_BASE_URL}/user/${shop.userId}/shop/products`)
         .then((response) => {
           setProducts(response.data);
         })

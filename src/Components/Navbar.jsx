@@ -42,7 +42,7 @@ const Navbar = () => {
   useEffect(() => {
     if (user && user.id) {
       axios
-        .get(`http://localhost:3002/users/${user.id}`)
+        .get(`${process.env.REACT_APP_BASE_URL}/users/${user.id}`)
         .then((response) => {
           setUserData(response.data);
         })
