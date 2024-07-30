@@ -91,7 +91,7 @@ export default function EditProfile() {
     }
 
     axios
-      .patch(`http://localhost:3002/users/${currentUser._id}`, formData)
+      .patch(`${process.env.REACT_APP_BASE_URL}/users/${currentUser._id}`, formData)
       .then((response) => {
         console.log("Profile updated successfully:", response.data);
         navigate('/profile')

@@ -12,7 +12,7 @@ const ShopPage = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
 
         // Fetch shops from API
-        axios.get('http://localhost:3002/shop')
+        axios.get(`${process.env.REACT_APP_BASE_URL}/shop`)
             .then(response => {
                 setShops(response.data);
             })

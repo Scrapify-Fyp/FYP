@@ -59,7 +59,7 @@ export default function Analytics() {
   const getOrdersOfPredictedProduct = async (productId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3002/orders/product/${productId}`
+        `${process.env.REACT_APP_BASE_URL}/orders/product/${productId}`
       );
       if (response.status === 200) {
         setordersForPredictedProduct(response.data);

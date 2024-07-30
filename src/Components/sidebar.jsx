@@ -155,7 +155,7 @@ export default function Sidebar(props) {
 
   const fetchData = () => {
     axios
-      .get(`http://localhost:3002/users/${user?._id}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/users/${user?._id}`)
       .then((response) => {
         const userDataFromDb = response.data;
         setUserData(userDataFromDb);

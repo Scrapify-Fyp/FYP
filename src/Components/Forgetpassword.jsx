@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3002/forgot-password", { email });
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/forgot-password`, { email });
       if (response.status === 200) {
         toast.success("Password reset email sent", { autoClose: 1000 });
       } else {
