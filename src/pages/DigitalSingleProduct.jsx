@@ -5,32 +5,48 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const DigitalSingleProduct = (props) => {
   const location = useLocation();
   const data = location.state;
 
-  const [product, setProduct] = useState(data);
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(data?.product);
+  console.log(data);
+  console.log(product);
 
-  const handleContract = () => {};
+  const handleContract = () => {
+    navigate("/contract", { state: product });
+  };
 
-  const getThisProduct = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3002/products/${product?._id}`
-      );
-      setProduct(response.data);
-    } catch (error) {
-      console.error("Error fetching product:", error);
-    }
+  // const getThisProduct = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BASE_URL}/products/${product?._id}`
+  //     );
+  //     console.log("respojnse:", response.data);
+  //     // setProduct(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching product:", error);
+  //   }
+  // };
+
+  const handleWhatsAppContact = () => {
+    const phoneNumber = "YOUR_PHONE_NUMBER"; // Replace with your WhatsApp number
+    const message = `Hello, I am interested in the product: ${product?.name}. Can you please provide more details?`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(url, "_blank");
   };
 
   useEffect(() => {
-    getThisProduct();
+    // console.log(product);
+    // getThisProduct();
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setProduct(data);
+    setProduct(data.product);
   }, [data]);
 
   const productImages =
@@ -53,9 +69,7 @@ const DigitalSingleProduct = (props) => {
                 id="mainImgContainer"
               >
                 <img
-                  src={
-                    "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220731171335/5-Project-Ideas-For-Final-Year-Students.jpg"
-                  }
+                  src={product?.imageURL}
                   alt={product?.name ?? "Product Image"}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
@@ -63,7 +77,7 @@ const DigitalSingleProduct = (props) => {
             </div>
           </div>
 
-          <div className="single-pro-details" style={{ marginLeft: "40px"}}>
+          <div className="single-pro-details" style={{ marginLeft: "40px" }}>
             <h6>{product?.brand ?? "Unknown Brand"}</h6>
             <h4>{product?.name ?? "Unknown Product"}</h4>
             <div>
@@ -76,12 +90,21 @@ const DigitalSingleProduct = (props) => {
             </div>
             <form>
               <div className="quantity-wrapper">
-                <button style={{ marginTop: "120px"}}
+                <button
+                  style={{ marginTop: "120px" }}
                   type="button"
                   onClick={handleContract}
                   className="normal"
                 >
                   Contract
+                </button>
+                <button
+                  style={{ marginTop: "20px" }}
+                  type="button"
+                  onClick={handleWhatsAppContact}
+                  className="normal"
+                >
+                  Contact on WhatsApp
                 </button>
               </div>
             </form>
