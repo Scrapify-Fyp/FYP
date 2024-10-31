@@ -14,9 +14,9 @@ import Contactinfo from "../Components/Contactinfo"
 const ContactUs = () => {
   return (
     <>
-    <div className="container" style={{width: "100%",margin:"0",padding:"0px",maxWidth:"100%"}}>
+    <div className="container">
       <Navbar/>
-      <Contactinfo/>
+      {/* <Contactinfo/> */}
     <div className={ContactUsCSS.section}>
       <div className={ContactUsCSS.container}>
         <div className={ContactUsCSS.contactInfo}>
