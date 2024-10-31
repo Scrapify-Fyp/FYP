@@ -6,6 +6,7 @@ import { Button, Spinner } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/user/userSlice";
 import { toast } from "react-toastify";
+import Cookies from 'js-cookie';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -41,7 +42,8 @@ export default function Login() {
       );
 
       if (response.status === 200) {
-        console.log("Resposne: ", response);
+        // console.log("Resposne: ", response);
+        Cookies.set('token', response.data.token, { expires: 7 }); // Expires in 7 days
         dispatch(setUser(response.data.user));
         navigate("/Profile");
         toast.success("User Login successfully", {
@@ -70,6 +72,7 @@ export default function Login() {
       );
 
       if (res.status === 200) {
+        Cookies.set('token', res.data.token, { expires: 7 });
         dispatch(setUser(res.data.user));
         navigate("/Profile");
         toast.success("Google Login successfully", {
