@@ -505,7 +505,7 @@ const SingleProductDetailPage = (props) => {
             </span>
           </div>
         </section>
-        <Youmaylike />
+        {/* <Youmaylike /> */}
         <section className="comment-section-wrapper">
           <CommentSection
             productId={product?._id}
