@@ -41,13 +41,13 @@ const SearchPage = () => {
 
   const updateInteraction = async (product, interactionType, additionalData = {}) => {
     if (!user) {
-      toast.error("You're not logged in!", {
-        position: "top-center",
-        autoClose: 500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-      });
+      // toast.error("You're not logged in!", {
+      //   position: "top-center",
+      //   autoClose: 500,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: false,
+      // });
       return;
     }
 

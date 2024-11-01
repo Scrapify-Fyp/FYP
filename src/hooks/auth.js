@@ -42,9 +42,9 @@ export const auth = () => {
     );
 
     const token = cookieObject["token"];
-    if (!token) {
-      throw new Error("No token found in cookies");
-    }
+    // if (!token) {
+    //   throw new Error("No token found in cookies");
+    // }
 
     const decodedToken = jwtDecode(token);
     const { user } = decodedToken;
@@ -55,7 +55,7 @@ export const auth = () => {
 
     return user;
   } catch (error) {
-    console.error("Authentication error:", error.message);
+    // console.error("Authentication error:", error.message);
     return null; // Return null or handle error as needed
   }
 };

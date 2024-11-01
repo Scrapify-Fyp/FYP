@@ -90,7 +90,7 @@ export default function Digilassets() {
     const fetchDigitalAssets = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:3002/products"); // Adjust the endpoint if needed
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/products`); // Adjust the endpoint if needed
         console.log("🚀 ~ fetchDigitalAssets ~ Response:", response.data);
 
         // Ensure that response.data is an array

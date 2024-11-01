@@ -42,7 +42,7 @@ import { toast } from 'react-toastify';
 
 // Configure axios to use axios-retry
 axiosRetry(axios, {
-  retries: 3, // Number of retry attempts
+  retries: 1, // Number of retry attempts
   retryDelay: (retryCount) => {
     // Notify the user about retry attempts
     toast.info(`Retrying request... Attempt ${retryCount }`, { autoClose: 1000 });

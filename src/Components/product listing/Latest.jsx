@@ -30,14 +30,14 @@ const Latest = (props) => {
     additionalData = {}
   ) => {
     if (!user) {
-      console.log("User Not Found!");
-      toast.error("You're not logged in!", {
-        position: "top-center",
-        autoClose: 500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-      });
+      // console.log("User Not Found!");
+      // toast.error("You're not logged in!", {
+      //   position: "top-center",
+      //   autoClose: 500,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: false,
+      // });
       return;
     }
 
