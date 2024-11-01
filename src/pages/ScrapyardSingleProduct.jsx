@@ -333,7 +333,7 @@ const ScrapyardSingleProduct = (props) => {
   const getThisProduct = async () => {
     try {
       const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}//products/${product?._id}`
+      `${process.env.REACT_APP_BASE_URL}/products/${product?.id}`
     );
       // `http://localhost:3002/products/${product?._id}`
 

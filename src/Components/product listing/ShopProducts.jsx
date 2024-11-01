@@ -118,7 +118,7 @@ const Latest = ({ products }) => {
   const navigate = useNavigate();
 
   const redirectToProductDetail = (product) => {
-    navigate("/ProductDetail", { state: product });
+    navigate("/ProductDetail", { state: {product}});
   };
 
   const loadMoreProducts = () => {
