@@ -161,7 +161,7 @@ const Trending = (props) => {
           ...additionalData,
         }
       );
-      console.log("🚀 ~ updateInteraction ~ response:", response);
+      // console.log("🚀 ~ updateInteraction ~ response:", response);
     } catch (error) {
       console.error(error);
     }

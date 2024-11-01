@@ -333,8 +333,9 @@ const ScrapyardSingleProduct = (props) => {
   const getThisProduct = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3002/products/${product?._id}`
-      );
+      `${process.env.REACT_APP_BASE_URL}//products/${product?._id}`
+    );
+      // `http://localhost:3002/products/${product?._id}`
 
       // console.log("Item deleted successfully:", response.data);
       // console.log("Item deleted successfully:", product);
