@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import {loadStripe} from '@stripe/stripe-js';
+import { toast } from "react-toastify";
 import {
   PaymentElement,
   Elements,
@@ -62,7 +63,7 @@ function Checkout() {
   };
 const makepatments=async()=>{
    const Stripe = await loadStripe("pk_test_51PbjfgI6d1FWRgWEQAFPEi01hM1UT7SUeSKyrli1Mq2dJtWb6Pa7Jh9IKYbTKV7JP2udUGn4eFNZthHzD1lYfwxy00fl4lgki3")
-  console.log(cartProducts);
+  // console.log(cartProducts);
    try {
     const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/create-checkout-session`, { products: cartProducts, order: storeres });
    const session = await response.data;
@@ -75,7 +76,10 @@ const makepatments=async()=>{
     }
 
   } catch (err) {
-    console.error('An error occurred. Please try again.', err);
+    // console.error('An error occurred. Please try again.', err);
+    toast.error(err.response.data.message,{
+      autoClose:1000
+    });
   }
 };
 
@@ -112,7 +116,7 @@ const makepatments=async()=>{
     }
 
 
-    console.log("Location:",location);  
+    // console.log("Location:",location);  
 
     if (location.state && location.state.note) {
       setNote(location.state.note);
@@ -156,7 +160,7 @@ const makepatments=async()=>{
       shipping,
       total: subtotal + shipping
     };
-    console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
+    // console.log("🚀 ~ handleCheckout ~ orderData:", orderData)
 
     try {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/orders`, orderData);
@@ -166,10 +170,17 @@ const makepatments=async()=>{
         setstoreres(response.data);
         setPaymentpage(false);
       } else {
-        console.error('Failed to create order. Please try again.');
+        // console.error('Failed to create order. Please try again.');
+        toast.error("Failed to create order. Please try again!",{
+          autoClose:1000
+        });
+        
       }
     } catch (err) {
-      console.error('An error occurred. Please try again.', err);
+      // console.error('An error occurred. Please try again.', err);
+      toast.error(err.response.data.message,{
+        autoClose:1000
+      });
     }
   };
 
