@@ -375,8 +375,8 @@ export default function AddNewProduct({ close, product }) {
               >
                 <option value="">Select Category</option>
                 <option value="physicalProduct">Physical Product</option>
-                <option value="digitalAsset">Digital Asset</option>
-                <option value="scrap">Scrap</option>
+                <option value="Digital Assets">Digital Asset</option>
+                <option value="Scrap">Scrap</option>
               </select>
             </div>
           </div>
